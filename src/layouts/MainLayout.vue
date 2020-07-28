@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Quasar Extras v{{ version }}
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -48,6 +48,7 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
+import { version } from '@quasar/extras/package.json'
 
 const linksData = [
   {
@@ -99,6 +100,7 @@ export default {
   components: { EssentialLink },
   data () {
     return {
+      version,
       leftDrawerOpen: false,
       essentialLinks: linksData
     }
