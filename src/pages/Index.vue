@@ -5,7 +5,7 @@
       <span>Totals: {{ filteredCount }}/{{ iconCount }}</span>
       <q-input borderless dense outlined debounce="300" clearable v-model="filter" placeholder="Search" style="margin: 2px;">
         <template v-slot:append>
-          <q-icon name="search" />
+          <q-icon v-if="!filter" :name="mdiCardSearchOutline" />
         </template>
       </q-input>
     </div>
@@ -27,7 +27,7 @@
 
     <q-page-scroller expand position="bottom" :scroll-offset="150" :offset="[0, 0]">
       <div class="col cursor-pointer q-pa-sm bg-primary text-white text-center">
-        <q-icon name="keyboard_arrow_up" size="lg" />
+        <q-icon :name="mdiChevronUp" size="lg" />
       </div>
     </q-page-scroller>
 
@@ -36,12 +36,15 @@
 
 <script>
 import { copyToClipboard } from 'quasar'
+import { mdiCardSearchOutline, mdiChevronUp } from '@quasar/extras/mdi-v5'
 
 export default {
   name: 'SvgIconViewer',
 
   data () {
     return {
+      mdiCardSearchOutline,
+      mdiChevronUp,
       icon: null,
       iconSets: [
         { label: 'Material Icons (Google)', value: 'material-icons' },
