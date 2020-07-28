@@ -1,9 +1,9 @@
 <template>
   <q-page>
     <div class="row justify-evenly items-center">
-      <q-select v-model="icon" dense outlined :options="iconSets" label="Select Icon set" style="width: 280px;"/>
+      <q-select v-model="icon" dense outlined :options="iconSets" label="Select Icon set" style="width: 280px; margin: 2px;"/>
       <span>Totals: {{ filteredCount }}/{{ iconCount }}</span>
-      <q-input borderless dense outlined debounce="300" clearable v-model="filter" placeholder="Search">
+      <q-input borderless dense outlined debounce="300" clearable v-model="filter" placeholder="Search" style="margin: 2px;">
         <template v-slot:append>
           <q-icon name="search" />
         </template>

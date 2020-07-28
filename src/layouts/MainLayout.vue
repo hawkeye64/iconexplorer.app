@@ -1,12 +1,12 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar :class="$q.dark.isActive ? 'bg-black text-white' : 'bg-primary text-white'">
         <q-btn
           flat
           dense
           round
-          icon="menu"
+          :icon="mdiMenu"
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
@@ -15,6 +15,7 @@
           Quasar Extras v{{ version }}
         </q-toolbar-title>
 
+        <q-btn flat round @click="$q.dark.toggle()" :icon="$q.dark.isActive ? mdiBrightness2 : mdiBrightness5" />
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
@@ -23,12 +24,10 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-grey-1"
     >
       <q-list>
         <q-item-label
           header
-          class="text-grey-8"
         >
           Essential Links
         </q-item-label>
@@ -50,47 +49,60 @@
 import EssentialLink from 'components/EssentialLink.vue'
 import { version } from '@quasar/extras/package.json'
 
+import {
+  mdiMenu,
+  mdiBrightness2,
+  mdiBrightness5,
+  mdiSchool,
+  mdiForumOutline,
+  mdiDiscord,
+  mdiFacebook,
+  mdiTwitter,
+  mdiGithub,
+  mdiHeart
+} from '@quasar/extras/mdi-v5'
+
 const linksData = [
   {
     title: 'Docs',
     caption: 'quasar.dev',
-    icon: 'school',
+    icon: mdiSchool,
     link: 'https://quasar.dev'
   },
   {
     title: 'Github',
     caption: 'github.com/quasarframework',
-    icon: 'code',
+    icon: mdiGithub,
     link: 'https://github.com/quasarframework'
   },
   {
     title: 'Discord Chat Channel',
     caption: 'chat.quasar.dev',
-    icon: 'chat',
+    icon: mdiDiscord,
     link: 'https://chat.quasar.dev'
   },
   {
     title: 'Forum',
     caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
+    icon: mdiForumOutline,
     link: 'https://forum.quasar.dev'
   },
   {
     title: 'Twitter',
     caption: '@quasarframework',
-    icon: 'rss_feed',
+    icon: mdiTwitter,
     link: 'https://twitter.quasar.dev'
   },
   {
     title: 'Facebook',
     caption: '@QuasarFramework',
-    icon: 'public',
+    icon: mdiFacebook,
     link: 'https://facebook.quasar.dev'
   },
   {
     title: 'Quasar Awesome',
     caption: 'Community Quasar projects',
-    icon: 'favorite',
+    icon: mdiHeart,
     link: 'https://awesome.quasar.dev'
   }
 ]
@@ -101,6 +113,16 @@ export default {
   data () {
     return {
       version,
+      mdiMenu,
+      mdiBrightness2,
+      mdiBrightness5,
+      mdiSchool,
+      mdiHeart,
+      mdiFacebook,
+      mdiTwitter,
+      mdiForumOutline,
+      mdiDiscord,
+      mdiGithub,
       leftDrawerOpen: false,
       essentialLinks: linksData
     }
