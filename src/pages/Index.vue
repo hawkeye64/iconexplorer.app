@@ -89,7 +89,12 @@ export default {
         return
       }
 
+      const now = new Date()
       this.importedIcons = Object.freeze(require('@quasar/extras/' + val.value + '/index.js'))
+      console.log(`${val.value} Load (ms):`, new Date() - now)
+      this.$nextTick(() => {
+        console.log(`${val.value} Render (ms):`, new Date() - now)
+      })
     }
   },
 
