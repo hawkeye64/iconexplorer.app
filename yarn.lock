@@ -1024,10 +1024,10 @@
     core-js "^3.6.5"
     core-js-compat "^3.6.5"
 
-"@quasar/extras@^1.9.2":
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.9.2.tgz#088b4c6e2d8d0ae625cad311e9c0f9502cab11e2"
-  integrity sha512-OP2qTOveQHkTmaxsEhSPhXTs3s0MxGevIjQMZ8e79U3HhlGYSO48wBH2iUrK5c6XlALOq9zqHQJoGt5QnhWdUA==
+"@quasar/extras@^1.9.4":
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.9.4.tgz#2978e45dc8cb2802172c6cddafe383b55cd46037"
+  integrity sha512-g0a39r4ejpTBsrygSfvc1gcZEhnGMl0Rj/xSH6kvmn42NtAwkKiORqFckhhHJ3ZsubE1c5F2jAFcpWAaaC/t8A==
 
 "@quasar/fastclick@1.1.4":
   version "1.1.4"
@@ -3711,10 +3711,10 @@ eslint-visitor-keys@^1.0.0, eslint-visitor-keys@^1.1.0, eslint-visitor-keys@^1.3
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.3.0.tgz#30ebd1ef7c2fdff01c3a4f151044af25fab0523e"
   integrity sha512-6J72N8UNa462wa/KFODt/PJ3IU60SDpC3QXC1Hjc1BXXpfL2C9R5+AU7jhe0F6GREqVMh4Juu+NY7xn+6dipUQ==
 
-eslint@^7.5.0:
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.5.0.tgz#9ecbfad62216d223b82ac9ffea7ef3444671d135"
-  integrity sha512-vlUP10xse9sWt9SGRtcr1LAC67BENcQMFeV+w5EvLEoFe3xJ8cF1Skd0msziRx/VMC+72B4DxreCE+OR12OA6Q==
+eslint@^7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.6.0.tgz#522d67cfaea09724d96949c70e7a0550614d64d6"
+  integrity sha512-QlAManNtqr7sozWm5TF4wIH9gmUm2hE3vNRUvyoYAa4y1l5/jxD/PQStEjBMQtCqZmSep8UxrcecI60hOpe61w==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.10.0"
