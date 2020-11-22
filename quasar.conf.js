@@ -7,6 +7,9 @@
 // https://quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 
+const path = require('path')
+const ESLintPlugin = require('eslint-webpack-plugin')
+
 module.exports = function (/* ctx */) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
@@ -43,8 +46,8 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'history', // available values: 'hash', 'history'
-
+      // scopeHoisting: true,
+      vueRouterMode: 'history',
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
@@ -63,12 +66,10 @@ module.exports = function (/* ctx */) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack (cfg) {
-        cfg.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/
-        })
+        cfg.plugins.push(new ESLintPlugin({
+          files: './src',
+          extensions: ['js', 'vue']
+        }))
       }
     },
 

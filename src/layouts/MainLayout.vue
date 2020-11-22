@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr fFf">
     <q-header elevated>
       <q-toolbar :class="$q.dark.isActive ? 'bg-black text-white' : 'bg-primary text-white'">
         <q-btn
@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar Extras v{{ version }}
+          Quasar Extras <span class="text-subtitle2">v{{ version }}</span>
         </q-toolbar-title>
 
         <q-btn flat round @click="$q.dark.toggle()" :icon="$q.dark.isActive ? mdiBrightness2 : mdiBrightness5" />

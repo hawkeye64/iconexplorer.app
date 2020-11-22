@@ -13,20 +13,26 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.9.10",
-    "core-js": "^3.6.5",
-    "quasar": "^1.14.2"
+    "core-js": "^3.7.0",
+    "quasar": "^1.14.5"
   },
   "devDependencies": {
-    "@quasar/app": "^2.1.5",
+    "@quasar/app": "^2.1.8",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.12.0",
-    "eslint-config-standard": "^15.0.0",
-    "eslint-loader": "^4.0.2",
+    "eslint": "^7.14.0",
+    "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.2",
-    "eslint-plugin-vue": "^7.1.0"
+    "eslint-plugin-quasar": "^1.0.0",
+    "eslint-plugin-standard": "^4.1.0",
+    "eslint-plugin-vue": "^7.1.0",
+    "eslint-webpack-plugin": "^2.4.0"
+  },
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
   },
   "browserslist": [
     "last 10 Chrome versions",
@@ -37,11 +43,7 @@
     "last 8 ChromeAndroid versions",
     "last 8 FirefoxAndroid versions",
     "last 10 iOS versions",
-    "last 5 Opera versions"
-  ],
-  "engines": {
-    "node": ">= 10.18.1",
-    "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
-  }
+    "last 5 Opera versions",
+    "ie >= 11"
+  ]
 }
