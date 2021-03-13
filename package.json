@@ -1,5 +1,5 @@
 {
-  "name": "quasar-svg-icons1",
+  "name": "quasar-svg-icons",
   "version": "0.0.1",
   "description": "Searchable Quasar SVG icons",
   "productName": "Quasar Framework SVG icons",
@@ -12,22 +12,22 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.9.16",
-    "core-js": "^3.8.3",
-    "quasar": "^1.15.2"
+    "@quasar/extras": "^1.9.19",
+    "core-js": "^3.9.1",
+    "quasar": "^1.15.5"
   },
   "devDependencies": {
-    "@quasar/app": "^2.1.14",
+    "@quasar/app": "^2.2.1",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.19.0",
+    "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-quasar": "^1.0.0",
     "eslint-plugin-standard": "^4.1.0",
-    "eslint-plugin-vue": "^7.5.0",
-    "eslint-webpack-plugin": "^2.5.0"
+    "eslint-plugin-vue": "^7.7.0",
+    "eslint-webpack-plugin": "^2.5.2"
   },
   "engines": {
     "node": ">= 10.18.1",
