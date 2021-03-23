@@ -12,12 +12,12 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.9.19",
+    "@quasar/extras": "^1.10.0",
     "core-js": "^3.9.1",
-    "quasar": "^1.15.5"
+    "quasar": "^1.15.7"
   },
   "devDependencies": {
-    "@quasar/app": "^2.2.1",
+    "@quasar/app": "^2.2.3",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2",
@@ -26,7 +26,7 @@
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-quasar": "^1.0.0",
     "eslint-plugin-standard": "^4.1.0",
-    "eslint-plugin-vue": "^7.7.0",
+    "eslint-plugin-vue": "^7.8.0",
     "eslint-webpack-plugin": "^2.5.2"
   },
   "engines": {

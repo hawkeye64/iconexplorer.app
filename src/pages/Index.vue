@@ -56,7 +56,8 @@ export default {
         { label: 'Ionicons v5', value: 'ionicons-v5' },
         { label: 'Eva Icons', value: 'eva-icons' },
         { label: 'Themify', value: 'themify' },
-        { label: 'Line Awesome', value: 'line-awesome' }
+        { label: 'Line Awesome', value: 'line-awesome' },
+        { label: 'Bootstrap Icons', value: 'bootstrap-icons' }
       ],
       importedIcons: null,
       filter: ''

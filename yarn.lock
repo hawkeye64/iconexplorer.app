@@ -950,10 +950,10 @@
   resolved "https://registry.yarnpkg.com/@positron/stack-trace/-/stack-trace-1.0.0.tgz#14fcc712a530038ef9be1ce6952315a839f466a8"
   integrity sha1-FPzHEqUwA475vhzmlSMVqDn0Zqg=
 
-"@quasar/app@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@quasar/app/-/app-2.2.1.tgz#5ff4e6c8bd5dad8ace61626f7c50a72bf3758a20"
-  integrity sha512-oFPxZnxsum7om7fjnE5HqRqyjCywdJmyj/jr1j0QHHY1lP+09p4DKqPN3ft/4P5gBZkGH85joZD8tfz6N2h8zg==
+"@quasar/app@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@quasar/app/-/app-2.2.3.tgz#cb4a77bb71648241d5180962cdc58fcbadd2e281"
+  integrity sha512-l6Jh5VqjWcMzLGeG5svLVpqRcRfw9I9415ck6OSBtlwKndKQMpb5PM5NmSRW0e2igIiVZhZYWOO8NtfOMcekeA==
   dependencies:
     "@quasar/babel-preset-app" "2.0.1"
     "@quasar/fastclick" "1.1.4"
@@ -964,7 +964,7 @@
     "@types/terser-webpack-plugin" "3.0.0"
     "@types/webpack" "4.41.26"
     "@types/webpack-bundle-analyzer" "3.8.0"
-    "@types/webpack-dev-server" "3.11.0"
+    "@types/webpack-dev-server" "3.11.2"
     archiver "5.0.2"
     autoprefixer "9.8.6"
     browserslist "^4.14.7"
@@ -1060,10 +1060,10 @@
     core-js "^3.6.5"
     core-js-compat "^3.6.5"
 
-"@quasar/extras@^1.9.19":
-  version "1.9.19"
-  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.9.19.tgz#8e511117ccd8ec5bbed7038b9dad1749052376b8"
-  integrity sha512-A1IO0dzfUtRkyKq3QC7ZQNvhLeJey2ET8MvRX7oV0Qe+g30jy/4pr1ZhO7GylkDAoLT3C9eY8t2/5Anrl0AHdA==
+"@quasar/extras@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.10.0.tgz#1cf13d299e80e1396b2f982e1663b89dd54f3e8e"
+  integrity sha512-H71Y/6pxunwiEN+oo9OBGM96ncM2QreVdnb2t2iStVHduju3nnypw9euBCshhYxKE/ORHZoOBRDoiddUOyaUdA==
 
 "@quasar/fastclick@1.1.4":
   version "1.1.4"
@@ -1189,19 +1189,10 @@
   resolved "https://registry.yarnpkg.com/@types/html-minifier-terser/-/html-minifier-terser-5.1.1.tgz#3c9ee980f1a10d6021ae6632ca3e79ca2ec4fb50"
   integrity sha512-giAlZwstKbmvMk1OO7WXSj4OZ0keXAcl2TQq4LWHiiPH2ByaH7WeUzng+Qej8UPxxv+8lRTuouo0iaNDBuzIBA==
 
-"@types/http-proxy-middleware@*":
-  version "0.19.3"
-  resolved "https://registry.yarnpkg.com/@types/http-proxy-middleware/-/http-proxy-middleware-0.19.3.tgz#b2eb96fbc0f9ac7250b5d9c4c53aade049497d03"
-  integrity sha512-lnBTx6HCOUeIJMLbI/LaL5EmdKLhczJY5oeXZpX/cXE4rRqb3RmV7VcMpiEfYkmTjipv3h7IAyIINe4plEv7cA==
-  dependencies:
-    "@types/connect" "*"
-    "@types/http-proxy" "*"
-    "@types/node" "*"
-
-"@types/http-proxy@*":
-  version "1.17.4"
-  resolved "https://registry.yarnpkg.com/@types/http-proxy/-/http-proxy-1.17.4.tgz#e7c92e3dbe3e13aa799440ff42e6d3a17a9d045b"
-  integrity sha512-IrSHl2u6AWXduUaDLqYpt45tLVCtYv7o4Z0s1KghBCDgIIS9oW5K1H8mZG/A2CfeLdEa7rTd1ACOiHBc1EMT2Q==
+"@types/http-proxy@^1.17.4":
+  version "1.17.5"
+  resolved "https://registry.yarnpkg.com/@types/http-proxy/-/http-proxy-1.17.5.tgz#c203c5e6e9dc6820d27a40eb1e511c70a220423d"
+  integrity sha512-GNkDE7bTv6Sf8JbV2GksknKOsk7OznNYHSdrtvPJXO0qJ9odZig6IZKUi5RFGi6d1bf6dgIAe4uXi3DBc7069Q==
   dependencies:
     "@types/node" "*"
 
@@ -1290,16 +1281,16 @@
   dependencies:
     "@types/webpack" "*"
 
-"@types/webpack-dev-server@3.11.0":
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/@types/webpack-dev-server/-/webpack-dev-server-3.11.0.tgz#bcc3b85e7dc6ac2db25330610513f2228c2fcfb2"
-  integrity sha512-3+86AgSzl18n5P1iUP9/lz3G3GMztCp+wxdDvVuNhx1sr1jE79GpYfKHL8k+Vht3N74K2n98CuAEw4YPJCYtDA==
+"@types/webpack-dev-server@3.11.2":
+  version "3.11.2"
+  resolved "https://registry.yarnpkg.com/@types/webpack-dev-server/-/webpack-dev-server-3.11.2.tgz#73915a7d9e0a9b5e010a2388a46f68ab3f770ef8"
+  integrity sha512-13w1VhaghN+G1rYjkBPgN/GFRoHd9uI2fwK9cSKvLutdmZ22L9iicFEvt69by40DP2I6uNcClaGTyPY6nYhIgQ==
   dependencies:
     "@types/connect-history-api-fallback" "*"
     "@types/express" "*"
-    "@types/http-proxy-middleware" "*"
     "@types/serve-static" "*"
     "@types/webpack" "*"
+    http-proxy-middleware "^1.0.0"
 
 "@types/webpack-sources@*":
   version "2.0.0"
@@ -3609,10 +3600,10 @@ eslint-plugin-standard@^4.1.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-4.1.0.tgz#0c3bf3a67e853f8bbbc580fb4945fbf16f41b7c5"
   integrity sha512-ZL7+QRixjTR6/528YNGyDotyffm5OQst/sGxKDwGb9Uqs4In5Egi4+jbobhqJoyoCM6/7v/1A5fhQ7ScMtDjaQ==
 
-eslint-plugin-vue@^7.7.0:
-  version "7.7.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-7.7.0.tgz#a90df4595e670821bf243bd2750ededdb74948b8"
-  integrity sha512-mYz4bpLGv5jx6YG/GvKkqbGSfV7uma2u1P3mLA41Q5vQl8W1MeuTneB8tfsLq6xxxesFubcrOC0BZBJ5R+eaCQ==
+eslint-plugin-vue@^7.8.0:
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-7.8.0.tgz#cb0e85d65b65fa8d15e783fbb03c049d2c4cfdae"
+  integrity sha512-OGrnPz+PuYL2HmVyBHxm4mRjxW2kfFCQE6Hw9G6qOHs/Pcu0srOlCCW0FMa8SLzIEqxl8WuKoBSPcMnrjUG2vw==
   dependencies:
     eslint-utils "^2.1.0"
     natural-compare "^1.4.0"
@@ -4650,7 +4641,18 @@ http-proxy-middleware@0.19.1:
     lodash "^4.17.11"
     micromatch "^3.1.10"
 
-http-proxy@^1.17.0:
+http-proxy-middleware@^1.0.0:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-1.0.6.tgz#0618557722f450375d3796d701a8ac5407b3b94e"
+  integrity sha512-NyL6ZB6cVni7pl+/IT2W0ni5ME00xR0sN27AQZZrpKn1b+qRh+mLbBxIq9Cq1oGfmTc7BUq4HB77mxwCaxAYNg==
+  dependencies:
+    "@types/http-proxy" "^1.17.4"
+    http-proxy "^1.18.1"
+    is-glob "^4.0.1"
+    lodash "^4.17.20"
+    micromatch "^4.0.2"
+
+http-proxy@^1.17.0, http-proxy@^1.18.1:
   version "1.18.1"
   resolved "https://registry.yarnpkg.com/http-proxy/-/http-proxy-1.18.1.tgz#401541f0534884bbf95260334e72f88ee3976549"
   integrity sha512-7mz/721AbnJwIVbnaSv1Cz3Am0ZLT/UBwkC92VlxhXv/k/BBQfM2fXElQNC27BVGr0uwUpplYPQM9LnaBMR5NQ==
@@ -7023,10 +7025,10 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-quasar@^1.15.5:
-  version "1.15.5"
-  resolved "https://registry.yarnpkg.com/quasar/-/quasar-1.15.5.tgz#61b68de4d4cde41c3835d1daa2e5127514b4b331"
-  integrity sha512-6A1o/kjFU72fJaQ+2flm7zK/NPDg/6z3oQ0twxZW/PxkMwZXANjq3fAXvzI3bpFXi4x8s4nQ6qiDFNAW8RTFjA==
+quasar@^1.15.7:
+  version "1.15.7"
+  resolved "https://registry.yarnpkg.com/quasar/-/quasar-1.15.7.tgz#c5a206728ca2692512803caa05d613db721b1f3c"
+  integrity sha512-LwIWtNQlEd2XZpdNbJ/gvPQBLGZ1JmeaAfXXYmktu7gTKeX0q0zv/xZ5QW9W+1J/MctCPSuVr/sVlitG9mfjRA==
 
 query-string@^4.1.0:
   version "4.3.4"
