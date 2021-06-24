@@ -26,7 +26,7 @@
     <div class="icons-footer" />
 
     <q-page-scroller expand position="bottom" :scroll-offset="150" :offset="[0, 0]">
-      <div class="col cursor-pointer q-pa-sm bg-primary text-white text-center">
+      <div class="col cursor-pointer q-pa-sm text-center glass">
         <q-icon :name="mdiChevronUp" size="lg" />
       </div>
     </q-page-scroller>

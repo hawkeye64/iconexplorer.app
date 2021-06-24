@@ -18,3 +18,28 @@
 
 .icons-footer
   height: 60px
+
+@supports (backdrop-filter: none)
+  .glass
+    background-color: rgba(25,118,210,.65)
+    color: white
+    backdrop-filter: blur(7px)
+
+@supports not (backdrop-filter: none)
+  .glass
+    background-color: $primary
+    color: white
+
+.q-dark div,
+.body--dark div
+
+  @supports (backdrop-filter: none)
+    .glass
+      background-color: rgba(0,0,0,.65)
+      color: white
+      backdrop-filter: blur(7px)
+
+  @supports not (backdrop-filter: none)
+    .glass
+      background-color: black
+      color: white
