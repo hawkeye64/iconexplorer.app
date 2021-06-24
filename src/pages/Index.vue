@@ -35,10 +35,11 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import { copyToClipboard } from 'quasar'
 import { mdiCardSearchOutline, mdiChevronUp } from '@quasar/extras/mdi-v5'
 
-export default {
+export default defineComponent({
   name: 'SvgIconViewer',
 
   data () {
@@ -70,7 +71,7 @@ export default {
       const filter = this.filter && this.importedIcons ? this.filter.toLowerCase() : ''
       Object.keys(this.importedIcons ? this.importedIcons : {}).forEach(name => {
         if (filter === '' || name.toLowerCase().indexOf(filter) > -1) {
-          vals[name] = this.importedIcons[name]
+          vals[ name ] = this.importedIcons[ name ]
         }
       })
       return vals
@@ -92,9 +93,9 @@ export default {
 
       const now = new Date()
       this.importedIcons = Object.freeze(require('@quasar/extras/' + val.value + '/index.js'))
-      console.log(`${val.value} Load (ms):`, new Date() - now)
+      console.log(`${ val.value } Load (ms):`, new Date() - now)
       this.$nextTick(() => {
-        console.log(`${val.value} Render (ms):`, new Date() - now)
+        console.log(`${ val.value } Render (ms):`, new Date() - now)
       })
     }
   },
@@ -104,7 +105,7 @@ export default {
       copyToClipboard(name)
         .then(() => {
           this.$q.notify({
-            message: `'${name}' copied to clipboard`,
+            message: `'${ name }' copied to clipboard`,
             icon: path,
             color: 'white',
             textColor: 'primary'
@@ -112,5 +113,5 @@ export default {
         })
     }
   }
-}
+})
 </script>

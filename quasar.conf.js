@@ -9,8 +9,9 @@
 
 const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const { configure } = require('quasar/wrappers')
 
-module.exports = function (/* ctx */) {
+module.exports = configure(function (ctx) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
@@ -22,7 +23,6 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
-
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -65,11 +65,13 @@ module.exports = function (/* ctx */) {
       // extractCSS: false,
 
       // https://quasar.dev/quasar-cli/handling-webpack
-      extendWebpack (cfg) {
-        cfg.plugins.push(new ESLintPlugin({
-          files: './src',
-          extensions: ['js', 'vue']
-        }))
+      // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
+      chainWebpack (chain) {
+        chain.plugin('eslint-webpack-plugin')
+          .use(ESLintPlugin, [{
+            extensions: [ 'js', 'vue' ],
+            exclude: 'node_modules'
+          }])
       }
     },
 
@@ -83,7 +85,7 @@ module.exports = function (/* ctx */) {
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       iconSet: 'svg-mdi-v5', // Quasar icon set
-      lang: 'en-us', // Quasar language pack
+      lang: 'en-US', // Quasar language pack
       config: {
         dark: 'auto'
       },
@@ -201,4 +203,4 @@ module.exports = function (/* ctx */) {
       }
     }
   }
-}
+})

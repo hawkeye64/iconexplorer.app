@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Searchable Quasar SVG icons",
   "productName": "Quasar Framework SVG icons",
-  "author": "Jeff Galbraith <jeff.galbraith@xendra.com>",
+  "author": "Jeff Galbraith <galbraith64@gmail.com>",
   "private": true,
   "scripts": {
     "build": "quasar build",
@@ -13,12 +13,16 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.10.7",
-    "core-js": "^3.14.0",
-    "quasar": "^1.15.21"
+    "core-js": "^3.15.1",
+    "quasar": "^2.0.0"
   },
   "devDependencies": {
-    "@quasar/app": "^2.2.10",
-    "babel-eslint": "^10.1.0",
+    "@babel/core": "^7.14.6",
+    "@babel/eslint-parser": "^7.14.7",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.14.7",
+    "@quasar/app": "^3.0.0",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.28.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",
@@ -30,20 +34,18 @@
     "eslint-webpack-plugin": "^2.5.4"
   },
   "engines": {
-    "node": ">= 10.18.1",
-    "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
+    "node": ">= 12.22.1",
+    "npm": ">= 7.10.0",
+    "yarn": ">= 1.22.5"
   },
   "browserslist": [
     "last 10 Chrome versions",
     "last 10 Firefox versions",
-    "last 4 Edge versions",
-    "last 7 Safari versions",
-    "last 8 Android versions",
-    "last 8 ChromeAndroid versions",
-    "last 8 FirefoxAndroid versions",
-    "last 10 iOS versions",
-    "last 5 Opera versions",
-    "ie >= 11"
+    "last 10 Edge versions",
+    "last 10 Safari versions",
+    "last 10 Android versions",
+    "last 10 ChromeAndroid versions",
+    "last 10 FirefoxAndroid versions",
+    "last 10 iOS versions"
   ]
 }

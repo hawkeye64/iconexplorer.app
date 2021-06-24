@@ -46,8 +46,10 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
-import { version } from '@quasar/extras/package.json'
+import pkg from '@quasar/extras/package.json'
+const { version } = pkg
 
 import {
   mdiMenu,
@@ -107,7 +109,7 @@ const linksData = [
   }
 ]
 
-export default {
+export default defineComponent({
   name: 'MainLayout',
   components: { EssentialLink },
   data () {
@@ -127,5 +129,5 @@ export default {
       essentialLinks: linksData
     }
   }
-}
+})
 </script>
