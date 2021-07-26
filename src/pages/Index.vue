@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, markRaw } from 'vue'
 import { copyToClipboard } from 'quasar'
 import { mdiCardSearchOutline, mdiChevronUp } from '@quasar/extras/mdi-v5'
 
@@ -92,9 +92,14 @@ export default defineComponent({
       }
 
       const now = new Date()
-      this.importedIcons = Object.freeze(require('@quasar/extras/' + val.value + '/index.js'))
-      console.log(`${ val.value } Load (ms):`, new Date() - now)
-      this.$nextTick(() => {
+      import(
+        /* webpackChunkName: "[request]" */
+        /* webpackInclude: /index\.js$/ */
+        '@quasar/extras/' + val.value
+      ).then(async svgFile => {
+        this.importedIcons = markRaw(svgFile)
+        console.log(`${ val.value } Load (ms):`, new Date() - now)
+        await this.$nextTick()
         console.log(`${ val.value } Render (ms):`, new Date() - now)
       })
     }

@@ -11,6 +11,23 @@ const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const { configure } = require('quasar/wrappers')
 
+const iconSets = [
+  { label: 'Material Icons (Google)', value: 'material-icons' },
+  { label: 'Material Icons Outlined (Google)', value: 'material-icons-outlined' },
+  { label: 'Material Icons Round (Google)', value: 'material-icons-round' },
+  { label: 'Material Icons Sharp (Google)', value: 'material-icons-sharp' },
+  { label: 'MDI v3 (Material Design Icons)', value: 'mdi-v3' },
+  { label: 'MDI v4 (Material Design Icons)', value: 'mdi-v4' },
+  { label: 'MDI v5 (Material Design Icons)', value: 'mdi-v5' },
+  { label: 'Fontawesome v5', value: 'fontawesome-v5' },
+  { label: 'Ionicons v4', value: 'ionicons-v4' },
+  { label: 'Ionicons v5', value: 'ionicons-v5' },
+  { label: 'Eva Icons', value: 'eva-icons' },
+  { label: 'Themify', value: 'themify' },
+  { label: 'Line Awesome', value: 'line-awesome' },
+  { label: 'Bootstrap Icons', value: 'bootstrap-icons' }
+]
+
 module.exports = configure(function (ctx) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
@@ -73,6 +90,14 @@ module.exports = configure(function (ctx) {
             exclude: 'node_modules'
           }])
       }
+    },
+
+    vendor: {
+      remove: [
+        'quasar/dist/api',
+
+        ...iconSets.map(iconSet => `@quasar/extras/${ iconSet.value }`)
+      ]
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
