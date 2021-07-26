@@ -1,5 +1,19 @@
 <template>
   <q-page>
+    <q-dialog ref="dialogRef" v-model="showDialog" @hide="onDialogHide">
+      <q-card class="q-pa-md">
+        <div class="row justify-center items-center" style="max-width: 400px; max-height: 300px; width: 100%; height: 100%;" @click="onClickDialog(currentPath, currentName)">
+          <q-icon :name="currentPath" size="128px" class="q-pa-xs" :class="colorClasses" />
+          <span class="full-width text-center" style="font-size: 28px;">{{ currentName }}</span>
+          <span class="full-width text-center" style="font-size: 12px;">(click to copy to clipboard)</span>
+          <div class="row">
+            <div v-for="color in colors" :key="color" :class="colorClass(color)" style="width: 20px; height: 20px;" @click.stop="changeColor(color)" @mouseenter.stop="changeColor(color)"></div>
+            <q-toggle v-model="inverted" label="Invert colors"
+      />
+          </div>
+        </div>
+      </q-card>
+    </q-dialog>
     <div class="row justify-evenly items-center">
       <q-select v-model="icon" dense outlined :options="iconSets" label="Select Icon set" style="width: 280px; margin: 2px;"/>
       <span>Totals: {{ filteredCount }}/{{ iconCount }}</span>
@@ -61,11 +75,37 @@ export default defineComponent({
         { label: 'Bootstrap Icons', value: 'bootstrap-icons' }
       ],
       importedIcons: null,
-      filter: ''
+      filter: '',
+      dialogRef: null,
+      showDialog: false,
+      currentPath: '',
+      currentName: '',
+      textColor: 'black',
+      colors: [
+        'black',
+        'red', 'pink', 'purple', 'deep-purple', 'indigo',
+        'blue', 'light-blue', 'cyan', 'teal', 'green',
+        'light-green', 'lime', 'yellow', 'amber', 'orange',
+        'deep-orange', 'brown', 'grey', 'blue-grey'
+      ],
+      inverted: false
     }
   },
 
   computed: {
+    colorClasses () {
+      let color = ''
+      let bgColor = 'bg-white'
+      if (this.inverted) {
+        color += 'bg-' + this.textColor
+        bgColor = 'text-white'
+      }
+      else {
+        color += 'text-' + this.textColor
+      }
+      if (this.textColor !== 'black') color += '-8'
+      return color + ' ' + bgColor
+    },
     icons () {
       const vals = {}
       const filter = this.filter && this.importedIcons ? this.filter.toLowerCase() : ''
@@ -106,7 +146,27 @@ export default defineComponent({
   },
 
   methods: {
+    colorClass (color) {
+      let newColor = 'bg-' + color
+      if (color !== 'black') newColor += '-8'
+      if (this.textColor === color) {
+        newColor += ' active-color'
+      }
+      return newColor
+    },
+
+    changeColor (color) {
+      this.textColor = color
+    },
+
     onClick (path, name) {
+      this.currentPath = path
+      this.currentName = name
+      this.showDialog = true
+      // this.dialogRef.show()
+    },
+
+    onClickDialog (path, name) {
       copyToClipboard(name)
         .then(() => {
           this.$q.notify({
@@ -115,8 +175,19 @@ export default defineComponent({
             color: 'white',
             textColor: 'primary'
           })
+          this.showDialog = false
         })
+    },
+
+    onDialogHide () {
+
     }
   }
 })
 </script>
+
+<style>
+.active-color {
+  border: 1px dashed white;
+}
+</style>
