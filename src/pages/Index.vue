@@ -92,7 +92,7 @@
 <script>
 import { defineComponent, markRaw } from 'vue'
 import { copyToClipboard } from 'quasar'
-import { mdiCardSearchOutline, mdiChevronUp } from '@quasar/extras/mdi-v5'
+import { mdiCardSearchOutline, mdiChevronUp, mdiContentCopy } from '@quasar/extras/mdi-v5'
 
 export default defineComponent({
   name: 'SvgIconViewer',
@@ -101,6 +101,7 @@ export default defineComponent({
     return {
       mdiCardSearchOutline,
       mdiChevronUp,
+      mdiContentCopy,
       icon: null,
       iconSets: [
         { label: '@quasar/extras', children: [
