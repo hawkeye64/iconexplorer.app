@@ -1,21 +1,62 @@
 <template>
   <q-page>
-    <q-dialog ref="dialogRef" v-model="showDialog" @hide="onDialogHide">
+    <q-dialog ref="dialogRef" v-model="showDialog">
       <q-card class="q-pa-md">
-        <div class="row justify-center items-center" style="max-width: 400px; max-height: 300px; width: 100%; height: 100%;" @click="onClickDialog(currentPath, currentName)">
+
+        <div class="row justify-center items-center" style="max-width: 400px; max-height: 300px; width: 100%; height: 100%;">
           <q-icon :name="currentPath" size="128px" class="q-pa-xs" :class="colorClasses" />
           <span class="full-width text-center" style="font-size: 28px;">{{ currentName }}</span>
-          <span class="full-width text-center" style="font-size: 12px;">(click to copy to clipboard)</span>
+
           <div class="row">
             <div v-for="color in colors" :key="color" :class="colorClass(color)" style="width: 20px; height: 20px;" @click.stop="changeColor(color)" @mouseenter.stop="changeColor(color)"></div>
-            <q-toggle v-model="inverted" label="Invert colors"
-      />
+            <q-toggle v-model="inverted" label="Invert colors"/>
           </div>
+
+          <q-btn-group push>
+            <q-btn push :icon="mdiContentCopy" @click="onCopyName(currentPath, currentName)">
+              <q-tooltip>Copy name to clipboard</q-tooltip>
+            </q-btn>
+            <q-btn push label="SVG" @click="onCopySvg(currentPath, currentName)">
+              <q-tooltip>Copy SVG to clipboard</q-tooltip>
+            </q-btn>
+          </q-btn-group>
+
         </div>
       </q-card>
     </q-dialog>
     <div class="row justify-evenly items-center">
-      <q-select v-model="icon" dense outlined :options="iconSets" label="Select Icon set" style="width: 280px; margin: 2px;"/>
+      <q-select
+        v-model="icon"
+        dense
+        options-dense
+        outlined clearable
+        :options="iconSets"
+        label="Select Icon set"
+        style="width: 280px; margin: 2px;">
+          <template v-slot:option="scope">
+            <q-expansion-item
+              expand-separator
+              group="somegroup"
+              :default-opened="hasChild(scope)"
+               header-class="text-weight-bold"
+              :label="scope.opt.label"
+            >
+              <template v-for="child in scope.opt.children" :key="child.label">
+                <q-item
+                  clickable
+                  v-ripple
+                  v-close-popup
+                  @click="icon = child"
+                  :class="{ 'bg-light-blue-1': icon === child }"
+                >
+                  <q-item-section>
+                    <q-item-label v-html="child.label" class="q-ml-md" ></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </template>
+            </q-expansion-item>
+          </template>
+      </q-select>
       <span>Totals: {{ filteredCount }}/{{ iconCount }}</span>
       <q-input borderless dense outlined debounce="300" clearable v-model="filter" placeholder="Search" style="margin: 2px;">
         <template v-slot:append>
@@ -62,17 +103,33 @@ export default defineComponent({
       mdiChevronUp,
       icon: null,
       iconSets: [
-        { label: 'Material Icons (Google)', value: 'material-icons' },
-        { label: 'Material Icons Outlined (Google)', value: 'material-icons-outlined' },
-        { label: 'Material Icons Round (Google)', value: 'material-icons-round' },
-        { label: 'Material Icons Sharp (Google)', value: 'material-icons-sharp' },
-        { label: 'MDI v5 (Material Design Icons)', value: 'mdi-v5' },
-        { label: 'Fontawesome v5', value: 'fontawesome-v5' },
-        { label: 'Ionicons v5', value: 'ionicons-v5' },
-        { label: 'Eva Icons', value: 'eva-icons' },
-        { label: 'Themify', value: 'themify' },
-        { label: 'Line Awesome', value: 'line-awesome' },
-        { label: 'Bootstrap Icons', value: 'bootstrap-icons' }
+        { label: '@quasar/extras', children: [
+          { label: 'Material Icons (Google)', value: 'material-icons', packageName: '@quasar/extras' },
+          { label: 'Material Icons Outlined (Google)', value: 'material-icons-outlined', packageName: '@quasar/extras' },
+          { label: 'Material Icons Round (Google)', value: 'material-icons-round', packageName: '@quasar/extras' },
+          { label: 'Material Icons Sharp (Google)', value: 'material-icons-sharp', packageName: '@quasar/extras' },
+          { label: 'MDI v5 (Material Design Icons)', value: 'mdi-v5', packageName: '@quasar/extras' },
+          { label: 'Fontawesome v5', value: 'fontawesome-v5', packageName: '@quasar/extras' },
+          { label: 'Ionicons v5', value: 'ionicons-v5', packageName: '@quasar/extras' },
+          { label: 'Eva Icons', value: 'eva-icons', packageName: '@quasar/extras' },
+          { label: 'Themify', value: 'themify', packageName: '@quasar/extras' },
+          { label: 'Line Awesome', value: 'line-awesome', packageName: '@quasar/extras' },
+          { label: 'Bootstrap Icons', value: 'bootstrap-icons', packageName: '@quasar/extras' }
+        ] },
+        { label: 'quasar-extras-svg-icons', children: [
+          { label: 'Fluent Icons', value: 'fluentui-system-icons', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Hero Icons (outline)', value: 'hero-icons-outline', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Hero Icons (solid)', value: 'hero-icons-solid', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Iconoir Icons', value: 'iconoir-icons', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Jam Icons', value: 'jam-icons', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Octicons', value: 'oct-icons', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Pixelart Icons', value: 'pixelart-icons', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Prime Icons', value: 'prime-icons', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Remix Icons', value: 'remix-icons', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Simple Icons', value: 'simple-icons', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Tabler Icons', value: 'tabler-icons', packageName: 'quasar-extras-svg-icons' },
+          { label: 'Zond Icons', value: 'zond-icons', packageName: 'quasar-extras-svg-icons' }
+        ] }
       ],
       importedIcons: null,
       filter: '',
@@ -132,16 +189,30 @@ export default defineComponent({
       }
 
       const now = new Date()
-      import(
-        /* webpackChunkName: "[request]" */
-        /* webpackInclude: /index\.js$/ */
-        '@quasar/extras/' + val.value
-      ).then(async svgFile => {
-        this.importedIcons = markRaw(svgFile)
-        console.log(`${ val.value } Load (ms):`, new Date() - now)
-        await this.$nextTick()
-        console.log(`${ val.value } Render (ms):`, new Date() - now)
-      })
+      if (val.packageName === '@quasar/extras') {
+        import(
+          /* webpackChunkName: "[request]" */
+          /* webpackInclude: /index\.js$/ */
+          '@quasar/extras/' + val.value
+        ).then(async svgFile => {
+          this.importedIcons = markRaw(svgFile)
+          console.log(`${ val.value } Load (ms):`, new Date() - now)
+          await this.$nextTick()
+          console.log(`${ val.value } Render (ms):`, new Date() - now)
+        })
+      }
+      else if (val.packageName === 'quasar-extras-svg-icons') {
+        import(
+          /* webpackChunkName: "[request]" */
+          /* webpackInclude: /index\.js$/ */
+          'quasar-extras-svg-icons/' + val.value
+        ).then(async svgFile => {
+          this.importedIcons = markRaw(svgFile)
+          console.log(`${ val.value } Load (ms):`, new Date() - now)
+          await this.$nextTick()
+          console.log(`${ val.value } Render (ms):`, new Date() - now)
+        })
+      }
     }
   },
 
@@ -157,6 +228,10 @@ export default defineComponent({
 
     changeColor (color) {
       this.textColor = color
+    },
+
+    hasChild (scope) {
+      return scope.opt.children.some(c => this.icon && c.value === this.icon.value)
     },
 
     onClick (path, name) {
@@ -179,8 +254,30 @@ export default defineComponent({
         })
     },
 
-    onDialogHide () {
+    onCopyName (path, name) {
+      copyToClipboard(name)
+        .then(() => {
+          this.$q.notify({
+            message: `'${ name }' copied to clipboard`,
+            icon: path,
+            color: 'white',
+            textColor: 'primary'
+          })
+          this.showDialog = false
+        })
+    },
 
+    onCopySvg (path, name) {
+      copyToClipboard(path)
+        .then(() => {
+          this.$q.notify({
+            message: `'${ name }' SVG copied to clipboard`,
+            icon: path,
+            color: 'white',
+            textColor: 'primary'
+          })
+          this.showDialog = false
+        })
     }
   }
 })
