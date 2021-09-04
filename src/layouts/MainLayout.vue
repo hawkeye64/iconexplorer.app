@@ -12,7 +12,8 @@
         />
 
         <q-toolbar-title>
-          Quasar Extras <span class="text-subtitle2">v{{ version }}</span>
+          <div>@Quasar/Extras <span class="text-subtitle2">&nbsp;v{{ version }}</span></div>
+          <div>Quasar Extras SVG Icons<span class="text-subtitle2">&nbsp;v{{ version2 }}</span></div>
         </q-toolbar-title>
 
         <q-btn flat round @click="$q.dark.toggle()" :icon="$q.dark.isActive ? mdiBrightness2 : mdiBrightness5" />
@@ -22,7 +23,6 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
-      show-if-above
       bordered
     >
       <q-list>
@@ -49,7 +49,10 @@
 import { defineComponent } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
 import pkg from '@quasar/extras/package.json'
-const { version } = pkg
+const version = pkg.version
+import pkg2 from 'quasar-extras-svg-icons/package.json'
+const version2 = pkg2.version
+
 
 import {
   mdiMenu,
@@ -115,6 +118,7 @@ export default defineComponent({
   data () {
     return {
       version,
+      version2,
       mdiMenu,
       mdiBrightness2,
       mdiBrightness5,
