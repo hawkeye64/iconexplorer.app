@@ -94,7 +94,7 @@ module.exports = configure(function (ctx) {
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
-      iconSet: 'svg-mdi-v5', // Quasar icon set
+      iconSet: 'mdi-v5', // Quasar icon set
       lang: 'en-US', // Quasar language pack
       config: {
         dark: 'auto'

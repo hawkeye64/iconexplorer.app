@@ -13,7 +13,7 @@
           </div>
 
           <q-btn-group push>
-            <q-btn push :icon="mdiContentCopy" @click="onCopyName(currentPath, currentName)">
+            <q-btn push icon="mdi-content-copy" @click="onCopyName(currentPath, currentName)">
               <q-tooltip>Copy name to clipboard</q-tooltip>
             </q-btn>
             <q-btn push label="SVG" @click="onCopySvg(currentPath, currentName)">
@@ -60,7 +60,7 @@
       <span>Totals: {{ filteredCount }}/{{ iconCount }}</span>
       <q-input borderless dense outlined debounce="300" clearable v-model="filter" placeholder="Search" style="margin: 2px;">
         <template v-slot:append>
-          <q-icon v-if="!filter" :name="mdiCardSearchOutline" />
+          <q-icon v-if="!filter" name="mdi-card-search-outline" />
         </template>
       </q-input>
     </div>
@@ -82,7 +82,7 @@
 
     <q-page-scroller expand position="bottom" :scroll-offset="150" :offset="[0, 0]">
       <div class="col cursor-pointer q-pa-sm text-center glass">
-        <q-icon :name="mdiChevronUp" size="lg" />
+        <q-icon name="mdi-chevron-up" size="lg" />
       </div>
     </q-page-scroller>
 
@@ -92,7 +92,6 @@
 <script>
 import { defineComponent, markRaw } from 'vue'
 import { copyToClipboard } from 'quasar'
-import { mdiCardSearchOutline, mdiChevronUp, mdiContentCopy } from '@quasar/extras/mdi-v5'
 import { iconSets } from 'src/icon-sets'
 
 export default defineComponent({
@@ -100,10 +99,6 @@ export default defineComponent({
 
   data () {
     return {
-      mdiCardSearchOutline,
-      mdiChevronUp,
-      mdiContentCopy,
-
       icon: null,
       iconSets,
       importedIcons: null,
