@@ -13,7 +13,7 @@
           </div>
 
           <q-btn-group push>
-            <q-btn push :icon="mdiContentCopy" @click="onCopyName(currentPath, currentName)">
+            <q-btn push icon="mdi-content-copy" @click="onCopyName(currentPath, currentName)">
               <q-tooltip>Copy name to clipboard</q-tooltip>
             </q-btn>
             <q-btn push label="SVG" @click="onCopySvg(currentPath, currentName)">
@@ -60,7 +60,7 @@
       <span>Totals: {{ filteredCount }}/{{ iconCount }}</span>
       <q-input borderless dense outlined debounce="300" clearable v-model="filter" placeholder="Search" style="margin: 2px;">
         <template v-slot:append>
-          <q-icon v-if="!filter" :name="mdiCardSearchOutline" />
+          <q-icon v-if="!filter" name="mdi-card-search-outline" />
         </template>
       </q-input>
     </div>
@@ -82,7 +82,7 @@
 
     <q-page-scroller expand position="bottom" :scroll-offset="150" :offset="[0, 0]">
       <div class="col cursor-pointer q-pa-sm text-center glass">
-        <q-icon :name="mdiChevronUp" size="lg" />
+        <q-icon name="mdi-chevron-up" size="lg" />
       </div>
     </q-page-scroller>
 
@@ -92,46 +92,15 @@
 <script>
 import { defineComponent, markRaw } from 'vue'
 import { copyToClipboard } from 'quasar'
-import { mdiCardSearchOutline, mdiChevronUp, mdiContentCopy } from '@quasar/extras/mdi-v5'
+import { iconSets } from 'src/icon-sets'
 
 export default defineComponent({
   name: 'SvgIconViewer',
 
   data () {
     return {
-      mdiCardSearchOutline,
-      mdiChevronUp,
-      mdiContentCopy,
       icon: null,
-      iconSets: [
-        { label: '@quasar/extras', children: [
-          { label: 'Material Icons (Google)', value: 'material-icons', packageName: '@quasar/extras' },
-          { label: 'Material Icons Outlined (Google)', value: 'material-icons-outlined', packageName: '@quasar/extras' },
-          { label: 'Material Icons Round (Google)', value: 'material-icons-round', packageName: '@quasar/extras' },
-          { label: 'Material Icons Sharp (Google)', value: 'material-icons-sharp', packageName: '@quasar/extras' },
-          { label: 'MDI v5 (Material Design Icons)', value: 'mdi-v5', packageName: '@quasar/extras' },
-          { label: 'Fontawesome v5', value: 'fontawesome-v5', packageName: '@quasar/extras' },
-          { label: 'Ionicons v5', value: 'ionicons-v5', packageName: '@quasar/extras' },
-          { label: 'Eva Icons', value: 'eva-icons', packageName: '@quasar/extras' },
-          { label: 'Themify', value: 'themify', packageName: '@quasar/extras' },
-          { label: 'Line Awesome', value: 'line-awesome', packageName: '@quasar/extras' },
-          { label: 'Bootstrap Icons', value: 'bootstrap-icons', packageName: '@quasar/extras' }
-        ] },
-        { label: 'quasar-extras-svg-icons', children: [
-          { label: 'Fluent Icons', value: 'fluentui-system-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Hero Icons (outline)', value: 'hero-icons-outline', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Hero Icons (solid)', value: 'hero-icons-solid', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Iconoir Icons', value: 'iconoir-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Jam Icons', value: 'jam-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Octicons', value: 'oct-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Pixelart Icons', value: 'pixelart-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Prime Icons', value: 'prime-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Remix Icons', value: 'remix-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Simple Icons', value: 'simple-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Tabler Icons', value: 'tabler-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Zond Icons', value: 'zond-icons', packageName: 'quasar-extras-svg-icons' }
-        ] }
-      ],
+      iconSets,
       importedIcons: null,
       filter: '',
       dialogRef: null,
@@ -194,6 +163,7 @@ export default defineComponent({
         import(
           /* webpackChunkName: "[request]" */
           /* webpackInclude: /index\.js$/ */
+          /* webpackExclude: /(mdi-v4|ionicons-v4)/ */
           '@quasar/extras/' + val.value
         ).then(async svgFile => {
           this.importedIcons = markRaw(svgFile)
