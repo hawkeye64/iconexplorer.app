@@ -24,7 +24,7 @@
         </div>
       </q-card>
     </q-dialog>
-    <div class="row justify-evenly items-center">
+    <div class="row justify-evenly items-center q-pa-xs">
       <q-select
         v-model="icon"
         dense
@@ -32,6 +32,7 @@
         outlined clearable
         :options="iconSets"
         label="Select Icon set"
+        class="col-4"
         style="width: 280px; margin: 2px;">
           <template v-slot:option="scope">
             <q-expansion-item
@@ -57,8 +58,17 @@
             </q-expansion-item>
           </template>
       </q-select>
-      <span>Totals: {{ filteredCount }}/{{ iconCount }}</span>
-      <q-input borderless dense outlined debounce="300" clearable v-model="filter" placeholder="Search" style="margin: 2px;">
+      <div class="row justify-center items-center col-4">Totals: {{ filteredCount }}/{{ iconCount }}</div>
+      <q-input
+        borderless
+        dense
+        outlined
+        debounce="300"
+        clearable
+        v-model="filter"
+        placeholder="Search"
+        class="col-4"
+        style="margin: 2px;">
         <template v-slot:append>
           <q-icon v-if="!filter" name="mdi-card-search-outline" />
         </template>
@@ -71,9 +81,10 @@
         once
         class="intersetion-icon-box"
       >
-        <div class="row justify-center icon-box" @click="onClick(path, name)">
+        <div class="row justify-center items-center icon-box" @click="onClick(path, name)">
           <q-icon :name="path" size="md" class="q-pa-xs column" />
-          <span class="full-width text-center" style="font-size: 9px;">{{ name }}</span>
+          <q-tooltip>{{ name }}</q-tooltip>
+          <!-- <span class="full-width text-center" style="font-size: 9px;">{{ name }}</span> -->
         </div>
       </q-intersection>
     </div>
