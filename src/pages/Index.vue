@@ -93,6 +93,7 @@
 import { defineComponent, markRaw } from 'vue'
 import { copyToClipboard } from 'quasar'
 import { mdiCardSearchOutline, mdiChevronUp, mdiContentCopy } from '@quasar/extras/mdi-v5'
+import { iconSets } from 'src/icon-sets'
 
 export default defineComponent({
   name: 'SvgIconViewer',
@@ -102,36 +103,9 @@ export default defineComponent({
       mdiCardSearchOutline,
       mdiChevronUp,
       mdiContentCopy,
+
       icon: null,
-      iconSets: [
-        { label: '@quasar/extras', children: [
-          { label: 'Material Icons (Google)', value: 'material-icons', packageName: '@quasar/extras' },
-          { label: 'Material Icons Outlined (Google)', value: 'material-icons-outlined', packageName: '@quasar/extras' },
-          { label: 'Material Icons Round (Google)', value: 'material-icons-round', packageName: '@quasar/extras' },
-          { label: 'Material Icons Sharp (Google)', value: 'material-icons-sharp', packageName: '@quasar/extras' },
-          { label: 'MDI v5 (Material Design Icons)', value: 'mdi-v5', packageName: '@quasar/extras' },
-          { label: 'Fontawesome v5', value: 'fontawesome-v5', packageName: '@quasar/extras' },
-          { label: 'Ionicons v5', value: 'ionicons-v5', packageName: '@quasar/extras' },
-          { label: 'Eva Icons', value: 'eva-icons', packageName: '@quasar/extras' },
-          { label: 'Themify', value: 'themify', packageName: '@quasar/extras' },
-          { label: 'Line Awesome', value: 'line-awesome', packageName: '@quasar/extras' },
-          { label: 'Bootstrap Icons', value: 'bootstrap-icons', packageName: '@quasar/extras' }
-        ] },
-        { label: 'quasar-extras-svg-icons', children: [
-          { label: 'Fluent Icons', value: 'fluentui-system-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Hero Icons (outline)', value: 'hero-icons-outline', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Hero Icons (solid)', value: 'hero-icons-solid', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Iconoir Icons', value: 'iconoir-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Jam Icons', value: 'jam-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Octicons', value: 'oct-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Pixelart Icons', value: 'pixelart-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Prime Icons', value: 'prime-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Remix Icons', value: 'remix-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Simple Icons', value: 'simple-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Tabler Icons', value: 'tabler-icons', packageName: 'quasar-extras-svg-icons' },
-          { label: 'Zond Icons', value: 'zond-icons', packageName: 'quasar-extras-svg-icons' }
-        ] }
-      ],
+      iconSets,
       importedIcons: null,
       filter: '',
       dialogRef: null,
