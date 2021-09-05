@@ -168,6 +168,7 @@ export default defineComponent({
         import(
           /* webpackChunkName: "[request]" */
           /* webpackInclude: /index\.js$/ */
+          /* webpackExclude: /(mdi-v4|ionicons-v4)/ */
           '@quasar/extras/' + val.value
         ).then(async svgFile => {
           this.importedIcons = markRaw(svgFile)
