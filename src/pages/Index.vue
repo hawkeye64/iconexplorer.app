@@ -32,8 +32,8 @@
         outlined clearable
         :options="iconSets"
         label="Select Icon set"
-        class="col-4"
-        style="width: 280px; margin: 2px;">
+        class="col-md-4 col-sm-12"
+        style="max-width: 280px; width: 100%; margin: 2px;">
           <template v-slot:option="scope">
             <q-expansion-item
               expand-separator
@@ -58,7 +58,7 @@
             </q-expansion-item>
           </template>
       </q-select>
-      <div class="row justify-center items-center col-4">Totals: {{ filteredCount }}/{{ iconCount }}</div>
+      <div class="row justify-center items-center col-md-4 col-sm-12">Totals: {{ filteredCount }}/{{ iconCount }}</div>
       <q-input
         borderless
         dense
@@ -67,24 +67,26 @@
         clearable
         v-model="filter"
         placeholder="Search"
-        class="col-4"
-        style="margin: 2px;">
+        class="col-md-4 col-sm-12"
+        style="margin: 2px; max-width: 280px; width: 100%;">
         <template v-slot:append>
           <q-icon v-if="!filter" name="mdi-card-search-outline" />
         </template>
       </q-input>
     </div>
+
     <div class="row justify-center">
       <q-intersection
         v-for="(path, name) in icons"
         :key="name"
         once
-        class="intersetion-icon-box"
+        @click="onClick(path, name)"
+        class="row justify-center items-center intersetion-icon-box col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-6"
       >
-        <div class="row justify-center items-center icon-box" @click="onClick(path, name)">
-          <q-icon :name="path" size="md" class="q-pa-xs column" />
+        <div class="row full-width justify-center items-center overflow-hidden ellipsis">
+          <q-icon :name="path" size="60px" class="q-pa-xs row full-width justify-center items-center" />
+          <div class="row full-width justify-center items-center ellipsis" style="font-size: 10px;">{{ name }}</div>
           <q-tooltip>{{ name }}</q-tooltip>
-          <!-- <span class="full-width text-center" style="font-size: 9px;">{{ name }}</span> -->
         </div>
       </q-intersection>
     </div>
