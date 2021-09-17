@@ -10,6 +10,7 @@ const iconSets = [
       { label: 'Material Icons Outlined (Google)', value: 'material-icons-outlined', packageName: '@quasar/extras' },
       { label: 'Material Icons Round (Google)', value: 'material-icons-round', packageName: '@quasar/extras' },
       { label: 'Material Icons Sharp (Google)', value: 'material-icons-sharp', packageName: '@quasar/extras' },
+      { label: 'MDI v6 (Material Design Icons)', value: 'mdi-v6', packageName: '@quasar/extras' },
       { label: 'MDI v5 (Material Design Icons)', value: 'mdi-v5', packageName: '@quasar/extras' },
       { label: 'Fontawesome v5', value: 'fontawesome-v5', packageName: '@quasar/extras' },
       { label: 'Ionicons v5', value: 'ionicons-v5', packageName: '@quasar/extras' },
