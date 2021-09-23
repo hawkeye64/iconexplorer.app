@@ -68,10 +68,10 @@
     semver "^6.3.0"
     source-map "^0.5.0"
 
-"@babel/eslint-parser@^7.15.4":
-  version "7.15.4"
-  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.15.4.tgz#46385943726291fb3e8db99522c8099b15684387"
-  integrity sha512-hPMIAmGNbmQzXJIo2P43Zj9UhRmGev5f9nqdBFOWNGDGh6XKmjby79woBvg6y0Jur6yRfQBneDbUQ8ZVc1krFw==
+"@babel/eslint-parser@^7.15.7":
+  version "7.15.7"
+  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.15.7.tgz#2dc3d0ff0ea22bb1e08d93b4eeb1149bf1c75f2d"
+  integrity sha512-yJkHyomClm6A2Xzb8pdAo4HzYMSXFn1O5zrCYvbFP0yQFvHueLedV8WiEno8yJOKStjUXzBZzJFeWQ7b3YMsqQ==
   dependencies:
     eslint-scope "^5.1.1"
     eslint-visitor-keys "^2.1.0"
@@ -1549,10 +1549,10 @@
     core-js "^3.6.5"
     core-js-compat "^3.6.5"
 
-"@quasar/extras@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.11.0.tgz#dca867bc3748047d8730f94b13492a39af51a9ce"
-  integrity sha512-Uyi2U4XFmpqa+46MJCG2zP5SCjeLRZYx9DkfK5wHNyUYryUJ8t4P1DaAvdYPoPYGG7uyPLL+2pF83rMHHUiokA==
+"@quasar/extras@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.11.1.tgz#c04035a38eedf6ed6e40dbe629a6b9cd3c4a29f4"
+  integrity sha512-/h6EH4+7peanrgT1ErTSG2KwHuVrpnvS3lkmtuErCXrdpiV0z0DpGxdfIjsbhKqAPkAb6h5Zsdh72nBdKp1tsg==
 
 "@quasar/fastclick@1.1.4":
   version "1.1.4"
@@ -2826,10 +2826,10 @@ core-js-compat@^3.16.0:
     browserslist "^4.16.6"
     semver "7.0.0"
 
-core-js@^3.17.3:
-  version "3.17.3"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.17.3.tgz#8e8bd20e91df9951e903cabe91f9af4a0895bc1e"
-  integrity sha512-lyvajs+wd8N1hXfzob1LdOCCHFU4bGMbqqmLn1Q4QlCpDqWPpGf+p0nj+LNrvDDG33j0hZXw2nsvvVpHysxyNw==
+core-js@^3.18.0:
+  version "3.18.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.18.0.tgz#9af3f4a6df9ba3428a3fb1b171f1503b3f40cc49"
+  integrity sha512-WJeQqq6jOYgVgg4NrXKL0KLQhi0CT4ZOCvFL+3CQ5o7I6J8HkT5wd53EadMfqTDp1so/MT1J+w2ujhWcCJtN7w==
 
 core-js@^3.6.5:
   version "3.15.1"
@@ -6228,10 +6228,10 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-quasar-extras-svg-icons@^1.0.0-alpha.2:
-  version "1.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.0.0-alpha.2.tgz#aed6a460fef397b1d2d43ccbb0593a796b0c775c"
-  integrity sha512-3bWfhtQjYEFk4WRKUEIRSkemDNGWR3VeLfAzCOsqYZLU2Gy2lUzpYcs9GXggZ/aI8hfLjZc56948XQMtpe27zw==
+quasar-extras-svg-icons@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.0.0.tgz#c27dbcad8b86f791430d9c27522422b950e04576"
+  integrity sha512-LQfHibBLqqpiv1DIf9OV92kxEn2QRvs87l2UtKlNh+hy5m/EkSLoE+u1ir5bClhcdWPp/ZgnDZeKHNrIvrqGDg==
 
 quasar@^2.1.0:
   version "2.1.0"
