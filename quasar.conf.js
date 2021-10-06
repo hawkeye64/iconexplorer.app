@@ -206,7 +206,7 @@ module.exports = configure(function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'quasar-svg-icons1'
+        appId: 'iconexplorer.app1'
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
