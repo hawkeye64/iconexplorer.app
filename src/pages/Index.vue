@@ -24,7 +24,7 @@
         </div>
       </q-card>
     </q-dialog>
-    <div class="row justify-evenly items-center q-pa-xs">
+    <div :class="headerClasses">
       <q-select
         v-model="icon"
         dense
@@ -58,7 +58,9 @@
             </q-expansion-item>
           </template>
       </q-select>
+
       <div class="row justify-center items-center col-md-4 col-sm-12">Totals: {{ filteredCount }}/{{ iconCount }}</div>
+
       <q-input
         borderless
         dense
@@ -75,18 +77,20 @@
       </q-input>
     </div>
 
+    <q-separator class="q-mb-xs" />
+
     <div class="row justify-center">
       <q-intersection
         v-for="(path, name) in icons"
         :key="name"
         once
         @click="onClick(path, name)"
-        class="row justify-center items-center intersetion-icon-box col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-6"
+        class="intersetion-icon-box col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-6"
       >
-        <div class="row full-width justify-center items-center overflow-hidden ellipsis">
+        <div class="intersetion-icon-box--inner row full-width justify-center items-center overflow-hidden ellipsis">
           <q-icon :name="path" size="60px" class="q-pa-xs row full-width justify-center items-center" />
           <div class="row full-width justify-center items-center ellipsis" style="font-size: 10px;">{{ name }}</div>
-          <q-tooltip>{{ name }}</q-tooltip>
+          <q-tooltip :delay="1000" class="primary">{{ name }}</q-tooltip>
         </div>
       </q-intersection>
     </div>
@@ -133,6 +137,10 @@ export default defineComponent({
   },
 
   computed: {
+    headerClasses () {
+      return (this.$q.screen.lt.sm ? 'column' : 'row')
+        + ' justify-center items-center q-pa-xs'
+    },
     colorClasses () {
       let color = ''
       let bgColor = 'bg-white'
@@ -197,6 +205,12 @@ export default defineComponent({
           console.log(`${ val.value } Render (ms):`, new Date() - now)
         })
       }
+    },
+
+    showDialog (val) {
+      if (!val) {
+        this.textColor = 'black'
+      }
     }
   },
 
@@ -222,7 +236,6 @@ export default defineComponent({
       this.currentPath = path
       this.currentName = name
       this.showDialog = true
-      // this.dialogRef.show()
     },
 
     onClickDialog (path, name) {
