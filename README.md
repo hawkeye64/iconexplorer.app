@@ -1,5 +1,7 @@
 ![iconexplorer.app](./public/iconexplorer.app.png)
 
+![image](https://user-images.githubusercontent.com/10262924/136471324-325d0b70-04c3-47b5-bc8b-e66118bdd91d.png)
+
 # iconexplorer.app
 
 Searchable Quasar Framework SVG icons
