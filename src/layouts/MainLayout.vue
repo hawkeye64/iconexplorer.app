@@ -1,6 +1,9 @@
 <template>
   <q-layout view="lHh Lpr fFf">
-    <q-header elevated class="glass">
+    <q-header
+      elevated
+      class="glass"
+    >
       <q-toolbar>
         <q-btn
           flat
@@ -16,7 +19,12 @@
           <div>Quasar Extras SVG Icons<span class="text-subtitle2">&nbsp;v{{ version2 }}</span></div>
         </q-toolbar-title>
 
-        <q-btn flat round @click="$q.dark.toggle()" :icon="$q.dark.isActive ? mdiBrightness2 : mdiBrightness5" />
+        <q-btn
+          flat
+          round
+          :icon="$q.dark.isActive ? mdiBrightness2 : mdiBrightness5"
+          @click="$q.dark.toggle()"
+        />
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>

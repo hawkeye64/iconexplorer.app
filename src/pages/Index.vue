@@ -1,26 +1,56 @@
 <template>
   <q-page>
-    <q-dialog ref="dialogRef" v-model="showDialog">
+    <q-dialog
+      ref="dialogRef"
+      v-model="showDialog"
+    >
       <q-card class="q-pa-md">
-
-        <div class="row justify-center items-center" style="max-width: 400px; max-height: 300px; width: 100%; height: 100%;">
-          <q-icon :name="currentPath" size="128px" class="q-pa-xs" :class="colorClasses" />
-          <span class="full-width text-center" style="font-size: 28px;">{{ currentName }}</span>
+        <div
+          class="row justify-center items-center"
+          style="max-width: 400px; max-height: 300px; width: 100%; height: 100%;"
+        >
+          <q-icon
+            :name="currentPath"
+            size="128px"
+            class="q-pa-xs"
+            :class="colorClasses"
+          />
+          <span
+            class="full-width text-center"
+            style="font-size: 28px;"
+          >{{ currentName }}</span>
 
           <div class="row">
-            <div v-for="color in colors" :key="color" :class="colorClass(color)" style="width: 20px; height: 20px;" @click.stop="changeColor(color)" @mouseenter.stop="changeColor(color)"></div>
-            <q-toggle v-model="inverted" label="Invert colors"/>
+            <div
+              v-for="color in colors"
+              :key="color"
+              :class="colorClass(color)"
+              style="width: 20px; height: 20px;"
+              @click.stop="changeColor(color)"
+              @mouseenter.stop="changeColor(color)"
+            />
+            <q-toggle
+              v-model="inverted"
+              label="Invert colors"
+            />
           </div>
 
           <q-btn-group push>
-            <q-btn push icon="mdi-content-copy" @click="onCopyName(currentPath, currentName)">
+            <q-btn
+              push
+              icon="mdi-content-copy"
+              @click="onCopyName(currentPath, currentName)"
+            >
               <q-tooltip>Copy name to clipboard</q-tooltip>
             </q-btn>
-            <q-btn push label="SVG" @click="onCopySvg(currentPath, currentName)">
+            <q-btn
+              push
+              label="SVG"
+              @click="onCopySvg(currentPath, currentName)"
+            >
               <q-tooltip>Copy SVG to clipboard</q-tooltip>
             </q-btn>
           </q-btn-group>
-
         </div>
       </q-card>
     </q-dialog>
@@ -29,50 +59,63 @@
         v-model="icon"
         dense
         options-dense
-        outlined clearable
+        outlined
+        clearable
         :options="iconSets"
         label="Select Icon set"
         class="col-md-4 col-sm-12"
-        style="max-width: 280px; width: 100%; margin: 2px;">
-          <template v-slot:option="scope">
-            <q-expansion-item
-              expand-separator
-              group="somegroup"
-              :default-opened="hasChild(scope)"
-               header-class="text-weight-bold"
-              :label="scope.opt.label"
+        style="max-width: 280px; width: 100%; margin: 2px;"
+      >
+        <template #option="scope">
+          <q-expansion-item
+            expand-separator
+            group="somegroup"
+            :default-opened="hasChild(scope)"
+            header-class="text-weight-bold"
+            :label="scope.opt.label"
+          >
+            <template
+              v-for="child in scope.opt.children"
+              :key="child.label"
             >
-              <template v-for="child in scope.opt.children" :key="child.label">
-                <q-item
-                  clickable
-                  v-ripple
-                  v-close-popup
-                  @click="icon = child"
-                  :class="{ 'bg-light-blue-1': icon === child }"
-                >
-                  <q-item-section>
-                    <q-item-label v-html="child.label" class="q-ml-md" ></q-item-label>
-                  </q-item-section>
-                </q-item>
-              </template>
-            </q-expansion-item>
-          </template>
+              <q-item
+                v-ripple
+                v-close-popup
+                clickable
+                :class="{ 'bg-light-blue-1': icon === child }"
+                @click="icon = child"
+              >
+                <q-item-section>
+                  <q-item-label
+                    class="q-ml-md"
+                  >
+                    {{ child.label }}
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+            </template>
+          </q-expansion-item>
+        </template>
       </q-select>
 
       <div class="row justify-center items-center col-md-4 col-sm-12">Totals: {{ filteredCount }}/{{ iconCount }}</div>
 
       <q-input
+        v-model="filter"
         borderless
         dense
         outlined
         debounce="300"
         clearable
-        v-model="filter"
         placeholder="Search"
         class="col-md-4 col-sm-12"
-        style="margin: 2px; max-width: 280px; width: 100%;">
-        <template v-slot:append>
-          <q-icon v-if="!filter" name="mdi-card-search-outline" />
+        style="margin: 2px; max-width: 280px; width: 100%;"
+      >
+        <template #append>
+          <q-icon
+            v-if="!filter"
+            name="mdi-card-search-outline"
+          />
         </template>
       </q-input>
     </div>
@@ -84,25 +127,46 @@
         v-for="(path, name) in icons"
         :key="name"
         once
-        @click="onClick(path, name)"
         class="intersetion-icon-box col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-6"
+        @click="onClick(path, name)"
       >
         <div class="intersetion-icon-box--inner row full-width justify-center items-center overflow-hidden ellipsis">
-          <q-icon :name="path" size="60px" class="q-pa-xs row full-width justify-center items-center" />
-          <div class="row full-width justify-center items-center ellipsis" style="font-size: 10px;">{{ name }}</div>
-          <q-tooltip :delay="1000" class="primary">{{ name }}</q-tooltip>
+          <q-icon
+            :name="path"
+            size="60px"
+            class="q-pa-xs row full-width justify-center items-center"
+          />
+          <div
+            class="row full-width justify-center items-center ellipsis"
+            style="font-size: 10px;"
+          >
+            {{ name }}
+          </div>
+          <q-tooltip
+            :delay="1000"
+            class="primary"
+          >
+            {{ name }}
+          </q-tooltip>
         </div>
       </q-intersection>
     </div>
 
     <div class="icons-footer" />
 
-    <q-page-scroller expand position="bottom" :scroll-offset="150" :offset="[0, 0]">
+    <q-page-scroller
+      expand
+      position="bottom"
+      :scroll-offset="150"
+      :offset="[0, 0]"
+    >
       <div class="col cursor-pointer q-pa-sm text-center glass">
-        <q-icon name="mdi-chevron-up" size="lg" />
+        <q-icon
+          name="mdi-chevron-up"
+          size="lg"
+        />
       </div>
     </q-page-scroller>
-
   </q-page>
 </template>
 
