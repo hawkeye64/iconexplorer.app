@@ -3,103 +3,92 @@
     <q-dialog
       ref="dialogRef"
       v-model="showDialog"
+      seamless
+      position="bottom"
     >
-      <q-card class="q-pa-md">
-        <div
-          class="row justify-center items-center"
-          style="max-width: 400px; max-height: 300px; width: 100%; height: 100%;"
-        >
-          <q-icon
-            :name="currentPath"
-            size="128px"
-            class="q-pa-xs"
-            :class="colorClasses"
-          />
-          <span
-            class="full-width text-center"
-            style="font-size: 28px;"
-          >{{ currentName }}</span>
+      <q-card
+        class="q-pa-md"
+        :style="{ minWidth: screenWidth + 'px', minHeight: '200px'}"
+      >
+        <q-btn
+          flat
+          round
+          :icon="matClose"
+          class="close-button"
+          @click="showDialog = false"
+        />
 
-          <div class="row">
-            <div
-              v-for="color in colors"
-              :key="color"
-              :class="colorClass(color)"
-              style="width: 20px; height: 20px;"
-              @click.stop="changeColor(color)"
-              @mouseenter.stop="changeColor(color)"
+        <div
+          class="row justify-left items-center"
+          style="width: 100%;"
+        >
+          <div class="column q-pa-md">
+            <q-icon
+              :name="currentPath"
+              :size="store.iconSize"
+              class="q-pa-xs col-1"
+              :class="colorClasses"
+              style="max-width: 130px; min-width: 80px;"
             />
+          </div>
+          <div class="column q-gutter-sm">
+            <div
+              class="col row"
+              style="max-height: 32px;"
+            >
+              <p
+                class="font-mono"
+                style="font-size: 28px;"
+              >
+                {{ currentName }}
+              </p>
+              <q-icon
+                size="xs"
+                name="mdi-content-copy"
+                color="grey-13"
+                @click="onCopyName(currentPath, currentName)"
+              >
+                <q-tooltip>Copy name to clipboard</q-tooltip>
+              </q-icon>
+            </div>
+            <q-btn
+              no-caps
+              size="sm"
+              outline
+              rounded
+              style="max-width: 150px;"
+              class="col"
+              @click="onHandleCart(currentPath, currentName)"
+            >
+              <div class="full-width row justify-between items-center">
+                <q-icon
+                  :name="cartButtonIcon"
+                  size="sm"
+                />
+                {{ cartButtonLabel }}
+              </div>
+            </q-btn>
+            <div class="col row">
+              <div
+                v-for="color in colors"
+                :key="color"
+                :class="colorClass(color)"
+                style="width: 20px; height: 20px;"
+                @click.stop="changeColor(color)"
+                @mouseenter.stop="changeColor(color)"
+              />
+            </div>
             <q-toggle
               v-model="inverted"
               label="Invert colors"
             />
           </div>
-
-          <q-btn-group push>
-            <q-btn
-              push
-              icon="mdi-content-copy"
-              @click="onCopyName(currentPath, currentName)"
-            >
-              <q-tooltip>Copy name to clipboard</q-tooltip>
-            </q-btn>
-            <q-btn
-              push
-              label="SVG"
-              @click="onCopySvg(currentPath, currentName)"
-            >
-              <q-tooltip>Copy SVG to clipboard</q-tooltip>
-            </q-btn>
-          </q-btn-group>
         </div>
       </q-card>
     </q-dialog>
+
     <div :class="headerClasses">
-      <q-select
-        v-model="icon"
-        dense
-        options-dense
-        outlined
-        clearable
-        :options="iconSets"
-        label="Select Icon set"
-        class="col-md-4 col-sm-12"
-        style="max-width: 280px; width: 100%; margin: 2px;"
-      >
-        <template #option="scope">
-          <q-expansion-item
-            expand-separator
-            group="somegroup"
-            :default-opened="hasChild(scope)"
-            header-class="text-weight-bold"
-            :label="scope.opt.label"
-          >
-            <template
-              v-for="child in scope.opt.children"
-              :key="child.label"
-            >
-              <q-item
-                v-ripple
-                v-close-popup
-                clickable
-                :class="{ 'bg-light-blue-1': icon === child }"
-                @click="icon = child"
-              >
-                <q-item-section>
-                  <q-item-label
-                    class="q-ml-md"
-                  >
-                    {{ child.label }}
-                  </q-item-label>
-                </q-item-section>
-              </q-item>
-            </template>
-          </q-expansion-item>
-        </template>
-      </q-select>
-
       <div class="row justify-center items-center col-md-4 col-sm-12">Totals: {{ filteredCount }}/{{ iconCount }}</div>
-
       <q-input
         v-model="filter"
         borderless
@@ -122,35 +111,12 @@
 
     <q-separator class="q-mb-xs" />
 
-    <div class="row justify-center">
-      <q-intersection
-        v-for="(path, name) in icons"
-        :key="name"
-        once
-        class="intersetion-icon-box col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-6"
-        @click="onClick(path, name)"
-      >
-        <div class="intersetion-icon-box--inner row full-width justify-center items-center overflow-hidden ellipsis">
-          <q-icon
-            :name="path"
-            size="60px"
-            class="q-pa-xs row full-width justify-center items-center"
-          />
-          <div
-            class="row full-width justify-center items-center ellipsis"
-            style="font-size: 10px;"
-          >
-            {{ name }}
-          </div>
-          <q-tooltip
-            :delay="1000"
-            class="primary"
-          >
-            {{ name }}
-          </q-tooltip>
-        </div>
-      </q-intersection>
-    </div>
+    <template v-if="Object.keys(icons).length">
+      <svg-icon-viewer
+        :icons="icons"
+        @selected="onSelected"
+      />
+    </template>
 
     <div class="icons-footer" />
 
@@ -171,75 +137,103 @@
 </template>
 
 <script>
-import { defineComponent, markRaw } from 'vue'
-import { copyToClipboard } from 'quasar'
+import { defineComponent, markRaw, ref, computed, watch, nextTick } from 'vue'
+import { useQuasar, copyToClipboard } from 'quasar'
 import { iconSets } from 'src/icon-sets'
+import { useStore } from 'assets/store.js'
+import { matClose, matAdd } from '@quasar/extras/material-icons'
+import SvgIconViewer from '../components/Icons.vue'
 
 export default defineComponent({
-  name: 'SvgIconViewer',
+  name: 'MainPage',
 
-  data () {
-    return {
-      icon: null,
-      iconSets,
-      importedIcons: null,
-      filter: '',
-      dialogRef: null,
-      showDialog: false,
-      currentPath: '',
-      currentName: '',
-      textColor: 'black',
-      colors: [
+  components: {
+    SvgIconViewer
+  },
+
+  setup () {
+    const store = useStore(),
+      importedIcons = ref(null),
+      filter = ref(''),
+      dialogRef = ref(null),
+      showDialog = ref(false),
+      currentPath = ref(''),
+      currentName = ref(''),
+      isInCart = ref(false),
+      inverted = ref(false),
+      textColor = ref('black'),
+      $q = useQuasar(),
+      colors = [
         'black',
         'red', 'pink', 'purple', 'deep-purple', 'indigo',
         'blue', 'light-blue', 'cyan', 'teal', 'green',
         'light-green', 'lime', 'yellow', 'amber', 'orange',
         'deep-orange', 'brown', 'grey', 'blue-grey'
-      ],
-      inverted: false
-    }
-  },
+      ]
 
-  computed: {
-    headerClasses () {
-      return (this.$q.screen.lt.sm ? 'column' : 'row')
+    const screenWidth = computed(() => {
+      return $q.screen.width - 15 // scrollbars
+    })
+
+    const headerClasses = computed(() => {
+      return ($q.screen.lt.sm ? 'column' : 'row')
         + ' justify-center items-center q-pa-xs'
-    },
-    colorClasses () {
+    })
+
+    const colorClasses = computed(() => {
       let color = ''
       let bgColor = 'bg-white'
-      if (this.inverted) {
-        color += 'bg-' + this.textColor
+      if (inverted.value) {
+        color += 'bg-' + textColor.value
         bgColor = 'text-white'
       }
       else {
-        color += 'text-' + this.textColor
+        color += 'text-' + textColor.value
       }
-      if (this.textColor !== 'black') color += '-8'
+      if (textColor.value !== 'black') color += '-8'
       return color + ' ' + bgColor
-    },
-    icons () {
+    })
+
+    const icons = computed(() => {
       const vals = {}
-      const filter = this.filter && this.importedIcons ? this.filter.toLowerCase() : ''
-      Object.keys(this.importedIcons ? this.importedIcons : {}).forEach(name => {
-        if (filter === '' || name.toLowerCase().indexOf(filter) > -1) {
-          vals[ name ] = this.importedIcons[ name ]
+      const f = filter.value && importedIcons.value ? filter.value.toLowerCase() : ''
+      Object.keys(importedIcons.value ? importedIcons.value : {}).forEach(name => {
+        if (f === '' || name.toLowerCase().indexOf(f) > -1) {
+          vals[ name ] = importedIcons.value[ name ]
         }
       })
       return vals
-    },
-    filteredCount () {
-      return Object.keys(this.icons).length
-    },
-    iconCount () {
-      return this.importedIcons ? Object.keys(this.importedIcons).length : 0
-    }
-  },
+    })
 
-  watch: {
-    icon (val) {
+    const filteredCount = computed(() => {
+      return Object.keys(icons.value).length
+    })
+
+    const iconCount = computed(() => {
+      return importedIcons.value ? Object.keys(importedIcons.value).length : 0
+    })
+
+    const cartButtonLabel = computed(() => {
+      if (isInCart.value !== true) {
+        return 'Add to cart'
+      }
+      return 'Remove from cart'
+    })
+
+    const cartButtonIcon = computed(() => {
+      if (isInCart.value !== true) {
+        return matAdd
+      }
+      return matClose
+    })
+
+    watch (currentName, val => {
+      isInCart.value = store.findItem(val) > -1
+    })
+
+    watch(() => store.iconSet, val => {
       if (!val) {
-        this.importedIcons = null
+        importedIcons.value = null
         return
       }
 
@@ -251,9 +245,9 @@ export default defineComponent({
           /* webpackExclude: /(mdi-v4|ionicons-v4)/ */
           '@quasar/extras/' + val.value
         ).then(async svgFile => {
-          this.importedIcons = markRaw(svgFile)
+          importedIcons.value = markRaw(svgFile)
           console.log(`${ val.value } Load (ms):`, new Date() - now)
-          await this.$nextTick()
+          await nextTick()
           console.log(`${ val.value } Render (ms):`, new Date() - now)
         })
       }
@@ -263,89 +257,133 @@ export default defineComponent({
           /* webpackInclude: /index\.js$/ */
           'quasar-extras-svg-icons/' + val.value
         ).then(async svgFile => {
-          this.importedIcons = markRaw(svgFile)
+          importedIcons.value = markRaw(svgFile)
           console.log(`${ val.value } Load (ms):`, new Date() - now)
-          await this.$nextTick()
+          await nextTick()
           console.log(`${ val.value } Render (ms):`, new Date() - now)
         })
       }
-    },
+    })
 
-    showDialog (val) {
+    watch(showDialog,  val => {
       if (!val) {
-        this.textColor = 'black'
+        textColor.value = 'black'
       }
-    }
-  },
+    })
 
-  methods: {
-    colorClass (color) {
+    function colorClass (color) {
       let newColor = 'bg-' + color
       if (color !== 'black') newColor += '-8'
-      if (this.textColor === color) {
+      if (textColor.value === color) {
         newColor += ' active-color'
       }
       return newColor
-    },
+    }
 
-    changeColor (color) {
-      this.textColor = color
-    },
+    function changeColor (color) {
+      textColor.value = color
+    }
 
-    hasChild (scope) {
-      return scope.opt.children.some(c => this.icon && c.value === this.icon.value)
-    },
+    // function hasChild (scope) {
+    //   return scope.opt.children.some(c => store.iconSet && c.value === store.iconSet)
+    // }
 
-    onClick (path, name) {
-      this.currentPath = path
-      this.currentName = name
-      this.showDialog = true
-    },
+    function onSelected ({ path, name }) {
+      currentPath.value = path
+      currentName.value = name
+      showDialog.value = true
+    }
 
-    onClickDialog (path, name) {
+    function onClickDialog (path, name) {
       copyToClipboard(name)
         .then(() => {
-          this.$q.notify({
+          $q.notify({
             message: `'${ name }' copied to clipboard`,
+            position: 'top',
             icon: path,
             color: 'white',
             textColor: 'primary'
           })
-          this.showDialog = false
+          // showDialog.value = false
         })
-    },
+    }
 
-    onCopyName (path, name) {
+    function onCopyName (path, name) {
       copyToClipboard(name)
         .then(() => {
-          this.$q.notify({
+          $q.notify({
             message: `'${ name }' copied to clipboard`,
+            position: 'top',
             icon: path,
             color: 'white',
             textColor: 'primary'
           })
-          this.showDialog = false
+          // showDialog.value = false
         })
-    },
+    }
 
-    onCopySvg (path, name) {
+    function onCopySvg (path, name) {
       copyToClipboard(path)
         .then(() => {
-          this.$q.notify({
+          $q.notify({
             message: `'${ name }' SVG copied to clipboard`,
+            position: 'top',
             icon: path,
             color: 'white',
             textColor: 'primary'
           })
-          this.showDialog = false
+          // showDialog.value = false
         })
+    }
+
+    function onHandleCart (path, name) {
+      if (isInCart.value === true) {
+        isInCart.value = !store.removeItem(name)
+        return
+      }
+      isInCart.value = store.addItem(name, path)
+    }
+
+    return {
+      store,
+      iconSets,
+      // importedIcons,
+      filter,
+      dialogRef,
+      showDialog,
+      currentPath,
+      currentName,
+      headerClasses,
+      colorClasses,
+      cartButtonLabel,
+      cartButtonIcon,
+      textColor,
+      colors,
+      inverted,
+      filteredCount,
+      iconCount,
+      icons,
+      screenWidth,
+      matClose,
+      colorClass,
+      changeColor,
+      onSelected,
+      onClickDialog,
+      onCopyName,
+      onCopySvg,
+      onHandleCart
     }
   }
 })
 </script>
 
-<style>
-.active-color {
-  border: 1px dashed white;
-}
+<style lang="sass">
+.active-color
+  border: 1px dashed white
+
+.close-button
+  position: absolute
+  top: 0
+  right: 0
+
 </style>

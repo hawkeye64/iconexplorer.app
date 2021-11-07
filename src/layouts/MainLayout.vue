@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr fFf">
+  <q-layout view="hHh LpR fFf">
     <q-header
       elevated
       class="glass"
@@ -11,7 +11,7 @@
           round
           :icon="mdiMenu"
           aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          @click="toggleLeftDrawer"
         />
 
         <q-toolbar-title>
@@ -31,20 +31,34 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
+      show-if-above
       bordered
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+      <q-scroll-area class="fit">
+        <q-list>
+          <template
+            v-for="(parent) in iconSets"
+            :key="parent.label"
+          >
+            <q-item-label
+              header
+            >
+              {{ parent.label }}
+            </q-item-label>
+            <q-item
+              v-for="child in parent.children"
+              :key="child.label"
+              v-ripple
+              clickable
+              @click="onClickIconSet(child)"
+            >
+              <q-item-section>
+                <q-item-label>{{ child.label }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </template>
+        </q-list>
+      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
@@ -54,91 +68,46 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { defineComponent, ref } from 'vue'
+// import EssentialLink from 'components/EssentialLink.vue'
 import pkg from '@quasar/extras/package.json'
 const version = pkg.version
 import pkg2 from 'quasar-extras-svg-icons/package.json'
 const version2 = pkg2.version
-
+import { iconSets } from '../icon-sets'
+import { useStore } from 'assets/store.js'
 
 import {
   mdiMenu,
   mdiBrightness2,
   mdiBrightness5,
-  mdiSchool,
-  mdiForumOutline,
-  mdiDiscord,
-  mdiFacebook,
-  mdiTwitter,
-  mdiGithub,
-  mdiHeart
 } from '@quasar/extras/mdi-v5'
-
-const linksData = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: mdiSchool,
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: mdiGithub,
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: mdiDiscord,
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: mdiForumOutline,
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: mdiTwitter,
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: mdiFacebook,
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: mdiHeart,
-    link: 'https://awesome.quasar.dev'
-  }
-]
 
 export default defineComponent({
   name: 'MainLayout',
-  components: { EssentialLink },
-  data () {
+  setup () {
+    const store = useStore(),
+      leftDrawerOpen = ref(false)
+
+    function onClickIconSet (iconSet) {
+      console.log(iconSet)
+      store.iconSet = iconSet
+    }
+
+    function toggleLeftDrawer () {
+      leftDrawerOpen.value = !leftDrawerOpen.value
+    }
+
     return {
       version,
       version2,
       mdiMenu,
       mdiBrightness2,
       mdiBrightness5,
-      mdiSchool,
-      mdiHeart,
-      mdiFacebook,
-      mdiTwitter,
-      mdiForumOutline,
-      mdiDiscord,
-      mdiGithub,
-      leftDrawerOpen: false,
-      essentialLinks: linksData
+      leftDrawerOpen,
+      toggleLeftDrawer,
+      iconSets,
+      onClickIconSet
     }
   }
 })
