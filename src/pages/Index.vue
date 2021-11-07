@@ -7,7 +7,7 @@
       position="bottom"
     >
       <q-card
-        class="q-pa-md"
+        class="q-pa-sm"
         :style="{ minWidth: screenWidth + 'px', minHeight: '200px'}"
       >
         <q-btn
@@ -18,72 +18,80 @@
           @click="showDialog = false"
         />
 
-        <div
-          class="row justify-left items-center"
-          style="width: 100%;"
-        >
-          <div class="column q-pa-md">
-            <q-icon
-              :name="currentPath"
-              :size="store.iconSize"
-              class="q-pa-xs col-1"
-              :class="colorClasses"
-              style="max-width: 130px; min-width: 80px;"
-            />
-          </div>
-          <div class="column q-gutter-sm">
-            <div
-              class="col row"
-              style="max-height: 32px;"
-            >
-              <p
-                class="font-mono"
-                style="font-size: 28px;"
-              >
-                {{ currentName }}
-              </p>
+        <q-scroll-area class="fit">
+          <div
+            class="full-height row justify-left items-center"
+            style="width: 100%;"
+          >
+            <div class="column q-pa-sm">
               <q-icon
-                size="xs"
-                name="mdi-content-copy"
-                color="grey-13"
-                @click="onCopyName(currentPath, currentName)"
-              >
-                <q-tooltip>Copy name to clipboard</q-tooltip>
-              </q-icon>
-            </div>
-            <q-btn
-              no-caps
-              size="sm"
-              outline
-              rounded
-              style="max-width: 150px;"
-              class="col"
-              @click="onHandleCart(currentPath, currentName)"
-            >
-              <div class="full-width row justify-between items-center">
-                <q-icon
-                  :name="cartButtonIcon"
-                  size="sm"
-                />
-                {{ cartButtonLabel }}
-              </div>
-            </q-btn>
-            <div class="col row">
-              <div
-                v-for="color in colors"
-                :key="color"
-                :class="colorClass(color)"
-                style="width: 20px; height: 20px;"
-                @click.stop="changeColor(color)"
-                @mouseenter.stop="changeColor(color)"
+                :name="currentPath"
+                :size="store.iconSize"
+                class="q-pa-xs col-1"
+                :class="colorClasses"
+                style="max-width: 130px; min-width: 80px;"
               />
             </div>
-            <q-toggle
-              v-model="inverted"
-              label="Invert colors"
-            />
+            <div class="column justify-start q-gutter-sm q-pa-sm">
+              <div
+                class="col row"
+                style="max-height: 32px;"
+              >
+                <p
+                  class="font-mono"
+                  style="font-size: 28px;"
+                >
+                  {{ currentName }}
+                </p>
+                <q-icon
+                  size="xs"
+                  name="mdi-content-copy"
+                  color="grey-13"
+                  @click="onCopyName(currentPath, currentName)"
+                >
+                  <q-tooltip>Copy name to clipboard</q-tooltip>
+                </q-icon>
+              </div>
+              <q-btn
+                no-caps
+                size="sm"
+                flat
+                style="max-width: 150px;"
+                class="col user-button"
+                @click="onHandleCart(currentPath, currentName)"
+              >
+                <div class="full-width row justify-between items-center">
+                  <q-icon
+                    :name="cartButtonIcon"
+                    size="sm"
+                  />
+                  {{ cartButtonLabel }}
+                </div>
+              </q-btn>
+              <div class="col row">
+                <div
+                  v-for="color in colors"
+                  :key="color"
+                  :class="colorClass(color)"
+                  style="width: 20px; height: 20px;"
+                  @click.stop="changeColor(color)"
+                  @mouseenter.stop="changeColor(color)"
+                />
+              </div>
+              <q-toggle
+                v-model="inverted"
+                label="Invert colors"
+              />
+            </div>
+
+            <div class="column justify-start q-gutter-sm q-pa-sm">
+              <div>Copy</div>
+              <q-btn no-caps size="sm" flat class="user-button">Name</q-btn>
+              <q-btn no-caps size="sm" flat class="user-button">Raw</q-btn>
+              <q-btn no-caps size="sm" flat class="user-button">QIcon</q-btn>
+            </div>
           </div>
-        </div>
+        </q-scroll-area>
       </q-card>
     </q-dialog>
 
@@ -385,5 +393,9 @@ export default defineComponent({
   position: absolute
   top: 0
   right: 0
+
+.user-button
+  border-radius: 8px
+  border: 1px solid lightgrey
 
 </style>
