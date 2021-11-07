@@ -12,19 +12,19 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.11.4",
-    "core-js": "^3.19.0",
-    "quasar": "^2.2.2",
-    "quasar-extras-svg-icons": "^1.0.5"
+    "@quasar/extras": "^1.11.5",
+    "core-js": "^3.19.1",
+    "quasar": "^2.3.0",
+    "quasar-extras-svg-icons": "^1.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/eslint-parser": "^7.16.0",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.16.0",
-    "@quasar/app": "^3.1.8",
+    "@quasar/app": "^3.1.10",
     "babel-loader": "^8.2.3",
-    "eslint": "^8.1.0",
+    "eslint": "^8.2.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-node": "^11.1.0",
