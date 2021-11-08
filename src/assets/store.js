@@ -1,4 +1,4 @@
-import { inject, provide, ref, reactive } from 'vue'
+import { inject, provide, reactive } from 'vue'
 import { storeKey } from './symbols.js'
 
 export function useStore () {
@@ -6,7 +6,6 @@ export function useStore () {
 }
 
 export function provideStore () {
-  const makeRef = process.env.SERVER !== true ? ref : val => val
   const makeReactive = process.env.SERVER !== true ? reactive : val => val
   const store = makeReactive({
     importedIcons: null,
@@ -35,7 +34,7 @@ export function provideStore () {
       if (!store.cart[ packageName ]) store.cart[ packageName ] = {}
       if (!store.cart[ packageName ][ iconSet ]) store.cart[ packageName ][ iconSet ] = {}
       store.cart[ packageName ][ iconSet ][ name ] = path
-      console.log('cart:', store.cart)
+
       return true
     }
     return false

@@ -176,8 +176,6 @@ export default defineComponent({
         }
       }
 
-      console.log('icons:', icons)
- 
       return icons
     })
 
@@ -197,14 +195,14 @@ export default defineComponent({
           }
         }
       }
-
-      console.log('all imports:', imports)
+ 
+      return imports
  
       return imports
     })
 
     function onClickIconSet (iconSet) {
-      console.log(iconSet)
+      store.rightDrawerOpen = false
       store.iconSet = iconSet
     }
 
