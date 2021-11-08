@@ -108,9 +108,16 @@
           >
             <q-item-section>
               <q-btn
-                label="Import all"
+                label="Imported"
                 no-caps
                 @click="onImportAll"
+              />
+            </q-item-section>
+            <q-item-section>
+              <q-btn
+                label="Inlined"
+                no-caps
+                @click="onInlinedAll"
               />
             </q-item-section>
           </q-item>
@@ -201,8 +208,20 @@ export default defineComponent({
       }
  
       return imports
- 
-      return imports
+    })
+
+    const allInlined = computed(() => {
+      let inlined = ''
+      for (const packageName in store.cart) {
+        for (const iconSet in store.cart[ packageName ]) {
+          for (const iconName in store.cart[ packageName ][ iconSet ]) {
+            if (inlined) inlined += '\n'
+            inlined += `const ${ iconName } = '${ store.cart[ packageName ][ iconSet ][ iconName ] }'`
+          }
+        }
+      }
+
+      return inlined
     })
 
     function onClickIconSet (iconSet) {
@@ -240,7 +259,20 @@ export default defineComponent({
       copyToClipboard(allImports.value)
         .then(() => {
           $q.notify({
-            message: `All imports copied to clipboard`,
+            message: `All imported copied to clipboard`,
+            position: 'top',
+            icon: mdiPartyPopper,
+            color: 'white',
+            textColor: 'primary'
+          })
+        })
+    }
+
+    function onInlinedAll () {
+      copyToClipboard(allInlined.value)
+        .then(() => {
+          $q.notify({
+            message: `All inlined copied to clipboard`,
             position: 'top',
             icon: mdiPartyPopper,
             color: 'white',
@@ -266,7 +298,8 @@ export default defineComponent({
       onCartRemoveAllItems,
       selectedIconsFlattened,
       importToClipboard,
-      onImportAll
+      onImportAll,
+      onInlinedAll
     }
   }
 })
