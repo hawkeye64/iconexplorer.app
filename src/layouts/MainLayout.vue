@@ -78,7 +78,7 @@
           v-if="Object.keys(store.cart).length === 0"
           class="row justify-center q-ma-lg"
         >
-          The cart is empty!
+          The library is empty!
         </div>
         <q-list
           v-else
@@ -88,7 +88,7 @@
             key="onCartRemoveAll"
           >
             <q-item-section>
-              Remove all cart items
+              Remove all library items
             </q-item-section>
             <q-item-section avatar>
               <q-btn
