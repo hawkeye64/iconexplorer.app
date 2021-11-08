@@ -19,6 +19,14 @@
           <div>Quasar Extras SVG Icons<span class="text-subtitle2">&nbsp;v{{ version2 }}</span></div>
         </q-toolbar-title>
 
+        <q-img
+          src="icons/favicon-32x32.png"
+          width="32px"
+          height="32px"
+        />
+
+        <q-space />
+
         <q-btn
           flat
           round
