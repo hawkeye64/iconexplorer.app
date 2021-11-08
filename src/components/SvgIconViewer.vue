@@ -5,7 +5,7 @@
       :key="name"
       once
       class="intersetion-icon-box col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-6"
-      @click="onClick(path, name)"
+      @click="onClick({ path, name })"
     >
       <div class="intersetion-icon-box--inner row full-width justify-center items-center overflow-hidden ellipsis">
         <q-icon
@@ -20,8 +20,9 @@
           {{ name }}
         </div>
         <q-tooltip
-          :delay="1000"
+          :delay="250"
           class="primary"
+          style="font-size: 24px;"
         >
           {{ name }}
         </q-tooltip>
@@ -49,7 +50,7 @@ export default defineComponent({
 
   setup (props, { emit }) {
     return {
-       onClick: function (path, name) {
+       onClick: function ({ path, name }) {
         emit('selected', { path, name })
       }
     }

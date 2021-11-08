@@ -2,7 +2,7 @@
   <q-page>
     <q-dialog
       ref="dialogRef"
-      v-model="showDialog"
+      v-model="store.showIconDialog"
       seamless
       position="bottom"
     >
@@ -10,17 +10,37 @@
         class="q-pa-sm"
         :style="{ minWidth: screenWidth + 'px', minHeight: '200px'}"
       >
-        <q-btn
-          flat
-          round
-          :icon="matClose"
-          class="close-button"
-          @click="showDialog = false"
-        />
-
-        <q-scroll-area class="fit">
+        <q-card-section class="row items-center no-wrap q-pa-sm">
           <div
-            class="full-height row justify-left items-center"
+            class="col row no-wrap"
+          >
+            <p
+              class="font-mono ellipsis"
+              style="font-size: 28px;"
+            >
+              {{ currentName }}
+            </p>
+            <q-icon
+              size="xs"
+              name="mdi-content-copy"
+              color="grey-13"
+              @click="nameToClipboard"
+            >
+              <q-tooltip>Copy SVG name to clipboard</q-tooltip>
+            </q-icon>
+          </div>
+          <q-space />
+          <q-btn
+            flat
+            round
+            :icon="matClose"
+            @click="store.showIconDialog = false"
+          />
+        </q-card-section>
+
+        <q-card-section class="row items-center no-wrap q-pa-sm">
+          <div
+            class="row justify-center items-center"
             style="width: 100%;"
           >
             <div class="column q-pa-sm">
@@ -33,25 +53,6 @@
               />
             </div>
             <div class="column justify-start q-gutter-sm q-pa-sm">
-              <div
-                class="col row"
-                style="max-height: 32px;"
-              >
-                <p
-                  class="font-mono"
-                  style="font-size: 28px;"
-                >
-                  {{ currentName }}
-                </p>
-                <q-icon
-                  size="xs"
-                  name="mdi-content-copy"
-                  color="grey-13"
-                  @click="onCopyName(currentPath, currentName)"
-                >
-                  <q-tooltip>Copy name to clipboard</q-tooltip>
-                </q-icon>
-              </div>
               <q-btn
                 no-caps
                 size="sm"
@@ -60,7 +61,7 @@
                 class="col user-button"
                 @click="onHandleCart(currentPath, currentName)"
               >
-                <div class="full-width row justify-between items-center">
+                <div class="full-width row justify-between items-center ellipsis">
                   <q-icon
                     :name="cartButtonIcon"
                     size="sm"
@@ -85,13 +86,109 @@
             </div>
 
             <div class="column justify-start q-gutter-sm q-pa-sm">
-              <div>Copy</div>
-              <q-btn no-caps size="sm" flat class="user-button">Name</q-btn>
-              <q-btn no-caps size="sm" flat class="user-button">Raw</q-btn>
-              <q-btn no-caps size="sm" flat class="user-button">QIcon</q-btn>
+              <div class="col">
+                <div>Copy</div>
+                <div class="row q-gutter-xs">
+                  <q-btn
+                    no-caps
+                    size="sm"
+                    flat
+                    class="user-button"
+                    @click="nameToClipboard"
+                  >
+                    <q-tooltip
+                      :delay="250"
+                      class="primary"
+                    >
+                      Copy SVG name to clipboard
+                    </q-tooltip>
+                    Name
+                  </q-btn>
+                  <q-btn
+                    no-caps
+                    size="sm"
+                    flat
+                    class="user-button"
+                    @click="inlineToClipboard"
+                  >
+                    <q-tooltip
+                      :delay="250"
+                      class="primary"
+                    >
+                      Copy SVG inlined to clipboard
+                    </q-tooltip>
+                    Inline
+                  </q-btn>
+                  <q-btn
+                    no-caps
+                    size="sm"
+                    flat
+                    class="user-button"
+                    @click="importToClipboard"
+                  >
+                    <q-tooltip
+                      :delay="250"
+                      class="primary"
+                    >
+                      Copy SVG import to clipboard
+                    </q-tooltip>
+                    Import
+                  </q-btn>
+                  <q-btn
+                    no-caps
+                    size="sm"
+                    flat
+                    class="user-button"
+                    @click="qiconToClipboard"
+                  >
+                    <q-tooltip
+                      :delay="250"
+                      class="primary"
+                    >
+                      Copy QIcon with SVG name to clipboard
+                    </q-tooltip>
+                    QIcon
+                  </q-btn>
+                  <q-btn
+                    no-caps
+                    size="sm"
+                    flat
+                    class="user-button"
+                    @click="qbtnToClipboard"
+                  >
+                    <q-tooltip
+                      :delay="250"
+                      class="primary"
+                    >
+                      Copy QBtn with SVG name to clipboard
+                    </q-tooltip>
+
+                    QBtn
+                  </q-btn>
+                  <q-btn
+                    no-caps
+                    size="sm"
+                    flat
+                    class="user-button"
+                    @click="rawToClipboard"
+                  >
+                    <q-tooltip
+                      :delay="250"
+                      class="primary"
+                    >
+                      Copy raw SVG to clipboard
+                    </q-tooltip>
+
+                    Raw
+                  </q-btn>
+                </div>
+              </div>
+              <div class="col-auto">
+                <!-- other content here -->
+              </div>
             </div>
           </div>
-        </q-scroll-area>
+        </q-card-section>
       </q-card>
     </q-dialog>
 
@@ -150,7 +247,7 @@ import { useQuasar, copyToClipboard } from 'quasar'
 import { iconSets } from 'src/icon-sets'
 import { useStore } from 'assets/store.js'
 import { matClose, matAdd } from '@quasar/extras/material-icons'
-import SvgIconViewer from '../components/Icons.vue'
+import SvgIconViewer from '../components/SvgIconViewer.vue'
 
 export default defineComponent({
   name: 'MainPage',
@@ -164,7 +261,6 @@ export default defineComponent({
       importedIcons = ref(null),
       filter = ref(''),
       dialogRef = ref(null),
-      showDialog = ref(false),
       currentPath = ref(''),
       currentName = ref(''),
       isInCart = ref(false),
@@ -176,7 +272,8 @@ export default defineComponent({
         'red', 'pink', 'purple', 'deep-purple', 'indigo',
         'blue', 'light-blue', 'cyan', 'teal', 'green',
         'light-green', 'lime', 'yellow', 'amber', 'orange',
-        'deep-orange', 'brown', 'grey', 'blue-grey'
+        'deep-orange', 'brown', 'grey', 'blue-grey',
+        'white'
       ]
 
     const screenWidth = computed(() => {
@@ -190,16 +287,14 @@ export default defineComponent({
 
     const colorClasses = computed(() => {
       let color = ''
-      let bgColor = 'bg-white'
       if (inverted.value) {
         color += 'bg-' + textColor.value
-        bgColor = 'text-white'
       }
       else {
         color += 'text-' + textColor.value
       }
-      if (textColor.value !== 'black') color += '-8'
-      return color + ' ' + bgColor
+      if (textColor.value !== 'black' && textColor.value !== 'white') color += '-8'
+      return color
     })
 
     const icons = computed(() => {
@@ -236,7 +331,7 @@ export default defineComponent({
     })
 
     watch (currentName, val => {
-      isInCart.value = store.findItem(val) > -1
+      isInCart.value = store.findItem(store.iconSet.packageName, store.iconSet.value, val) !== null
     })
 
     watch(() => store.iconSet, val => {
@@ -273,15 +368,23 @@ export default defineComponent({
       }
     })
 
-    watch(showDialog,  val => {
+    watch(() => store.showIconDialog,  val => {
       if (!val) {
         textColor.value = 'black'
       }
     })
 
+    watch(() => store.leftDrawerOpen, val => {
+      if (val) store.showIconDialog = false
+    })
+
+    watch(() => store.rightDrawerOpen, val => {
+      if (val) store.showIconDialog = false
+    })
+
     function colorClass (color) {
       let newColor = 'bg-' + color
-      if (color !== 'black') newColor += '-8'
+      if (color !== 'black' && color !== 'white') newColor += '-8'
       if (textColor.value === color) {
         newColor += ' active-color'
       }
@@ -299,73 +402,69 @@ export default defineComponent({
     function onSelected ({ path, name }) {
       currentPath.value = path
       currentName.value = name
-      showDialog.value = true
-    }
-
-    function onClickDialog (path, name) {
-      copyToClipboard(name)
-        .then(() => {
-          $q.notify({
-            message: `'${ name }' copied to clipboard`,
-            position: 'top',
-            icon: path,
-            color: 'white',
-            textColor: 'primary'
-          })
-          // showDialog.value = false
-        })
-    }
-
-    function onCopyName (path, name) {
-      copyToClipboard(name)
-        .then(() => {
-          $q.notify({
-            message: `'${ name }' copied to clipboard`,
-            position: 'top',
-            icon: path,
-            color: 'white',
-            textColor: 'primary'
-          })
-          // showDialog.value = false
-        })
-    }
-
-    function onCopySvg (path, name) {
-      copyToClipboard(path)
-        .then(() => {
-          $q.notify({
-            message: `'${ name }' SVG copied to clipboard`,
-            position: 'top',
-            icon: path,
-            color: 'white',
-            textColor: 'primary'
-          })
-          // showDialog.value = false
-        })
+      store.showIconDialog = true
     }
 
     function onHandleCart (path, name) {
       if (isInCart.value === true) {
-        isInCart.value = !store.removeItem(name)
+        isInCart.value = !store.removeItem(store.iconSet.packageName, store.iconSet.value, name)
         return
       }
-      isInCart.value = store.addItem(name, path)
+      isInCart.value = store.addItem(store.iconSet.packageName, store.iconSet.value, name, path)
+    }
+
+    function sendToClipboard (data, message, icon) {
+      copyToClipboard(data)
+        .then(() => {
+          $q.notify({
+            message: message,
+            position: 'top',
+            icon: icon,
+            color: 'white',
+            textColor: 'primary'
+          })
+        })
+    }
+
+    function nameToClipboard () {
+      sendToClipboard(currentName.value, `Name: '${ currentName.value }' copied to clipboard`, currentPath.value)
+    }
+
+    function rawToClipboard () {
+      sendToClipboard(currentPath.value, `Raw: '${ currentName.value }' copied to clipboard`, currentPath.value)
+
+    }
+
+    function inlineToClipboard () {
+      const inline = `const ${ currentName.value } = '${ currentPath.value }'`
+      sendToClipboard(inline, `Inline: '${ currentName.value }' copied to clipboard`, currentPath.value)
+    }
+
+    function importToClipboard () {
+      const inline = `import { ${ currentName.value } } from '${ store.iconSet.packageName }/${ store.iconSet.value }'`
+      sendToClipboard(inline, `Import: '${ currentName.value }' copied to clipboard`, currentPath.value)
+    }
+
+    function qiconToClipboard( ) {
+      const inline = `<q-icon :name="${ currentName.value }" />`
+      sendToClipboard(inline, `QIcon: '${ currentName.value }' copied to clipboard`, currentPath.value)
+    }
+
+    function qbtnToClipboard () {
+      const inline = `<q-btn :icon="${ currentName.value }" />`
+      sendToClipboard(inline, `QBtn: '${ currentName.value }' copied to clipboard`, currentPath.value)
     }
 
     return {
       store,
-      iconSets,
-      // importedIcons,
       filter,
       dialogRef,
-      showDialog,
       currentPath,
       currentName,
       headerClasses,
       colorClasses,
       cartButtonLabel,
       cartButtonIcon,
-      textColor,
       colors,
       inverted,
       filteredCount,
@@ -376,10 +475,13 @@ export default defineComponent({
       colorClass,
       changeColor,
       onSelected,
-      onClickDialog,
-      onCopyName,
-      onCopySvg,
-      onHandleCart
+      onHandleCart,
+      nameToClipboard,
+      rawToClipboard,
+      inlineToClipboard,
+      importToClipboard,
+      qiconToClipboard,
+      qbtnToClipboard
     }
   }
 })
