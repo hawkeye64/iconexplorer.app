@@ -219,6 +219,7 @@
     <template v-if="Object.keys(icons).length">
       <svg-icon-viewer
         :icons="icons"
+        :selected-name="currentName"
         @selected="onSelected"
       />
     </template>

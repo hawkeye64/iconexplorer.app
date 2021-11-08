@@ -7,7 +7,10 @@
       class="intersetion-icon-box col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-6"
       @click="onClick({ path, name })"
     >
-      <div class="intersetion-icon-box--inner row full-width justify-center items-center overflow-hidden ellipsis">
+      <div
+        class="intersetion-icon-box--inner row full-width justify-center items-center overflow-hidden ellipsis"
+        :class="{ 'active-icon': isActiveIcon(name) }"
+      >
         <q-icon
           :name="path"
           size="60px"
@@ -41,6 +44,10 @@ export default defineComponent({
     icons: {
       type: Object,
       required: true
+    },
+    selectedName: {
+      type: String,
+      required: true
     }
   },
 
@@ -52,8 +59,17 @@ export default defineComponent({
     return {
        onClick: function ({ path, name }) {
         emit('selected', { path, name })
+      },
+      isActiveIcon: function (name) {
+        return props.selectedName === name
       }
+
     }
   }
 })
 </script>
+
+<style lang="sass">
+.active-icon
+  border-color: rgba(25, 118, 210, 0.65)
+</style>
