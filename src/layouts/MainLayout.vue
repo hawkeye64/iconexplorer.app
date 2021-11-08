@@ -21,8 +21,8 @@
 
         <q-img
           src="icons/favicon-32x32.png"
-          width="32px"
-          height="32px"
+          width="48px"
+          height="48px"
         />
 
         <q-space />
