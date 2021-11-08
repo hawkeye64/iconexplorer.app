@@ -99,8 +99,12 @@
               />
             </q-item-section>
           </q-item>
+
+          <q-separator />
+
           <q-item
             key="onImportAll"
+            class="q-mt-xs"
           >
             <q-item-section>
               <q-btn
