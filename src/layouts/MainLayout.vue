@@ -124,32 +124,6 @@
               </q-tooltip>
             </q-btn>
           </div>
-
-          <!-- <template
-            v-for="(packages, packageName) in store.cart"
-            :key="packageName"
-          >
-            <template
-              v-for="(sets, iconSetName) in packages"
-              :key="iconSetName"
-            >
-              <q-item>
-                <template
-                  v-for="(icon, name) in sets"
-                  :key="name"
-                >
-                  <q-btn
-                    :icon="icon"
-                    size="md"
-                  >
-                    <q-tooltip>
-                      {{ packageName }}/{{ iconSetName }}/{{ name }}
-                    </q-tooltip>
-                  </q-btn>
-                </template>
-              </q-item>
-            </template>
-          </template> -->
         </q-list>
       </q-scroll-area>
     </q-drawer>
