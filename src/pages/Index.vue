@@ -370,7 +370,8 @@ export default defineComponent({
     })
 
     watch(() => store.showIconDialog,  val => {
-      if (!val) {
+      if (val) store.rightDrawerOpen = false
+      else {
         textColor.value = 'black'
       }
     })
@@ -404,6 +405,7 @@ export default defineComponent({
       currentPath.value = path
       currentName.value = name
       store.showIconDialog = true
+      store.rightDrawerOpen = false
     }
 
     function onHandleCart (path, name) {
