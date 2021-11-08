@@ -319,9 +319,9 @@ export default defineComponent({
 
     const cartButtonLabel = computed(() => {
       if (isInCart.value !== true) {
-        return 'Add to cart'
+        return 'Add to library'
       }
-      return 'Remove from cart'
+      return 'Remove from library'
     })
 
     const cartButtonIcon = computed(() => {
