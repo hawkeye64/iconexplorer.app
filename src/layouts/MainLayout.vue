@@ -20,9 +20,14 @@
               src="icon-finder-light.png"
               width="42px"
               height="42px"
-              style="color: #1d1d1d'"
             />
-            Icon Explorer
+            Icon Explorer&nbsp;
+            <span
+              class="text-caption text-weight-bold"
+              style="font-size: 14px;"
+            >
+              v{{ appVersion }}
+            </span>
           </div>
         </q-toolbar-title>
 
@@ -41,6 +46,37 @@
         />
       </q-toolbar>
     </q-header>
+
+    <q-footer
+      elevated
+      class="glass q-ma-none"
+    >
+      <div class="markdown-page__footer--icons full-width row justify-center items-center q-gutter-sm">
+        <a
+          href="https://github.com/hawkeye64"
+          target="_blank"
+          rel="noopener"
+        ><q-avatar size="28px"><img src="~assets/profile.png"></q-avatar></a>
+        <a
+          href="https://github.com/hawkeye64/iconexplorer.app"
+          target="_blank"
+          rel="noopener"
+        ><q-icon :name="fabGithub" /></a>
+        <a
+          href="https://twitter.com/jgalbraith64"
+          target="_blank"
+          rel="noopener"
+        ><q-icon :name="fabTwitter" /></a>
+        <a
+          href="https://github.com/sponsors/hawkeye64"
+          target="_blank"
+          rel="noopener"
+        ><q-icon :name="mdiCharity" /></a>
+      </div>
+      <div class="full-width row justify-center items-center q-my-sm">
+        <p class="markdown-copyright">CC-BY / MIT License | Copyright &copy; {{ year }} Jeff Galbraith</p>
+      </div>
+    </q-footer>
 
     <q-drawer
       v-model="store.leftDrawerOpen"
@@ -64,11 +100,12 @@
               v-for="child in parent.children"
               :key="child.label"
               v-ripple
+              :active="isActive(child)"
               clickable
               @click="onClickIconSet(child)"
             >
               <q-item-section>
-                <q-item-label>{{ child.label }}</q-item-label>
+                <q-item-label class="q-ml-lg">» {{ child.label }}</q-item-label>
               </q-item-section>
             </q-item>
           </template>
@@ -161,8 +198,15 @@ import pkg from '@quasar/extras/package.json'
 const version = pkg.version
 import pkg2 from 'quasar-extras-svg-icons/package.json'
 const version2 = pkg2.version
+import pkg3 from '../../package.json'
+const appVersion = pkg3.version
 import { iconSets } from '../icon-sets'
 import { useStore } from 'assets/store.js'
+
+import {
+  fabGithub,
+  fabTwitter
+} from '@quasar/extras/fontawesome-v5'
 
 import {
   mdiMenu,
@@ -171,11 +215,15 @@ import {
   mdiCartOutline,
   mdiCartHeart,
   mdiTrashCanOutline,
-  mdiPartyPopper
+  mdiPartyPopper,
+  mdiCharity
 } from '@quasar/extras/mdi-v6'
+
+const year = (new Date()).getFullYear()
 
 export default defineComponent({
   name: 'MainLayout',
+
   setup () {
     const store = useStore(),
     $q = useQuasar()
@@ -213,6 +261,10 @@ export default defineComponent({
 
       return inlined
     })
+
+    function isActive (iconSet) {
+      return iconSet.value === store?.iconSet?.value
+    }
 
     function onClickIconSet (iconSet) {
       store.rightDrawerOpen = false
@@ -275,6 +327,7 @@ export default defineComponent({
       store,
       version,
       version2,
+      appVersion,
       mdiMenu,
       mdiBrightness2,
       mdiBrightness5,
@@ -284,12 +337,35 @@ export default defineComponent({
       toggleLeftDrawer,
       toggleRightDrawer,
       iconSets,
+      isActive,
       onClickIconSet,
       onCartRemoveAllItems,
       importToClipboard,
       onImportAll,
-      onInlinedAll
+      onInlinedAll,
+      year,
+      fabGithub,
+      fabTwitter,
+      mdiCharity
     }
   }
 })
 </script>
+
+<style lang="sass">
+.markdown-copyright
+  font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace
+
+.markdown-page__footer--icons
+  font-size: 28px
+
+  a
+    text-decoration: none
+    outline: 0
+    color: $primary
+    transition: color .28s
+
+    &:hover
+      color: $red-8
+
+</style>

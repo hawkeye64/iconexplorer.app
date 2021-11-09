@@ -228,16 +228,15 @@
 
     <q-page-scroller
       expand
-      position="bottom"
+      position="bottom-right"
       :scroll-offset="150"
-      :offset="[0, 0]"
+      :offset="[8, 8]"
     >
-      <div class="col cursor-pointer q-pa-sm text-center glass">
-        <q-icon
-          name="mdi-chevron-up"
-          size="lg"
-        />
-      </div>
+      <q-btn
+        fab
+        :icon="matKeyboardArrowUp"
+        class="glass"
+      />
     </q-page-scroller>
   </q-page>
 </template>
@@ -247,7 +246,7 @@ import { defineComponent, markRaw, ref, computed, watch, nextTick } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { iconSets } from 'src/icon-sets'
 import { useStore } from 'assets/store.js'
-import { matClose, matAdd } from '@quasar/extras/material-icons'
+import { matClose, matAdd, matKeyboardArrowUp } from '@quasar/extras/material-icons'
 import SvgIconViewer from '../components/SvgIconViewer.vue'
 
 export default defineComponent({
@@ -479,6 +478,7 @@ export default defineComponent({
       icons,
       screenWidth,
       matClose,
+      matKeyboardArrowUp,
       colorClass,
       changeColor,
       onSelected,

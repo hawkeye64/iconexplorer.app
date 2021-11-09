@@ -77,8 +77,8 @@ export default defineComponent({
 
 <style lang="sass">
 .active-icon
-  border-color: rgba(25, 118, 210, 0.65)
+  color: rgba(25, 118, 210, 0.65)
 
 .cart-icon
-  border-color: rgba(255, 0, 0, 0.65)
+  color: rgba(255, 0, 0, 0.65)
 </style>
