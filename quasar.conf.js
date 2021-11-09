@@ -116,7 +116,8 @@ module.exports = configure(function (ctx) {
       plugins: [
         'Dark',
         'LoadingBar',
-        'Notify'
+        'Notify',
+        'Loading'
       ]
     },
 

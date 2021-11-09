@@ -4,8 +4,13 @@
 
 <script>
 import { defineComponent } from 'vue'
+import { provideStore } from 'assets/store.js'
 
 export default defineComponent({
-  name: 'App'
+  name: 'App',
+
+  setup () {
+    provideStore()
+  }
 })
 </script>
