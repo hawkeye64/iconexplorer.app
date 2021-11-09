@@ -15,19 +15,16 @@
         />
 
         <q-toolbar-title>
-          <div>@Quasar/Extras <span class="text-subtitle2">&nbsp;v{{ version }}</span></div>
-          <div>Quasar Extras SVG Icons<span class="text-subtitle2">&nbsp;v{{ version2 }}</span></div>
+          <div>
+            <q-img
+              src="icon-finder-light.png"
+              width="42px"
+              height="42px"
+              style="color: #1d1d1d'"
+            />
+            Icon Explorer
+          </div>
         </q-toolbar-title>
-
-        <q-space />
-
-        <q-img
-          src="icons/favicon-32x32.png"
-          width="48px"
-          height="48px"
-        />
-
-        <q-space />
 
         <q-btn
           flat
@@ -53,13 +50,15 @@
       <q-scroll-area class="fit">
         <q-list dense>
           <template
-            v-for="(parent) in iconSets"
+            v-for="(parent, index) in iconSets"
             :key="parent.label"
           >
             <q-item-label
               header
+              class="text-caption text-weight-bold"
+              style="font-size: 14px;"
             >
-              {{ parent.label }}
+              {{ parent.label }} v{{ index === 0 ? version : version2 }}
             </q-item-label>
             <q-item
               v-for="child in parent.children"
@@ -133,7 +132,7 @@
           </q-item>
           <div>
             <q-btn
-              v-for="icon in selectedIconsFlattened"
+              v-for="icon in store.selectedIconsFlattened"
               :key="icon.iconName"
               :icon="icon.path"
               round
@@ -180,25 +179,6 @@ export default defineComponent({
   setup () {
     const store = useStore(),
     $q = useQuasar()
-
-    const selectedIconsFlattened = computed(() => {
-      const icons = [];
-      for (const packageName in store.cart) {
-        for (const iconSet in store.cart[ packageName ]) {
-          for (const iconName in store.cart[ packageName ][ iconSet ]) {
-            const path = store.cart[ packageName ][ iconSet ][ iconName ]
-            icons.push({
-              packageName,
-              iconSet,
-              iconName,
-              path
-            })
-          }
-        }
-      }
-
-      return icons
-    })
 
     const allImports = computed(() => {
       let imports = '';
@@ -306,7 +286,6 @@ export default defineComponent({
       iconSets,
       onClickIconSet,
       onCartRemoveAllItems,
-      selectedIconsFlattened,
       importToClipboard,
       onImportAll,
       onInlinedAll

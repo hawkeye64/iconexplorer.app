@@ -9,7 +9,10 @@
     >
       <div
         class="intersetion-icon-box--inner row full-width justify-center items-center overflow-hidden ellipsis"
-        :class="{ 'active-icon': isActiveIcon(name) }"
+        :class="{
+          'active-icon': isActiveIcon(name),
+          'cart-icon': store.isCartIcon(name)
+        }"
       >
         <q-icon
           :name="path"
@@ -36,6 +39,7 @@
 
 <script>
 import { defineComponent } from 'vue'
+import { useStore } from 'assets/store.js'
 
 export default defineComponent({
   name: 'SvgIconViewer',
@@ -56,14 +60,16 @@ export default defineComponent({
   ],
 
   setup (props, { emit }) {
+    const store = useStore()
+
     return {
+      store,
        onClick: function ({ path, name }) {
         emit('selected', { path, name })
       },
       isActiveIcon: function (name) {
         return props.selectedName === name
       }
-
     }
   }
 })
@@ -72,4 +78,7 @@ export default defineComponent({
 <style lang="sass">
 .active-icon
   border-color: rgba(25, 118, 210, 0.65)
+
+.cart-icon
+  border-color: rgba(255, 0, 0, 0.65)
 </style>

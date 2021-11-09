@@ -264,7 +264,6 @@ export default defineComponent({
       dialogRef = ref(null),
       currentPath = ref(''),
       currentName = ref(''),
-      isInCart = ref(false),
       inverted = ref(false),
       textColor = ref('black'),
       $q = useQuasar(),
@@ -298,6 +297,11 @@ export default defineComponent({
       return color
     })
 
+    const isInCart = computed(() => {
+      return store.isCartIcon(currentName.value)
+    })
+
+    // returns a list of filtered icons
     const icons = computed(() => {
       const vals = {}
       const f = filter.value && importedIcons.value ? filter.value.toLowerCase() : ''
@@ -309,14 +313,17 @@ export default defineComponent({
       return vals
     })
 
+    // returns a countof all filtered icons
     const filteredCount = computed(() => {
       return Object.keys(icons.value).length
     })
 
+    // returns a count of all loaded icons
     const iconCount = computed(() => {
       return importedIcons.value ? Object.keys(importedIcons.value).length : 0
     })
 
+    // retrns the text to use for "Add to library"/"Remove from library" button
     const cartButtonLabel = computed(() => {
       if (isInCart.value !== true) {
         return 'Add to library'
@@ -324,6 +331,7 @@ export default defineComponent({
       return 'Remove from library'
     })
 
+    // retrns the icon to use for "Add to library"/"Remove from library" button
     const cartButtonIcon = computed(() => {
       if (isInCart.value !== true) {
         return matAdd
@@ -331,10 +339,7 @@ export default defineComponent({
       return matClose
     })
 
-    watch (currentName, val => {
-      isInCart.value = store.findItem(store.iconSet.packageName, store.iconSet.value, val) !== null
-    })
-
+    // watches iconSet and loads new icons when it changes
     watch(() => store.iconSet, val => {
       if (!val) {
         importedIcons.value = null
@@ -397,10 +402,7 @@ export default defineComponent({
       textColor.value = color
     }
 
-    // function hasChild (scope) {
-    //   return scope.opt.children.some(c => store.iconSet && c.value === store.iconSet)
-    // }
-
+    // called when user clicks on an icon
     function onSelected ({ path, name }) {
       currentPath.value = path
       currentName.value = name
@@ -408,14 +410,16 @@ export default defineComponent({
       store.rightDrawerOpen = false
     }
 
+    // removes or adds item from the cart
     function onHandleCart (path, name) {
-      if (isInCart.value === true) {
-        isInCart.value = !store.removeItem(store.iconSet.packageName, store.iconSet.value, name)
+      if (store.isCartIcon(name)) {
+        store.removeItem(store.iconSet.packageName, store.iconSet.value, name)
         return
       }
-      isInCart.value = store.addItem(store.iconSet.packageName, store.iconSet.value, name, path)
+      store.addItem(store.iconSet.packageName, store.iconSet.value, name, path)
     }
 
+    // sends requested data to th clipboard with specified message and icon
     function sendToClipboard (data, message, icon) {
       copyToClipboard(data)
         .then(() => {

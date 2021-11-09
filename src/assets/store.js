@@ -1,4 +1,4 @@
-import { inject, provide, reactive } from 'vue'
+import { inject, provide, reactive, computed } from 'vue'
 import { storeKey } from './symbols.js'
 
 export function useStore () {
@@ -22,7 +22,10 @@ export function provideStore () {
     cart looks like this:
     {
       packageName: {
-        importName: path,
+        iconSet: {
+          iconName: path,
+          ...
+        },
         ...
       }
     }
@@ -77,6 +80,37 @@ export function provideStore () {
     }
 
     return null // not found
+  }
+
+  // When not SSR, this becomes reactive (when injected into store)
+  // but, on server, it's not reactive and need '.value' when accessing it
+  // should not be a problem because adding/removing from the cart is user initiated
+  store.selectedIconsFlattened = computed(() => {
+    const icons = [];
+    for (const packageName in store.cart) {
+      for (const iconSet in store.cart[ packageName ]) {
+        for (const iconName in store.cart[ packageName ][ iconSet ]) {
+          const path = store.cart[ packageName ][ iconSet ][ iconName ]
+          icons.push({
+            packageName,
+            iconSet,
+            iconName,
+            path
+          })
+        }
+      }
+    }
+
+    return icons
+  })
+
+  store.isCartIcon = function (name) {
+    for (let index = 0; index < store.selectedIconsFlattened.length; ++index) {
+      if (store.selectedIconsFlattened[ index ].iconName === name) {
+        return true
+      }
+    }
+    return false
   }
 
   provide(
