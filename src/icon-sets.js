@@ -13,6 +13,7 @@ const iconSets = [
       { label: 'MDI v6 (Material Design Icons)', value: 'mdi-v6', packageName: '@quasar/extras' },
       { label: 'MDI v5 (Material Design Icons)', value: 'mdi-v5', packageName: '@quasar/extras' },
       { label: 'Fontawesome v5', value: 'fontawesome-v5', packageName: '@quasar/extras' },
+      { label: 'Ionicons v6', value: 'ionicons-v6', packageName: '@quasar/extras' },
       { label: 'Ionicons v5', value: 'ionicons-v5', packageName: '@quasar/extras' },
       { label: 'Eva Icons', value: 'eva-icons', packageName: '@quasar/extras' },
       { label: 'Themify', value: 'themify', packageName: '@quasar/extras' },
