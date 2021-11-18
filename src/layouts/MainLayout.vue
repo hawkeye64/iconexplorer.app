@@ -107,6 +107,17 @@
               <q-item-section>
                 <q-item-label class="q-ml-lg">» {{ child.label }}</q-item-label>
               </q-item-section>
+              <q-item-section
+                v-if="child.status"
+                side
+                class="text-right"
+              >
+                <q-badge
+                  color="blue"
+                  text-color="white"
+                  :label="child.status"
+                />
+              </q-item-section>
             </q-item>
           </template>
         </q-list>
