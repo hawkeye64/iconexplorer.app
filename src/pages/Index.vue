@@ -244,7 +244,6 @@
 <script>
 import { defineComponent, markRaw, ref, computed, watch, nextTick } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
-import { iconSets } from 'src/icon-sets'
 import { useStore } from 'assets/store.js'
 import { matClose, matAdd, matKeyboardArrowUp } from '@quasar/extras/material-icons'
 import SvgIconViewer from '../components/SvgIconViewer.vue'
