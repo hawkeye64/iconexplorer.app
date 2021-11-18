@@ -340,36 +340,40 @@ export default defineComponent({
 
     // watches iconSet and loads new icons when it changes
     watch(() => store.iconSet, val => {
-      if (!val) {
-        importedIcons.value = null
-        return
+      if (window) {
+        // scroll to top of page
+        window.scrollTo(0,0)
       }
 
-      const now = new Date()
-      if (val.packageName === '@quasar/extras') {
-        import(
-          /* webpackChunkName: "[request]" */
-          /* webpackInclude: /index\.js$/ */
-          /* webpackExclude: /(mdi-v4|ionicons-v4)/ */
-          '@quasar/extras/' + val.value
-        ).then(async svgFile => {
-          importedIcons.value = markRaw(svgFile)
-          console.log(`${ val.value } Load (ms):`, new Date() - now)
-          await nextTick()
-          console.log(`${ val.value } Render (ms):`, new Date() - now)
-        })
-      }
-      else if (val.packageName === 'quasar-extras-svg-icons') {
-        import(
-          /* webpackChunkName: "[request]" */
-          /* webpackInclude: /index\.js$/ */
-          'quasar-extras-svg-icons/' + val.value
-        ).then(async svgFile => {
-          importedIcons.value = markRaw(svgFile)
-          console.log(`${ val.value } Load (ms):`, new Date() - now)
-          await nextTick()
-          console.log(`${ val.value } Render (ms):`, new Date() - now)
-        })
+      importedIcons.value = null
+
+      if (val) {
+        const now = new Date()
+        if (val.packageName === '@quasar/extras') {
+          import(
+            /* webpackChunkName: "[request]" */
+            /* webpackInclude: /index\.js$/ */
+            /* webpackExclude: /(mdi-v4|ionicons-v4)/ */
+            '@quasar/extras/' + val.value
+          ).then(async svgFile => {
+            importedIcons.value = markRaw(svgFile)
+            console.log(`${ val.value } Load (ms):`, new Date() - now)
+            await nextTick()
+            console.log(`${ val.value } Render (ms):`, new Date() - now)
+          })
+        }
+        else if (val.packageName === 'quasar-extras-svg-icons') {
+          import(
+            /* webpackChunkName: "[request]" */
+            /* webpackInclude: /index\.js$/ */
+            'quasar-extras-svg-icons/' + val.value
+          ).then(async svgFile => {
+            importedIcons.value = markRaw(svgFile)
+            console.log(`${ val.value } Load (ms):`, new Date() - now)
+            await nextTick()
+            console.log(`${ val.value } Render (ms):`, new Date() - now)
+          })
+        }
       }
     })
 
