@@ -192,12 +192,16 @@
       </q-card>
     </q-dialog>
 
-    <div :class="headerClasses">
+    <div
+      :class="headerClasses"
+      style="position: sticky; top: 50px; left: 0; right: 0; z-index: 2000;"
+    >
       <div class="row justify-center items-center col-md-4 col-sm-12">Totals: {{ filteredCount }}/{{ iconCount }}</div>
       <q-input
         v-model="filter"
         borderless
         dense
+        dark
         outlined
         debounce="300"
         clearable
@@ -214,7 +218,7 @@
       </q-input>
     </div>
 
-    <q-separator class="q-mb-xs" />
+    <div class="q-mb-xs" />
 
     <template v-if="Object.keys(icons).length">
       <svg-icon-viewer
@@ -280,7 +284,7 @@ export default defineComponent({
 
     const headerClasses = computed(() => {
       return ($q.screen.lt.sm ? 'column' : 'row')
-        + ' justify-center items-center q-pa-xs'
+        + ' justify-center items-center q-pa-xs inset-shadow-down glass'
     })
 
     const colorClasses = computed(() => {
@@ -339,11 +343,6 @@ export default defineComponent({
 
     // watches iconSet and loads new icons when it changes
     watch(() => store.iconSet, val => {
-      if (window) {
-        // scroll to top of page
-        window.scrollTo(0,0)
-      }
-
       importedIcons.value = null
 
       if (val) {
@@ -373,6 +372,10 @@ export default defineComponent({
             console.log(`${ val.value } Render (ms):`, new Date() - now)
           })
         }
+      }
+
+      if(window) {
+        window.scrollTo(0, 0)
       }
     })
 
