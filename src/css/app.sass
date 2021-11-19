@@ -1,4 +1,13 @@
 // app global css in Sass form
+\:root
+  // scrollbars
+  --iconexplorer-scrollbar-width-height        : 10px
+  --iconexplorer-scrollbar-track               : #eeeeee
+  --iconexplorer-scrollbar-thumb               : rgb(204,231,255)
+  --iconexplorer-scrollbar-thumb-hover         : rgb(33,118,210)
+  --iconexplorer-scrollbar-track-dark          : #eeeeee
+  --iconexplorer-scrollbar-thumb-dark          : rgb(204,231,255)
+  --iconexplorer-scrollbar-thumb-hover-dark    : rgb(33,118,210)
 
 .font-mono
   font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace
@@ -7,7 +16,6 @@
   padding: 2px
   width: 100%
   min-height: 85px
-
 
   &--inner
     border: 1px solid #cacaca
@@ -21,6 +29,35 @@
 
 .icons-footer
   height: 60px
+
+::-webkit-scrollbar
+  width: var(--iconexplorer-scrollbar-width-height)
+  height: var(--iconexplorer-scrollbar-width-height)
+
+// the buttons on the scrollbar (arrows pointing upwards and downwards)
+// ::-webkit-scrollbar-button
+
+// the track (progress bar) of the scrollbar
+::-webkit-scrollbar-track
+  // border-top: var(--iconexplorer-border)
+  background: var(--iconexplorer-scrollbar-track-dark)
+  box-shadow: inset 0 0 4px var(--iconexplorer-scrollbar-track-dark)
+
+// the bottom corner of the scrollbar, where both horizontal and vertical scrollbars meet
+::-webkit-scrollbar-corner
+  background: var(--iconexplorer-scrollbar-track-dark)
+
+// the track (progress bar) NOT covered by the handle
+// &::-webkit-scrollbar-track-piece
+//   background: black
+
+// the draggable scrolling handle
+::-webkit-scrollbar-thumb
+  background: var(--iconexplorer-scrollbar-thumb-dark)
+  border-radius: 5px
+
+  &:hover
+    background: var(--iconexplorer-scrollbar-thumb-hover-dark)
 
 @supports (backdrop-filter: none)
   .glass
