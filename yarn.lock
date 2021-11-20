@@ -1898,10 +1898,10 @@
     core-js "^3.6.5"
     core-js-compat "^3.6.5"
 
-"@quasar/extras@^1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.12.0.tgz#677fb0fe15a4d62a422d34b09e89911e768866ac"
-  integrity sha512-X4oBMf5xcwk8+z2SrVU3AJ2dbFWZ4+LkjZCcXf4sgfY652CatzX+uaZl5UJtQEnl62PwwFTSPXPGy8t0uWF3sA==
+"@quasar/extras@^1.12.1":
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.12.1.tgz#859f7ac79789f840c1d51f994f5bfd5046b1f261"
+  integrity sha512-EwOnaJEDHo9zCnJzd1sFw1sfMAAq8cJaIjzr2+A9o2NcVLaIhD7YAaJdlIdcNmQnyuPAiq9NghUize8lCS0epw==
 
 "@quasar/fastclick@1.1.4":
   version "1.1.4"
@@ -6514,10 +6514,10 @@ quasar-extras-svg-icons@^1.1.0:
   resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.1.0.tgz#0ca2ed127c7cc51686459fef7e9a55e4f4c2ecb2"
   integrity sha512-jqTcnUEu7H223d4kkzfoZ98vkCPDcIjbxZuYeLUtjij0FJScSpwxtZ0vMUoFt9PEYkxCYfoIeIY1UKWUMo8NtQ==
 
-quasar@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.3.2.tgz#c321c2424e05bcba6ea94e8b0252bf16b34a8571"
-  integrity sha512-YqmKj3DKN1MWmjZVYXsjvoTjKS5GVwucK+tzIm3fNIybeV4GVp5YY8RXY5uQehMhZecmY24iKfJaS6tQwFHSQw==
+quasar@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.3.3.tgz#f04797c00d238b88fe2fc42cdabef66bc28f1a6b"
+  integrity sha512-0Q/OWX61IHIIljNUBTibR4bB0uXzR+ZtSa8y8jxerNiRoiIbqdo+FMHCRBvPr/3RUDqQ680YgHVjQEDpUCvM1Q==
 
 querystring@0.2.0:
   version "0.2.0"
