@@ -36,6 +36,7 @@ const iconSets = [
       { label: 'Remix Icons', value: 'remix-icons', packageName: 'quasar-extras-svg-icons' },
       { label: 'Simple Icons', value: 'simple-icons', packageName: 'quasar-extras-svg-icons' },
       { label: 'Tabler Icons', value: 'tabler-icons', packageName: 'quasar-extras-svg-icons' },
+      { label: 'Teeny Icons', value: 'teeny-icons', packageName: 'quasar-extras-svg-icons', status: 'new' },
       { label: 'Unicons', value: 'unicons', packageName: 'quasar-extras-svg-icons', status: 'new' },
       { label: 'Zond Icons', value: 'zond-icons', packageName: 'quasar-extras-svg-icons' }
     ]
