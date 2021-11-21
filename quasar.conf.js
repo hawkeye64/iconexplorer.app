@@ -74,6 +74,12 @@ module.exports = configure(function (ctx) {
             extensions: [ 'js', 'vue' ],
             exclude: 'node_modules'
           }])
+      },
+
+      extendWebpack (cfg) {
+        cfg.cache = {
+          type: 'filesystem'
+        }
       }
     },
 
