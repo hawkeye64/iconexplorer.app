@@ -15,7 +15,7 @@
     "@quasar/extras": "^1.12.1",
     "core-js": "^3.19.1",
     "quasar": "^2.3.3",
-    "quasar-extras-svg-icons": "^1.2.0"
+    "quasar-extras-svg-icons": "^1.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -24,7 +24,7 @@
     "@babel/preset-env": "^7.16.4",
     "@quasar/app": "^3.2.3",
     "babel-loader": "^8.2.3",
-    "eslint": "^8.2.0",
+    "eslint": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
