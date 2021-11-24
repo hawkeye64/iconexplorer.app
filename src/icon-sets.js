@@ -25,10 +25,12 @@ const iconSets = [
     label: 'quasar-extras-svg-icons',
     children: [
       { label: 'Box Icons', value: 'box-icons', packageName: 'quasar-extras-svg-icons' },
-      { label: 'Fluent Icons', value: 'fluentui-system-icons', packageName: 'quasar-extras-svg-icons' },
+      { label: 'Cool Icons', value: 'cool-icons', packageName: 'quasar-extras-svg-icons', status: 'new' },
+      { label: 'Fluent Icons', value: 'fcoolluentui-system-icons', packageName: 'quasar-extras-svg-icons' },
       { label: 'Hero Icons (outline)', value: 'hero-icons-outline', packageName: 'quasar-extras-svg-icons' },
       { label: 'Hero Icons (solid)', value: 'hero-icons-solid', packageName: 'quasar-extras-svg-icons' },
       { label: 'Iconoir Icons', value: 'iconoir-icons', packageName: 'quasar-extras-svg-icons' },
+      { label: 'Icomoon Free Icons', value: 'icomoon-free-icons', packageName: 'quasar-extras-svg-icons', status: 'new' },
       { label: 'Jam Icons', value: 'jam-icons', packageName: 'quasar-extras-svg-icons' },
       { label: 'Octicons', value: 'oct-icons', packageName: 'quasar-extras-svg-icons' },
       { label: 'Pixelart Icons', value: 'pixelart-icons', packageName: 'quasar-extras-svg-icons' },
@@ -38,6 +40,7 @@ const iconSets = [
       { label: 'Tabler Icons', value: 'tabler-icons', packageName: 'quasar-extras-svg-icons' },
       { label: 'Teeny Icons', value: 'teeny-icons', packageName: 'quasar-extras-svg-icons', status: 'new' },
       { label: 'Unicons', value: 'unicons', packageName: 'quasar-extras-svg-icons', status: 'new' },
+      { label: 'Vaadin Icons', value: 'vaadin-icons', packageName: 'quasar-extras-svg-icons', status: 'new' },
       { label: 'Zond Icons', value: 'zond-icons', packageName: 'quasar-extras-svg-icons' }
     ]
   }
