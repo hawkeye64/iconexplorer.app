@@ -1,6 +1,6 @@
 {
   "name": "iconexplorer.app",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Searchable Quasar SVG icons",
   "productName": "Quasar Framework SVG icons",
   "author": "Jeff Galbraith <galbraith64@gmail.com>",
@@ -15,7 +15,7 @@
     "@quasar/extras": "^1.12.1",
     "core-js": "^3.19.1",
     "quasar": "^2.3.3",
-    "quasar-extras-svg-icons": "^1.3.0"
+    "quasar-extras-svg-icons": "^1.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
