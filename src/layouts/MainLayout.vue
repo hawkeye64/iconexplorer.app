@@ -84,7 +84,10 @@
       bordered
     >
       <q-scroll-area class="fit">
-        <q-list dense>
+        <q-list
+          dense
+          class="icon-menu"
+        >
           <template
             v-for="(parent, index) in iconSets"
             :key="parent.label"
@@ -378,5 +381,12 @@ export default defineComponent({
 
     &:hover
       color: $red-8
+
+.icon-menu .q-item.q-item--active
+  background: #e6f8ff
+
+.icon-menu .q-item
+  border-radius: 0 10px 10px 0
+  margin-right: 12px
 
 </style>
