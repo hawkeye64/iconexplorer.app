@@ -281,6 +281,7 @@ export default defineComponent({
     }
 
     function onClickIconSet (iconSet) {
+      store.leftDrawerOpen = !$q.screen.lt.md
       store.rightDrawerOpen = false
       store.iconSet = iconSet
     }
