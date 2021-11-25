@@ -26,7 +26,7 @@ const iconSets = [
     children: [
       { label: 'Box Icons', value: 'box-icons', packageName: 'quasar-extras-svg-icons' },
       { label: 'Cool Icons', value: 'cool-icons', packageName: 'quasar-extras-svg-icons', status: 'new' },
-      { label: 'Fluent Icons', value: 'fcoolluentui-system-icons', packageName: 'quasar-extras-svg-icons' },
+      { label: 'Fluent Icons', value: 'fluentui-system-icons', packageName: 'quasar-extras-svg-icons' },
       { label: 'Hero Icons (outline)', value: 'hero-icons-outline', packageName: 'quasar-extras-svg-icons' },
       { label: 'Hero Icons (solid)', value: 'hero-icons-solid', packageName: 'quasar-extras-svg-icons' },
       { label: 'Iconoir Icons', value: 'iconoir-icons', packageName: 'quasar-extras-svg-icons' },
