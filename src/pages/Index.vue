@@ -10,9 +10,9 @@
         class="q-pa-sm"
         :style="{ minWidth: screenWidth + 'px', minHeight: '200px'}"
       >
-        <q-card-section class="row items-center no-wrap q-pa-sm">
+        <q-card-section class="row justify-center items-center no-wrap q-pa-sm">
           <div
-            class="col row no-wrap"
+            class="col row justify-center no-wrap"
           >
             <p
               class="font-mono ellipsis"
