@@ -283,7 +283,8 @@ export default defineComponent({
 
     const headerClasses = computed(() => {
       return ($q.screen.lt.sm ? 'column' : 'row')
-        + ' justify-center items-center q-pa-xs inset-shadow-down glass'
+        + ' justify-center items-center q-pa-xs '
+        + ($q.dark.isActive ? '' : 'bg-white')
     })
 
     const colorClasses = computed(() => {
