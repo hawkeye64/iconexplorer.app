@@ -11,7 +11,7 @@ export function provideStore () {
     importedIcons: null,
     filter: '',
     iconSet: null,
-    iconSize: '128px',
+    iconSize: '192px',
     cart: {},
     leftDrawerOpen: false,
     rightDrawerOpen: false,

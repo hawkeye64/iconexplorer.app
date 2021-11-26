@@ -49,7 +49,7 @@
                 :size="store.iconSize"
                 class="q-pa-xs col-1"
                 :class="colorClasses"
-                style="max-width: 130px; min-width: 80px;"
+                style="max-width: 200px; min-width: 140px;"
               />
             </div>
             <div class="column justify-start q-gutter-sm q-pa-sm">
