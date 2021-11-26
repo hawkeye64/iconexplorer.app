@@ -69,7 +69,7 @@
                   {{ cartButtonLabel }}
                 </div>
               </q-btn>
-              <div class="col row">
+              <div class="col row bordered">
                 <div
                   v-for="color in colors"
                   :key="color"
@@ -512,5 +512,9 @@ export default defineComponent({
 .user-button
   border-radius: 8px
   border: 1px solid lightgrey
+
+.bordered
+  border-radius: 2px
+  border: 1px solid rgba(0, 0, 0, 0.4)
 
 </style>
