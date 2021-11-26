@@ -388,6 +388,12 @@ export default defineComponent({
       }
     })
 
+    watch(currentName, val => {
+      if (!val) {
+        store.showIconDialog = false
+      }
+    })
+
     watch(() => store.leftDrawerOpen, val => {
       if (val) store.showIconDialog = false
     })
