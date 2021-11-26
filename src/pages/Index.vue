@@ -201,7 +201,6 @@
         v-model="filter"
         borderless
         dense
-        dark
         outlined
         debounce="300"
         clearable
@@ -288,15 +287,17 @@ export default defineComponent({
     })
 
     const colorClasses = computed(() => {
-      let color = ''
+      let color = '', bgColor = ''
       if (inverted.value) {
         color += 'bg-' + textColor.value
+        bgColor += ($q.dark.isActive ? 'text-dark' : 'text-white')
       }
       else {
         color += 'text-' + textColor.value
+        bgColor += ($q.dark.isActive ? '' : 'bg-white')
       }
       if (textColor.value !== 'black' && textColor.value !== 'white') color += '-8'
-      return color
+      return color + ' ' + bgColor
     })
 
     const isInCart = computed(() => {
@@ -516,5 +517,8 @@ export default defineComponent({
 .bordered
   border-radius: 2px
   border: 1px solid rgba(0, 0, 0, 0.4)
+
+.text-dark
+  color: #1d1d1d
 
 </style>
