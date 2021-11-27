@@ -1,14 +1,14 @@
 <template>
-  <div class="row justify-center text-grey-8">
+  <div class="row justify-center text-grey-8 q-mr-xs">
     <q-intersection
       v-for="(path, name) in icons"
       :key="name"
       once
-      class="intersetion-icon-box col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-6"
+      class="intersection-icon-box col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-6"
       @click="onClick({ path, name })"
     >
-      <div
-        class="intersetion-icon-box--inner row full-width justify-center items-center overflow-hidden ellipsis"
+      <q-card
+        class="intersection-icon-box--inner row full-width justify-center items-center overflow-hidden ellipsis"
         :class="{
           'active-icon': isActiveIcon(name),
           'cart-icon': store.isCartIcon(name)
@@ -32,7 +32,7 @@
         >
           {{ name }}
         </q-tooltip>
-      </div>
+      </q-card>
     </q-intersection>
   </div>
 </template>
