@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-center">
+  <div class="row justify-center text-grey-8">
     <q-intersection
       v-for="(path, name) in icons"
       :key="name"
