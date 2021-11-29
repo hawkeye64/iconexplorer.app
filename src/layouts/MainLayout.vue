@@ -73,8 +73,20 @@
           rel="noopener"
         ><q-icon :name="mdiCharity" /></a>
       </div>
-      <div class="full-width row justify-center items-center q-my-sm">
-        <p class="markdown-copyright">CC-BY / MIT License | Copyright &copy; {{ year }} Jeff Galbraith</p>
+      <div class="full-width row justify-center items-center q-mt-xs">
+        <span class="markdown-copyright">CC-BY / MIT License | Copyright &copy; {{ year }} Jeff Galbraith</span>
+      </div>
+
+      <div :class="madeWithClasses">
+        <span>Made with <q-icon
+          :name="mdiHeart"
+          size="sm"
+          class="text-red-8"
+        /> using <a
+          href="https://quasar.dev"
+          target="_blank"
+          class="quasar-link"
+        >Quasar Framework</a></span>
       </div>
     </q-footer>
 
@@ -230,7 +242,8 @@ import {
   mdiCartHeart,
   mdiTrashCanOutline,
   mdiPartyPopper,
-  mdiCharity
+  mdiCharity,
+  mdiHeart
 } from '@quasar/extras/mdi-v6'
 
 const year = (new Date()).getFullYear()
@@ -274,6 +287,13 @@ export default defineComponent({
       }
 
       return inlined
+    })
+
+    const madeWithClasses = computed(() => {
+      if ($q.screen.lt.md) {
+        return 'full-width row justify-center items-center q-my-xs markdown-copyright'
+      }
+      return 'made-with markdown-copyright'
     })
 
     function isActive (iconSet) {
@@ -349,6 +369,7 @@ export default defineComponent({
       mdiCartOutline,
       mdiCartHeart,
       mdiTrashCanOutline,
+      mdiHeart,
       toggleLeftDrawer,
       toggleRightDrawer,
       iconSets,
@@ -361,7 +382,8 @@ export default defineComponent({
       year,
       fabGithub,
       fabTwitter,
-      mdiCharity
+      mdiCharity,
+      madeWithClasses
     }
   }
 })
@@ -390,4 +412,12 @@ export default defineComponent({
   border-radius: 0 10px 10px 0
   margin-right: 12px
 
+.quasar-link
+  color: scale-color($primary, $lightness: 90%)
+
+.made-with
+  position: absolute
+  right: 10px
+  bottom: 0px
+  transition: all .5s
 </style>
