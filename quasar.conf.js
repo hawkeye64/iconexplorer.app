@@ -123,7 +123,8 @@ module.exports = configure(function (ctx) {
         'Dark',
         'LoadingBar',
         'Notify',
-        'Loading'
+        'Loading',
+        'LocalStorage'
       ]
     },
 

@@ -37,12 +37,23 @@
           :icon="$q.dark.isActive ? mdiBrightness2 : mdiBrightness5"
           @click="$q.dark.toggle()"
         />
+
         <div>Quasar v{{ $q.version }}</div>
+
         <q-btn
           flat
           round
           :icon="Object.keys(store.cart).length === 0 ? mdiCartOutline : mdiCartHeart"
           @click="toggleRightDrawer"
+        />
+
+        <q-btn
+          flat
+          dense
+          round
+          :icon="mdiCog"
+          aria-label="Settings"
+          @click="toggleSettingsDrawer"
         />
       </q-toolbar>
     </q-header>
@@ -211,6 +222,41 @@
       </q-scroll-area>
     </q-drawer>
 
+    <q-drawer
+      v-model="store.settingsDrawerOpen"
+      bordered
+      overlay
+      side="right"
+    >
+      <q-scroll-area class="fit">
+        <div class="row justify-center text-h5">Settings</div>
+
+        <q-separator />
+
+        <div class="fit q-pl-sm q-gutter-sm">
+          <q-toggle
+            v-model="store.tooltips"
+            label="Tooltips"
+            left-label
+          />
+          <q-select
+            v-model="store.iconSize"
+            label="Box Height"
+            :options="['248px', '192px', '148px', '92px', '48px', '22px', 'xl', 'lg', 'md', 'sm', 'xs']"
+            dense
+            outlined
+          />
+          <q-select
+            v-model="store.iconColumns"
+            label="Columns"
+            :options="['reactive', '12', '6', '4', '3', '2', '1']"
+            dense
+            outlined
+          />
+        </div>
+      </q-scroll-area>
+    </q-drawer>
+
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -243,7 +289,8 @@ import {
   mdiTrashCanOutline,
   mdiPartyPopper,
   mdiCharity,
-  mdiHeart
+  mdiHeart,
+  mdiCog
 } from '@quasar/extras/mdi-v6'
 
 const year = (new Date()).getFullYear()
@@ -314,6 +361,10 @@ export default defineComponent({
       store.rightDrawerOpen = !store.rightDrawerOpen
     }
 
+    function toggleSettingsDrawer () {
+      store.settingsDrawerOpen = !store.settingsDrawerOpen
+    }
+
     function onCartRemoveAllItems () {
       store.removeAll()
     }
@@ -370,8 +421,10 @@ export default defineComponent({
       mdiCartHeart,
       mdiTrashCanOutline,
       mdiHeart,
+      mdiCog,
       toggleLeftDrawer,
       toggleRightDrawer,
+      toggleSettingsDrawer,
       iconSets,
       isActive,
       onClickIconSet,

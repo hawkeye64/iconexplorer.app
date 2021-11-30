@@ -10,7 +10,8 @@ export default defineComponent({
   name: 'App',
 
   setup () {
-    provideStore()
+    const { loadStore } = provideStore()
+    loadStore()
   }
 })
 </script>

@@ -1,4 +1,5 @@
-import { inject, provide, reactive, computed } from 'vue'
+import { inject, provide, reactive, computed, watch } from 'vue'
+import { useQuasar } from 'quasar'
 import { storeKey } from './symbols.js'
 
 export function useStore () {
@@ -6,17 +7,55 @@ export function useStore () {
 }
 
 export function provideStore () {
+  const $q = useQuasar()
   const makeReactive = process.env.SERVER !== true ? reactive : val => val
   const store = makeReactive({
     importedIcons: null,
     filter: '',
     iconSet: null,
     iconSize: '192px',
+    iconColumns: 'normal',
     cart: {},
     leftDrawerOpen: false,
     rightDrawerOpen: false,
-    showIconDialog: false
+    settingsDrawerOpen: false,
+    showIconDialog: false,
+    tooltips: true
   })
+
+  const savedKeys = [
+    'filter',
+    'iconSize',
+    'iconColumns',
+    'tooltips'
+  ]
+
+  let initialized = false
+
+  watch(store, val => {
+    saveStore()
+  })
+
+  function saveStore () {
+    if (initialized) {
+      for (const key in savedKeys) {
+        $q.localStorage.set(savedKeys[ key ], store[ savedKeys[ key ] ])
+      }
+    }
+  }
+
+  store.saveStore = saveStore
+
+  function loadStore () {
+    const keys = $q.localStorage.getAllKeys()
+    for (const key in keys) {
+      store[ keys[ key ] ] = $q.localStorage.getItem(keys[ key ])
+      if (keys[ key ] === 'filter' && store.filter === 'null') store.filter = ''
+    }
+    initialized = true
+  }
+
+  store.loadStore = loadStore
 
   /*
     cart looks like this:
@@ -117,4 +156,8 @@ export function provideStore () {
     storeKey,
     store
   )
+
+  return {
+    loadStore
+  }
 }

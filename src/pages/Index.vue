@@ -198,7 +198,7 @@
     >
       <div class="row justify-center items-center col-md-4 col-sm-12">Totals: {{ filteredCount }}/{{ iconCount }}</div>
       <q-input
-        v-model="filter"
+        v-model="store.filter"
         borderless
         dense
         outlined
@@ -210,7 +210,7 @@
       >
         <template #append>
           <q-icon
-            v-if="!filter"
+            v-if="!store.filter"
             name="mdi-card-search-outline"
           />
         </template>
@@ -261,7 +261,6 @@ export default defineComponent({
   setup () {
     const store = useStore(),
       importedIcons = ref(null),
-      filter = ref(''),
       dialogRef = ref(null),
       currentPath = ref(''),
       currentName = ref(''),
@@ -307,7 +306,7 @@ export default defineComponent({
     // returns a list of filtered icons
     const icons = computed(() => {
       const vals = {}
-      const f = filter.value && importedIcons.value ? filter.value.toLowerCase() : ''
+      const f = store.filter && importedIcons.value ? store.filter.toLowerCase() : ''
       Object.keys(importedIcons.value ? importedIcons.value : {}).forEach(name => {
         if (f === '' || name.toLowerCase().indexOf(f) > -1) {
           vals[ name ] = importedIcons.value[ name ]
@@ -476,7 +475,6 @@ export default defineComponent({
 
     return {
       store,
-      filter,
       dialogRef,
       currentPath,
       currentName,
