@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.12.1",
-    "core-js": "^3.19.1",
+    "core-js": "^3.19.2",
     "quasar": "^2.3.3",
     "quasar-extras-svg-icons": "^1.6.0"
   },
