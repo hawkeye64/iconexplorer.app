@@ -67,10 +67,19 @@
     color: white
     backdrop-filter: blur(7px)
 
+  .filter-bar
+    background-color: rgba(255,255,255,.65)
+    color: black
+    backdrop-filter: blur(7px)
+
 @supports not (backdrop-filter: none)
   .glass
     background-color: $primary
     color: white
+
+  .filter-bar
+    background-color: white
+    color: black
 
 .q-dark div,
 .body--dark div
@@ -81,7 +90,16 @@
       color: white
       backdrop-filter: blur(7px)
 
+    .filter-bar
+      background-color: rgba(0,0,0,.65)
+      color: white
+      backdrop-filter: blur(7px)
+
   @supports not (backdrop-filter: none)
     .glass
+      background-color: black
+      color: white
+
+    .filter-bar
       background-color: black
       color: white
