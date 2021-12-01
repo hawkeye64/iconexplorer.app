@@ -14,8 +14,8 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          <div>
+        <q-toolbar-title class="q-pa-none">
+          <div class="ellipsis">
             <q-img
               src="icon-finder-light.png"
               width="42px"
