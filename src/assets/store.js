@@ -14,7 +14,7 @@ export function provideStore () {
     filter: '',
     iconSet: null,
     iconSize: '192px',
-    iconColumns: 'normal',
+    iconColumns: 'reactive',
     cart: {},
     leftDrawerOpen: false,
     rightDrawerOpen: false,
