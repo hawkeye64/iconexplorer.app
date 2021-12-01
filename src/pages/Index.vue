@@ -33,7 +33,7 @@
           <q-btn
             flat
             round
-            :icon="matClose"
+            :icon="mdiClose"
             @click="store.showIconDialog = false"
           />
         </q-card-section>
@@ -211,7 +211,7 @@
         <template #append>
           <q-icon
             v-if="!store.filter"
-            name="mdi-card-search-outline"
+            :name="uiwSearch"
           />
         </template>
       </q-input>
@@ -246,7 +246,7 @@
     >
       <q-btn
         fab
-        :icon="matKeyboardArrowUp"
+        :icon="mdiChevronUp"
         class="glass"
       />
     </q-page-scroller>
@@ -257,7 +257,8 @@
 import { defineComponent, markRaw, ref, computed, watch, nextTick } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { useStore } from 'assets/store.js'
-import { matClose, matAdd, matKeyboardArrowUp } from '@quasar/extras/material-icons'
+import { mdiHeartBroken, mdiClose, mdiPlus, mdiChevronUp } from '@quasar/extras/mdi-v6'
+import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
 import SvgIconViewer from '../components/SvgIconViewer.vue'
 
 export default defineComponent({
@@ -345,9 +346,9 @@ export default defineComponent({
     // retrns the icon to use for "Add to library"/"Remove from library" button
     const cartButtonIcon = computed(() => {
       if (isInCart.value !== true) {
-        return matAdd
+        return mdiPlus
       }
-      return matClose
+      return mdiClose
     })
 
     // watches iconSet and loads new icons when it changes
@@ -510,8 +511,10 @@ export default defineComponent({
       iconCount,
       icons,
       screenWidth,
-      matClose,
-      matKeyboardArrowUp,
+      mdiClose,
+      mdiChevronUp,
+      mdiHeartBroken,
+      uiwSearch,
       colorClass,
       changeColor,
       onSelected,
