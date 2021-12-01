@@ -13,7 +13,7 @@ export function provideStore () {
     importedIcons: null,
     filter: '',
     iconSet: null,
-    iconSize: '192px',
+    iconSize: '148px',
     iconColumns: 'reactive',
     cart: {},
     leftDrawerOpen: false,
