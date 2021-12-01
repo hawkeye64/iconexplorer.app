@@ -389,7 +389,10 @@ export default defineComponent({
     })
 
     watch(() => store.showIconDialog,  val => {
-      if (val) store.rightDrawerOpen = false
+      if (val) {
+        store.rightDrawerOpen = false
+        store.settingsDrawerOpen = false
+      }
       else {
         textColor.value = 'black'
       }
@@ -406,7 +409,17 @@ export default defineComponent({
     })
 
     watch(() => store.rightDrawerOpen, val => {
-      if (val) store.showIconDialog = false
+      if (val) {
+        store.showIconDialog = false
+        store.settingsDrawerOpen = false
+      }
+    })
+
+    watch(() => store.settingsDrawerOpen, val => {
+      if (val) {
+        store.showIconDialog = false
+        store.rightDrawerOpen = false
+      }
     })
 
     function colorClass (color) {
