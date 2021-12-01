@@ -38,7 +38,7 @@
           @click="$q.dark.toggle()"
         />
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div v-if="$q.screen.gt.xs">Quasar v{{ $q.version }}</div>
 
         <q-btn
           flat
