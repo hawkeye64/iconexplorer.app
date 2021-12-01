@@ -226,6 +226,15 @@
         @selected="onSelected"
       />
     </template>
+    <div
+      v-else-if="store.filter.length > 0"
+      class="row justify-center items-center text-h4"
+    >
+      <q-icon
+        :name="mdiHeartBroken"
+        class="text-red-8"
+      />No icons found that match the filter
+    </div>
 
     <div class="icons-footer" />
 
