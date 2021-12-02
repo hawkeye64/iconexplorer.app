@@ -27,11 +27,14 @@ const iconSets = [
       { label: 'Akar Icons', value: 'akar-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.6.0' },
       { label: 'Ant Design Icons', value: 'ant-design-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.4.0' },
       { label: 'Box Icons', value: 'box-icons', packageName: 'quasar-extras-svg-icons' },
+      { label: 'Carbon Icons', value: 'carbon-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.7.0' },
+      { label: 'Carbon Pictograms', value: 'carbon-pictograms', packageName: 'quasar-extras-svg-icons', status: 'v1.7.0' },
       { label: 'Codicons', value: 'codicons', packageName: 'quasar-extras-svg-icons', status: 'v1.4.0' },
       { label: 'Cool Icons', value: 'cool-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.3.0' },
       { label: 'Country Flag Icons', value: 'country-flag-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.6.0' },
       { label: 'Entypo+ Icons', value: 'entypo-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.4.0' },
       { label: 'Fluent Icons', value: 'fluentui-system-icons', packageName: 'quasar-extras-svg-icons' },
+      { label: 'Health Icons', value: 'health-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.7.0' },
       { label: 'Grid Icons', value: 'grid-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.6.0' },
       { label: 'Hero Icons (outline)', value: 'hero-icons-outline', packageName: 'quasar-extras-svg-icons' },
       { label: 'Hero Icons (solid)', value: 'hero-icons-solid', packageName: 'quasar-extras-svg-icons' },
@@ -52,6 +55,7 @@ const iconSets = [
       { label: 'Unicons', value: 'unicons', packageName: 'quasar-extras-svg-icons', status: 'v1.1.0' },
       { label: 'Vaadin Icons', value: 'vaadin-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.3.0' },
       { label: 'Weather Icons', value: 'weather-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.6.0' },
+      { label: 'Webfont Medical Icons', value: 'webfont-medical-icons', packageName: 'quasar-extras-svg-icons', status: 'v1.7.0' },
       { label: 'Zond Icons', value: 'zond-icons', packageName: 'quasar-extras-svg-icons' }
     ]
   }
