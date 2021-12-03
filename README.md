@@ -14,11 +14,11 @@ The original SVG files have been converted to Quasar's short-hand (flattened) fo
 
 From the left drawer, select an icon set. All of the icons from that icon set will appear. You can use the filter bar to search the names of the icons.
 
-Once you find an icon you want click on it. A bottom sheet is displayed with a larger version of the icon. You can play withchanging the color or inverting foreground and background colors. There are several buttons available that will copy the icon in different formats to the clipboard.
+Once you find an icon you want click on it. A bottom sheet is displayed with a larger version of the icon. You can play with changing the color or inverting the foreground and background colors. There are several buttons available that will copy the icon in different formats to the clipboard.
 
-If you are looking for multiple icons, then use the `Add to library` button. You will notice the cart icon in the upper-right changes to show there are items in your library. Select several icons in this manner, even from different icon sets. Then, click the cart icon. A right-side drawer is revealed with your selected icons. Click the `Imported` button to have the icons copied to your clipboard.The format is code, so all you have to do is paste it directly into your code.
+If you are looking for multiple icons, then use the `Add to library` button. You will notice the cart icon in the upper-right changes to show there are items in your library. Select several icons in this manner, even from different icon sets. Then, click the cart icon. A right-side drawer is revealed with your selected icons. Click the `Imported` button to have the icons copied to your clipboard. The format is code, so all you have to do is paste it directly into your code.
 
-Here is an example of icons that were selected frommultiple icon sets:
+Here is an example of icons that were selected from multiple icon sets:
 
 ```js
 import { matAddAPhoto, matAddAlert, matAddShoppingCart } from '@quasar/extras/material-icons'
