@@ -87,7 +87,7 @@
 
             <div class="column justify-start q-gutter-sm q-pa-sm">
               <div class="col">
-                <div>Copy</div>
+                <div>Copy to clipboard...</div>
                 <div class="row q-gutter-xs">
                   <q-btn
                     no-caps
