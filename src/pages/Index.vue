@@ -8,7 +8,7 @@
     >
       <q-card
         class="q-pa-sm"
-        :style="{ minWidth: screenWidth + 'px', minHeight: '200px'}"
+        :style="{ minWidth: '100vw', minHeight: '200px'}"
       >
         <q-card-section class="row justify-center items-center no-wrap q-pa-sm">
           <div
@@ -38,26 +38,26 @@
           />
         </q-card-section>
 
-        <q-card-section class="row items-center no-wrap q-pa-sm">
+        <q-card-section class="row no-wrap q-pa-sm">
           <div
-            class="row justify-center items-center"
+            class="row justify-center"
             style="width: 100%;"
           >
-            <div class="column q-pa-sm">
+            <div class="q-pa-sm fill">
               <q-icon
                 :name="currentPath"
-                :size="store.iconSize"
-                class="q-pa-xs col-1"
+                size="148px"
+                class="q-pa-xs fill"
                 :class="colorClasses"
                 style="max-width: 200px; min-width: 140px;"
               />
             </div>
-            <div class="column justify-start q-gutter-sm q-pa-sm">
+            <div class="justify-start q-gutter-sm q-pa-sm">
               <q-btn
                 no-caps
                 size="sm"
                 flat
-                style="max-width: 150px;"
+                style="min-width: 150px;"
                 class="col user-button"
                 @click="onHandleCart(currentPath, currentName)"
               >
@@ -69,7 +69,10 @@
                   {{ cartButtonLabel }}
                 </div>
               </q-btn>
-              <div class="col row bordered">
+              <div
+                class="col row bordered"
+                style="max-width: 142px;"
+              >
                 <div
                   v-for="color in colors"
                   :key="color"
@@ -85,7 +88,10 @@
               />
             </div>
 
-            <div class="column justify-start q-gutter-sm q-pa-sm">
+            <div
+              class="row justify-start q-gutter-sm q-pa-sm"
+              style="max-width: 230px;"
+            >
               <div class="col">
                 <div>Copy to clipboard...</div>
                 <div class="row q-gutter-xs">
@@ -100,24 +106,9 @@
                       :delay="250"
                       class="primary"
                     >
-                      Copy SVG name to clipboard
+                      Copy "{{ currentName }}" to clipboard
                     </q-tooltip>
                     Name
-                  </q-btn>
-                  <q-btn
-                    no-caps
-                    size="sm"
-                    flat
-                    class="user-button"
-                    @click="inlineToClipboard"
-                  >
-                    <q-tooltip
-                      :delay="250"
-                      class="primary"
-                    >
-                      Copy SVG inlined to clipboard
-                    </q-tooltip>
-                    Inline
                   </q-btn>
                   <q-btn
                     no-caps
@@ -130,9 +121,24 @@
                       :delay="250"
                       class="primary"
                     >
-                      Copy SVG import to clipboard
+                      Copy "import &#123; {{ currentName }} &#125; from '{{ store.iconSet.packageName }}/{{ store.iconSet.value }}'"" to clipboard
                     </q-tooltip>
                     Import
+                  </q-btn>
+                  <q-btn
+                    no-caps
+                    size="sm"
+                    flat
+                    class="user-button"
+                    @click="inlineToClipboard"
+                  >
+                    <q-tooltip
+                      :delay="250"
+                      class="primary"
+                    >
+                      Copy SVG inlined to clipboard (ex: 'const {{ currentName }} = "..."')
+                    </q-tooltip>
+                    Inline
                   </q-btn>
                   <q-btn
                     no-caps
@@ -145,7 +151,7 @@
                       :delay="250"
                       class="primary"
                     >
-                      Copy QIcon with SVG name to clipboard
+                      Copy "&lt;q-icon :name="{{ currentName }}" /&gt;" clipboard
                     </q-tooltip>
                     QIcon
                   </q-btn>
@@ -160,7 +166,7 @@
                       :delay="250"
                       class="primary"
                     >
-                      Copy QBtn with SVG name to clipboard
+                      Copy "&lt;q-btn :icon="{{ currentName }}" /&gt;" clipboard
                     </q-tooltip>
 
                     QBtn

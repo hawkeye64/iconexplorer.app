@@ -44,6 +44,7 @@
           flat
           round
           :icon="Object.keys(store.cart).length === 0 ? mdiCartOutline : mdiCartHeart"
+          :color="Object.keys(store.cart).length === 0 ? 'currentColor' : 'pink-4'"
           @click="toggleRightDrawer"
         />
 
@@ -204,7 +205,7 @@
               />
             </q-item-section>
           </q-item>
-          <div>
+          <div class="row justify-center q-pt-sm">
             <q-btn
               v-for="icon in store.selectedIconsFlattened"
               :key="icon.iconName"
