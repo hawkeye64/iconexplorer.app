@@ -5224,10 +5224,10 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-quasar-extras-svg-icons@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.7.0.tgz#bf4a437fd03495ad8ccb1f3f39a0eac738042ddd"
-  integrity sha512-10KrawV6NngsV5jGNwO2CYHL+0iRoH2TnlKOjXlF7cXR4I80Wb5ADgxx+NtBni/8sVoEXTxZxYyJmN67Mrylmg==
+quasar-extras-svg-icons@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.7.1.tgz#409b3fde682471df90f84970e0f021d94f98b70a"
+  integrity sha512-1O3Iiy0MuXfmGyJ2EhY3qr+uDUUDz1WyAi5/i6fL7hwXCXJrI677MIv8WJ4xjv/z3WCVA8E3jiJffYhrprplCA==
 
 quasar@^2.3.3:
   version "2.3.3"
