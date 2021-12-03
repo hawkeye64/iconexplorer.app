@@ -227,7 +227,7 @@
       />
     </template>
     <div
-      v-else-if="store.filter.length > 0"
+      v-else-if="importedIcons && store.filter && store.filter.length > 0"
       class="row justify-center items-center text-h4"
     >
       <q-icon
@@ -498,6 +498,7 @@ export default defineComponent({
 
     return {
       store,
+      importedIcons,
       dialogRef,
       currentPath,
       currentName,
