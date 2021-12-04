@@ -21,7 +21,7 @@
         />
         <div
           class="row full-width justify-center items-center ellipsis"
-          style="font-size: 10px;"
+          style="font-size: 12px;"
         >
           {{ name }}
         </div>
