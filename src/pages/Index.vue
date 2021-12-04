@@ -322,7 +322,7 @@ export default defineComponent({
     // returns a list of filtered icons
     const icons = computed(() => {
       const vals = {}
-      const f = store.filter && importedIcons.value ? store.filter.toLowerCase() : ''
+      const f = store.filter && typeof store.filter === 'string' && importedIcons.value ? store.filter.toLowerCase() : ''
       Object.keys(importedIcons.value ? importedIcons.value : {}).forEach(name => {
         if (f === '' || name.toLowerCase().indexOf(f) > -1) {
           vals[ name ] = importedIcons.value[ name ]
