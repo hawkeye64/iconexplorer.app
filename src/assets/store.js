@@ -67,7 +67,7 @@ export function createStore ({ router }) {
 
   let initialized = false
 
-  watch(store, val => {
+  watch(savedKeys.map((key) => (() => store[ key ])), () => {
     saveStore()
   })
 
