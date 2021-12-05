@@ -113,7 +113,7 @@
           class="icon-menu"
         >
           <template
-            v-for="(parent, index) in iconSets"
+            v-for="parent in iconSets"
             :key="parent.label"
           >
             <q-item-label
@@ -121,7 +121,7 @@
               class="text-caption text-weight-bold"
               style="font-size: 14px;"
             >
-              {{ parent.label }} v{{ index === 0 ? version : version2 }}
+              {{ parent.label }} v{{ parent.label === '@quasar/extras' ? qExtrasVersion : qExtrasSvgVersion }}
             </q-item-label>
             <q-item
               v-for="child in parent.children"
@@ -267,14 +267,15 @@
 <script>
 import { defineComponent, computed } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
-import pkg from '@quasar/extras/package.json'
-const version = pkg.version
-import pkg2 from 'quasar-extras-svg-icons/package.json'
-const version2 = pkg2.version
-import pkg3 from 'app/package.json'
-const appVersion = pkg3.version
 import { iconSets } from 'src/icon-sets'
 import { useStore } from 'assets/store.js'
+
+import pkg from '@quasar/extras/package.json'
+const qExtrasVersion = pkg.version
+import pkg2 from 'quasar-extras-svg-icons/package.json'
+const qExtrasSvgVersion = pkg2.version
+import pkg3 from 'app/package.json'
+const appVersion = pkg3.version
 
 import {
   fabGithub,
@@ -412,9 +413,11 @@ export default defineComponent({
 
     return {
       store,
-      version,
-      version2,
+
+      qExtrasVersion,
+      qExtrasSvgVersion,
       appVersion,
+
       mdiMenu,
       mdiBrightness2,
       mdiBrightness5,
