@@ -233,7 +233,7 @@
       />
     </template>
     <div
-      v-else-if="importedIcons && store.filter && store.filter.length > 0"
+      v-else-if="importedIcons && store.filter"
       class="row justify-center items-center text-h4"
     >
       <q-icon
@@ -322,7 +322,7 @@ export default defineComponent({
     // returns a list of filtered icons
     const icons = computed(() => {
       const vals = {}
-      const f = store.filter && typeof store.filter === 'string' && importedIcons.value ? store.filter.toLowerCase() : ''
+      const f = importedIcons.value ? store.filter.toLowerCase() : ''
       Object.keys(importedIcons.value ? importedIcons.value : {}).forEach(name => {
         if (f === '' || name.toLowerCase().indexOf(f) > -1) {
           vals[ name ] = importedIcons.value[ name ]

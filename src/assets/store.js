@@ -47,7 +47,6 @@ export function useStore () {
 export function createStore ({ router }) {
   /** @type {Store} */
   const store = reactive({
-    filter: '',
     iconSize: '148px',
     iconColumns: 'reactive',
     cart: {},
@@ -59,7 +58,6 @@ export function createStore ({ router }) {
   })
 
   const savedKeys = [
-    'filter',
     'iconSize',
     'iconColumns',
     'tooltips'
@@ -79,6 +77,31 @@ export function createStore ({ router }) {
       : undefined)
   )
 
+  router.beforeEach((to, from) => {
+    if (to.name !== 'icons' || from.name !== 'icons') {
+      return
+    }
+
+    // If changing the icon set, preserve the filter from the previous one
+    if (to.params.iconSet !== from.params.iconSet && to.query.filter === undefined && from.query.filter !== undefined) {
+      to.query.filter = from.query.filter
+
+      return to
+    }
+  })
+
+  store.filter = computed({
+    get: () => route.value.query.filter || '',
+    set: val => {
+      router.replace({
+        query: {
+          ...route.value.query,
+          filter: val || undefined
+        }
+      })
+    }
+  })
+
   function saveStore () {
     if (initialized) {
       for (const key in savedKeys) {
@@ -93,7 +116,6 @@ export function createStore ({ router }) {
     const keys = LocalStorage.getAllKeys()
     for (const key in keys) {
       store[ keys[ key ] ] = LocalStorage.getItem(keys[ key ])
-      if (keys[ key ] === 'filter' && store.filter === 'null') store.filter = ''
     }
     initialized = true
   }

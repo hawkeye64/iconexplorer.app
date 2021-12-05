@@ -127,7 +127,7 @@
               v-for="child in parent.children"
               :key="child.label"
               v-ripple
-              :to="{ name: 'index', params: { iconSet: child.value } }"
+              :to="{ name: 'icons', params: { iconSet: child.value } }"
             >
               <q-item-section>
                 <q-item-label class="q-ml-lg">» {{ child.label }}</q-item-label>
