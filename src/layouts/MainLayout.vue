@@ -271,9 +271,9 @@ import pkg from '@quasar/extras/package.json'
 const version = pkg.version
 import pkg2 from 'quasar-extras-svg-icons/package.json'
 const version2 = pkg2.version
-import pkg3 from '../../package.json'
+import pkg3 from 'app/package.json'
 const appVersion = pkg3.version
-import { iconSets } from '../icon-sets'
+import { iconSets } from 'src/icon-sets'
 import { useStore } from 'assets/store.js'
 
 import {
@@ -319,7 +319,7 @@ export default defineComponent({
           }
         }
       }
- 
+
       return imports
     })
 

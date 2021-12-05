@@ -262,10 +262,10 @@
 <script>
 import { defineComponent, markRaw, ref, computed, watch, nextTick } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
-import { useStore } from 'assets/store.js'
 import { mdiHeartBroken, mdiClose, mdiPlus, mdiChevronUp } from '@quasar/extras/mdi-v6'
 import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
-import SvgIconViewer from '../components/SvgIconViewer.vue'
+import { useStore } from 'assets/store.js'
+import SvgIconViewer from 'components/SvgIconViewer.vue'
 
 export default defineComponent({
   name: 'MainPage',
