@@ -2,6 +2,38 @@ import { inject, provide, reactive, computed, watch } from 'vue'
 import { useQuasar } from 'quasar'
 import { storeKey } from './symbols.js'
 
+/**
+ * @typedef {{ label: string, value: string, packageName: string, status: string }} IconSet
+ */
+
+/**
+ * @typedef {Object} Store
+ *
+ * @property {IconSet | null} iconSet
+ * @property {string} filter
+ * @property {string} iconSize
+ * @property {string} iconColumns
+ *
+ * @property {boolean} leftDrawerOpen
+ * @property {boolean} rightDrawerOpen
+ * @property {boolean} settingsDrawerOpen
+ * @property {boolean} showIconDialog
+ * @property {boolean} tooltips
+ *
+ * @property {{ [packageName: string]: { [iconSetName: string]: { [iconName: string]: string } } }} cart
+ * @property {{ packageName: string, iconSet: string, iconName: string, path: string }} selectedIconsFlattened
+ * @property {(iconName: string) => boolean} isCartIcon
+ * @property {(packageName: string, iconSet: string, name: string) => string | null} findItem
+ * @property {(packageName: string, iconSet: string, name: string) => boolean} removeItem
+ * @property {(packageName: string, iconSet: string, name: string, path: string) => boolean} addItem
+ *
+ * @property {() => void} saveStore
+ * @property {() => void} loadStore
+ */
+
+/**
+ * @returns {Store}
+ */
 export function useStore () {
   return inject(storeKey)
 }
@@ -9,8 +41,8 @@ export function useStore () {
 export function provideStore () {
   const $q = useQuasar()
   const makeReactive = process.env.SERVER !== true ? reactive : val => val
+  /** @type {Store} */
   const store = makeReactive({
-    importedIcons: null,
     filter: '',
     iconSet: null,
     iconSize: '148px',
@@ -60,9 +92,9 @@ export function provideStore () {
   /*
     cart looks like this:
     {
-      packageName: {
-        iconSet: {
-          iconName: path,
+      [packageName]: {
+        [iconSet]: {
+          [iconName]: path,
           ...
         },
         ...
