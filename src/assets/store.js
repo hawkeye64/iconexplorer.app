@@ -1,6 +1,5 @@
-import { inject, provide, reactive, computed, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { useQuasar } from 'quasar'
+import { inject, reactive, computed, watch } from 'vue'
+import { LocalStorage } from 'quasar'
 import { flattenedIconSets } from 'src/icon-sets'
 import { storeKey } from './symbols.js'
 
@@ -31,6 +30,7 @@ import { storeKey } from './symbols.js'
  *
  * @property {() => void} saveStore
  * @property {() => void} loadStore
+ * @property {(app: import('vue').App) => void} install
  */
 
 /**
@@ -40,8 +40,11 @@ export function useStore () {
   return inject(storeKey)
 }
 
-export function provideStore () {
-  const $q = useQuasar()
+/**
+ * @param {{ router: import('vue-router').Router }}
+ * @returns {Store}
+ */
+export function createStore ({ router }) {
   /** @type {Store} */
   const store = reactive({
     filter: '',
@@ -68,18 +71,18 @@ export function provideStore () {
     saveStore()
   })
 
-  const route = useRoute()
+  const route = router.currentRoute
 
   store.iconSet = computed(() =>
-    (route.params.iconSet
-      ? flattenedIconSets.find(iconSet => iconSet.value === route.params.iconSet)
+    (route.value.params.iconSet
+      ? flattenedIconSets.find(iconSet => iconSet.value === route.value.params.iconSet)
       : undefined)
   )
 
   function saveStore () {
     if (initialized) {
       for (const key in savedKeys) {
-        $q.localStorage.set(savedKeys[ key ], store[ savedKeys[ key ] ])
+        LocalStorage.set(savedKeys[ key ], store[ savedKeys[ key ] ])
       }
     }
   }
@@ -87,9 +90,9 @@ export function provideStore () {
   store.saveStore = saveStore
 
   function loadStore () {
-    const keys = $q.localStorage.getAllKeys()
+    const keys = LocalStorage.getAllKeys()
     for (const key in keys) {
-      store[ keys[ key ] ] = $q.localStorage.getItem(keys[ key ])
+      store[ keys[ key ] ] = LocalStorage.getItem(keys[ key ])
       if (keys[ key ] === 'filter' && store.filter === 'null') store.filter = ''
     }
     initialized = true
@@ -189,12 +192,10 @@ export function provideStore () {
     return false
   }
 
-  provide(
-    storeKey,
-    store
-  )
-
-  return {
-    loadStore
+  // Vue plugin install method
+  store.install = (app) => {
+    app.provide(storeKey, store)
   }
+
+  return store
 }
