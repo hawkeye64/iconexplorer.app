@@ -4,7 +4,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: ':iconSet?', name: 'index', component: () => import('pages/Index.vue') },
     ]
   },
 

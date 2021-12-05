@@ -390,10 +390,10 @@ export default defineComponent({
         }
       }
 
-      if(window) {
+      if (process.env.CLIENT) {
         window.scrollTo(0, 0)
       }
-    })
+    }, { immediate: true })
 
     watch(() => store.showIconDialog,  val => {
       if (val) {

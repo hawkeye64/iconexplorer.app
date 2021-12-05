@@ -62,5 +62,6 @@ const iconSets = [
 ];
 
 module.exports = {
-  iconSets
+  iconSets,
+  flattenedIconSets: Object.values(iconSets).flatMap(({ children }) => children)
 }

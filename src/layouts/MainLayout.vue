@@ -127,9 +127,7 @@
               v-for="child in parent.children"
               :key="child.label"
               v-ripple
-              :active="isActive(child)"
-              clickable
-              @click="onClickIconSet(child)"
+              :to="{ name: 'index', params: { iconSet: child.value } }"
             >
               <q-item-section>
                 <q-item-label class="q-ml-lg">» {{ child.label }}</q-item-label>
@@ -345,16 +343,6 @@ export default defineComponent({
       return 'made-with markdown-copyright'
     })
 
-    function isActive (iconSet) {
-      return iconSet.value === store?.iconSet?.value
-    }
-
-    function onClickIconSet (iconSet) {
-      store.leftDrawerOpen = !$q.screen.lt.md
-      store.rightDrawerOpen = false
-      store.iconSet = iconSet
-    }
-
     function toggleLeftDrawer () {
       store.leftDrawerOpen = !store.leftDrawerOpen
     }
@@ -430,8 +418,6 @@ export default defineComponent({
       toggleRightDrawer,
       toggleSettingsDrawer,
       iconSets,
-      isActive,
-      onClickIconSet,
       onCartRemoveAllItems,
       importToClipboard,
       onImportAll,

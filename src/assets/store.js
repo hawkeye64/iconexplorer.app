@@ -1,5 +1,7 @@
 import { inject, provide, reactive, computed, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useQuasar } from 'quasar'
+import { flattenedIconSets } from 'src/icon-sets'
 import { storeKey } from './symbols.js'
 
 /**
@@ -9,7 +11,7 @@ import { storeKey } from './symbols.js'
 /**
  * @typedef {Object} Store
  *
- * @property {IconSet | null} iconSet
+ * @property {IconSet} [iconSet]
  * @property {string} filter
  * @property {string} iconSize
  * @property {string} iconColumns
@@ -40,11 +42,9 @@ export function useStore () {
 
 export function provideStore () {
   const $q = useQuasar()
-  const makeReactive = process.env.SERVER !== true ? reactive : val => val
   /** @type {Store} */
-  const store = makeReactive({
+  const store = reactive({
     filter: '',
-    iconSet: null,
     iconSize: '148px',
     iconColumns: 'reactive',
     cart: {},
@@ -67,6 +67,14 @@ export function provideStore () {
   watch(store, val => {
     saveStore()
   })
+
+  const route = useRoute()
+
+  store.iconSet = computed(() =>
+    (route.params.iconSet
+      ? flattenedIconSets.find(iconSet => iconSet.value === route.params.iconSet)
+      : undefined)
+  )
 
   function saveStore () {
     if (initialized) {
@@ -153,9 +161,6 @@ export function provideStore () {
     return null // not found
   }
 
-  // When not SSR, this becomes reactive (when injected into store)
-  // but, on server, it's not reactive and need '.value' when accessing it
-  // should not be a problem because adding/removing from the cart is user initiated
   store.selectedIconsFlattened = computed(() => {
     const icons = [];
     for (const packageName in store.cart) {
