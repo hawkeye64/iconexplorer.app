@@ -1,18 +1,52 @@
-import { inject, provide, reactive, computed, watch } from 'vue'
-import { useQuasar } from 'quasar'
+import { inject, reactive, computed, watch } from 'vue'
+import { LocalStorage } from 'quasar'
+import { flattenedIconSets } from 'src/icon-sets'
 import { storeKey } from './symbols.js'
 
+/**
+ * @typedef {{ label: string, value: string, packageName: string, status: string }} IconSet
+ */
+
+/**
+ * @typedef {Object} Store
+ *
+ * @property {IconSet} [iconSet]
+ * @property {string} filter
+ * @property {string} iconSize
+ * @property {string} iconColumns
+ *
+ * @property {boolean} leftDrawerOpen
+ * @property {boolean} rightDrawerOpen
+ * @property {boolean} settingsDrawerOpen
+ * @property {boolean} showIconDialog
+ * @property {boolean} tooltips
+ *
+ * @property {{ [packageName: string]: { [iconSetName: string]: { [iconName: string]: string } } }} cart
+ * @property {{ packageName: string, iconSet: string, iconName: string, path: string }} selectedIconsFlattened
+ * @property {(iconName: string) => boolean} isCartIcon
+ * @property {(packageName: string, iconSet: string, name: string) => string | null} findItem
+ * @property {(packageName: string, iconSet: string, name: string) => boolean} removeItem
+ * @property {(packageName: string, iconSet: string, name: string, path: string) => boolean} addItem
+ *
+ * @property {() => void} saveStore
+ * @property {() => void} loadStore
+ * @property {(app: import('vue').App) => void} install
+ */
+
+/**
+ * @returns {Store}
+ */
 export function useStore () {
   return inject(storeKey)
 }
 
-export function provideStore () {
-  const $q = useQuasar()
-  const makeReactive = process.env.SERVER !== true ? reactive : val => val
-  const store = makeReactive({
-    importedIcons: null,
-    filter: '',
-    iconSet: null,
+/**
+ * @param {{ router: import('vue-router').Router }}
+ * @returns {Store}
+ */
+export function createStore ({ router }) {
+  /** @type {Store} */
+  const store = reactive({
     iconSize: '148px',
     iconColumns: 'reactive',
     cart: {},
@@ -24,7 +58,6 @@ export function provideStore () {
   })
 
   const savedKeys = [
-    'filter',
     'iconSize',
     'iconColumns',
     'tooltips'
@@ -32,14 +65,47 @@ export function provideStore () {
 
   let initialized = false
 
-  watch(store, val => {
+  watch(savedKeys.map((key) => (() => store[ key ])), () => {
     saveStore()
+  })
+
+  const route = router.currentRoute
+
+  store.iconSet = computed(() =>
+    (route.value.params.iconSet
+      ? flattenedIconSets.find(iconSet => iconSet.value === route.value.params.iconSet)
+      : undefined)
+  )
+
+  router.beforeEach((to, from) => {
+    if (to.name !== 'icons' || from.name !== 'icons') {
+      return
+    }
+
+    // If changing the icon set, preserve the filter from the previous one
+    if (to.params.iconSet !== from.params.iconSet && to.query.filter === undefined && from.query.filter !== undefined) {
+      to.query.filter = from.query.filter
+
+      return to
+    }
+  })
+
+  store.filter = computed({
+    get: () => route.value.query.filter || '',
+    set: val => {
+      router.replace({
+        query: {
+          ...route.value.query,
+          filter: val || undefined
+        }
+      })
+    }
   })
 
   function saveStore () {
     if (initialized) {
       for (const key in savedKeys) {
-        $q.localStorage.set(savedKeys[ key ], store[ savedKeys[ key ] ])
+        LocalStorage.set(savedKeys[ key ], store[ savedKeys[ key ] ])
       }
     }
   }
@@ -47,10 +113,9 @@ export function provideStore () {
   store.saveStore = saveStore
 
   function loadStore () {
-    const keys = $q.localStorage.getAllKeys()
+    const keys = LocalStorage.getAllKeys()
     for (const key in keys) {
-      store[ keys[ key ] ] = $q.localStorage.getItem(keys[ key ])
-      if (keys[ key ] === 'filter' && store.filter === 'null') store.filter = ''
+      store[ keys[ key ] ] = LocalStorage.getItem(keys[ key ])
     }
     initialized = true
   }
@@ -60,9 +125,9 @@ export function provideStore () {
   /*
     cart looks like this:
     {
-      packageName: {
-        iconSet: {
-          iconName: path,
+      [packageName]: {
+        [iconSet]: {
+          [iconName]: path,
           ...
         },
         ...
@@ -121,9 +186,6 @@ export function provideStore () {
     return null // not found
   }
 
-  // When not SSR, this becomes reactive (when injected into store)
-  // but, on server, it's not reactive and need '.value' when accessing it
-  // should not be a problem because adding/removing from the cart is user initiated
   store.selectedIconsFlattened = computed(() => {
     const icons = [];
     for (const packageName in store.cart) {
@@ -152,12 +214,10 @@ export function provideStore () {
     return false
   }
 
-  provide(
-    storeKey,
-    store
-  )
-
-  return {
-    loadStore
+  // Vue plugin install method
+  store.install = (app) => {
+    app.provide(storeKey, store)
   }
+
+  return store
 }

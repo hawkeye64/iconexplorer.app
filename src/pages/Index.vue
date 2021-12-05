@@ -233,7 +233,7 @@
       />
     </template>
     <div
-      v-else-if="importedIcons && store.filter && store.filter.length > 0"
+      v-else-if="importedIcons && store.filter"
       class="row justify-center items-center text-h4"
     >
       <q-icon
@@ -262,10 +262,10 @@
 <script>
 import { defineComponent, markRaw, ref, computed, watch, nextTick } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
-import { useStore } from 'assets/store.js'
 import { mdiHeartBroken, mdiClose, mdiPlus, mdiChevronUp } from '@quasar/extras/mdi-v6'
 import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
-import SvgIconViewer from '../components/SvgIconViewer.vue'
+import { useStore } from 'assets/store.js'
+import SvgIconViewer from 'components/SvgIconViewer.vue'
 
 export default defineComponent({
   name: 'MainPage',
@@ -322,7 +322,7 @@ export default defineComponent({
     // returns a list of filtered icons
     const icons = computed(() => {
       const vals = {}
-      const f = store.filter && typeof store.filter === 'string' && importedIcons.value ? store.filter.toLowerCase() : ''
+      const f = importedIcons.value ? store.filter.toLowerCase() : ''
       Object.keys(importedIcons.value ? importedIcons.value : {}).forEach(name => {
         if (f === '' || name.toLowerCase().indexOf(f) > -1) {
           vals[ name ] = importedIcons.value[ name ]
@@ -390,10 +390,10 @@ export default defineComponent({
         }
       }
 
-      if(window) {
+      if (process.env.CLIENT) {
         window.scrollTo(0, 0)
       }
-    })
+    }, { immediate: true })
 
     watch(() => store.showIconDialog,  val => {
       if (val) {
