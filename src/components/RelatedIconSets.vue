@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { defineComponent, computed, reactive, watch } from 'vue'
+import { defineComponent, computed, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import { iconSets } from 'src/icon-sets'
 import { useStore } from 'assets/store.js'
@@ -79,10 +79,6 @@ export default defineComponent({
           }
         }
       })
-    })
-
-    watch(() => store.iconSet, val => {
-      console.log('iconSet:', val)
     })
 
     const classes = computed(() => {
