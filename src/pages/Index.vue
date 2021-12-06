@@ -225,6 +225,8 @@
 
     <div class="q-mb-xs" />
 
+    <related-icon-sets />
+
     <template v-if="Object.keys(icons).length">
       <svg-icon-viewer
         :icons="icons"
@@ -266,12 +268,14 @@ import { mdiHeartBroken, mdiClose, mdiPlus, mdiChevronUp } from '@quasar/extras/
 import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
 import { useStore } from 'assets/store.js'
 import SvgIconViewer from 'components/SvgIconViewer.vue'
+import RelatedIconSets from 'components/RelatedIconSets.vue'
 
 export default defineComponent({
   name: 'MainPage',
 
   components: {
-    SvgIconViewer
+    SvgIconViewer,
+    RelatedIconSets
   },
 
   setup () {

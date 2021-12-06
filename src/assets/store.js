@@ -78,14 +78,9 @@ export function createStore ({ router }) {
   )
 
   router.beforeEach((to, from) => {
-    if (to.name !== 'icons' || from.name !== 'icons') {
-      return
-    }
-
-    // If changing the icon set, preserve the filter from the previous one
-    if (to.params.iconSet !== from.params.iconSet && to.query.filter === undefined && from.query.filter !== undefined) {
-      to.query.filter = from.query.filter
-
+    if (to.query.filter === undefined && from.query.filter !== undefined) {
+      to.query.filter = to.query.filter || from.query.filter
+    
       return to
     }
   })
@@ -96,7 +91,7 @@ export function createStore ({ router }) {
       router.replace({
         query: {
           ...route.value.query,
-          filter: val || undefined
+          filter: val || null
         }
       })
     }
