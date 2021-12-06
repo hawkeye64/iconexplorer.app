@@ -12,10 +12,10 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.12.1",
+    "@quasar/extras": "^1.12.2",
     "core-js": "^3.19.2",
     "quasar": "^2.3.3",
-    "quasar-extras-svg-icons": "^1.7.4"
+    "quasar-extras-svg-icons": "^1.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

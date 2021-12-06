@@ -1111,10 +1111,10 @@
     core-js "^3.6.5"
     core-js-compat "^3.6.5"
 
-"@quasar/extras@^1.12.1":
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.12.1.tgz#859f7ac79789f840c1d51f994f5bfd5046b1f261"
-  integrity sha512-EwOnaJEDHo9zCnJzd1sFw1sfMAAq8cJaIjzr2+A9o2NcVLaIhD7YAaJdlIdcNmQnyuPAiq9NghUize8lCS0epw==
+"@quasar/extras@^1.12.2":
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.12.2.tgz#1d70b8aa38fd2f4eaf2bdc7148837180f8073d24"
+  integrity sha512-WDsmEdKJX5axXlkrVZUGAq++tsJ2jRwgSnZXt4TT6csyxM0rmDAoVbYNrc0KaQuEe9QXgHT2QDaaYzymfE616A==
 
 "@quasar/fastclick@1.1.4":
   version "1.1.4"
@@ -5224,10 +5224,10 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-quasar-extras-svg-icons@^1.7.4:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.7.4.tgz#e80ff5837d59d5c12671bae9f7f49df8074bd826"
-  integrity sha512-o2HmKdJHoJNDyof+xfCLWEbtYBlnB/15aAdaFwIZ3tbHDP09xiYWioR9Zka37xm5ZriRDt8De47x5l1UFGDbXA==
+quasar-extras-svg-icons@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.8.0.tgz#a98564b77b2db0ad10c3dab7d6359403d9393101"
+  integrity sha512-vfSQ4lOr3WKK+N4ktz66M8WcDmtaUvKe5m/F6Q0F9Dwq7IPvVMLSnZFtXMrc2LxcNGhubjhxYxIOzJCNhiEh3g==
 
 quasar@^2.3.3:
   version "2.3.3"
