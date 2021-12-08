@@ -225,7 +225,7 @@
 
     <div class="q-mb-xs" />
 
-    <related-icon-sets />
+    <related-icon-sets class="q-mb-xs" />
 
     <template v-if="Object.keys(icons).length">
       <svg-icon-viewer
@@ -235,15 +235,23 @@
       />
     </template>
     <div
-      v-else-if="importedIcons && store.filter"
+      v-else-if="store.filter && importedIcons"
       class="row justify-center items-center text-h4"
     >
       <q-icon
         :name="mdiHeartBroken"
         class="text-red-8"
-      />No icons found that match the filter
+      />No icons found for '{{ store.iconSet.label }}'
     </div>
-
+    <div
+      v-else-if="store.filter && $route.query?.filter"
+      class="row justify-center items-center text-h4"
+    >
+      <q-icon
+        :name="mdiHeartBroken"
+        class="text-red-8"
+      />No icons found
+    </div>
     <div class="icons-footer" />
 
     <q-page-scroller
@@ -264,6 +272,7 @@
 <script>
 import { defineComponent, markRaw, ref, computed, watch, nextTick } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
+// import { route } from 'vue-router'
 import { mdiHeartBroken, mdiClose, mdiPlus, mdiChevronUp } from '@quasar/extras/mdi-v6'
 import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
 import { useStore } from 'assets/store.js'
@@ -287,6 +296,7 @@ export default defineComponent({
       inverted = ref(false),
       textColor = ref('black'),
       $q = useQuasar(),
+      // route = useRoute(),
       colors = [
         'black',
         'red', 'pink', 'purple', 'deep-purple', 'indigo',
