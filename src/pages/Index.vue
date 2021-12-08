@@ -272,7 +272,6 @@
 <script>
 import { defineComponent, markRaw, ref, computed, watch, nextTick } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
-// import { route } from 'vue-router'
 import { mdiHeartBroken, mdiClose, mdiPlus, mdiChevronUp } from '@quasar/extras/mdi-v6'
 import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
 import { useStore } from 'assets/store.js'
@@ -296,7 +295,7 @@ export default defineComponent({
       inverted = ref(false),
       textColor = ref('black'),
       $q = useQuasar(),
-      // route = useRoute(),
+      useDark = ref($q.dark.isActive),
       colors = [
         'black',
         'red', 'pink', 'purple', 'deep-purple', 'indigo',
