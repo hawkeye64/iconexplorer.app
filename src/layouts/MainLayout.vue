@@ -157,7 +157,7 @@
         >
           <div
             v-if="store.relatedIconSets.length > 0"
-            class="q-ma-md text-caption text-weight-bold"
+            class="text-caption text-weight-bold q-ma-md"
             style="font-size: 14px;"
           >
             Search results below:
