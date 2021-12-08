@@ -21,6 +21,8 @@ import { storeKey } from './symbols.js'
  * @property {boolean} showIconDialog
  * @property {boolean} tooltips
  * @property {number} totalIcons
+ * @property {{ [packageName: string]: { [iconSetName: string]: [ [iconName: string]: string ] } }} iconNames
+ * * @property {{ [ [iconSetName: string]: string ] }} relatedIconSets
  *
  * @property {{ [packageName: string]: { [iconSetName: string]: { [iconName: string]: string } } }} cart
  * @property {{ packageName: string, iconSet: string, iconName: string, path: string }} selectedIconsFlattened
@@ -41,6 +43,16 @@ export function useStore () {
   return inject(storeKey)
 }
 
+import { iconSets } from 'src/icon-sets'
+
+function isObject (obj) {
+  return obj === Object(obj);
+}
+
+function isArray (arr) {
+  return arr && Array.isArray(arr) && arr.constructor === Array
+}
+
 /**
  * @param {{ router: import('vue-router').Router }}
  * @returns {Store}
@@ -56,7 +68,8 @@ export function createStore ({ router }) {
     settingsDrawerOpen: false,
     showIconDialog: false,
     tooltips: true,
-    totalIcons: 0
+    totalIcons: 0,
+    iconNames: {}
   })
 
   // these keys get saved to LocalStorage
@@ -203,6 +216,28 @@ export function createStore ({ router }) {
     return icons
   })
 
+  store.relatedIconSets = computed(() => {
+    const related = []
+    const filt = store.filter
+    if (filt) {
+      const f = filt.toLowerCase()
+      Object.keys(store.iconNames).forEach(pkg => {
+        Object.keys(store.iconNames[ pkg ] ).forEach(iconSet => {
+          Object.keys(store.iconNames[ pkg ][ iconSet ]).every(iconIndex => {
+            const icon = store.iconNames[ pkg ][ iconSet ][ iconIndex ]
+            if (String(icon).toLowerCase().indexOf(f) > -1) {
+              related.push(iconSet)
+              return false // 'every' stops on first false
+            }
+            return true
+          })
+        })
+      })
+    }
+
+    return related
+  })
+
   store.isCartIcon = function (name) {
     for (let index = 0; index < store.selectedIconsFlattened.length; ++index) {
       if (store.selectedIconsFlattened[ index ].iconName === name) {
@@ -216,6 +251,42 @@ export function createStore ({ router }) {
   store.install = (app) => {
     app.provide(storeKey, store)
   }
+
+  iconSets.map(iconPackage => {
+    iconPackage.children.forEach(iconSet => {
+      if (iconSet?.icons === true) {
+        if (iconPackage.label === '@quasar/extras') {
+          import(
+            /* webpackChunkName: "[request]" */
+            /* webpackInclude: /icons\.json$/ */
+            /* webpackExclude: /(mdi-v4|mdi-v5|ionicons-v4|ionicons-v5)/ */
+            '@quasar/extras/' + iconSet.value + '/icons.json'
+          ).then(async jsonFile => {
+            if (!isObject(store.iconNames[ iconPackage.label ])) store.iconNames[ iconPackage.label ] = {}
+            if (!isArray(store.iconNames[ iconPackage.label ][ iconSet.value ])) store.iconNames[ iconPackage.label ][ iconSet.value ] = []
+            Object.keys(jsonFile).forEach(key => {
+              store.totalIcons++
+              store.iconNames[ iconPackage.label ][ iconSet.value ].push(jsonFile[ key ])
+            })
+          })
+        }
+        if (iconPackage.label === 'quasar-extras-svg-icons') {
+          import(
+            /* webpackChunkName: "[request]" */
+            /* webpackInclude: /icons\.json$/ */
+            'quasar-extras-svg-icons/' + iconSet.value + '/icons.json'
+          ).then(async jsonFile => {
+            if (!isObject(store.iconNames[ iconPackage.label ])) store.iconNames[ iconPackage.label ] = {}
+            if (!isArray(store.iconNames[ iconPackage.label ][ iconSet.value ])) store.iconNames[ iconPackage.label ][ iconSet.value ] = []
+            Object.keys(jsonFile).forEach(key => {
+              store.totalIcons++
+              store.iconNames[ iconPackage.label ][ iconSet.value ].push(jsonFile[ key ])
+            })
+          })
+        }
+      }
+    })
+  })
 
   return store
 }

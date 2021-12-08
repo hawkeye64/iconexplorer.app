@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh LpR fFf">
+  <q-layout view="lHh LpR lFf">
     <q-header
       elevated
       class="glass"
@@ -33,9 +33,8 @@
               :offset="[-100, 0]"
               class="glass"
             >
-              <div class="column items-center">
+              <div class="column items-center text-no-wrap">
                 <span
-                  class="no-wrap"
                   style="font-size: 18px;"
                 >Serving {{ store.totalIcons }}+ icons</span>
                 <span style="font-size: 12px">Excludes (mdi-v4|mdi-v5|ionicons-v4|ionicons-v5)</span>
@@ -44,6 +43,8 @@
             </q-tooltip>
           </div>
         </q-toolbar-title>
+
+        <!-- <div class="row justify-center items-center col-md-4 col-sm-12">Totals: {{ filteredCount }}/{{ iconCount }}</div> -->
 
         <q-btn
           flat
@@ -121,11 +122,47 @@
       show-if-above
       bordered
     >
-      <q-scroll-area class="fit">
+      <q-scroll-area style="height: calc(100% - 51px); margin-top: 51px;">
+        <div class="fixed-top glass">
+          <form
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="off"
+            spellcheck="false"
+          >
+            <q-input
+              v-model="store.filter"
+              dark
+              dense
+              square
+              borderless
+              clearable
+              debounce="300"
+              placeholder="Search"
+              class="full-width icon-search-input"
+            >
+              <template #append>
+                <q-icon
+                  v-if="!store.filter"
+                  :name="uiwSearch"
+                  color="grey-1"
+                />
+              </template>
+            </q-input>
+          </form>
+        </div>
         <q-list
           dense
           class="icon-menu"
         >
+          <div
+            v-if="store.relatedIconSets.length > 0"
+            class="q-ma-md text-caption text-weight-bold"
+            style="font-size: 14px;"
+          >
+            Search results below:
+          </div>
+
           <template
             v-for="parent in iconSets"
             :key="parent.label"
@@ -137,27 +174,31 @@
             >
               {{ parent.label }} v{{ parent.label === '@quasar/extras' ? qExtrasVersion : qExtrasSvgVersion }}
             </q-item-label>
-            <q-item
+            <template
               v-for="child in parent.children"
               :key="child.label"
-              v-ripple
-              :to="{ name: 'icons', params: { iconSet: child.value } }"
             >
-              <q-item-section>
-                <q-item-label class="q-ml-lg">» {{ child.label }}</q-item-label>
-              </q-item-section>
-              <q-item-section
-                v-if="child.status"
-                side
-                class="text-right"
+              <q-item
+                v-if="canDisplay(child)"
+                v-ripple
+                :to="{ name: 'icons', params: { iconSet: child.value } }"
               >
-                <q-badge
-                  color="blue"
-                  text-color="white"
-                  :label="child.status"
-                />
-              </q-item-section>
-            </q-item>
+                <q-item-section>
+                  <q-item-label class="q-ml-lg">» {{ child.label }}</q-item-label>
+                </q-item-section>
+                <q-item-section
+                  v-if="child.status"
+                  side
+                  class="text-right"
+                >
+                  <q-badge
+                    color="blue"
+                    text-color="white"
+                    :label="child.status"
+                  />
+                </q-item-section>
+              </q-item>
+            </template>
           </template>
         </q-list>
       </q-scroll-area>
@@ -281,6 +322,7 @@ import { defineComponent, computed } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { iconSets } from 'src/icon-sets'
 import { useStore } from 'assets/store.js'
+import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
 
 import pkg from '@quasar/extras/package.json'
 const qExtrasVersion = pkg.version
@@ -413,6 +455,13 @@ export default defineComponent({
         })
     }
 
+    function canDisplay (child) {
+      if (store.relatedIconSets.length > 0) {
+        return store.relatedIconSets.includes(child.value)
+      }
+      return true
+    }
+
     return {
       store,
 
@@ -428,6 +477,7 @@ export default defineComponent({
       mdiTrashCanOutline,
       mdiHeart,
       mdiCog,
+      uiwSearch,
       toggleLeftDrawer,
       toggleRightDrawer,
       toggleSettingsDrawer,
@@ -440,13 +490,36 @@ export default defineComponent({
       fabGithub,
       fabTwitter,
       mdiCharity,
-      madeWithClasses
+      madeWithClasses,
+      canDisplay
     }
   }
 })
 </script>
 
 <style lang="sass">
+.icon-search-input,
+.icon-search-input .q-field__control
+  height: 50px
+
+.icon-search-input
+  .q-field__control
+    padding: 0 18px 0 16px !important
+  input
+    line-height: 38px
+  .q-field__prepend,
+  .q-field__append
+    height: 100%
+    cursor: text !important
+  kbd
+    font-size: .6em !important
+    min-width: 1.6em
+    min-height: 1.5em
+    font-weight: bold
+
+body.mobile .icon-search-input kbd
+  display: none
+
 .markdown-copyright
   font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace
 

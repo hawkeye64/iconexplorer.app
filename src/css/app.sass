@@ -66,6 +66,10 @@
     color: black
     backdrop-filter: blur(7px)
 
+  .q-drawer--left.q-drawer--bordered
+    border-right: 1px solid rgba(25,118,210,.65)
+    backdrop-filter: blur(7px)
+
 @supports not (backdrop-filter: none)
   .glass
     background-color: $primary
@@ -87,6 +91,10 @@
     .filter-bar
       background-color: rgba(0,0,0,.65)
       color: white
+      backdrop-filter: blur(7px)
+
+    .q-drawer--left.q-drawer--bordered
+      border-right: 1px solid rgba(0,0,0,.65)
       backdrop-filter: blur(7px)
 
   @supports not (backdrop-filter: none)

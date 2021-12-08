@@ -202,8 +202,8 @@
       :class="headerClasses"
       style="position: sticky; top: 50px; left: 0; right: 0; z-index: 2000;"
     >
-      <div class="row justify-center items-center col-md-4 col-sm-12">Totals: {{ filteredCount }}/{{ iconCount }}</div>
-      <q-input
+      <div class="row justify-center items-center">Totals: {{ filteredCount }}/{{ iconCount }}</div>
+      <!-- <q-input
         v-model="store.filter"
         borderless
         dense
@@ -220,12 +220,12 @@
             :name="uiwSearch"
           />
         </template>
-      </q-input>
+      </q-input> -->
     </div>
 
-    <div class="q-mb-xs" />
+    <!-- <div class="q-mb-xs" /> -->
 
-    <related-icon-sets class="q-mb-xs" />
+    <!-- <related-icon-sets class="q-mb-xs" /> -->
 
     <template v-if="Object.keys(icons).length">
       <svg-icon-viewer
@@ -276,14 +276,14 @@ import { mdiHeartBroken, mdiClose, mdiPlus, mdiChevronUp } from '@quasar/extras/
 import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
 import { useStore } from 'assets/store.js'
 import SvgIconViewer from 'components/SvgIconViewer.vue'
-import RelatedIconSets from 'components/RelatedIconSets.vue'
+// import RelatedIconSets from 'components/RelatedIconSets.vue'
 
 export default defineComponent({
   name: 'MainPage',
 
   components: {
-    SvgIconViewer,
-    RelatedIconSets
+    SvgIconViewer
+    // RelatedIconSets
   },
 
   setup () {
@@ -344,7 +344,7 @@ export default defineComponent({
       return vals
     })
 
-    // returns a countof all filtered icons
+    // returns a count of all filtered icons
     const filteredCount = computed(() => {
       return Object.keys(icons.value).length
     })
