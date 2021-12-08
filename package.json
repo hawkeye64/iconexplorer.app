@@ -6,9 +6,10 @@
   "author": "Jeff Galbraith <galbraith64@gmail.com>",
   "private": true,
   "scripts": {
+    "clean": "rm -Rf yarn.lock node_modules",
+    "dev": "quasar dev",
     "build": "quasar build",
     "lint": "eslint --ext .js,.vue ./",
-    "lint-fix": "eslint --ext .js,.vue src --fix",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
