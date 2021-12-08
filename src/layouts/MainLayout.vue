@@ -28,6 +28,20 @@
             >
               v{{ appVersion }}
             </span>
+            <q-tooltip
+              anchor="bottom left"
+              :offset="[-100, 0]"
+              class="glass"
+            >
+              <div class="column items-center">
+                <span
+                  class="no-wrap"
+                  style="font-size: 18px;"
+                >Serving {{ store.totalIcons }}+ icons</span>
+                <span style="font-size: 12px">Excludes (mdi-v4|mdi-v5|ionicons-v4|ionicons-v5)</span>
+                <span style="font-size: 12px">These icon sets are not searchable</span>
+              </div>
+            </q-tooltip>
           </div>
         </q-toolbar-title>
 

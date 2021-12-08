@@ -47,6 +47,9 @@ export default defineComponent({
       return arr && Array.isArray(arr) && arr.constructor === Array
     }
 
+    // HMR messes this number if not initialized here
+    store.totalIcons = 0
+
     iconSets.map(iconPackage => {
       iconPackage.children.forEach(iconSet => {
         if (iconSet?.icons === true) {
@@ -60,6 +63,7 @@ export default defineComponent({
               if (!isObject(iconNames[ iconPackage.label ])) iconNames[ iconPackage.label ] = {}
               if (!isArray(iconNames[ iconPackage.label ][ iconSet.value ])) iconNames[ iconPackage.label ][ iconSet.value ] = []
               Object.keys(jsonFile).forEach(key => {
+                store.totalIcons++
                 iconNames[ iconPackage.label ][ iconSet.value ].push(jsonFile[ key ])
               })
             })
@@ -73,6 +77,7 @@ export default defineComponent({
               if (!isObject(iconNames[ iconPackage.label ])) iconNames[ iconPackage.label ] = {}
               if (!isArray(iconNames[ iconPackage.label ][ iconSet.value ])) iconNames[ iconPackage.label ][ iconSet.value ] = []
               Object.keys(jsonFile).forEach(key => {
+                store.totalIcons++
                 iconNames[ iconPackage.label ][ iconSet.value ].push(jsonFile[ key ])
               })
             })

@@ -20,6 +20,7 @@ import { storeKey } from './symbols.js'
  * @property {boolean} settingsDrawerOpen
  * @property {boolean} showIconDialog
  * @property {boolean} tooltips
+ * @property {number} totalIcons
  *
  * @property {{ [packageName: string]: { [iconSetName: string]: { [iconName: string]: string } } }} cart
  * @property {{ packageName: string, iconSet: string, iconName: string, path: string }} selectedIconsFlattened
@@ -54,9 +55,11 @@ export function createStore ({ router }) {
     rightDrawerOpen: false,
     settingsDrawerOpen: false,
     showIconDialog: false,
-    tooltips: true
+    tooltips: true,
+    totalIcons: 0
   })
 
+  // these keys get saved to LocalStorage
   const savedKeys = [
     'iconSize',
     'iconColumns',
