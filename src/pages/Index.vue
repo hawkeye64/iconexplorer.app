@@ -318,14 +318,14 @@ export default defineComponent({
       let color = '', bgColor = ''
       if (inverted.value) {
         color += 'bg-' + textColor.value
-        bgColor += ($q.dark.isActive ? 'text-dark' : 'text-white')
+        bgColor += (useDark.value ? 'text-dark' : 'text-white')
       }
       else {
         color += 'text-' + textColor.value
-        bgColor += ($q.dark.isActive ? '' : 'bg-white')
+        bgColor += (useDark.value ? '' : 'bg-white')
       }
       if (textColor.value !== 'black' && textColor.value !== 'white') color += '-8'
-      return color + ' ' + bgColor
+      return [ color, bgColor ].join(' ')
     })
 
     const isInCart = computed(() => {
@@ -368,6 +368,11 @@ export default defineComponent({
         return mdiPlus
       }
       return mdiClose
+    })
+
+    watch(() => $q.dark.isActive, val => {
+      useDark.value = val
+      textColor.value = val ? 'white' : 'black'
     })
 
     // watches iconSet and loads new icons when it changes
@@ -414,7 +419,7 @@ export default defineComponent({
         store.settingsDrawerOpen = false
       }
       else {
-        textColor.value = 'black'
+        textColor.value = $q.dark.isActive ? 'white' : 'black'
       }
     })
 
