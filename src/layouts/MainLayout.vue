@@ -470,7 +470,9 @@ export default defineComponent({
   margin-right: 12px
 
 .quasar-link
-  color: scale-color($primary, $lightness: 90%)
+  display: inline-block
+  color: white
+  text-decoration: underline dotted
 
 .made-with
   position: absolute
