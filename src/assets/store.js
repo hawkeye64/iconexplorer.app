@@ -230,9 +230,10 @@ export function createStore ({ router }) {
         Object.keys(store.iconNames[ pkg ] ).forEach(iconSet => {
           Object.keys(store.iconNames[ pkg ][ iconSet ]).every(iconIndex => {
             const icon = store.iconNames[ pkg ][ iconSet ][ iconIndex ]
-            if (re.test(icon)) {
+            // the regex replaceremoves the prefix for more accurate matching
+            if (icon && re.test(String(icon).replace(/^[a-z]+/, ''))) {
               re.lastIndex = 0
-              // re = new RegExp(filt, 'i')
+              console.log(filt, icon)
               related.push(iconSet)
               return false // 'every' stops on first false
             }
@@ -244,6 +245,7 @@ export function createStore ({ router }) {
     }
 
     store.searching = false
+    console.log('related:', related)
     return related
   })
 
