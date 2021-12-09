@@ -21,8 +21,10 @@ import { storeKey } from './symbols.js'
  * @property {boolean} showIconDialog
  * @property {boolean} tooltips
  * @property {number} totalIcons
+ * @property {boolean} searching
+ * @property {boolean} loading
  * @property {{ [packageName: string]: { [iconSetName: string]: [ [iconName: string]: string ] } }} iconNames
- * * @property {{ [ [iconSetName: string]: string ] }} relatedIconSets
+ * @property {{ [ [iconSetName: string]: string ] }} relatedIconSets
  *
  * @property {{ [packageName: string]: { [iconSetName: string]: { [iconName: string]: string } } }} cart
  * @property {{ packageName: string, iconSet: string, iconName: string, path: string }} selectedIconsFlattened
@@ -69,7 +71,9 @@ export function createStore ({ router }) {
     showIconDialog: false,
     tooltips: true,
     totalIcons: 0,
-    iconNames: {}
+    iconNames: {},
+    searching: false,
+    loading: false
   })
 
   // these keys get saved to LocalStorage
@@ -217,24 +221,29 @@ export function createStore ({ router }) {
   })
 
   store.relatedIconSets = computed(() => {
+    store.searching = true
     const related = []
     const filt = store.filter
     if (filt) {
-      const f = filt.toLowerCase()
+      const re = new RegExp(filt, 'i')
       Object.keys(store.iconNames).forEach(pkg => {
         Object.keys(store.iconNames[ pkg ] ).forEach(iconSet => {
           Object.keys(store.iconNames[ pkg ][ iconSet ]).every(iconIndex => {
             const icon = store.iconNames[ pkg ][ iconSet ][ iconIndex ]
-            if (String(icon).toLowerCase().indexOf(f) > -1) {
+            if (re.test(icon)) {
+              re.lastIndex = 0
+              // re = new RegExp(filt, 'i')
               related.push(iconSet)
               return false // 'every' stops on first false
             }
+            re.lastIndex = 0
             return true
           })
         })
       })
     }
 
+    store.searching = false
     return related
   })
 
@@ -252,6 +261,7 @@ export function createStore ({ router }) {
     app.provide(storeKey, store)
   }
 
+  // load all the icons.json from the various icon sets
   iconSets.map(iconPackage => {
     iconPackage.children.forEach(iconSet => {
       if (iconSet?.icons === true) {

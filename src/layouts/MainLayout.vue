@@ -3,6 +3,7 @@
     <q-header
       elevated
       class="glass"
+      style="max-height: 50px;"
     >
       <q-toolbar>
         <q-btn
@@ -12,22 +13,40 @@
           :icon="mdiMenu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        />
+        >
+          <q-tooltip class="text-no-wrap">Toggle left-side drawer</q-tooltip>
+        </q-btn>
 
         <q-toolbar-title class="q-pa-none">
-          <div class="ellipsis">
-            <q-img
-              src="icon-finder-light.png"
-              width="42px"
-              height="42px"
-            />
-            Icon Explorer&nbsp;
-            <span
-              class="text-caption text-weight-bold"
-              style="font-size: 14px;"
+          <q-btn
+            to="/"
+            flat
+            no-caps
+            no-wrap
+            class="ellipsis text-no-wrap"
+          >
+            <div
+              class="row justify-left items-center text-no-wrap ellipsis"
+              style="max-height: 50px;"
             >
-              v{{ appVersion }}
-            </span>
+              <q-img
+                src="icon-finder-light.png"
+                width="42px"
+                height="42px"
+              />
+              <div
+                class="column q-pl-sm ellipsis"
+                :style="$q.screen.width > 421 ? 'font-size: 1.25rem' : 'font-size: 0.85rem'"
+              >
+                Icon Explorer&nbsp;
+                <span
+                  class="text-caption text-weight-bold"
+                  :style="($q.screen.width > 421 ? 'font-size: .8rem;' : 'font-size: .65rem;') + ' max-width: 120px;'"
+                >
+                  v{{ appVersion }}
+                </span>
+              </div>
+            </div>
             <q-tooltip
               anchor="bottom left"
               :offset="[-100, 0]"
@@ -41,19 +60,26 @@
                 <span style="font-size: 12px">These icon sets are not searchable</span>
               </div>
             </q-tooltip>
-          </div>
+          </q-btn>
         </q-toolbar-title>
 
         <!-- <div class="row justify-center items-center col-md-4 col-sm-12">Totals: {{ filteredCount }}/{{ iconCount }}</div> -->
+
+        <div
+          v-if="$q.screen.gt.xs"
+          class="column q-px-sm"
+        >
+          Quasar <span>v{{ $q.version }}</span>
+        </div>
 
         <q-btn
           flat
           round
           :icon="$q.dark.isActive ? mdiBrightness2 : mdiBrightness5"
           @click="$q.dark.toggle()"
-        />
-
-        <div v-if="$q.screen.gt.xs">Quasar v{{ $q.version }}</div>
+        >
+          <q-tooltip>Toggle light/dark</q-tooltip>
+        </q-btn>
 
         <q-btn
           flat
@@ -61,7 +87,9 @@
           :icon="Object.keys(store.cart).length === 0 ? mdiCartOutline : mdiCartHeart"
           :color="Object.keys(store.cart).length === 0 ? 'currentColor' : 'pink-4'"
           @click="toggleRightDrawer"
-        />
+        >
+          <q-tooltip>Your selected library items</q-tooltip>
+        </q-btn>
 
         <q-btn
           flat
@@ -70,7 +98,9 @@
           :icon="mdiCog"
           aria-label="Settings"
           @click="toggleSettingsDrawer"
-        />
+        >
+          <q-tooltip>Settings</q-tooltip>
+        </q-btn>
       </q-toolbar>
     </q-header>
 
@@ -119,6 +149,7 @@
 
     <q-drawer
       v-model="store.leftDrawerOpen"
+      :persistent="searchHasFocus"
       show-if-above
       bordered
     >
@@ -131,6 +162,7 @@
             spellcheck="false"
           >
             <q-input
+              ref="searchInputRef"
               v-model="store.filter"
               dark
               dense
@@ -138,8 +170,11 @@
               borderless
               clearable
               debounce="300"
-              placeholder="Search"
+              placeholder="Search all icon sets..."
               class="full-width icon-search-input"
+              @keydown="onSearchKeydown"
+              @focus="onSearchFocus"
+              @blur="onSearchBlur"
             >
               <template #append>
                 <q-icon
@@ -318,7 +353,7 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, ref } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { iconSets } from 'src/icon-sets'
 import { useStore } from 'assets/store.js'
@@ -355,8 +390,11 @@ export default defineComponent({
   name: 'MainLayout',
 
   setup () {
-    const store = useStore(),
-    $q = useQuasar()
+    const store = useStore()
+    const $q = useQuasar()
+    const searchHasFocus = ref(false)
+    const searchInputRef = ref(null)
+
 
     const allImports = computed(() => {
       let imports = '';
@@ -462,6 +500,45 @@ export default defineComponent({
       return true
     }
 
+    const onSearchKeydown = $q.platform.is.desktop === true
+    ? evt => {
+      switch (evt.keyCode) {
+        case 27: // escape
+          evt.preventDefault()
+          store.filter = null
+          break
+      }
+    }
+    : () => {}
+
+    function onSearchFocus () {
+      searchHasFocus.value = true
+    }
+
+    function onSearchBlur () {
+      searchHasFocus.value = false
+      if ($q.platform.is.mobile) {
+        store.leftDrawerOpen = false
+      }
+    }
+
+    function focusOnSearch (evt) {
+      if (
+        evt.target.tagName !== 'INPUT'
+        && String.fromCharCode(evt.keyCode) === '/'
+      ) {
+        evt.preventDefault()
+
+        if (scope.leftDrawerState.value !== true) {
+          scope.leftDrawerState.value = true
+        }
+
+        setTimeout(() => {
+          searchInputRef.value.focus()
+        })
+      }
+    }
+    
     return {
       store,
 
@@ -481,6 +558,10 @@ export default defineComponent({
       toggleLeftDrawer,
       toggleRightDrawer,
       toggleSettingsDrawer,
+      onSearchKeydown,
+      onSearchFocus,
+      onSearchBlur,
+      searchHasFocus,
       iconSets,
       onCartRemoveAllItems,
       importToClipboard,
@@ -491,7 +572,8 @@ export default defineComponent({
       fabTwitter,
       mdiCharity,
       madeWithClasses,
-      canDisplay
+      canDisplay,
+      searchInputRef
     }
   }
 })

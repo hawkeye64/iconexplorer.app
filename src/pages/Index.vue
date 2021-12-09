@@ -202,30 +202,8 @@
       :class="headerClasses"
       style="position: sticky; top: 50px; left: 0; right: 0; z-index: 2000;"
     >
-      <div class="row justify-center items-center">Totals: {{ filteredCount }}/{{ iconCount }}</div>
-      <!-- <q-input
-        v-model="store.filter"
-        borderless
-        dense
-        outlined
-        debounce="300"
-        clearable
-        placeholder="Search"
-        class="col-md-4 col-sm-12"
-        style="margin: 2px; max-width: 280px; width: 100%;"
-      >
-        <template #append>
-          <q-icon
-            v-if="!store.filter"
-            :name="uiwSearch"
-          />
-        </template>
-      </q-input> -->
+      <div class="row justify-center items-center">{{ store.iconSet?.label }} Totals: {{ filteredCount }}/{{ iconCount }}</div>
     </div>
-
-    <!-- <div class="q-mb-xs" /> -->
-
-    <!-- <related-icon-sets class="q-mb-xs" /> -->
 
     <template v-if="Object.keys(icons).length">
       <svg-icon-viewer
@@ -235,8 +213,23 @@
       />
     </template>
     <div
+      v-else-if="store.searching || store.loading"
+      class="row justify-center"
+    >
+      <!-- Nothing goes here -->
+    </div>
+    <div
+      v-else-if="store.filter && store.relatedIconSets.length > 0 && store.searching === false"
+      class="row justify-center items-center text-h5 q-ma-md"
+    >
+      <q-icon
+        :name="mdiHeart"
+        class="text-blue-8"
+      />{{ store.relatedIconSets.length }} icon sets contain "{{ store.filter }}" (select from left drawer to see them)
+    </div>
+    <div
       v-else-if="store.filter && importedIcons"
-      class="row justify-center items-center text-h4"
+      class="row justify-center items-center text-h5 q-ma-md"
     >
       <q-icon
         :name="mdiHeartBroken"
@@ -244,14 +237,18 @@
       />No icons found for '{{ store.iconSet.label }}'
     </div>
     <div
-      v-else-if="store.filter && $route.query?.filter"
-      class="row justify-center items-center text-h4"
+      v-else
+      class="column justify-center items-center text-h5 q-ma-md"
     >
-      <q-icon
-        :name="mdiHeartBroken"
-        class="text-red-8"
-      />No icons found
+      <p class="text-center">
+        <q-icon
+          :name="mdiArrowCollapseLeft"
+          color="primary"
+        />Select an icon set in the left drawer or enter a search filter (top of left drawer)
+      </p>
+      <p class="text-center">The search filter also allows for regular expressions (ex: 'bug|filter')</p>
     </div>
+
     <div class="icons-footer" />
 
     <q-page-scroller
@@ -272,8 +269,7 @@
 <script>
 import { defineComponent, markRaw, ref, computed, watch, nextTick } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
-import { mdiHeartBroken, mdiClose, mdiPlus, mdiChevronUp } from '@quasar/extras/mdi-v6'
-import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
+import { mdiHeartBroken, mdiHeart, mdiClose, mdiPlus, mdiChevronUp, mdiArrowCollapseLeft } from '@quasar/extras/mdi-v6'
 import { useStore } from 'assets/store.js'
 import SvgIconViewer from 'components/SvgIconViewer.vue'
 // import RelatedIconSets from 'components/RelatedIconSets.vue'
@@ -335,9 +331,9 @@ export default defineComponent({
     // returns a list of filtered icons
     const icons = computed(() => {
       const vals = {}
-      const f = importedIcons.value ? store.filter.toLowerCase() : ''
+      const re = importedIcons.value && store.filter ? new RegExp(store.filter, 'i') : ''
       Object.keys(importedIcons.value ? importedIcons.value : {}).forEach(name => {
-        if (f === '' || name.toLowerCase().indexOf(f) > -1) {
+        if (re === '' || re.test(name)) {
           vals[ name ] = importedIcons.value[ name ]
         }
       })
@@ -381,6 +377,7 @@ export default defineComponent({
 
       if (val) {
         const now = new Date()
+        store.loading = true
         if (val.packageName === '@quasar/extras') {
           import(
             /* webpackChunkName: "[request]" */
@@ -392,6 +389,7 @@ export default defineComponent({
             console.log(`${ val.value } Load (ms):`, new Date() - now)
             await nextTick()
             console.log(`${ val.value } Render (ms):`, new Date() - now)
+            store.loading = false
           })
         }
         else if (val.packageName === 'quasar-extras-svg-icons') {
@@ -404,6 +402,7 @@ export default defineComponent({
             console.log(`${ val.value } Load (ms):`, new Date() - now)
             await nextTick()
             console.log(`${ val.value } Render (ms):`, new Date() - now)
+            store.loading = false
           })
         }
       }
@@ -539,7 +538,8 @@ export default defineComponent({
       mdiClose,
       mdiChevronUp,
       mdiHeartBroken,
-      uiwSearch,
+      mdiHeart,
+      mdiArrowCollapseLeft,
       colorClass,
       changeColor,
       onSelected,
