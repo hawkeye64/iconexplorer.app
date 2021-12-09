@@ -191,7 +191,7 @@
           class="icon-menu"
         >
           <div
-            v-if="store.relatedIconSets.length > 0"
+            v-if="store.filter.length > 0"
             class="text-caption text-weight-bold q-ma-md"
             style="font-size: 14px;"
           >
@@ -494,7 +494,7 @@ export default defineComponent({
     }
 
     function canDisplay (child) {
-      if (store.relatedIconSets.length > 0) {
+      if (store.filter.length > 0) {
         return store.relatedIconSets.includes(child.value)
       }
       return true
