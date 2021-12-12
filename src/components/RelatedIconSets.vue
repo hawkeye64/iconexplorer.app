@@ -8,7 +8,7 @@
         <q-btn
           :to="{ name: 'icons', params: { iconSet } }"
           :label="iconSet"
-          :disable="iconSet === store.iconSet?.value"
+          :disable="iconSet === store.iconSet.value"
           rounded
           dense
           unelevated
@@ -44,44 +44,8 @@ export default defineComponent({
       return arr && Array.isArray(arr) && arr.constructor === Array
     }
 
-    // HMR messes this number if not initialized here
+    // HMR messes with this number if not initialized here
     store.totalIcons = 0
-
-    // iconSets.map(iconPackage => {
-    //   iconPackage.children.forEach(iconSet => {
-    //     if (iconSet?.icons === true) {
-    //       if (iconPackage.label === '@quasar/extras') {
-    //         import(
-    //           /* webpackChunkName: "[request]" */
-    //           /* webpackInclude: /icons\.json$/ */
-    //           /* webpackExclude: /(mdi-v4|mdi-v5|ionicons-v4|ionicons-v5)/ */
-    //           '@quasar/extras/' + iconSet.value + '/icons.json'
-    //         ).then(async jsonFile => {
-    //           if (!isObject(store.iconNames[ iconPackage.label ])) store.iconNames[ iconPackage.label ] = {}
-    //           if (!isArray(store.iconNames[ iconPackage.label ][ iconSet.value ])) store.iconNames[ iconPackage.label ][ iconSet.value ] = []
-    //           Object.keys(jsonFile).forEach(key => {
-    //             store.totalIcons++
-    //             store.iconNames[ iconPackage.label ][ iconSet.value ].push(jsonFile[ key ])
-    //           })
-    //         })
-    //       }
-    //       if (iconPackage.label === 'quasar-extras-svg-icons') {
-    //         import(
-    //           /* webpackChunkName: "[request]" */
-    //           /* webpackInclude: /icons\.json$/ */
-    //           'quasar-extras-svg-icons/' + iconSet.value + '/icons.json'
-    //         ).then(async jsonFile => {
-    //           if (!isObject(store.iconNames[ iconPackage.label ])) store.iconNames[ iconPackage.label ] = {}
-    //           if (!isArray(store.iconNames[ iconPackage.label ][ iconSet.value ])) store.iconNames[ iconPackage.label ][ iconSet.value ] = []
-    //           Object.keys(jsonFile).forEach(key => {
-    //             store.totalIcons++
-    //             store.iconNames[ iconPackage.label ][ iconSet.value ].push(jsonFile[ key ])
-    //           })
-    //         })
-    //       }
-    //     }
-    //   })
-    // })
 
     const classes = computed(() => {
       let k = 'q-pa-xs related'
