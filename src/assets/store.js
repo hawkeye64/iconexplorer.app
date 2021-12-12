@@ -163,21 +163,19 @@ export function createStore ({ router }) {
   }
 
   store.removeItem = function (packageName, iconSet, name) {
-    if (store.cart[ packageName ]) {
-      if (store.cart[ packageName ][ iconSet ]) {
-        if (store.cart[ packageName ][ iconSet ][ name ]) {
-          delete store.cart[ packageName ][ iconSet ][ name ]
-          // should parents be removed?
-          if (Object.keys(store.cart[ packageName ][ iconSet ]).length === 0) {
-            delete store.cart[ packageName ][ iconSet ]
-            if (Object.keys(store.cart[ packageName ]).length === 0) {
-              delete store.cart[ packageName ]
-            }
+    if (store.cart[ packageName ]
+      && store.cart[ packageName ][ iconSet ]
+      && store.cart[ packageName ][ iconSet ][ name ]) {
+        delete store.cart[ packageName ][ iconSet ][ name ]
+        // should parents be removed?
+        if (Object.keys(store.cart[ packageName ][ iconSet ]).length === 0) {
+          delete store.cart[ packageName ][ iconSet ]
+          if (Object.keys(store.cart[ packageName ]).length === 0) {
+            delete store.cart[ packageName ]
           }
-          return true
         }
+        return true
       }
-    }
     return false
   }
 
@@ -190,12 +188,10 @@ export function createStore ({ router }) {
 
   // returns store item or null
   store.findItem = function (packageName, iconSet, name) {
-    if (store.cart[ packageName ]) {
-      if (store.cart[ packageName ][ iconSet ]) {
-        if (store.cart[ packageName ][ iconSet ][ name ]) {
-          return store.cart[ packageName ][ iconSet ][ name ]
-        }
-      }
+    if (store.cart[ packageName ]
+      && store.cart[ packageName ][ iconSet ]
+      && store.cart[ packageName ][ iconSet ][ name ]) {
+      return store.cart[ packageName ][ iconSet ][ name ]
     }
 
     return null // not found
@@ -226,26 +222,27 @@ export function createStore ({ router }) {
     const filt = store.filter
     if (filt) {
       const re = new RegExp(filt, 'i')
-      Object.keys(store.iconNames).forEach(pkg => {
-        Object.keys(store.iconNames[ pkg ] ).forEach(iconSet => {
-          Object.keys(store.iconNames[ pkg ][ iconSet ]).every(iconIndex => {
-            const icon = store.iconNames[ pkg ][ iconSet ][ iconIndex ]
-            // the regex replaceremoves the prefix for more accurate matching
-            if (icon && re.test(String(icon).replace(/^[a-z]+/, ''))) {
+      for (const pkg in store.iconNames) {
+        for (const iconSet in store.iconNames[ pkg ]) {
+          // 'every' stops on the first returned false
+          // we are not looking for icons here, just the icon set
+          // that contain at least one matching icon
+          store.iconNames[ pkg ][ iconSet ].every(icon => {
+            // the regex removes the prefix for more accurate matching
+            if (icon && typeof icon === 'string' && re.test(String(icon).replace(/^[a-z]+/, ''))) {
               re.lastIndex = 0
-              console.log(filt, icon)
+              // add icon set name
               related.push(iconSet)
               return false // 'every' stops on first false
             }
-            re.lastIndex = 0
+            if (re.lastIndex) re.lastIndex = 0
             return true
           })
-        })
-      })
+        }
+      }
     }
 
     store.searching = false
-    console.log('related:', related)
     return related
   })
 
@@ -263,42 +260,51 @@ export function createStore ({ router }) {
     app.provide(storeKey, store)
   }
 
-  // load all the icons.json from the various icon sets
-  iconSets.map(iconPackage => {
-    iconPackage.children.forEach(iconSet => {
-      if (iconSet?.icons === true) {
-        if (iconPackage.label === '@quasar/extras') {
-          import(
-            /* webpackChunkName: "[request]" */
-            /* webpackInclude: /icons\.json$/ */
-            /* webpackExclude: /(mdi-v4|mdi-v5|ionicons-v4|ionicons-v5)/ */
-            '@quasar/extras/' + iconSet.value + '/icons.json'
-          ).then(async jsonFile => {
+  async function loadExtras (iconSet) {
+    return await import(
+      /* webpackChunkName: "[request]" */
+      /* webpackInclude: /icons\.json$/ */
+      /* webpackExclude: /(mdi-v4|mdi-v5|ionicons-v4|ionicons-v5)/ */
+      '@quasar/extras/' + iconSet.value + '/icons.json'
+    )
+  }
+
+  async function loadSvgIcons (iconSet) {
+    return await import(
+      /* webpackChunkName: "[request]" */
+      /* webpackInclude: /icons\.json$/ */
+      'quasar-extras-svg-icons/' + iconSet.value + '/icons.json'
+    )
+  }
+
+  async function loadIconNames () {
+    for (const iconPackage of iconSets) {
+      for (const iconSet of iconPackage.children) {
+        if (iconSet.icons === true) {
+          if (iconPackage.label === '@quasar/extras') {
+            const jsonFile = await loadExtras(iconSet)
             if (!isObject(store.iconNames[ iconPackage.label ])) store.iconNames[ iconPackage.label ] = {}
             if (!isArray(store.iconNames[ iconPackage.label ][ iconSet.value ])) store.iconNames[ iconPackage.label ][ iconSet.value ] = []
             Object.keys(jsonFile).forEach(key => {
               store.totalIcons++
               store.iconNames[ iconPackage.label ][ iconSet.value ].push(jsonFile[ key ])
             })
-          })
-        }
-        if (iconPackage.label === 'quasar-extras-svg-icons') {
-          import(
-            /* webpackChunkName: "[request]" */
-            /* webpackInclude: /icons\.json$/ */
-            'quasar-extras-svg-icons/' + iconSet.value + '/icons.json'
-          ).then(async jsonFile => {
+          }
+          else if (iconPackage.label === 'quasar-extras-svg-icons') {
+            const jsonFile = await loadSvgIcons(iconSet)
             if (!isObject(store.iconNames[ iconPackage.label ])) store.iconNames[ iconPackage.label ] = {}
             if (!isArray(store.iconNames[ iconPackage.label ][ iconSet.value ])) store.iconNames[ iconPackage.label ][ iconSet.value ] = []
             Object.keys(jsonFile).forEach(key => {
               store.totalIcons++
               store.iconNames[ iconPackage.label ][ iconSet.value ].push(jsonFile[ key ])
             })
-          })
+          }
         }
       }
-    })
-  })
+    }
+  }
+
+  loadIconNames()
 
   return store
 }
