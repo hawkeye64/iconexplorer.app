@@ -8,9 +8,6 @@ const routes = [
       // TODO: Display a landing page of some sort, maybe some instructions that says "select an icon set to get started", and use a separate component
       { path: '', name: 'index', component: () => import('pages/Index.vue') },
       { path: 'icons/:iconSet', name: 'icons', component: () => import('pages/Index.vue') },
-      // { path: 'icon-set/:iconSet?', name: 'index', component: () => import('pages/IconSet.vue') },
-
-      // ...iconSets.flatMap(({ children }) => children.map(({ value }) => ({ path: value })))
     ]
   },
 

@@ -1,8 +1,9 @@
 <template>
-  <q-layout view="hHh LpR fFf">
+  <q-layout view="lHh LpR lFf">
     <q-header
       elevated
       class="glass"
+      style="max-height: 50px;"
     >
       <q-toolbar>
         <q-btn
@@ -12,47 +13,73 @@
           :icon="mdiMenu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        />
+        >
+          <q-tooltip class="text-no-wrap">Toggle left-side drawer</q-tooltip>
+        </q-btn>
 
         <q-toolbar-title class="q-pa-none">
-          <div class="ellipsis">
-            <q-img
-              src="icon-finder-light.png"
-              width="42px"
-              height="42px"
-            />
-            Icon Explorer&nbsp;
-            <span
-              class="text-caption text-weight-bold"
-              style="font-size: 14px;"
+          <q-btn
+            to="/"
+            flat
+            no-caps
+            no-wrap
+            class="ellipsis text-no-wrap"
+          >
+            <div
+              class="row justify-left items-center text-no-wrap ellipsis"
+              style="max-height: 50px;"
             >
-              v{{ appVersion }}
-            </span>
+              <q-img
+                src="icon-finder-light.png"
+                width="42px"
+                height="42px"
+              />
+              <div
+                class="column q-pl-sm ellipsis"
+                :style="$q.screen.width > 421 ? 'font-size: 1.25rem' : 'font-size: 0.85rem'"
+              >
+                Icon Explorer&nbsp;
+                <span
+                  class="text-caption text-weight-bold"
+                  :style="($q.screen.width > 421 ? 'font-size: .8rem;' : 'font-size: .65rem;') + ' max-width: 120px;'"
+                >
+                  v{{ appVersion }}
+                </span>
+              </div>
+            </div>
             <q-tooltip
               anchor="bottom left"
               :offset="[-100, 0]"
               class="glass"
             >
-              <div class="column items-center">
+              <div class="column items-center text-no-wrap">
                 <span
-                  class="no-wrap"
                   style="font-size: 18px;"
                 >Serving {{ store.totalIcons }}+ icons</span>
                 <span style="font-size: 12px">Excludes (mdi-v4|mdi-v5|ionicons-v4|ionicons-v5)</span>
                 <span style="font-size: 12px">These icon sets are not searchable</span>
               </div>
             </q-tooltip>
-          </div>
+          </q-btn>
         </q-toolbar-title>
+
+        <!-- <div class="row justify-center items-center col-md-4 col-sm-12">Totals: {{ filteredCount }}/{{ iconCount }}</div> -->
+
+        <div
+          v-if="$q.screen.gt.xs"
+          class="column q-px-sm"
+        >
+          Quasar <span>v{{ $q.version }}</span>
+        </div>
 
         <q-btn
           flat
           round
           :icon="$q.dark.isActive ? mdiBrightness2 : mdiBrightness5"
           @click="$q.dark.toggle()"
-        />
-
-        <div v-if="$q.screen.gt.xs">Quasar v{{ $q.version }}</div>
+        >
+          <q-tooltip>Toggle light/dark</q-tooltip>
+        </q-btn>
 
         <q-btn
           flat
@@ -60,7 +87,9 @@
           :icon="Object.keys(store.cart).length === 0 ? mdiCartOutline : mdiCartHeart"
           :color="Object.keys(store.cart).length === 0 ? 'currentColor' : 'pink-4'"
           @click="toggleRightDrawer"
-        />
+        >
+          <q-tooltip>Your selected library items</q-tooltip>
+        </q-btn>
 
         <q-btn
           flat
@@ -69,7 +98,9 @@
           :icon="mdiCog"
           aria-label="Settings"
           @click="toggleSettingsDrawer"
-        />
+        >
+          <q-tooltip>Settings</q-tooltip>
+        </q-btn>
       </q-toolbar>
     </q-header>
 
@@ -118,14 +149,55 @@
 
     <q-drawer
       v-model="store.leftDrawerOpen"
+      :persistent="searchHasFocus"
       show-if-above
       bordered
     >
-      <q-scroll-area class="fit">
+      <q-scroll-area style="height: calc(100% - 51px); margin-top: 51px;">
+        <div class="fixed-top glass">
+          <form
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="off"
+            spellcheck="false"
+          >
+            <q-input
+              ref="searchInputRef"
+              v-model="store.filter"
+              dark
+              dense
+              square
+              borderless
+              clearable
+              debounce="300"
+              placeholder="Search all icon sets..."
+              class="full-width icon-search-input"
+              @keydown="onSearchKeydown"
+              @focus="onSearchFocus"
+              @blur="onSearchBlur"
+            >
+              <template #append>
+                <q-icon
+                  v-if="!store.filter"
+                  :name="uiwSearch"
+                  color="grey-1"
+                />
+              </template>
+            </q-input>
+          </form>
+        </div>
         <q-list
           dense
           class="icon-menu"
         >
+          <div
+            v-if="store.filter.length > 0"
+            class="text-caption text-weight-bold q-ma-md"
+            style="font-size: 14px;"
+          >
+            Search results below:
+          </div>
+
           <template
             v-for="parent in iconSets"
             :key="parent.label"
@@ -137,27 +209,31 @@
             >
               {{ parent.label }} v{{ parent.label === '@quasar/extras' ? qExtrasVersion : qExtrasSvgVersion }}
             </q-item-label>
-            <q-item
+            <template
               v-for="child in parent.children"
               :key="child.label"
-              v-ripple
-              :to="{ name: 'icons', params: { iconSet: child.value } }"
             >
-              <q-item-section>
-                <q-item-label class="q-ml-lg">» {{ child.label }}</q-item-label>
-              </q-item-section>
-              <q-item-section
-                v-if="child.status"
-                side
-                class="text-right"
+              <q-item
+                v-if="canDisplay(child)"
+                v-ripple
+                :to="{ name: 'icons', params: { iconSet: child.value } }"
               >
-                <q-badge
-                  color="blue"
-                  text-color="white"
-                  :label="child.status"
-                />
-              </q-item-section>
-            </q-item>
+                <q-item-section>
+                  <q-item-label class="q-ml-lg">» {{ child.label }}</q-item-label>
+                </q-item-section>
+                <q-item-section
+                  v-if="child.status"
+                  side
+                  class="text-right"
+                >
+                  <q-badge
+                    color="blue"
+                    text-color="white"
+                    :label="child.status"
+                  />
+                </q-item-section>
+              </q-item>
+            </template>
           </template>
         </q-list>
       </q-scroll-area>
@@ -277,10 +353,11 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, ref } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { iconSets } from 'src/icon-sets'
 import { useStore } from 'assets/store.js'
+import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
 
 import pkg from '@quasar/extras/package.json'
 const qExtrasVersion = pkg.version
@@ -313,8 +390,11 @@ export default defineComponent({
   name: 'MainLayout',
 
   setup () {
-    const store = useStore(),
-    $q = useQuasar()
+    const store = useStore()
+    const $q = useQuasar()
+    const searchHasFocus = ref(false)
+    const searchInputRef = ref(null)
+
 
     const allImports = computed(() => {
       let imports = '';
@@ -413,6 +493,52 @@ export default defineComponent({
         })
     }
 
+    function canDisplay (child) {
+      if (store.filter.length > 0) {
+        return store.relatedIconSets.includes(child.value)
+      }
+      return true
+    }
+
+    const onSearchKeydown = $q.platform.is.desktop === true
+    ? evt => {
+      switch (evt.keyCode) {
+        case 27: // escape
+          evt.preventDefault()
+          store.filter = null
+          break
+      }
+    }
+    : () => {}
+
+    function onSearchFocus () {
+      searchHasFocus.value = true
+    }
+
+    function onSearchBlur () {
+      searchHasFocus.value = false
+      if ($q.platform.is.mobile) {
+        store.leftDrawerOpen = false
+      }
+    }
+
+    function focusOnSearch (evt) {
+      if (
+        evt.target.tagName !== 'INPUT'
+        && String.fromCharCode(evt.keyCode) === '/'
+      ) {
+        evt.preventDefault()
+
+        if (scope.leftDrawerState.value !== true) {
+          scope.leftDrawerState.value = true
+        }
+
+        setTimeout(() => {
+          searchInputRef.value.focus()
+        })
+      }
+    }
+    
     return {
       store,
 
@@ -428,9 +554,14 @@ export default defineComponent({
       mdiTrashCanOutline,
       mdiHeart,
       mdiCog,
+      uiwSearch,
       toggleLeftDrawer,
       toggleRightDrawer,
       toggleSettingsDrawer,
+      onSearchKeydown,
+      onSearchFocus,
+      onSearchBlur,
+      searchHasFocus,
       iconSets,
       onCartRemoveAllItems,
       importToClipboard,
@@ -440,13 +571,37 @@ export default defineComponent({
       fabGithub,
       fabTwitter,
       mdiCharity,
-      madeWithClasses
+      madeWithClasses,
+      canDisplay,
+      searchInputRef
     }
   }
 })
 </script>
 
 <style lang="sass">
+.icon-search-input,
+.icon-search-input .q-field__control
+  height: 50px
+
+.icon-search-input
+  .q-field__control
+    padding: 0 18px 0 16px !important
+  input
+    line-height: 38px
+  .q-field__prepend,
+  .q-field__append
+    height: 100%
+    cursor: text !important
+  kbd
+    font-size: .6em !important
+    min-width: 1.6em
+    min-height: 1.5em
+    font-weight: bold
+
+body.mobile .icon-search-input kbd
+  display: none
+
 .markdown-copyright
   font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace
 
