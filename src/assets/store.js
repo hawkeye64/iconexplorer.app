@@ -243,6 +243,7 @@ export function createStore ({ router }) {
     }
 
     store.searching = false
+    console.log('related:', related)
     return related
   })
 
