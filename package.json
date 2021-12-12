@@ -16,7 +16,7 @@
     "@quasar/extras": "^1.12.2",
     "core-js": "^3.19.3",
     "quasar": "2.3.3",
-    "quasar-extras-svg-icons": "^1.9.0"
+    "quasar-extras-svg-icons": "^1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
