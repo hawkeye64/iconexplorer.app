@@ -63,7 +63,7 @@ export function createStore ({ router }) {
   /** @type {Store} */
   const store = reactive({
     iconSize: '148px',
-    iconColumns: 'reactive',
+    iconColumns: 'responsive',
     cart: {},
     leftDrawerOpen: false,
     rightDrawerOpen: false,

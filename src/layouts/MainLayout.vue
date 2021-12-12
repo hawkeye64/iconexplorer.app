@@ -338,7 +338,7 @@
           <q-select
             v-model="store.iconColumns"
             label="Columns"
-            :options="['reactive', '12', '6', '4', '3', '2', '1']"
+            :options="['responsive', '12', '6', '4', '3', '2', '1']"
             dense
             outlined
           />

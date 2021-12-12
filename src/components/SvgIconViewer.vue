@@ -85,7 +85,7 @@ export default defineComponent({
         case '12':
           classes += 'col-1'
           break
-        case 'reactive':
+        case 'responsive':
         default:
           classes += 'col-xl-1 col-lg-2 col-md-3 col-sm-4 col-xs-6'
           break
