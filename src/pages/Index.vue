@@ -333,11 +333,11 @@ export default defineComponent({
       const vals = {}
       const re = importedIcons.value && store.filter ? new RegExp(store.filter, 'i') : ''
       Object.keys(importedIcons.value ? importedIcons.value : {}).forEach(name => {
-        // the regex replaceremoves the prefix for more accurate matching
+        // the regex removes the prefix for more accurate matching
         if (re === '' || re.test(String(name).replace(/^[a-z]+/, ''))) {
           vals[ name ] = importedIcons.value[ name ]
         }
-        if (re !== '') re.lastIndex = 0
+        if (re.lastIndex) re.lastIndex = 0
       })
       return vals
     })
