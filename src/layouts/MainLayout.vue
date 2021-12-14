@@ -220,6 +220,7 @@
             >
               <q-item
                 v-if="canDisplay(child)"
+                :id="child.value"
                 v-ripple
                 :to="{ name: 'icons', params: { iconSet: child.value } }"
               >
@@ -523,16 +524,29 @@ export default defineComponent({
       return true
     }
 
-    const onSearchKeydown = $q.platform.is.desktop === true
-    ? evt => {
+    function onSearchKeydown (evt) {
       switch (evt.keyCode) {
         case 27: // escape
+          if ($q.platform.is.desktop === true) {
+            evt.preventDefault()
+            store.filter = null
+          }
+          break
+        case 13: // enter
           evt.preventDefault()
-          store.filter = null
+          evt.stopPropagation()
+          if (store.relatedIconSets.length > 0) {
+            // grab the first item and click on it
+            const item = store.relatedIconSets[ 0 ]
+            document.getElementById(item).click(evt)
+            // if not on desktop, close the drawer
+            if ($q.platform.is.desktop !== true) {
+              store.leftDrawerOpen = false
+            }
+          }
           break
       }
     }
-    : () => {}
 
     function onSearchFocus () {
       searchHasFocus.value = true
