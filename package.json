@@ -1,7 +1,7 @@
 {
   "name": "iconexplorer.app",
   "version": "2.4.0",
-  "description": "Searchable Quasar Framework SVG icons",
+  "description": "Icon Explorer application for Quasar Framework SVG icons. Over 60,000 searchable icons and growing.",
   "productName": "Icon Explorer for Quasar Framework SVG Icons",
   "author": "Jeff Galbraith <galbraith64@gmail.com>",
   "private": true,
@@ -16,13 +16,13 @@
     "@quasar/extras": "^1.12.2",
     "core-js": "^3.19.3",
     "quasar": "2.3.3",
-    "quasar-extras-svg-icons": "^1.10.0"
+    "quasar-extras-svg-icons": "^1.11.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/eslint-parser": "^7.16.3",
+    "@babel/core": "^7.16.5",
+    "@babel/eslint-parser": "^7.16.5",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-env": "^7.16.5",
     "@quasar/app": "^3.2.5",
     "babel-loader": "^8.2.3",
     "eslint": "^8.4.1",
