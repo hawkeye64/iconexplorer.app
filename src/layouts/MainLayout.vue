@@ -358,7 +358,7 @@
 </template>
 
 <script>
-import { defineComponent, computed, ref } from 'vue'
+import { defineComponent, computed, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { iconSets } from 'src/icon-sets'
 import { useStore } from 'assets/store.js'
@@ -400,6 +400,15 @@ export default defineComponent({
     const searchHasFocus = ref(false)
     const searchInputRef = ref(null)
 
+    onMounted(() => {
+      if ($q.platform.is.desktop === true) {
+        window.addEventListener('keypress', focusOnSearch)
+      }
+    })
+
+    $q.platform.is.desktop === true && onBeforeUnmount(() => {
+      window.removeEventListener('keypress', focusOnSearch)
+    })
 
     const allImports = computed(() => {
       let imports = '';
