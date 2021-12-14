@@ -130,11 +130,16 @@
           rel="noopener"
         ><q-icon :name="mdiCharity" /></a>
       </div>
-      <div class="full-width row justify-center items-center q-mt-xs">
-        <span class="markdown-copyright">CC-BY / MIT License | Copyright &copy; {{ year }} Jeff Galbraith</span>
+      <div class="full-width row justify-center items-center q-mt-xs markdown-copyright q-mx-sm">
+        <div>CC-BY / MIT License</div>
+        <div>|</div>
+        <div>Copyright &copy; {{ year }} Jeff Galbraith</div>
       </div>
 
-      <div :class="madeWithClasses">
+      <div
+        v-if="$q.screen.gt.xs"
+        :class="madeWithClasses"
+      >
         <span>Made with <q-icon
           :name="mdiHeart"
           size="sm"
@@ -431,7 +436,7 @@ export default defineComponent({
     })
 
     const madeWithClasses = computed(() => {
-      if ($q.screen.lt.md) {
+      if ($q.screen.lt.lg) {
         return 'full-width row justify-center items-center q-my-xs markdown-copyright'
       }
       return 'made-with markdown-copyright'
