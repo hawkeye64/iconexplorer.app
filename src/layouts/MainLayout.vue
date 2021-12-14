@@ -543,8 +543,9 @@ export default defineComponent({
       ) {
         evt.preventDefault()
 
-        if (scope.leftDrawerState.value !== true) {
-          scope.leftDrawerState.value = true
+        // open the drawer if not already open
+        if (store.leftDrawerOpen !== true) {
+          store.leftDrawerOpen = true
         }
 
         setTimeout(() => {
