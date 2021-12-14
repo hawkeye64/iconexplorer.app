@@ -451,6 +451,15 @@ export default defineComponent({
       return 'made-with markdown-copyright'
     })
 
+    watch(() => store.leftDrawerOpen, val => {
+      if (val === true) {
+        setTimeout(() => {
+          // set focus on the search filter
+          searchInputRef.value.$el.focus()
+        })
+      }
+    })
+
     function toggleLeftDrawer () {
       store.leftDrawerOpen = !store.leftDrawerOpen
     }
@@ -547,10 +556,6 @@ export default defineComponent({
         if (store.leftDrawerOpen !== true) {
           store.leftDrawerOpen = true
         }
-
-        setTimeout(() => {
-          searchInputRef.value.focus()
-        })
       }
     }
     
