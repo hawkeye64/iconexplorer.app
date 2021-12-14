@@ -176,6 +176,7 @@
               clearable
               debounce="300"
               placeholder="Search all icon sets..."
+              type="search"
               class="full-width icon-search-input"
               @keydown="onSearchKeydown"
               @focus="onSearchFocus"
