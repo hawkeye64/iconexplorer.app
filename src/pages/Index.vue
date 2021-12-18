@@ -132,6 +132,21 @@
                     size="sm"
                     flat
                     class="user-button"
+                    @click="svgToClipboard"
+                  >
+                    <q-tooltip
+                      :delay="250"
+                      class="primary my-tooltip"
+                    >
+                      Rehydrate SVG for "{{ currentName }}" to clipboard
+                    </q-tooltip>
+                    SVG
+                  </q-btn>
+                  <q-btn
+                    no-caps
+                    size="sm"
+                    flat
+                    class="user-button"
                     @click="inlineToClipboard"
                   >
                     <q-tooltip
@@ -494,13 +509,44 @@ export default defineComponent({
         })
     }
 
+    function splitSvg (icon) {
+        const [ def, viewBox ] = icon.split('|')
+
+        return {
+          nodes: def.split('&&').map(path => {
+            const [ d, style, transform ] = path.split('@@')
+            return { path: {
+              style,
+              d,
+              transform
+            } }
+          }),
+          viewBox: viewBox !== void 0 ? viewBox : '0 0 24 24'
+        }
+    }
+
+    function createSvg(icon) {
+      icon = splitSvg(icon)
+      let svg = `<svg viewBox="${ icon.viewBox }">\n`
+      icon.nodes.forEach(node => {
+        svg += '  ' + (`<path d="${ node.path.d }" ${ node.path.style ? 'style="' + node.path.style + '"' : '' } ${ node.path.transform ? 'transform="' + node.path.transform + '"' : '' }`).trim() + '></path>\n'
+      })
+      svg += '</svg>\n'
+
+      return svg
+    }
+
     function nameToClipboard () {
       sendToClipboard(currentName.value, `Name: '${ currentName.value }' copied to clipboard`, currentPath.value)
     }
 
     function rawToClipboard () {
       sendToClipboard(currentPath.value, `Raw: '${ currentName.value }' copied to clipboard`, currentPath.value)
+    }
 
+    function svgToClipboard () {
+      const svg = createSvg(currentPath.value)
+      sendToClipboard(svg, `SVG: rehydrated SVG for '${ currentName.value }' copied to clipboard`, currentPath.value)
     }
 
     function inlineToClipboard () {
@@ -549,6 +595,7 @@ export default defineComponent({
       onSelected,
       onHandleCart,
       nameToClipboard,
+      svgToClipboard,
       rawToClipboard,
       inlineToClipboard,
       importToClipboard,
