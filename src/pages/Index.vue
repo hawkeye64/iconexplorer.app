@@ -26,10 +26,12 @@
               color="grey-13"
               @click="nameToClipboard"
             >
-              <q-tooltip>Copy SVG name to clipboard</q-tooltip>
+              <q-tooltip class="primary my-tooltip">
+                Copy name "{{ currentName }}" to clipboard
+              </q-tooltip>
             </q-icon>
           </div>
-          <q-space />
+          <q-space class="q-pr-lg" />
           <q-btn
             flat
             round
@@ -93,7 +95,7 @@
               style="max-width: 230px;"
             >
               <div class="col">
-                <div>Copy to clipboard...</div>
+                <div style="font-size: 18px;">Copy to clipboard...</div>
                 <div class="row q-gutter-xs">
                   <q-btn
                     no-caps
@@ -104,9 +106,9 @@
                   >
                     <q-tooltip
                       :delay="250"
-                      class="primary"
+                      class="primary my-tooltip"
                     >
-                      Copy "{{ currentName }}" to clipboard
+                      Copy name "{{ currentName }}" to clipboard
                     </q-tooltip>
                     Name
                   </q-btn>
@@ -119,7 +121,7 @@
                   >
                     <q-tooltip
                       :delay="250"
-                      class="primary"
+                      class="primary my-tooltip"
                     >
                       Copy "import &#123; {{ currentName }} &#125; from '{{ store.iconSet.packageName }}/{{ store.iconSet.value }}'"" to clipboard
                     </q-tooltip>
@@ -134,9 +136,9 @@
                   >
                     <q-tooltip
                       :delay="250"
-                      class="primary"
+                      class="primary my-tooltip"
                     >
-                      Copy SVG inlined to clipboard (ex: 'const {{ currentName }} = "..."')
+                      Copy SVG inlined to clipboard (ex: 'const {{ currentName }} = "M..."')
                     </q-tooltip>
                     Inline
                   </q-btn>
@@ -149,7 +151,7 @@
                   >
                     <q-tooltip
                       :delay="250"
-                      class="primary"
+                      class="primary my-tooltip"
                     >
                       Copy "&lt;q-icon :name="{{ currentName }}" /&gt;" clipboard
                     </q-tooltip>
@@ -164,7 +166,7 @@
                   >
                     <q-tooltip
                       :delay="250"
-                      class="primary"
+                      class="primary my-tooltip"
                     >
                       Copy "&lt;q-btn :icon="{{ currentName }}" /&gt;" clipboard
                     </q-tooltip>
@@ -180,9 +182,9 @@
                   >
                     <q-tooltip
                       :delay="250"
-                      class="primary"
+                      class="primary my-tooltip"
                     >
-                      Copy raw SVG to clipboard
+                      Copy raw SVG to clipboard (ex: "M...")
                     </q-tooltip>
 
                     Raw
@@ -569,6 +571,8 @@ export default defineComponent({
 .user-button
   border-radius: 8px
   border: 1px solid lightgrey
+  width: 60px
+  font-size:18px 
 
 .bordered
   border-radius: 2px
@@ -576,5 +580,8 @@ export default defineComponent({
 
 .text-dark
   color: #1d1d1d
+
+.my-tooltip
+  font-size: 18px
 
 </style>

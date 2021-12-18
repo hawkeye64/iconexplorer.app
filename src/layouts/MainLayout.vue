@@ -290,14 +290,22 @@
                 label="Imported"
                 no-caps
                 @click="onImportAll"
-              />
+              >
+                <q-tooltip style="font-size: 18px;">
+                  Import all of your selected icons in the library all at once from their designated icon sets 
+                </q-tooltip>
+              </q-btn>
             </q-item-section>
             <q-item-section>
               <q-btn
                 label="Inlined"
                 no-caps
                 @click="onInlinedAll"
-              />
+              >
+                <q-tooltip style="font-size: 18px;">
+                  Inline all of your selected icons in the library all at once 
+                </q-tooltip>
+              </q-btn>
             </q-item-section>
           </q-item>
           <div class="row justify-center q-pt-sm">
@@ -307,10 +315,12 @@
               :icon="icon.path"
               round
               flat
+              size="xl"
+              padding="sm"
               @click="importToClipboard(icon)"
             >
-              <q-tooltip>
-                {{ 'import { ' + icon.iconName + ' } from ' + '\'' + icon.packageName + '/' + icon.iconSet + '\'' }}
+              <q-tooltip style="font-size: 18px;">
+                {{ 'import &#123; ' + icon.iconName + ' &#125; from ' + '\'' + icon.packageName + '/' + icon.iconSet + '\'' }}
               </q-tooltip>
             </q-btn>
           </div>
