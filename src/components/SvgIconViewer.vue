@@ -8,7 +8,7 @@
       @click="onClick({ path, name })"
     >
       <q-card
-        class="intersection-icon-box--inner row full-width justify-center items-center overflow-hidden ellipsis"
+        class="intersection-icon-box--inner row full-width justify-center items-center q-pa-xs"
         :class="{
           'active-icon': isActiveIcon(name),
           'cart-icon': store.isCartIcon(name)
@@ -20,10 +20,13 @@
           class="q-pa-xs row full-width justify-center items-center"
         />
         <div
-          class="row full-width justify-center items-center ellipsis"
-          style="font-size: 12px;"
+          class="row full-width justify-center items-center"
+          style="font-size: 16px;"
         >
-          {{ name }}
+          <span
+            class="overflow-hidden ellipsis"
+            v-html="store.filter ? getName(name) : name"
+          />
         </div>
         <q-tooltip
           v-if="store.tooltips"
@@ -94,6 +97,20 @@ export default defineComponent({
       return classes
     })
 
+    function getName (name) {
+      if (store.filter) {
+        const filterRe = new RegExp(store.filter, 'ig')
+        const match = name.match(filterRe)
+        if (match && Array.isArray(match)) {
+          match.forEach(str => {
+            name = name.replace(str, `<mark>${ str }</mark>`)
+          })
+        }
+      }
+
+      return name
+    }
+
     return {
       store,
        onClick: function ({ path, name }) {
@@ -102,7 +119,8 @@ export default defineComponent({
       isActiveIcon: function (name) {
         return props.selectedName === name
       },
-      iconColumns
+      iconColumns,
+      getName
     }
   }
 })
