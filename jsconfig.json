@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
       "src/*": [
@@ -23,14 +24,17 @@
       "boot/*": [
         "src/boot/*"
       ],
+      "router/*": [
+        "src/router/*"
+      ],
       "vue$": [
         "node_modules/vue/dist/vue.esm.js"
       ]
     }
   },
   "exclude": [
-    "dist",
-    ".quasar",
-    "node_modules"
+    "dist/",
+    ".quasar/*",
+    "node_modules/*"
   ]
 }
