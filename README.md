@@ -4,7 +4,7 @@
 
 # iconexplorer.app
 
-Searchable Quasar Framework SVG icons
+## Searchable Quasar Framework SVG icons
 
 The [iconexplorer.app](https://iconexplorer.app/) uses SVG icons from [@quasar/extras](https://github.com/quasarframework/quasar/tree/dev/extras) and [quasar-extras-svg-icons](https://github.com/hawkeye64/quasar-extras-svg-icons). It allows you to search and find that perfect SVG you've been hunting for so you can add it to your Quasar app.
 
@@ -26,6 +26,10 @@ import { antOutlinedAudioMuted, antOutlinedAudio } from 'quasar-extras-svg-icons
 ```
 
 If you select an icon set that doesn't come from `@quasar/extras` make sure to install the `quasar-extras-svg-icons` as explained on this [page](https://github.com/hawkeye64/quasar-extras-svg-icons).
+
+## Advanced Filtering
+
+The filter bar accepts regular expressions. For instance, in the simplist form, you can search for a single word, such as **map**. But, you can do a multiple word search by adding a **|** between words. Now, we can seach for **map|pin** at the same time. However, you may get false-positives with words like "shop**pin**g" or "s**pin**ner". With regular expressions, you can filter these out. We can create a search like this **(?!pint|ping|maple)(pin|map)**. The first part is using a regular expression look-ahead to filter out what we don't want, before looking for what we do want. Words containing **pint**, **ping** or **maple** are skipped before looking for **pin** and **map**.
 
 ### SVG name format
 Svg icons will be defined as String with the following syntax:
