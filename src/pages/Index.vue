@@ -22,7 +22,7 @@
             </p>
             <q-icon
               size="xs"
-              name="mdi-content-copy"
+              :name="mdiContentCopy"
               color="grey-13"
               @click="nameToClipboard"
             >
@@ -123,7 +123,7 @@
                       :delay="250"
                       class="primary my-tooltip"
                     >
-                      Copy "import &#123; {{ currentName }} &#125; from '{{ store.iconSet.packageName }}/{{ store.iconSet.value }}'"" to clipboard
+                      Copy "import &#123; {{ currentName }} &#125; from '{{ store.iconSet.packageName }}/{{ store.iconSet.value }}'" to clipboard
                     </q-tooltip>
                     Import
                   </q-btn>
@@ -300,17 +300,15 @@ The filter bar accepts regular expressions. For instance, in the simplist form, 
 <script>
 import { defineComponent, markRaw, ref, computed, watch, nextTick } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
-import { mdiHeartBroken, mdiHeart, mdiClose, mdiPlus, mdiChevronUp, mdiArrowCollapseLeft } from '@quasar/extras/mdi-v6'
+import { mdiHeartBroken, mdiHeart, mdiClose, mdiPlus, mdiChevronUp, mdiArrowCollapseLeft, mdiContentCopy } from '@quasar/extras/mdi-v6'
 import { useStore } from 'assets/store.js'
 import SvgIconViewer from 'components/SvgIconViewer.vue'
-// import RelatedIconSets from 'components/RelatedIconSets.vue'
 
 export default defineComponent({
   name: 'MainPage',
 
   components: {
     SvgIconViewer
-    // RelatedIconSets
   },
 
   setup () {
@@ -604,6 +602,7 @@ export default defineComponent({
       mdiHeartBroken,
       mdiHeart,
       mdiArrowCollapseLeft,
+      mdiContentCopy,
       colorClass,
       changeColor,
       onSelected,

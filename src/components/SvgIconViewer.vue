@@ -14,6 +14,35 @@
           'cart-icon': store.isCartIcon(name)
         }"
       >
+        <div class="full-width row justify-between items-center">
+          <q-btn
+            size="sm"
+            :icon="mdiContentCopy"
+            flat
+            padding="0"
+            color="grey-13"
+            @click.stop="nameToClipboard(name)"
+          >
+            <q-tooltip class="primary my-tooltip">
+              Copy name "{{ name }}" to clipboard
+            </q-tooltip>
+          </q-btn>
+          <q-btn
+            size="sm"
+            :icon="mdiImport"
+            flat
+            padding="0"
+            color="grey-13"
+            @click.stop="importToClipboard(name, store.iconSet.packageName, store.iconSet.value)"
+          >
+            <q-tooltip
+              :delay="250"
+              class="primary my-tooltip"
+            >
+              Copy "import &#123; {{ name }} &#125; from '{{ store.iconSet.packageName }}/{{ store.iconSet.value }}'" to clipboard
+            </q-tooltip>
+          </q-btn>
+        </div>
         <q-icon
           :name="path"
           :size="store.iconSize"
@@ -43,7 +72,9 @@
 
 <script>
 import { defineComponent, computed } from 'vue'
+import { useQuasar, copyToClipboard } from 'quasar'
 import { useStore } from 'assets/store.js'
+import { mdiContentCopy, mdiImport } from '@quasar/extras/mdi-v6'
 
 export default defineComponent({
   name: 'SvgIconViewer',
@@ -64,7 +95,8 @@ export default defineComponent({
   ],
 
   setup (props, { emit }) {
-    const store = useStore()
+    const store = useStore(),
+      $q = useQuasar()
 
     const iconColumns = computed(() => {
       let classes = 'intersection-icon-box '
@@ -111,6 +143,29 @@ export default defineComponent({
       return name
     }
 
+    function nameToClipboard (iconName) {
+      sendToClipboard(iconName)
+    }
+
+    function importToClipboard (iconName, packageName, iconSet) {
+      const inline = `import { ${ iconName } } from '${ packageName }/${ iconSet }'`
+      sendToClipboard(inline)
+    }
+
+    function sendToClipboard (data) {
+      copyToClipboard(data)
+        .then(() => {
+          $q.notify({
+            message: `'${ data }' copied to clipboard`,
+            position: 'top',
+            // icon: icon.path,
+            color: 'white',
+            textColor: 'primary'
+          })
+        })
+
+    }
+
     return {
       store,
        onClick: function ({ path, name }) {
@@ -120,7 +175,11 @@ export default defineComponent({
         return props.selectedName === name
       },
       iconColumns,
-      getName
+      getName,
+      mdiContentCopy,
+      mdiImport,
+      nameToClipboard,
+      importToClipboard
     }
   }
 })
