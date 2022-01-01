@@ -192,8 +192,8 @@ export default defineComponent({
 
 <style lang="sass">
 .active-icon
-  color: rgba(25, 118, 210, 0.65)
+  color: rgb(25, 118, 210)
 
 .cart-icon
-  color: rgba(255, 0, 0, 0.65)
+  color: rgb(255, 0, 0)
 </style>
