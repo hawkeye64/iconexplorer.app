@@ -23,7 +23,11 @@
             color="grey-13"
             @click.stop="nameToClipboard(name)"
           >
-            <q-tooltip class="primary my-tooltip">
+            <q-tooltip
+              anchor="top middle"
+              self="top middle"
+              class="primary my-tooltip"
+            >
               Copy name "{{ name }}" to clipboard
             </q-tooltip>
           </q-btn>
@@ -36,7 +40,8 @@
             @click.stop="importToClipboard(name, store.iconSet.packageName, store.iconSet.value)"
           >
             <q-tooltip
-              :delay="250"
+              anchor="top middle"
+              self="top middle"
               class="primary my-tooltip"
             >
               Copy "import &#123; {{ name }} &#125; from '{{ store.iconSet.packageName }}/{{ store.iconSet.value }}'" to clipboard
