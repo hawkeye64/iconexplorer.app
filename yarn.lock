@@ -3754,10 +3754,10 @@ eslint-plugin-promise@^6.0.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-6.0.0.tgz#017652c07c9816413a41e11c30adc42c3d55ff18"
   integrity sha512-7GPezalm5Bfi/E22PnQxDWH2iW9GTvAlUNTztemeHb6c1BniSyoeTrM87JkC0wYdi6aQrZX9p2qEiAno8aTcbw==
 
-eslint-plugin-quasar@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-quasar/-/eslint-plugin-quasar-1.0.0.tgz#b9db43c04db1866525258f61ec015cf8d1bd1892"
-  integrity sha512-Q5dyIYfYmO54oai8yQV6Me+9uPLl/q9UhYqlGuXcLKHTAXt/JKdKOR3wQlNLDJ8lP01GL38SsSvz6yO/z8Z/9Q==
+eslint-plugin-quasar@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-quasar/-/eslint-plugin-quasar-1.1.0.tgz#edc4da1ed29a29be2141f0ca72831284687c2aae"
+  integrity sha512-lVOfr6kTRPu91pAVYisiziMwU+bW33Z+AMnmnj3hM1xjzqeo0KBHovcX5J+YDyna8GWwiL8kAzrDvy0eG52aIQ==
   dependencies:
     requireindex "~1.2.0"
     semver-compare "^1.0.0"
@@ -6247,10 +6247,10 @@ qs@6.9.6:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.6.tgz#26ed3c8243a431b2924aca84cc90471f35d5a0ee"
   integrity sha512-TIRk4aqYLNoJUbd+g2lEdz5kLWIuTMRagAXxl78Q0RiVjAOugHmeKNGdd3cwo/ktpf9aL9epCfFqWDEKysUlLQ==
 
-quasar-extras-svg-icons@^1.12.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.12.0.tgz#d01a9e76db02e85bd225ef8e81cffd1b4a44b9bc"
-  integrity sha512-gCmaVg/tQ4LiPNKNuvKlEtkjxTN6Zae2N6x2PDrcPAZu56AUJePkm2MUtQUk2OhYGar3JLf6YuQQLUqstWkMxA==
+quasar-extras-svg-icons@^1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.12.1.tgz#147ae73e8cb7c2b6de893cf425974c3d2cf15000"
+  integrity sha512-joIsFELXjE6Avwttwx+9VYVEcKS9dYj0IC22VNUmOSrDtQCmIY6D1DqP7+ZBrn6NFyGITlKCMOCSriVd31URaA==
 
 quasar@2.4.3:
   version "2.4.3"
