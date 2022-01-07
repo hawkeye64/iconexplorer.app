@@ -81,7 +81,6 @@
                   :class="colorClass(color)"
                   style="width: 20px; height: 20px;"
                   @click.stop="changeColor(color)"
-                  @mouseenter.stop="changeColor(color)"
                 />
               </div>
               <q-toggle
