@@ -176,14 +176,6 @@ export default defineComponent({
         emit('selected', { path, name })
       }
 
-      function onTouchstart (event, data) {
-        const touches = evt.changedTouches
-        if (TouchSwipe.length === 1) {
-          onClick(data)
-        }
-      }
-
-
     return {
       store,
        onClick,
