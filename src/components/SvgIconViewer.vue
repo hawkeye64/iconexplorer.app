@@ -5,7 +5,8 @@
       :key="name"
       once
       :class="iconColumns"
-      @click="onClick({ path, name })"
+      @click.stop="onClick({ path, name })"
+      @touchstart.stop="onTouchstart($event, { path, name })"
     >
       <q-card
         class="intersection-icon-box--inner row full-width justify-center items-center q-pa-xs"
@@ -77,7 +78,7 @@
 
 <script>
 import { defineComponent, computed } from 'vue'
-import { useQuasar, copyToClipboard } from 'quasar'
+import { useQuasar, copyToClipboard, TouchSwipe } from 'quasar'
 import { useStore } from 'assets/store.js'
 import { mdiContentCopy, mdiImport } from '@quasar/extras/mdi-v6'
 
@@ -171,11 +172,22 @@ export default defineComponent({
 
     }
 
+      function onClick ({ path, name }) {
+        emit('selected', { path, name })
+      }
+
+      function onTouchstart (event, data) {
+        const touches = evt.changedTouches
+        if (TouchSwipe.length === 1) {
+          onClick(data)
+        }
+      }
+
+
     return {
       store,
-       onClick: function ({ path, name }) {
-        emit('selected', { path, name })
-      },
+       onClick,
+       onTouchstart,
       isActiveIcon: function (name) {
         return props.selectedName === name
       },

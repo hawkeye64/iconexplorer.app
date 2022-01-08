@@ -31,8 +31,8 @@
             >
               <q-img
                 src="icon-finder-light.png"
-                width="42px"
-                height="42px"
+                :width="$q.screen.lt.sm ? '28px' : '42px'"
+                :height="$q.screen.lt.sm ? '28px' : '42px'"
               />
               <div
                 class="column q-pl-sm ellipsis"
@@ -158,8 +158,8 @@
       show-if-above
       bordered
     >
-      <q-scroll-area style="height: calc(100% - 51px); margin-top: 51px;">
-        <div class="fixed-top glass">
+      <div class="column no-wrap">
+        <div class="glass">
           <form
             autocorrect="off"
             autocapitalize="off"
@@ -192,6 +192,8 @@
             </q-input>
           </form>
         </div>
+      </div>
+      <q-scroll-area style="height: calc(100% - 51px);">
         <q-list
           dense
           class="icon-menu"

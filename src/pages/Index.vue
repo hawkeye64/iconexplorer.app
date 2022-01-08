@@ -5,6 +5,7 @@
       v-model="store.showIconDialog"
       seamless
       position="bottom"
+      style="border-top: 1px solid #e1e1e1"
     >
       <q-card
         class="q-pa-sm"
@@ -273,7 +274,9 @@
       >
         <!-- eslint-disable vue/html-indent -->
         <q-markdown style="max-width: 80%;">
+::: tip
 The filter bar accepts regular expressions. For instance, in the simplist form, you can search for a single word, such as "**map**". But, you can do a multiple word search by adding a "**|**" between words. Now, we can seach for "**map|pin**" at the same time. However, you may get false-positives with words like "shop**pin**g" or "s**pin**ner". With regular expressions, you can filter these out. We can create a search like this "**(?!pint|ping|maple)(pin|map)**". The first part (in parentheses) is using a regular expression look-ahead to filter out what we do not want, before looking for what we do want. Words containing "**pint**", "**ping**" or "**maple**" are skipped before looking for "**pin**" and "**map**".
+:::
         </q-markdown>
         <!-- eslint-enable vue/html-indent -->
       </div>
