@@ -62,7 +62,7 @@ function isArray (arr) {
 export function createStore ({ router }) {
   /** @type {Store} */
   const store = reactive({
-    iconSize: '148px',
+    iconSize: '92px',
     iconColumns: 'responsive',
     cart: {},
     leftDrawerOpen: false,
