@@ -5,7 +5,7 @@
       :key="name"
       once
       :class="iconColumns"
-      @click="onClick({ path, name })"
+      @click.stop="onClick({ path, name })"
     >
       <q-card
         class="intersection-icon-box--inner row full-width justify-center items-center q-pa-xs"
