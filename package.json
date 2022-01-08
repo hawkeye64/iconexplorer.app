@@ -15,7 +15,7 @@
   "dependencies": {
     "@quasar/extras": "^1.12.2",
     "core-js": "^3.20.2",
-    "quasar": "2.4.3",
+    "quasar": "2.4.4",
     "quasar-extras-svg-icons": "^1.12.1"
   },
   "devDependencies": {

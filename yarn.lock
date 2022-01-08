@@ -6252,10 +6252,10 @@ quasar-extras-svg-icons@^1.12.1:
   resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.12.1.tgz#147ae73e8cb7c2b6de893cf425974c3d2cf15000"
   integrity sha512-joIsFELXjE6Avwttwx+9VYVEcKS9dYj0IC22VNUmOSrDtQCmIY6D1DqP7+ZBrn6NFyGITlKCMOCSriVd31URaA==
 
-quasar@2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.4.3.tgz#77afea0d06e8d95d365876f10fde88cb0ca0e4be"
-  integrity sha512-nvstcwygLFzRE5SUOh72kUtczknO6rjQm9aqYnFxuZCWqUtWlf8pt7jeWXccFFbY4VpB/7b39u6UCf4VYOrEOQ==
+quasar@2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.4.4.tgz#b1955634acce99f945a99629a52d1e969b2d0f27"
+  integrity sha512-5UvVhkPD6ftGABQZdo9RbNBL93Y4A6T+9yc6cyMi0XQjv0vmV3w9TIUZr6bUARTphQF6MKAzxAQ7ht0uAI0vqA==
 
 queue-microtask@^1.2.2:
   version "1.2.3"
