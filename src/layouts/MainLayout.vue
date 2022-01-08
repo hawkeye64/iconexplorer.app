@@ -159,7 +159,7 @@
       bordered
     >
       <q-scroll-area style="height: calc(100% - 51px); margin-top: 51px;">
-        <div class="fixed-top glass">
+        <div class="absolute-top glass">
           <form
             autocorrect="off"
             autocapitalize="off"
