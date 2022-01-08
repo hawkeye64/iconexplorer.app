@@ -6,7 +6,6 @@
       once
       :class="iconColumns"
       @click.stop="onClick({ path, name })"
-      @touchstart.stop="onTouchstart($event, { path, name })"
     >
       <q-card
         class="intersection-icon-box--inner row full-width justify-center items-center q-pa-xs"
@@ -53,6 +52,7 @@
           :name="path"
           :size="store.iconSize"
           class="q-pa-xs row full-width justify-center items-center"
+          @touchstart.stop="onClick({ path, name })"
         />
         <div
           class="row full-width justify-center items-center"
