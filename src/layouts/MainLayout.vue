@@ -31,8 +31,8 @@
             >
               <q-img
                 src="icon-finder-light.png"
-                width="42px"
-                height="42px"
+                :width="$q.screen.lt.sm ? '28px' : '42px'"
+                :height="$q.screen.lt.sm ? '28px' : '42px'"
               />
               <div
                 class="column q-pl-sm ellipsis"
