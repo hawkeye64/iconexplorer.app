@@ -179,7 +179,6 @@ export default defineComponent({
     return {
       store,
        onClick,
-       onTouchstart,
       isActiveIcon: function (name) {
         return props.selectedName === name
       },
