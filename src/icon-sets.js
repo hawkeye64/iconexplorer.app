@@ -62,6 +62,7 @@ const iconSets = [
       { label: 'Modern Icons', value: 'modern-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.11' },
       { label: 'Octicons (Primer)', value: 'oct-icons', packageName: 'quasar-extras-svg-icons', icons: true },
       { label: 'Open Iconic', value: 'open-iconic', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.9' },
+      { label: 'Openmoji Icons', value: 'openmoji-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.13' },
       { label: 'Pixelart Icons', value: 'pixelart-icons', packageName: 'quasar-extras-svg-icons', icons: true },
       { label: 'Phosphor Icons', value: 'phosphor-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.12' },
       { label: 'Prime Icons', value: 'prime-icons', packageName: 'quasar-extras-svg-icons', icons: true },
