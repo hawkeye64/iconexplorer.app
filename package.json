@@ -16,9 +16,9 @@
     "@quasar/extras": "^1.13.0",
     "core-js": "^3.21.1",
     "quasar": "2.5.5",
-    "quasar-extras-svg-icons": "^1.15.0",
+    "quasar-extras-svg-icons": "^1.15.1",
     "vue": "^3.2.31",
-    "vue-router": "^4.0.13"
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -28,7 +28,7 @@
     "@quasar/app": "^3.3.3",
     "@quasar/quasar-app-extension-qmarkdown": "^2.0.0-alpha.9",
     "babel-loader": "^8.2.3",
-    "eslint": "^8.10.0",
+    "eslint": "^8.11.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
