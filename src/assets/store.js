@@ -12,6 +12,7 @@ import { storeKey } from './symbols.js'
  *
  * @property {IconSet} [iconSet]
  * @property {string} filter
+ * @property {string} selected
  * @property {string} iconSize
  * @property {string} iconColumns
  *
@@ -98,9 +99,11 @@ export function createStore ({ router }) {
   )
 
   router.beforeEach((to, from) => {
-    if (to.query.filter === undefined && from.query.filter !== undefined) {
-      to.query.filter = to.query.filter || from.query.filter
-    
+    // if (to.query.filter === undefined && from.query.filter !== undefined) {
+    //   to.query.filter = to.query.filter || from.query.filter
+    if (Object.keys(to.query).length === 0 && Object.keys(from.query).length > 0) {
+      to.query = { ...from.query }
+      
       return to
     }
   })
@@ -112,6 +115,18 @@ export function createStore ({ router }) {
         query: {
           ...route.value.query,
           filter: val || null
+        }
+      })
+    }
+  })
+
+  store.selected = computed({
+    get: () => route.value.query.selected || '',
+    set: val => {
+      router.replace({
+        query: {
+          ...route.value.query,
+          selected: val || null
         }
       })
     }

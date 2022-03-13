@@ -19,7 +19,7 @@
               class="font-mono ellipsis"
               style="font-size: 28px;"
             >
-              {{ currentName }}
+              {{ store.selected }}
             </p>
             <q-icon
               size="xs"
@@ -28,7 +28,7 @@
               @click="nameToClipboard"
             >
               <q-tooltip class="primary my-tooltip">
-                Copy name "{{ currentName }}" to clipboard
+                Copy name "{{ store.selected }}" to clipboard
               </q-tooltip>
             </q-icon>
           </div>
@@ -62,7 +62,7 @@
                 flat
                 style="min-width: 150px;"
                 class="col user-button"
-                @click="onHandleCart(currentPath, currentName)"
+                @click="onHandleCart(currentPath, store.selected)"
               >
                 <div class="full-width row justify-between items-center ellipsis">
                   <q-icon
@@ -108,7 +108,7 @@
                       :delay="250"
                       class="primary my-tooltip"
                     >
-                      Copy name "{{ currentName }}" to clipboard
+                      Copy name "{{ store.selected }}" to clipboard
                     </q-tooltip>
                     Name
                   </q-btn>
@@ -123,7 +123,7 @@
                       :delay="250"
                       class="primary my-tooltip"
                     >
-                      Copy "import &#123; {{ currentName }} &#125; from '{{ store.iconSet.packageName }}/{{ store.iconSet.value }}'" to clipboard
+                      Copy "import &#123; {{ store.selected }} &#125; from '{{ store.iconSet.packageName }}/{{ store.iconSet.value }}'" to clipboard
                     </q-tooltip>
                     Import
                   </q-btn>
@@ -138,7 +138,7 @@
                       :delay="250"
                       class="primary my-tooltip"
                     >
-                      Rehydrate SVG for "{{ currentName }}" to clipboard
+                      Rehydrate SVG for "{{ store.selected }}" to clipboard
                     </q-tooltip>
                     SVG
                   </q-btn>
@@ -153,7 +153,7 @@
                       :delay="250"
                       class="primary my-tooltip"
                     >
-                      Copy SVG inlined to clipboard (ex: 'const {{ currentName }} = "M..."')
+                      Copy SVG inlined to clipboard (ex: 'const {{ store.selected }} = "M..."')
                     </q-tooltip>
                     Inline
                   </q-btn>
@@ -168,7 +168,7 @@
                       :delay="250"
                       class="primary my-tooltip"
                     >
-                      Copy "&lt;q-icon :name="{{ currentName }}" /&gt;" clipboard
+                      Copy "&lt;q-icon :name="{{ store.selected }}" /&gt;" clipboard
                     </q-tooltip>
                     QIcon
                   </q-btn>
@@ -183,7 +183,7 @@
                       :delay="250"
                       class="primary my-tooltip"
                     >
-                      Copy "&lt;q-btn :icon="{{ currentName }}" /&gt;" clipboard
+                      Copy "&lt;q-btn :icon="{{ store.selected }}" /&gt;" clipboard
                     </q-tooltip>
 
                     QBtn
@@ -225,7 +225,7 @@
     <template v-if="Object.keys(icons).length">
       <svg-icon-viewer
         :icons="icons"
-        :selected-name="currentName"
+        :selected-name="store.selected"
         @selected="onSelected"
       />
     </template>
@@ -318,7 +318,6 @@ export default defineComponent({
       importedIcons = ref(null),
       dialogRef = ref(null),
       currentPath = ref(''),
-      currentName = ref(''),
       inverted = ref(false),
       textColor = ref('black'),
       $q = useQuasar(),
@@ -356,7 +355,7 @@ export default defineComponent({
     })
 
     const isInCart = computed(() => {
-      return store.isCartIcon(currentName.value)
+      return store.isCartIcon(store.selected)
     })
 
     // returns a list of filtered icons
@@ -391,7 +390,7 @@ export default defineComponent({
       return 'Remove from library'
     })
 
-    // retrns the icon to use for "Add to library"/"Remove from library" button
+    // returns the icon to use for "Add to library"/"Remove from library" button
     const cartButtonIcon = computed(() => {
       if (isInCart.value !== true) {
         return mdiPlus
@@ -423,6 +422,7 @@ export default defineComponent({
             await nextTick()
             console.log(`${ val.value } Render (ms):`, new Date() - now)
             store.loading = false
+            checkSelectedExists()
           })
         }
         else if (val.packageName === 'quasar-extras-svg-icons') {
@@ -436,6 +436,7 @@ export default defineComponent({
             await nextTick()
             console.log(`${ val.value } Render (ms):`, new Date() - now)
             store.loading = false
+            checkSelectedExists()
           })
         }
       }
@@ -455,7 +456,7 @@ export default defineComponent({
       }
     })
 
-    watch(currentName, val => {
+    watch(() => store.selected, val => {
       if (!val) {
         store.showIconDialog = false
       }
@@ -479,6 +480,25 @@ export default defineComponent({
       }
     })
 
+    function checkSelectedExists () {
+      // does it exist in the current icons
+      let found = false
+      for (const key of Object.keys(icons.value)) {
+        if (key === store.selected) {
+          found = true
+          break
+        }
+      }
+
+      if (found) {
+        store.showIconDialog = true
+      }
+      else {
+        store.selected = null
+      }
+
+    }
+
     function colorClass (color) {
       let newColor = 'bg-' + color
       if (color !== 'black' && color !== 'white') newColor += '-8'
@@ -495,7 +515,7 @@ export default defineComponent({
     // called when user clicks on an icon
     function onSelected ({ path, name }) {
       currentPath.value = path
-      currentName.value = name
+      store.selected = name
       store.showIconDialog = true
       store.rightDrawerOpen = false
     }
@@ -551,36 +571,36 @@ export default defineComponent({
     }
 
     function nameToClipboard () {
-      sendToClipboard(currentName.value, `Name: '${ currentName.value }' copied to clipboard`, currentPath.value)
+      sendToClipboard(store.selected, `Name: '${ store.selected }' copied to clipboard`, currentPath.value)
     }
 
     function rawToClipboard () {
-      sendToClipboard(currentPath.value, `Raw: '${ currentName.value }' copied to clipboard`, currentPath.value)
+      sendToClipboard(currentPath.value, `Raw: '${ store.selected }' copied to clipboard`, currentPath.value)
     }
 
     function svgToClipboard () {
       const svg = createSvg(currentPath.value)
-      sendToClipboard(svg, `SVG: rehydrated SVG for '${ currentName.value }' copied to clipboard`, currentPath.value)
+      sendToClipboard(svg, `SVG: rehydrated SVG for '${ store.selected }' copied to clipboard`, currentPath.value)
     }
 
     function inlineToClipboard () {
-      const inline = `const ${ currentName.value } = '${ currentPath.value }'`
-      sendToClipboard(inline, `Inline: '${ currentName.value }' copied to clipboard`, currentPath.value)
+      const inline = `const ${ store.selected } = '${ currentPath.value }'`
+      sendToClipboard(inline, `Inline: '${ store.selected }' copied to clipboard`, currentPath.value)
     }
 
     function importToClipboard () {
-      const inline = `import { ${ currentName.value } } from '${ store.iconSet.packageName }/${ store.iconSet.value }'`
-      sendToClipboard(inline, `Import: '${ currentName.value }' copied to clipboard`, currentPath.value)
+      const inline = `import { ${ store.selected } } from '${ store.iconSet.packageName }/${ store.iconSet.value }'`
+      sendToClipboard(inline, `Import: '${ store.selected }' copied to clipboard`, currentPath.value)
     }
 
     function qiconToClipboard( ) {
-      const inline = `<q-icon :name="${ currentName.value }" />`
-      sendToClipboard(inline, `QIcon: '${ currentName.value }' copied to clipboard`, currentPath.value)
+      const inline = `<q-icon :name="${ store.selected }" />`
+      sendToClipboard(inline, `QIcon: '${ store.selected }' copied to clipboard`, currentPath.value)
     }
 
     function qbtnToClipboard () {
-      const inline = `<q-btn :icon="${ currentName.value }" />`
-      sendToClipboard(inline, `QBtn: '${ currentName.value }' copied to clipboard`, currentPath.value)
+      const inline = `<q-btn :icon="${ store.selected }" />`
+      sendToClipboard(inline, `QBtn: '${ store.selected }' copied to clipboard`, currentPath.value)
     }
 
     return {
@@ -588,7 +608,6 @@ export default defineComponent({
       importedIcons,
       dialogRef,
       currentPath,
-      currentName,
       headerClasses,
       colorClasses,
       cartButtonLabel,
