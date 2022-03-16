@@ -29,7 +29,7 @@ export default route(function (/* { store, ssrContext } */) {
             }
           }
 
-          resolve(savedPosition || { left: 0, top: 0 })
+          resolve(to.path !== from.path ? (savedPosition || { left: 0, top: 0 }) : null)
         }, 100)
       })
     },

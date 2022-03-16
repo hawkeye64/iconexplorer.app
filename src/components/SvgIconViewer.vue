@@ -178,7 +178,7 @@ export default defineComponent({
 
     return {
       store,
-       onClick,
+      onClick,
       isActiveIcon: function (name) {
         return props.selectedName === name
       },
