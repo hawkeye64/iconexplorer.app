@@ -5517,10 +5517,10 @@ qs@6.9.7:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.7.tgz#4610846871485e1e048f44ae3b94033f0e675afe"
   integrity sha512-IhMFgUmuNpyRfxA90umL7ByLlgRXu6tIfKPpF5TmcfRLlLCckfP/g3IQmju6jjpu+Hh8rA+2p6A27ZSPOOHdKw==
 
-quasar-extras-svg-icons@^1.15.2:
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.15.2.tgz#7e8049e0c7f90d5430e4f93880698360dcc84cab"
-  integrity sha512-cNYDkWRxXGxkI4U3mPgphCoAQWSu8OSga7O72opwehwhmxHsNVSVvBqWHywFBV8/mR1zZu3Ng3fScaoiy7UaFw==
+quasar-extras-svg-icons@^1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.16.0.tgz#cf6210b20e9dd5d3a9610084a8637de62f74eb0a"
+  integrity sha512-UWVh8Rp+s35AsVAFNQI6NtZlkbJmi9bcjv70CiEcpHd2/s5N9xMLcQmUmYwNVy/aKgHkAytmvJ/nsS000EjMyg==
 
 quasar@2.6.1:
   version "2.6.1"
