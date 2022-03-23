@@ -255,31 +255,43 @@
     </div>
     <div
       v-else
-      class="column justify-center items-center text-h5 q-ma-md"
+      class="q-gutter-y-md q-ma-md"
     >
-      <div class="row justify-center full-width">
-        <div
-          class="text-center"
-          style="max-width: 80%;"
-        >
-          <q-icon
-            :name="mdiArrowCollapseLeft"
-            color="primary"
-          />Select an icon set in the left drawer or enter a search filter (top of left drawer)
-        </div>
-      </div>
-      <div
-        class="row justify-center full-width"
-        style="font-size: 14px;"
+      <q-tabs
+        v-model="tab"
+        align="left"
       >
-        <!-- eslint-disable vue/html-indent -->
-        <q-markdown style="max-width: 80%;">
-::: tip
-The filter bar accepts regular expressions. For instance, in the simplist form, you can search for a single word, such as "**map**". But, you can do a multiple word search by adding a "**|**" between words. Now, we can seach for "**map|pin**" at the same time. However, you may get false-positives with words like "shop**pin**g" or "s**pin**ner". With regular expressions, you can filter these out. We can create a search like this "**(?!pint|ping|maple)(pin|map)**". The first part (in parentheses) is using a regular expression look-ahead to filter out what we do not want, before looking for what we do want. Words containing "**pint**", "**ping**" or "**maple**" are skipped before looking for "**pin**" and "**map**".
-:::
-        </q-markdown>
-        <!-- eslint-enable vue/html-indent -->
-      </div>
+        <q-tab
+          name="welcome"
+          label="Welcome"
+        />
+        <q-tab
+          name="help"
+          label="Help"
+        />
+        <q-tab
+          name="about"
+          label="About"
+        />
+      </q-tabs>
+
+      <q-tab-panels
+        v-model="tab"
+        animated
+        class="shadow-2 rounded-borders"
+      >
+        <q-tab-panel name="welcome">
+          <welcome />
+        </q-tab-panel>
+
+        <q-tab-panel name="help">
+          <help />
+        </q-tab-panel>
+
+        <q-tab-panel name="about">
+          <about />
+        </q-tab-panel>
+      </q-tab-panels>
     </div>
 
     <div class="icons-footer" />
@@ -305,12 +317,18 @@ import { useQuasar, copyToClipboard } from 'quasar'
 import { mdiHeartBroken, mdiHeart, mdiClose, mdiPlus, mdiChevronUp, mdiArrowCollapseLeft, mdiContentCopy } from '@quasar/extras/mdi-v6'
 import { useStore } from 'assets/store.js'
 import SvgIconViewer from 'components/SvgIconViewer.vue'
+import Welcome from 'components/Welcome.vue'
+import Help from 'components/Help.vue'
+import About from 'components/About.vue'
 
 export default defineComponent({
   name: 'MainPage',
 
   components: {
-    SvgIconViewer
+    SvgIconViewer,
+    Welcome,
+    Help,
+    About
   },
 
   setup () {
@@ -329,7 +347,8 @@ export default defineComponent({
         'light-green', 'lime', 'yellow', 'amber', 'orange',
         'deep-orange', 'brown', 'grey', 'blue-grey',
         'white'
-      ]
+      ],
+      tab = ref('welcome')
 
     const screenWidth = computed(() => {
       return $q.screen.width - 15 // scrollbars
@@ -634,7 +653,8 @@ export default defineComponent({
       inlineToClipboard,
       importToClipboard,
       qiconToClipboard,
-      qbtnToClipboard
+      qbtnToClipboard,
+      tab
     }
   }
 })
