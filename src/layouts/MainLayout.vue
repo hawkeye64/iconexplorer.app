@@ -310,22 +310,39 @@
               </q-btn>
             </q-item-section>
           </q-item>
-          <div class="row justify-center q-pt-sm">
-            <q-btn
-              v-for="icon in store.selectedIconsFlattened"
-              :key="icon.iconName"
-              :icon="icon.path"
-              round
-              flat
-              size="xl"
-              padding="sm"
-              @click="importToClipboard(icon)"
-            >
+          <q-item
+            v-for="icon in store.selectedIconsFlattened"
+            :key="icon.iconName"
+            dense
+            class="full-width q-mx-none q-px-none"
+          >
+            <q-item-section avatar>
+              <q-icon
+                :name="icon.path"
+                class="cursor-pointer"
+                @click="importToClipboard(icon)"
+              >
+                <q-tooltip style="font-size: 18px;">
+                  {{ 'import &#123; ' + icon.iconName + ' &#125; from ' + '\'' + icon.packageName + '/' + icon.iconSet + '\'' }}
+                </q-tooltip>
+              </q-icon>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>
+                <span class="ellipsis">{{ icon.iconName }}</span>
+              </q-item-label>
+            </q-item-section>
+            <q-item-section avatar>
+              <q-icon
+                :name="mdiTrashCanOutline"
+                class="float-right on-left trash-can cursor-pointer"
+                @click="removeIconFromLibrary(icon)"
+              />
               <q-tooltip style="font-size: 18px;">
-                {{ 'import &#123; ' + icon.iconName + ' &#125; from ' + '\'' + icon.packageName + '/' + icon.iconSet + '\'' }}
+                {{ 'Remove ' + icon.iconName + ' from library' }}
               </q-tooltip>
-            </q-btn>
-          </div>
+            </q-item-section>
+          </q-item>
         </q-list>
       </q-scroll-area>
     </q-drawer>
@@ -585,6 +602,10 @@ export default defineComponent({
         }
       }
     }
+
+    function removeIconFromLibrary (icon) {
+      store.removeItem(icon.packageName, icon.iconSet, icon.iconName)
+    }
     
     return {
       store,
@@ -620,7 +641,8 @@ export default defineComponent({
       mdiCharity,
       madeWithClasses,
       canDisplay,
-      searchInputRef
+      searchInputRef,
+      removeIconFromLibrary
     }
   }
 })
@@ -681,4 +703,9 @@ body.mobile .icon-search-input kbd
   right: 10px
   bottom: 0px
   transition: all .5s
+
+.trash-can
+  color: $green-8
+  &:hover
+    color: $red-8
 </style>
