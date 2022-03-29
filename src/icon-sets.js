@@ -59,6 +59,7 @@ const iconSets = [
       { label: 'Icomoon Free Icons', value: 'icomoon-free-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.3' },
       { label: 'Iconoir Icons', value: 'iconoir-icons', packageName: 'quasar-extras-svg-icons', icons: true },
       { label: 'IconPark Icons', value: 'iconpark-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.12' },
+      { label: 'Icons Material (mui)', value: 'icons-material', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.17' },
       { label: 'Ikonate', value: 'ikonate', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.11' },
       { label: 'Ikons', value: 'ikons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.10' },
       { label: 'Jam Icons', value: 'jam-icons', packageName: 'quasar-extras-svg-icons', icons: true },
