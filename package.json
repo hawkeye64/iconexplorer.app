@@ -13,10 +13,10 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.13.3",
+    "@quasar/extras": "^1.13.4",
     "core-js": "^3.21.1",
-    "quasar": "2.6.1",
-    "quasar-extras-svg-icons": "^1.16.0",
+    "quasar": "2.6.2",
+    "quasar-extras-svg-icons": "^1.17.0",
     "vue": "^3.2.31",
     "vue-router": "^4.0.14"
   },
@@ -25,10 +25,10 @@
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.16.11",
-    "@quasar/app-webpack": "^3.4.5",
+    "@quasar/app-webpack": "^3.4.7",
     "@quasar/quasar-app-extension-qmarkdown": "^2.0.0-beta.4",
     "babel-loader": "^8.2.4",
-    "eslint": "^8.11.0",
+    "eslint": "^8.12.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
