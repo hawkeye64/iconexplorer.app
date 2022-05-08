@@ -35,6 +35,7 @@ const iconSets = [
       { label: 'Carbon Icons', value: 'carbon-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.7' },
       { label: 'Carbon Pictograms v12', value: 'carbon-pictograms-v12', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.18' },
       { label: 'Carbon Pictograms', value: 'carbon-pictograms', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.7' },
+      { label: 'Clarity Icons v6', value: 'clarity-icons-v6', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.20' },
       { label: 'Clarity Icons', value: 'clarity-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.12.1' },
       { label: 'Codicons', value: 'codicons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.4' },
       { label: 'Cool Icons', value: 'cool-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.3' },
