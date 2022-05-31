@@ -25,7 +25,8 @@
           >
             <q-tooltip
               anchor="top middle"
-              self="top middle"
+              self="bottom middle"
+              :offset="[10,10]"
               class="primary my-tooltip"
             >
               Copy name "{{ name }}" to clipboard
@@ -41,7 +42,8 @@
           >
             <q-tooltip
               anchor="top middle"
-              self="top middle"
+              self="bottom middle"
+              :offset="[10,10]"
               class="primary my-tooltip"
             >
               Copy "import &#123; {{ name }} &#125; from '{{ store.iconSet.packageName }}/{{ store.iconSet.value }}'" to clipboard
