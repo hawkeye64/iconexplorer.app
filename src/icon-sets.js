@@ -13,6 +13,7 @@ const iconSets = [
       { label: 'Material Symbols Outlined (Google)', value: 'material-symbols-outlined', packageName: '@quasar/extras', icons: true, status: 'v1.14' },
       { label: 'Material Symbols Rounded (Google)', value: 'material-symbols-rounded', packageName: '@quasar/extras', icons: true, status: 'v1.14' },
       { label: 'Material Symbols Sharp (Google)', value: 'material-symbols-sharp', packageName: '@quasar/extras', icons: true, status: 'v1.14' },
+      { label: 'MDI v7 (Material Design Icons)', value: 'mdi-v7', packageName: '@quasar/extras', icons: true, status: 'v1.15' },
       { label: 'MDI v6 (Material Design Icons)', value: 'mdi-v6', packageName: '@quasar/extras', icons: true },
       { label: 'MDI v5 (Material Design Icons)', value: 'mdi-v5', packageName: '@quasar/extras' },
       { label: 'Fontawesome v6', value: 'fontawesome-v6', packageName: '@quasar/extras', icons: true, status: 'v1.13' },
