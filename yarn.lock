@@ -4270,10 +4270,10 @@ eslint-webpack-plugin@^3.2.0:
     normalize-path "^3.0.0"
     schema-utils "^4.0.0"
 
-eslint@^8.21.0:
-  version "8.21.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.21.0.tgz#1940a68d7e0573cef6f50037addee295ff9be9ef"
-  integrity sha512-/XJ1+Qurf1T9G2M5IHrsjp+xrGT73RZf23xA1z5wB1ZzzEAWSZKvRwhWxTFp1rvkvCfwcvAUNAP31bhKTTGfDA==
+eslint@^8.22.0:
+  version "8.22.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.22.0.tgz#78fcb044196dfa7eef30a9d65944f6f980402c48"
+  integrity sha512-ci4t0sz6vSRKdmkOGmprBo6fmI4PrphDFMy5JEq/fNS0gQkJM3rLmrqcp8ipMcdobH3KtUP40KniAE9W19S4wA==
   dependencies:
     "@eslint/eslintrc" "^1.3.0"
     "@humanwhocodes/config-array" "^0.10.4"
@@ -6684,15 +6684,15 @@ qs@6.9.7:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.7.tgz#4610846871485e1e048f44ae3b94033f0e675afe"
   integrity sha512-IhMFgUmuNpyRfxA90umL7ByLlgRXu6tIfKPpF5TmcfRLlLCckfP/g3IQmju6jjpu+Hh8rA+2p6A27ZSPOOHdKw==
 
-quasar-extras-svg-icons@^1.22.2:
-  version "1.22.2"
-  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.22.2.tgz#c25d2d492474f6c8cfeacc503c57e9fcabe985b1"
-  integrity sha512-HS1kNND/hnRh3cCO8akqX+keAQ3LDMm218nr83qykaAxpBDp5MuFGygTKGymtPWC3a3WsmVlpVYywe+lrtcNgQ==
+quasar-extras-svg-icons@^1.23.0:
+  version "1.23.0"
+  resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.23.0.tgz#348853852b1a7174f3e7e41a578949b1b83c8164"
+  integrity sha512-cGNdrwadagVh8fkyJ6KCp8AA1KtnGPjzDhVtyp/3IpYgI8HXMv1MXm1bQHmvJ6y0+DvTRmu466F2i8FFzAXTzw==
 
-quasar@2.7.6:
-  version "2.7.6"
-  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.7.6.tgz#b493db596efc73ec828949a27e828cb2f92e14d6"
-  integrity sha512-NMuYvwUdvq3I+6fCMAqtYHcMTvEXqN+9kTYrOT1yoGYaDox/jx4jU6qN2iRQseTZ/3iGo/HubaUO2eahRZN7Yw==
+quasar@2.7.7:
+  version "2.7.7"
+  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.7.7.tgz#04d08c74005293334edbe9443d0f8579168cd8c2"
+  integrity sha512-tegG6EmEmv5i24MoNopRkhZOdT5kdLSAxQMA0V/fG04oco52hk2xwvB0EVS8WzT0bZZbc/9iXlAm1c29rZ3yVA==
 
 queue-microtask@^1.2.2:
   version "1.2.3"
