@@ -58,6 +58,7 @@ const iconSets = [
       { label: 'Fontisto Icons', value: 'fontisto-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.12' },
       { label: 'Foundation Icons', value: 'foundation-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.11' },
       { label: 'Geom Icons', value: 'geom-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.11' },
+      { label: 'GitLab Icons v3', value: 'gitlab-icons-v3', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.23' },
       { label: 'GitLab Icons', value: 'gitlab-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.16' },
       { label: 'Glyphs Brands', value: 'glyphs-brands', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.12.1' },
       { label: 'Glyphs Core Icons', value: 'glyphs-core-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.12' },
