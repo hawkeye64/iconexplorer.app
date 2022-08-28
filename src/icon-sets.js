@@ -64,6 +64,7 @@ const iconSets = [
       { label: 'Glyphs Core Icons', value: 'glyphs-core-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.12' },
       { label: 'Grid Icons', value: 'grid-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.6' },
       { label: 'Health Icons', value: 'health-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.7' },
+      { label: 'Hero Icons v2', value: 'hero-icons-v2', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.24' },
       { label: 'Hero Icons', value: 'hero-icons', packageName: 'quasar-extras-svg-icons', icons: true },
       { label: 'Icomoon Free Icons', value: 'icomoon-free-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.3' },
       { label: 'Iconoir Icons v5', value: 'iconoir-icons-v5', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.21' },
