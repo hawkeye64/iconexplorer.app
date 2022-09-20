@@ -91,6 +91,7 @@ const iconSets = [
       { label: 'Openmoji Icons', value: 'openmoji-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.13' },
       { label: 'Pixelart Icons', value: 'pixelart-icons', packageName: 'quasar-extras-svg-icons', icons: true },
       { label: 'Phosphor Icons', value: 'phosphor-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.12' },
+      { label: 'Prime Icons v6', value: 'prime-icons-v6', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.25' },
       { label: 'Prime Icons', value: 'prime-icons', packageName: 'quasar-extras-svg-icons', icons: true },
       { label: 'Radix-UI Icons', value: 'radix-ui-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.5' },
       { label: 'Remix Icons', value: 'remix-icons', packageName: 'quasar-extras-svg-icons', icons: true },
