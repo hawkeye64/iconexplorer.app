@@ -1,6 +1,6 @@
 {
   "name": "iconexplorer.app",
-  "version": "2.7.16",
+  "version": "2.7.17",
   "description": "Icon Explorer application for Quasar Framework SVG icons. 100k+ searchable icons and growing.",
   "productName": "Icon Explorer for Quasar Framework SVG Icons",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
@@ -13,29 +13,29 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.15.4",
-    "core-js": "^3.25.3",
-    "quasar": "2.8.4",
-    "quasar-extras-svg-icons": "^1.25.1",
-    "vue": "^3.2.40",
+    "@quasar/extras": "^1.15.5",
+    "core-js": "^3.25.5",
+    "quasar": "2.10.0",
+    "quasar-extras-svg-icons": "^1.25.2",
+    "vue": "^3.2.41",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/preset-env": "^7.19.3",
-    "@quasar/app-webpack": "^3.6.1",
+    "@babel/preset-env": "^7.19.4",
+    "@quasar/app-webpack": "^3.6.2",
     "@quasar/quasar-app-extension-qmarkdown": "^2.0.0-beta.4",
     "babel-loader": "^8.2.5",
-    "eslint": "^8.24.0",
+    "eslint": "^8.25.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-promise": "^6.1.0",
     "eslint-plugin-quasar": "^1.1.0",
     "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-vue": "^9.5.1",
+    "eslint-plugin-vue": "^9.6.0",
     "eslint-webpack-plugin": "^3.2.0"
   },
   "engines": {
