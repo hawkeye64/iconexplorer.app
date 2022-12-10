@@ -95,6 +95,7 @@ const iconSets = [
       { label: 'Prime Icons', value: 'prime-icons', packageName: 'quasar-extras-svg-icons', icons: true },
       { label: 'Radix-UI Icons', value: 'radix-ui-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.5' },
       { label: 'Remix Icons', value: 'remix-icons', packageName: 'quasar-extras-svg-icons', icons: true },
+      { label: 'Simple Icons v8', value: 'simple-icons-v8', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.26' },
       { label: 'Simple Icons v7', value: 'simple-icons-v7', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.21' },
       { label: 'Simple Icons', value: 'simple-icons', packageName: 'quasar-extras-svg-icons', icons: true },
       { label: 'Simple Line Icons', value: 'simple-line-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.9' },
