@@ -13,10 +13,10 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.15.7",
+    "@quasar/extras": "^1.15.8",
     "core-js": "^3.26.1",
     "quasar": "2.10.2",
-    "quasar-extras-svg-icons": "^1.25.4",
+    "quasar-extras-svg-icons": "^1.26.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
