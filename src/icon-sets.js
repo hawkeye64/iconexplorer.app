@@ -67,6 +67,7 @@ const iconSets = [
       { label: 'Hero Icons v2', value: 'hero-icons-v2', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.24' },
       { label: 'Hero Icons', value: 'hero-icons', packageName: 'quasar-extras-svg-icons', icons: true },
       { label: 'Icomoon Free Icons', value: 'icomoon-free-icons', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.3' },
+      { label: 'Iconoir Icons v6', value: 'iconoir-icons-v6', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.27' },
       { label: 'Iconoir Icons v5', value: 'iconoir-icons-v5', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.21' },
       { label: 'Iconoir Icons v4', value: 'iconoir-icons-v4', packageName: 'quasar-extras-svg-icons', icons: true, status: 'v1.18.2' },
       { label: 'Iconoir Icons', value: 'iconoir-icons', packageName: 'quasar-extras-svg-icons', icons: true },
