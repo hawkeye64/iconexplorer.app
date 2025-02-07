@@ -4,53 +4,43 @@
   "description": "Icon Explorer application for Quasar Framework SVG icons. 140k+ searchable icons and growing.",
   "productName": "Icon Explorer for Quasar Framework SVG Icons",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
+  "type": "module",
   "private": true,
   "scripts": {
-    "clean": "rm -Rf yarn.lock node_modules",
+    "lint": "eslint -c ./eslint.config.js \"./src*/**/*.{ts,js,cjs,mjs,vue}\"",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
-    "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "postinstall": "quasar prepare"
   },
   "dependencies": {
-    "@quasar/extras": "^1.16.0",
-    "core-js": "^3.29.1",
-    "quasar": "2.11.9",
-    "quasar-extras-svg-icons": "^1.29.0",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "@quasar/extras": "^1.16.16",
+    "pinia": "^2.3.1",
+    "quasar": "^2.17.7",
+    "quasar-extras-svg-icons": "^2.0.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@babel/core": "=7.21.3",
-    "@babel/eslint-parser": "^7.21.3",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/preset-env": "^7.20.2",
-    "@quasar/app-webpack": "^3.7.2",
-    "@quasar/quasar-app-extension-qmarkdown": "^2.0.0-beta.4",
-    "babel-loader": "^9.1.2",
-    "eslint": "^8.36.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-quasar": "^1.1.0",
-    "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-vue": "^9.10.0",
-    "eslint-webpack-plugin": "^4.0.0"
+    "@eslint/js": "^9.20.0",
+    "@quasar/app-vite": "^2.0.8",
+    "@quasar/quasar-app-extension-qmarkdown": "^2.0.4",
+    "@types/node": "^22.13.1",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.3.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.19.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "typescript": "~5.7.3",
+    "vite-plugin-checker": "^0.8.0",
+    "vue-tsc": "^2.2.0"
   },
   "engines": {
-    "node": ">= 12.22.1",
-    "npm": ">= 7.10.0",
-    "yarn": ">= 1.22.5"
-  },
-  "browserslist": [
-    "last 10 Chrome versions",
-    "last 10 Firefox versions",
-    "last 10 Edge versions",
-    "last 10 Safari versions",
-    "last 10 Android versions",
-    "last 10 ChromeAndroid versions",
-    "last 10 FirefoxAndroid versions",
-    "last 10 iOS versions"
-  ]
+    "node": "^28 || ^26 || ^24 || ^22 || ^20 || ^18",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
 }
