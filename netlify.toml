@@ -1,5 +1,5 @@
 [build]
-publish = "docs/dist/spa"
+publish = "dist/spa"
 command = "pnpm run build"
 
 [build.environment]
