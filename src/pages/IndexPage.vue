@@ -86,7 +86,7 @@
                     class="user-button"
                     @click="importToClipboard"
                   >
-                    <q-tooltip :delay="250" class="primary my-tooltip">
+                    <q-tooltip v-if="iconSet" :delay="250" class="primary my-tooltip">
                       Copy "import &#123; {{ common.selected }} &#125; from '{{
                         iconSet.packageName
                       }}/{{ iconSet.value }}'" to clipboard
@@ -170,6 +170,7 @@
     </q-dialog>
 
     <div
+      v-if="iconSet"
       :class="headerClasses"
       style="position: sticky; top: 50px; left: 0; right: 0; z-index: 2000"
     >
@@ -185,14 +186,14 @@
       <!-- Nothing goes here -->
     </div>
     <div
-      v-else-if="common.filter && relatedIconSets.length > 0 && iconStore.searching === false"
+      v-else-if="filter && relatedIconSets.length > 0 && iconStore.searching === false"
       class="row justify-center items-center text-h5 q-ma-md"
     >
       <q-icon :name="mdiHeart" class="text-blue-8" />{{ relatedIconSets.length }} icon sets contain
-      "{{ common.filter }}" (select from left drawer to see them)
+      "{{ filter }}" (select from left drawer to see them)
     </div>
     <div
-      v-else-if="common.filter && importedIcons"
+      v-else-if="filter && importedIcons && iconSet && iconSet.label"
       class="row justify-center items-center text-h5 q-ma-md"
     >
       <q-icon :name="mdiHeartBroken" class="text-red-8" />
@@ -286,14 +287,15 @@ const tab = ref('welcome')
 //   return $q.screen.width - 15 // scrollbars
 // })
 
-const defaultIconSet = {
-  label: '',
-  value: '',
-  packageName: '',
-}
+// const defaultIconSet = {
+//   label: '',
+//   value: '',
+//   packageName: '',
+// }
 
-const iconSet = computed(() => common.iconSet.value || defaultIconSet)
+const iconSet = computed(() => common.iconSet.value || null)
 const relatedIconSets = computed(() => common.relatedIconSets.value || [])
+const filter = computed(() => common.filter.value || '')
 
 const headerClasses = computed(() => {
   return ($q.screen.lt.sm ? 'column' : 'row') + ' justify-center items-center q-pa-xs filter-bar'
@@ -319,7 +321,7 @@ const isInCart = computed(() => {
 
 const icons = computed(() => {
   const vals: Record<string, any> = {}
-  const re = importedIcons.value && common.filter.value ? new RegExp(common.filter.value, 'i') : ''
+  const re = importedIcons.value && filter.value ? new RegExp(filter.value, 'i') : ''
   if (importedIcons.value) {
     Object.keys(importedIcons.value).forEach((name) => {
       if (re === '' || (re instanceof RegExp && re.test(String(name).replace(/^[a-z]+/, '')))) {
