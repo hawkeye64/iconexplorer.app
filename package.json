@@ -18,7 +18,7 @@
     "@quasar/extras": "^1.16.16",
     "pinia": "^2.3.1",
     "quasar": "^2.17.7",
-    "quasar-extras-svg-icons": "^2.0.0",
+    "quasar-extras-svg-icons": "^2.1.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
@@ -30,7 +30,7 @@
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.3.0",
     "autoprefixer": "^10.4.20",
-    "eslint": "^9.19.0",
+    "eslint": "^9.20.0",
     "eslint-plugin-vue": "^9.32.0",
     "globals": "^15.14.0",
     "prettier": "^3.4.2",
