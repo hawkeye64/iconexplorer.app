@@ -634,13 +634,6 @@ const iconSets = [
         status: 'v2.0',
       },
       {
-        label: 'Simple Icons v11',
-        value: 'simple-icons-v11',
-        packageName: 'quasar-extras-svg-icons',
-        icons: true,
-        status: 'v2.0',
-      },
-      {
         label: 'Simple Line Icons',
         value: 'simple-line-icons',
         packageName: 'quasar-extras-svg-icons',
