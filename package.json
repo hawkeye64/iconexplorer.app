@@ -1,6 +1,6 @@
 {
   "name": "iconexplorer.app",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Icon Explorer application for Quasar Framework SVG icons. 140k+ searchable icons and growing.",
   "productName": "Icon Explorer for Quasar Framework SVG Icons",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
