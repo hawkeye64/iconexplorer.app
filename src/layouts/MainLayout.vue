@@ -390,8 +390,8 @@ watch(common.filter, (val) => {
   }
 })
 
-watch(selectedIconsFlattened, (val) => {
-  console.log('Selected icons flattened:', val)
+watch(selectedIconsFlattened, (/*val*/) => {
+  // console.log('Selected icons flattened:', val)
 })
 
 const allImports = computed(() => {
