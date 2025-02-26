@@ -6,7 +6,7 @@
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.2.1",
+  "packageManager": "pnpm@10.5.1",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint -c ./eslint.config.js \"./src*/**/*.{ts,js,cjs,mjs,vue}\"",
@@ -17,28 +17,28 @@
     "postinstall": "quasar prepare"
   },
   "dependencies": {
-    "@quasar/extras": "^1.16.16",
-    "pinia": "^2.3.1",
+    "@quasar/extras": "^1.16.17",
+    "pinia": "^3.0.1",
     "quasar": "^2.17.7",
-    "quasar-extras-svg-icons": "^2.1.0",
+    "quasar-extras-svg-icons": "^2.1.1",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.20.0",
-    "@quasar/app-vite": "^2.0.8",
+    "@eslint/js": "^9.21.0",
+    "@quasar/app-vite": "^2.1.1",
     "@quasar/quasar-app-extension-qmarkdown": "^2.0.4",
-    "@types/node": "^22.13.1",
+    "@types/node": "^22.13.5",
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.4.0",
     "autoprefixer": "^10.4.20",
-    "eslint": "^9.20.0",
+    "eslint": "^9.21.0",
     "eslint-plugin-vue": "^9.32.0",
-    "globals": "^15.14.0",
-    "prettier": "^3.5.0",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.2",
     "typescript": "~5.7.3",
-    "vite-plugin-checker": "^0.8.0",
-    "vue-tsc": "^2.2.0"
+    "vite-plugin-checker": "^0.9.0",
+    "vue-tsc": "^2.2.4"
   },
   "engines": {
     "node": "^28 || ^26 || ^24 || ^22 || ^20 || ^18",
