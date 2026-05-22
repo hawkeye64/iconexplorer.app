@@ -3,42 +3,57 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: 'Build: node-16, ubuntu-latest'
+    name: Build (${{ matrix.node-version }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22, 24]
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
-      - name: Set node version to 16
-        uses: actions/setup-node@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
         with:
-          node-version: 16
-          cache: 'yarn'
+          version: 11.1.0
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Versions
         run: |
-          echo "yarn: $(yarn --version)"
-          echo "npm : $(npm --version)"
+          echo "pnpm: $(pnpm --version)"
           echo "node: $(node --version)"
           echo "process.versions:"
-          yarn node -p process.versions
+          node -p process.versions
+
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
+
+      - name: Format
+        run: pnpm format:check
 
       - name: Lint
-        run: yarn run lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
 
       - name: Build
-        run: yarn run build
-
-      - name: Audit production
-        run: yarn audit --prod
-
-      - name: Audit all
-        continue-on-error: true
-        run: yarn audit
+        run: pnpm build

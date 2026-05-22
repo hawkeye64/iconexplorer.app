@@ -43,10 +43,9 @@
             <q-tooltip anchor="bottom left" :offset="[-100, 0]" class="glass">
               <div class="column items-center text-no-wrap">
                 <span style="font-size: 18px">Serving {{ iconStore.totalIcons }}+ icons</span>
-                <span style="font-size: 12px"
-                  >Excludes (mdi-v4|mdi-v5|ionicons-v4|ionicons-v5)</span
-                >
-                <span style="font-size: 12px">These icon sets are not searchable</span>
+                <span style="font-size: 12px">
+                  Generated from installed icon package metadata
+                </span>
               </div>
             </q-tooltip>
           </q-btn>

@@ -32,6 +32,7 @@ If you select an icon set that doesn't come from `@quasar/extras` make sure to i
 The filter bar accepts regular expressions. For instance, in the simplist form, you can search for a single word, such as **map**. But, you can do a multiple word search by adding a **|** between words. Now, we can seach for **map|pin** at the same time. However, you may get false-positives with words like "shop**pin**g" or "s**pin**ner". With regular expressions, you can filter these out. We can create a search like this **(?!pint|ping|maple)(pin|map)**. The first part is using a regular expression look-ahead to filter out what we don't want, before looking for what we do want. Words containing **pint**, **ping** or **maple** are skipped before looking for **pin** and **map**.
 
 ### SVG name format
+
 Svg icons will be defined as String with the following syntax:
 
 ```
@@ -42,12 +43,15 @@ Examples:
 ```
 
 A more complex example with attributes, would look like this:
+
 ```
 M3 12H6L9 3L15 21L18 12H21@@stroke-width:1.5;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;
 ```
 
 ## Donate
+
 If you appreciate the work that went into this project, please consider donating to [Quasar](https://donate.quasar.dev) or [Jeff](https://github.com/sponsors/hawkeye64).
+
 ## Stay in Touch
 
 For latest releases and announcements, follow on Twitter: [@jgalbraith64](https://twitter.com/jgalbraith64)

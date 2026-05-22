@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2022": true
+  },
+  "globals": {
+    "ga": "readonly",
+    "cordova": "readonly",
+    "Capacitor": "readonly",
+    "chrome": "readonly",
+    "browser": "readonly"
+  },
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/.quasar/**",
+    "**/dist/**",
+    "**/coverage/**",
+    "**/quasar.config.*.temporary.compiled*"
+  ],
+  "rules": {
+    "eqeqeq": "error",
+    "no-console": [
+      "warn",
+      {
+        "allow": ["error", "warn"]
+      }
+    ],
+    "no-debugger": "error",
+    "no-prototype-builtins": "off",
+    "typescript/no-explicit-any": "off"
+  },
+  "overrides": [
+    {
+      "files": ["src/assets/useCommon.ts", "src/pages/IndexPage.vue"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}

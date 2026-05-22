@@ -1,48 +1,46 @@
 {
   "name": "iconexplorer.app",
-  "version": "3.0.4",
+  "version": "3.0.5",
+  "private": true,
   "description": "Icon Explorer application for Quasar Framework SVG icons. 140k+ searchable icons and growing.",
-  "productName": "Icon Explorer for Quasar Framework SVG Icons",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "type": "module",
-  "private": true,
-  "packageManager": "pnpm@10.12.4",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "lint": "eslint -c ./eslint.config.js \"./src*/**/*.{ts,js,cjs,mjs,vue}\"",
-    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "generate:icon-sets": "node scripts/generate-icon-sets.mjs",
+    "typecheck": "pnpm generate:icon-sets && vue-tsc --noEmit --pretty false",
     "test": "echo \"No test specified\" && exit 0",
-    "dev": "quasar dev",
-    "build": "quasar build",
+    "dev": "pnpm generate:icon-sets && quasar dev",
+    "build": "pnpm generate:icon-sets && quasar build",
     "postinstall": "quasar prepare"
   },
   "dependencies": {
-    "@quasar/extras": "^1.17.0",
-    "pinia": "^3.0.3",
-    "quasar": "^2.18.1",
-    "quasar-extras-svg-icons": "^2.2.0",
-    "vue": "^3.5.17",
-    "vue-router": "^4.5.1"
+    "@quasar/extras": "^1.18.0",
+    "@quasar/quasar-ui-qmarkdown": "3.0.0-beta.0",
+    "pinia": "^3.0.4",
+    "quasar": "^2.19.3",
+    "quasar-extras-svg-icons": "3.0.0-beta.0",
+    "vue": "^3.5.34",
+    "vue-router": "^5.0.7"
   },
   "devDependencies": {
-    "@eslint/js": "^9.30.1",
-    "@quasar/app-vite": "^2.2.1",
-    "@quasar/quasar-app-extension-qmarkdown": "^2.0.5",
-    "@types/node": "^24.0.10",
-    "@vue/eslint-config-prettier": "^10.2.0",
-    "@vue/eslint-config-typescript": "^14.6.0",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.30.1",
-    "eslint-plugin-vue": "^10.3.0",
-    "globals": "^16.3.0",
-    "prettier": "^3.6.2",
-    "typescript": "~5.8.3",
-    "vite-plugin-checker": "^0.9.3",
-    "vue-tsc": "^3.0.1"
+    "@quasar/app-vite": "3.0.0-beta.21",
+    "@quasar/quasar-app-extension-qmarkdown": "3.0.0-beta.0",
+    "@types/node": "^25.9.1",
+    "autoprefixer": "^10.5.0",
+    "oxfmt": "^0.51.0",
+    "oxlint": "^1.66.0",
+    "typescript": "~5.9.3",
+    "vite-plugin-checker": "^0.13.0",
+    "vue-tsc": "^3.3.1"
   },
   "engines": {
-    "node": "^28 || ^26 || ^24 || ^22 || ^20 || ^18",
-    "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
-  }
+    "node": ">=22.13",
+    "pnpm": ">=11.1.0"
+  },
+  "packageManager": "pnpm@11.1.0",
+  "productName": "Icon Explorer for Quasar Framework SVG Icons"
 }

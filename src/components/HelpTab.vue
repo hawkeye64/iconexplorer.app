@@ -7,16 +7,21 @@
       </div>
     </div>
 
-    <!-- prettier-ignore -->
-    <q-markdown>
-> Note: These icons have been **flattened** and get reconstituted via the [QIcon](https://quasar.dev/vue-components/icon#svg-icons) component.
+    <q-markdown :src="helpMarkdown" />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { mdiArrowCollapseLeft } from '@quasar/extras/mdi-v7'
+
+const helpMarkdown = `> Note: These icons have been **flattened** and get reconstituted via the [QIcon](https://quasar.dev/vue-components/icon#svg-icons) component.
 
 ## Browsing Icon Sets
 
 To browse an icon set, simply click the icon set in the left drawer. Some icons sets are large and may take a bit of time to load.
 
 ::: tip
-If the icon set, on the left, includes a version number, then this is when it was added to its respective icon package (either `@quasar/extras` or `quasar-extras-svg-icons`)
+The icon set list is generated from the installed \`@quasar/extras\` and \`quasar-extras-svg-icons\` packages so new sets, such as Font Awesome v7, are picked up as packages are updated.
 :::
 
 You should also be aware that some icon-sets are more than they appear. If you browse them, you will find some have outlined, solid, duo-tones, etc.
@@ -28,8 +33,9 @@ We even host colored, flags, weather and medical icons. Take your time to explor
 You can search icon sets by adding search criteria in the search bar (top left).
 
 When searching, all icon sets will be searched and only those with a **match** will show up.
+
 ::: tip
-The filter bar accepts regular expressions. For instance, in the simplist form, you can search for a single word, such as "**map**". But, you can do a multiple word search by adding a "**|**" between words. Now, we can seach for "**map|pin**" at the same time. However, you may get false-positives with words like "shop**pin**g" or "s**pin**ner". With regular expressions, you can filter these out. We can create a search like this "**(?!pint|ping|maple)(pin|map)**". The first part (in parentheses) is using a regular expression look-ahead to filter out what we do not want, before looking for what we do want. Words containing "**pint**", "**ping**" or "**maple**" are skipped before looking for "**pin**" and "**map**".
+The filter bar accepts regular expressions. For instance, in the simplest form, you can search for a single word, such as "**map**". But, you can do a multiple word search by adding a "**|**" between words. Now, we can search for "**map|pin**" at the same time. However, you may get false-positives with words like "shop**pin**g" or "s**pin**ner". With regular expressions, you can filter these out. We can create a search like this "**(?!pint|ping|maple)(pin|map)**". The first part (in parentheses) is using a regular expression look-ahead to filter out what we do not want, before looking for what we do want. Words containing "**pint**", "**ping**" or "**maple**" are skipped before looking for "**pin**" and "**map**".
 :::
 
 ::: tip
@@ -44,17 +50,12 @@ More importantly, this is where you can add an icon to your **library**.
 
 ## The Library
 
-Once one or more icons are added to your library, you can open the **Library** panel by clicking the shopping cart on the right of the top header bar. This opens the right-side drawer. This allows you to do massive exports, where the icons are conglomerated into their respective imports, all at once. Ths means, if you select multiple icons, from different icon sets, then clicking the **import** button will put it onto the clipboard and all you have to do is paste it into your code:
+Once one or more icons are added to your library, you can open the **Library** panel by clicking the shopping cart on the right of the top header bar. This opens the right-side drawer. This allows you to do massive exports, where the icons are conglomerated into their respective imports, all at once. This means, if you select multiple icons from different icon sets, clicking the **import** button will put it onto the clipboard and all you have to do is paste it into your code:
 
-```js
-import { fabGithub, fabTwitter } from '@quasar/extras/fontawesome-v6'
+\`\`\`js
+import { fabGithub, fabTwitter } from '@quasar/extras/fontawesome-v7'
 import { mdiHeartBroken, mdiHeart, mdiClose, mdiPlus } from '@quasar/extras/mdi-v7'
 import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
-```
-    </q-markdown>
-  </div>
-</template>
-
-<script setup lang="ts">
-import { mdiArrowCollapseLeft } from '@quasar/extras/mdi-v7'
+\`\`\`
+`
 </script>

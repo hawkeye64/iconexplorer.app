@@ -1,7 +1,7 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
 
-import { defineConfig } from '#q-app/wrappers'
+import { defineConfig } from '@quasar/app-vite'
 import { iconSets } from './src/icon-sets'
 
 export default defineConfig((/* ctx */) => {
@@ -68,10 +68,6 @@ export default defineConfig((/* ctx */) => {
           'vite-plugin-checker',
           {
             vueTsc: true,
-            eslint: {
-              lintCommand: 'eslint -c ./eslint.config.js "./src*/**/*.{ts,js,mjs,cjs,vue}"',
-              useFlatConfig: true,
-            },
           },
           { server: false },
         ],
@@ -79,11 +75,9 @@ export default defineConfig((/* ctx */) => {
     },
 
     vendor: {
-      remove: [
-        ...iconSets
-          .flatMap(({ children }) => children)
-          .map(({ packageName, value }) => `${packageName}/${value}`),
-      ],
+      remove: iconSets
+        .flatMap(({ children }) => children)
+        .map(({ packageName, value }) => `${packageName}/${value}`),
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#devserver

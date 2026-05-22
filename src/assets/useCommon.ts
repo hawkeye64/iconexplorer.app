@@ -2,6 +2,12 @@ import { computed, watch, type WritableComputedRef, type ComputedRef } from 'vue
 import { useIconStore } from 'stores/icon-store'
 import { useRouter } from 'vue-router'
 import { flattenedIconSets, iconSets } from 'src/icon-sets'
+import {
+  extrasJson,
+  extrasModules,
+  quasarExtrasSvgIconsJson,
+  quasarExtrasSvgIconsModules,
+} from './icon-modules'
 
 export type IconSet = {
   label: string
@@ -18,18 +24,26 @@ export type Icon = {
   path: string
 }
 
+type IconNamePayload = string[] | Record<string, unknown> | string
+
 // these keys get saved to LocalStorage
 const savedKeys = ['iconSize', 'iconColumns', 'tooltips']
 
-const extrasJson = import.meta.glob('../../node_modules/@quasar/extras/**/*/icons.json')
-const extrasModules = import.meta.glob('../../node_modules/@quasar/extras/**/*/*.mjs')
+function normalizeIconNames(payload: IconNamePayload): string[] {
+  if (Array.isArray(payload)) {
+    return payload
+  }
 
-const quasarExtrasSvgIconsJson = import.meta.glob(
-  '../../node_modules/quasar-extras-svg-icons/**/*/icons.json',
-)
-const quasarExtrasSvgIconsModules = import.meta.glob(
-  '../../node_modules/quasar-extras-svg-icons/**/*/*.mjs',
-)
+  if (typeof payload === 'string') {
+    try {
+      return normalizeIconNames(JSON.parse(payload) as IconNamePayload)
+    } catch {
+      return []
+    }
+  }
+
+  return Object.keys(payload)
+}
 
 export function useCommon(): {
   selected: WritableComputedRef<string>
@@ -156,30 +170,33 @@ export function useCommon(): {
   }
 
   async function loadIconNames(): Promise<void> {
+    iconStore.totalIcons = 0
+    iconStore.iconNames = {}
+
     for (const iconPackage of iconSets) {
       for (const iconSet of iconPackage.children) {
         if (iconSet.icons === true) {
           if (iconPackage.label === '@quasar/extras') {
             const module = await loadExtras(iconSet)
             if (module && 'default' in module) {
-              const jsonFile = module.default
+              const iconNames = normalizeIconNames(module.default as IconNamePayload)
               if (!iconStore.iconNames[iconPackage.label])
                 iconStore.iconNames[iconPackage.label] = {}
               if (!iconStore.iconNames[iconPackage.label]![iconSet.value])
                 iconStore.iconNames[iconPackage.label]![iconSet.value] = []
-              iconStore.totalIcons += jsonFile.length
-              iconStore.iconNames[iconPackage.label]![iconSet.value]!.push(...jsonFile)
+              iconStore.totalIcons += iconNames.length
+              iconStore.iconNames[iconPackage.label]![iconSet.value]!.push(...iconNames)
             }
           } else if (iconPackage.label === 'quasar-extras-svg-icons') {
             const module = await loadSvgIcons(iconSet)
             if (module && 'default' in module) {
-              const jsonFile = module.default
+              const iconNames = normalizeIconNames(module.default as IconNamePayload)
               if (!iconStore.iconNames[iconPackage.label])
                 iconStore.iconNames[iconPackage.label] = {}
               if (!iconStore.iconNames[iconPackage.label]![iconSet.value])
                 iconStore.iconNames[iconPackage.label]![iconSet.value] = []
-              iconStore.totalIcons += jsonFile.length
-              iconStore.iconNames[iconPackage.label]![iconSet.value]!.push(...jsonFile)
+              iconStore.totalIcons += iconNames.length
+              iconStore.iconNames[iconPackage.label]![iconSet.value]!.push(...iconNames)
             }
           }
         }
