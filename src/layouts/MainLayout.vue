@@ -175,17 +175,16 @@
 
           <q-item key="onImportAll" class="q-mt-xs">
             <q-item-section>
-              <q-btn label="Imported" no-caps @click="onImportAll">
+              <q-btn label="Imports" no-caps @click="onImportAll">
                 <q-tooltip style="font-size: 18px">
-                  Import all of your selected icons in the library all at once from their designated
-                  icon sets
+                  Copy import statements for all selected icons, grouped by icon set
                 </q-tooltip>
               </q-btn>
             </q-item-section>
             <q-item-section>
-              <q-btn label="Inlined" no-caps @click="onInlinedAll">
+              <q-btn label="Inline" no-caps @click="onInlinedAll">
                 <q-tooltip style="font-size: 18px">
-                  Inline all of your selected icons in the library all at once
+                  Copy inline SVG constants for all selected icons
                 </q-tooltip>
               </q-btn>
             </q-item-section>
@@ -284,7 +283,7 @@
         <a href="https://github.com/hawkeye64/iconexplorer.app" target="_blank" rel="noopener"
           ><q-icon :name="fabGithub"
         /></a>
-        <a href="https://twitter.com/jgalbraith64" target="_blank" rel="noopener"
+        <a href="https://x.com/jgalbraith64" target="_blank" rel="noopener"
           ><q-icon :name="fabXTwitter"
         /></a>
         <a href="https://github.com/sponsors/hawkeye64" target="_blank" rel="noopener"
@@ -485,7 +484,7 @@ function onImportAll(): void {
   copyToClipboard(allImports.value)
     .then(() => {
       $q.notify({
-        message: `All imported copied to clipboard`,
+        message: `All imports copied to clipboard`,
         position: 'top',
         icon: mdiPartyPopper,
         color: 'white',
@@ -501,7 +500,7 @@ function onInlinedAll(): void {
   copyToClipboard(allInlined.value)
     .then(() => {
       $q.notify({
-        message: `All inlined copied to clipboard`,
+        message: `All inline constants copied to clipboard`,
         position: 'top',
         icon: mdiPartyPopper,
         color: 'white',

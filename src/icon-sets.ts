@@ -93,12 +93,6 @@ export const iconSets: IconSetGroup[] = [
         status: 'v1.13',
       },
       {
-        label: 'Font Awesome v5',
-        value: 'fontawesome-v5',
-        packageName: '@quasar/extras',
-        icons: true,
-      },
-      {
         label: 'Ionicons v8',
         value: 'ionicons-v8',
         packageName: '@quasar/extras',
@@ -111,12 +105,6 @@ export const iconSets: IconSetGroup[] = [
         packageName: '@quasar/extras',
         icons: true,
         status: 'v1.16',
-      },
-      {
-        label: 'Ionicons v6',
-        value: 'ionicons-v6',
-        packageName: '@quasar/extras',
-        icons: true,
       },
       {
         label: 'Eva Icons',

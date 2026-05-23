@@ -8,17 +8,17 @@
 
 ## Searchable Quasar Framework SVG icons
 
-The [iconexplorer.app](https://iconexplorer.app/) uses SVG icons from [@quasar/extras](https://github.com/quasarframework/quasar/tree/dev/extras) and [quasar-extras-svg-icons](https://github.com/hawkeye64/quasar-extras-svg-icons). It allows you to search and find that perfect SVG you've been hunting for so you can add it to your Quasar app.
+The [iconexplorer.app](https://iconexplorer.app/) uses SVG icons from [@quasar/extras](https://github.com/quasarframework/quasar/tree/dev/extras) and [quasar-extras-svg-icons](https://github.com/hawkeye64/quasar-extras-svg-icons). It helps you find the right SVG icon quickly so you can add it to your Quasar app.
 
-The original SVG files have been converted to Quasar's short-hand (flattened) format and won't work with other libraries except for Quasar Framework (QIcon and QBtn).
+The original SVG files have been converted to Quasar's short-hand (flattened) format and are intended for Quasar's `QIcon` and `QBtn` components.
 
 ## Using the Icon Explorer app
 
 From the left drawer, select an icon set. All of the icons from that icon set will appear. You can use the filter bar to search the names of the icons.
 
-Once you find an icon you want click on it. A bottom sheet is displayed with a larger version of the icon. You can play with changing the color or inverting the foreground and background colors. There are several buttons available that will copy the icon in different formats to the clipboard.
+Once you find an icon you want, click it. A bottom sheet is displayed with a larger version of the icon. You can change the color, invert the foreground and background colors, and copy the icon in several useful formats.
 
-If you are looking for multiple icons, then use the `Add to library` button. You will notice the cart icon in the upper-right changes to show there are items in your library. Select several icons in this manner, even from different icon sets. Then, click the cart icon. A right-side drawer is revealed with your selected icons. Click the `Imported` button to have the icons copied to your clipboard. The format is code, so all you have to do is paste it directly into your code.
+If you are looking for multiple icons, use the `Add to library` button. The cart icon in the upper-right changes to show there are items in your library. Select several icons this way, even from different icon sets. Then click the cart icon to open the right-side drawer with your selected icons. Click the `Imports` button to copy grouped import statements to your clipboard, ready to paste into your code.
 
 Here is an example of icons that were selected from multiple icon sets:
 
@@ -27,15 +27,15 @@ import { matAddAPhoto, matAddAlert, matAddShoppingCart } from '@quasar/extras/ma
 import { antOutlinedAudioMuted, antOutlinedAudio } from 'quasar-extras-svg-icons/ant-design-icons'
 ```
 
-If you select an icon set that doesn't come from `@quasar/extras` make sure to install the `quasar-extras-svg-icons` as explained on this [page](https://github.com/hawkeye64/quasar-extras-svg-icons).
+If you select an icon set that does not come from `@quasar/extras`, make sure to install `quasar-extras-svg-icons` as explained on this [page](https://github.com/hawkeye64/quasar-extras-svg-icons).
 
 ## Advanced Filtering
 
-The filter bar accepts regular expressions. For instance, in the simplist form, you can search for a single word, such as **map**. But, you can do a multiple word search by adding a **|** between words. Now, we can seach for **map|pin** at the same time. However, you may get false-positives with words like "shop**pin**g" or "s**pin**ner". With regular expressions, you can filter these out. We can create a search like this **(?!pint|ping|maple)(pin|map)**. The first part is using a regular expression look-ahead to filter out what we don't want, before looking for what we do want. Words containing **pint**, **ping** or **maple** are skipped before looking for **pin** and **map**.
+The filter bar accepts regular expressions. In the simplest form, you can search for a single word, such as **map**. You can also search for multiple words by adding a **|** between them, such as **map|pin**. However, that can produce false positives with words like "shop**pin**g" or "s**pin**ner". With regular expressions, you can filter these out. For example, **(?!pint|ping|maple)(pin|map)** uses a look-ahead to skip words containing **pint**, **ping**, or **maple** before looking for **pin** and **map**.
 
 ### SVG name format
 
-Svg icons will be defined as String with the following syntax:
+SVG icons are defined as strings with the following syntax:
 
 ```
 Syntax: "<path>|<viewBox>" or "<path>" (with implicit viewBox of '0 0 24 24')
@@ -56,7 +56,7 @@ If you appreciate the work that went into this project, please consider donating
 
 ## Stay in Touch
 
-For latest releases and announcements, follow on Twitter: [@jgalbraith64](https://twitter.com/jgalbraith64)
+For updates and announcements, follow on X: [@jgalbraith64](https://x.com/jgalbraith64)
 
 ## Chat Support
 

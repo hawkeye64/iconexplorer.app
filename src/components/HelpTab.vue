@@ -3,7 +3,7 @@
     <div class="row justify-start full-width">
       <div class="text-left" style="max-width: 80%">
         <q-icon :name="mdiArrowCollapseLeft" color="primary" />Select an icon set in the left drawer
-        to browse the icons for that icon set. Or, enter a search filter (top of left drawer)
+        to browse its icons, or enter a search filter at the top of the drawer.
       </div>
     </div>
 
@@ -18,15 +18,15 @@ const helpMarkdown = `> Note: These icons have been **flattened** and get recons
 
 ## Browsing Icon Sets
 
-To browse an icon set, simply click the icon set in the left drawer. Some icons sets are large and may take a bit of time to load.
+To browse an icon set, simply click the icon set in the left drawer. Some icon sets are large and may take a bit of time to load.
 
 ::: tip
 The icon set list is generated from the installed \`@quasar/extras\` and \`quasar-extras-svg-icons\` packages so new sets, such as Font Awesome v7, are picked up as packages are updated.
 :::
 
-You should also be aware that some icon-sets are more than they appear. If you browse them, you will find some have outlined, solid, duo-tones, etc.
+Some icon sets are richer than they first appear. As you browse, you will find outline, solid, duotone, color, flag, weather, medical, and other purpose-built variants.
 
-We even host colored, flags, weather and medical icons. Take your time to explore and search. We hope we have made this web site a good experience.
+Take your time to explore and search. We hope we have made this website a good experience.
 
 ## Searching
 
@@ -50,12 +50,14 @@ More importantly, this is where you can add an icon to your **library**.
 
 ## The Library
 
-Once one or more icons are added to your library, you can open the **Library** panel by clicking the shopping cart on the right of the top header bar. This opens the right-side drawer. This allows you to do massive exports, where the icons are conglomerated into their respective imports, all at once. This means, if you select multiple icons from different icon sets, clicking the **import** button will put it onto the clipboard and all you have to do is paste it into your code:
+Once one or more icons are added to your library, you can open the **Library** panel by clicking the shopping cart on the right of the top header bar. This opens the right-side drawer. From there, you can copy every selected icon at once. The **Imports** button groups icons by package and icon set, then copies ready-to-paste import statements to your clipboard:
 
 \`\`\`js
-import { fabGithub, fabTwitter } from '@quasar/extras/fontawesome-v7'
+import { fabGithub, fabXTwitter } from '@quasar/extras/fontawesome-v7'
 import { mdiHeartBroken, mdiHeart, mdiClose, mdiPlus } from '@quasar/extras/mdi-v7'
 import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
 \`\`\`
+
+Use the **Inline** button when you want the flattened SVG constants instead of package imports.
 `
 </script>

@@ -8,6 +8,7 @@ const packages = [
   {
     label: '@quasar/extras',
     packageName: '@quasar/extras',
+    maxVersionsPerFamily: 2,
     order: [
       'material-icons',
       'material-icons-outlined',

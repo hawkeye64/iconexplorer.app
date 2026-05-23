@@ -25,6 +25,11 @@ export type Icon = {
 }
 
 type IconNamePayload = string[] | Record<string, unknown> | string
+export type FilterRegex = {
+  error: string | null
+  pattern: string
+  regex: RegExp | null
+}
 
 // these keys get saved to LocalStorage
 const savedKeys = ['iconSize', 'iconColumns', 'tooltips']
@@ -45,9 +50,44 @@ function normalizeIconNames(payload: IconNamePayload): string[] {
   return Object.keys(payload)
 }
 
+function getFilterPattern(value: string | string[] | null): string {
+  if (Array.isArray(value)) {
+    return value[0] || ''
+  }
+
+  return value || ''
+}
+
+export function createFilterRegex(value: string | string[] | null, flags = 'i'): FilterRegex {
+  const pattern = getFilterPattern(value)
+
+  if (pattern.length === 0) {
+    return {
+      error: null,
+      pattern,
+      regex: null,
+    }
+  }
+
+  try {
+    return {
+      error: null,
+      pattern,
+      regex: new RegExp(pattern, flags),
+    }
+  } catch (error) {
+    return {
+      error: error instanceof Error ? error.message : 'Invalid regular expression',
+      pattern,
+      regex: null,
+    }
+  }
+}
+
 export function useCommon(): {
   selected: WritableComputedRef<string>
   filter: WritableComputedRef<string | null>
+  filterRegex: ComputedRef<FilterRegex>
   iconSet: ComputedRef<IconSet | undefined>
   selectedIconsFlattened: ComputedRef<Icon[]>
   relatedIconSets: ComputedRef<string[]>
@@ -125,15 +165,16 @@ export function useCommon(): {
     return flattenedIconSets.find((iconSet) => iconSet.value === route.params.iconSet)
   })
 
+  const filterRegex = computed(() => createFilterRegex(filter.value))
+
   const relatedIconSets = computed(() => {
     // Removed side effects (setting iconStore.searching) from this computed getter.
     const related: string[] = []
-    const filt: string | null = Array.isArray(filter.value) ? filter.value[0] || null : filter.value
-    if (filt) {
-      const re = new RegExp(filt, 'i')
+    const { regex } = filterRegex.value
+    if (regex) {
       for (const pkg in iconStore.iconNames) {
         for (const iconSet in iconStore.iconNames[pkg]) {
-          if (iconStore.iconNames[pkg][iconSet]!.some((icon) => re.test(icon))) {
+          if (iconStore.iconNames[pkg][iconSet]!.some((icon) => regex.test(icon))) {
             related.push(iconSet)
           }
         }
@@ -207,6 +248,7 @@ export function useCommon(): {
   return {
     selected,
     filter,
+    filterRegex,
     iconSet,
     selectedIconsFlattened,
     relatedIconSets,

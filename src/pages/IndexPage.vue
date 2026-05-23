@@ -102,7 +102,7 @@
                     @click="svgToClipboard"
                   >
                     <q-tooltip :delay="250" class="primary my-tooltip">
-                      Rehydrate SVG for "{{ common.selected }}" to clipboard
+                      Copy rehydrated SVG for "{{ common.selected }}" to clipboard
                     </q-tooltip>
                     SVG
                   </q-btn>
@@ -115,7 +115,8 @@
                     @click="inlineToClipboard"
                   >
                     <q-tooltip :delay="250" class="primary my-tooltip">
-                      Copy SVG inlined to clipboard (ex: 'const {{ common.selected }} = "M..."')
+                      Copy inline SVG constant to clipboard (ex: const
+                      {{ common.selected }} = "M...")
                     </q-tooltip>
                     Inline
                   </q-btn>
@@ -128,7 +129,7 @@
                     @click="qiconToClipboard"
                   >
                     <q-tooltip :delay="250" class="primary my-tooltip">
-                      Copy "&lt;q-icon :name="{{ common.selected }}" /&gt;" clipboard
+                      Copy "&lt;q-icon :name="{{ common.selected }}" /&gt;" to clipboard
                     </q-tooltip>
                     QIcon
                   </q-btn>
@@ -141,7 +142,7 @@
                     @click="qbtnToClipboard"
                   >
                     <q-tooltip :delay="250" class="primary my-tooltip">
-                      Copy "&lt;q-btn :icon="{{ common.selected }}" /&gt;" clipboard
+                      Copy "&lt;q-btn :icon="{{ common.selected }}" /&gt;" to clipboard
                     </q-tooltip>
                     QBtn
                   </q-btn>
@@ -168,6 +169,14 @@
         </q-card-section>
       </q-card>
     </q-dialog>
+
+    <div
+      v-if="filterRegex.error"
+      class="row justify-center items-center text-h6 q-ma-md text-negative"
+    >
+      <q-icon :name="mdiAlertCircleOutline" class="q-mr-sm" />
+      Invalid search expression: {{ filterRegex.error }}
+    </div>
 
     <div
       v-if="iconSet"
@@ -238,6 +247,7 @@ import {
   mdiClose,
   mdiPlus,
   mdiChevronUp,
+  mdiAlertCircleOutline,
   // mdiArrowCollapseLeft,
   mdiContentCopy,
 } from '@quasar/extras/mdi-v7'
@@ -296,6 +306,7 @@ const tab = ref('welcome')
 const iconSet = computed(() => common.iconSet.value || null)
 const relatedIconSets = computed(() => common.relatedIconSets.value || [])
 const filter = computed(() => common.filter.value || '')
+const filterRegex = computed(() => common.filterRegex.value)
 
 const headerClasses = computed(() => {
   return ($q.screen.lt.sm ? 'column' : 'row') + ' justify-center items-center q-pa-xs filter-bar'
@@ -321,13 +332,18 @@ const isInCart = computed(() => {
 
 const icons = computed(() => {
   const vals: Record<string, any> = {}
-  const re = importedIcons.value && filter.value ? new RegExp(filter.value, 'i') : ''
+  const re = importedIcons.value ? filterRegex.value.regex : null
+
+  if (filterRegex.value.error) {
+    return vals
+  }
+
   if (importedIcons.value) {
     Object.keys(importedIcons.value).forEach((name) => {
-      if (re === '' || (re instanceof RegExp && re.test(String(name).replace(/^[a-z]+/, '')))) {
+      if (re === null || re.test(String(name).replace(/^[a-z]+/, ''))) {
         vals[name] = importedIcons.value![name]
       }
-      if (re instanceof RegExp && re.lastIndex) re.lastIndex = 0
+      if (re?.lastIndex) re.lastIndex = 0
     })
   }
   return vals
