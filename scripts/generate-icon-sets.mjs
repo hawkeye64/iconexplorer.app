@@ -67,6 +67,104 @@ const labelOverrides = new Map([
   ['quasar-extras-svg-icons:uiw-icons', 'UIW Icons'],
 ])
 
+const statusByIconSet = new Map([
+  ['@quasar/extras:material-symbols-outlined', 'v1.14'],
+  ['@quasar/extras:material-symbols-rounded', 'v1.14'],
+  ['@quasar/extras:material-symbols-sharp', 'v1.14'],
+  ['@quasar/extras:mdi-v7', 'v1.15'],
+  ['@quasar/extras:fontawesome-v6', 'v1.13'],
+  ['@quasar/extras:fontawesome-v7', 'v1.18'],
+  ['@quasar/extras:ionicons-v7', 'v1.16'],
+  ['@quasar/extras:ionicons-v8', 'v1.18'],
+  ['quasar-extras-svg-icons:akar-icons', 'v1.6'],
+  ['quasar-extras-svg-icons:ant-design-icons', 'v1.4'],
+  ['quasar-extras-svg-icons:brand-icons', 'v1.14'],
+  ['quasar-extras-svg-icons:brandico-icons', 'v1.14'],
+  ['quasar-extras-svg-icons:bytesize-icons', 'v1.10'],
+  ['quasar-extras-svg-icons:carbon-icons', 'v1.7'],
+  ['quasar-extras-svg-icons:carbon-icons-v11', 'v1.18'],
+  ['quasar-extras-svg-icons:carbon-pictograms', 'v1.7'],
+  ['quasar-extras-svg-icons:carbon-pictograms-v12', 'v1.18'],
+  ['quasar-extras-svg-icons:clarity-icons', 'v1.12.1'],
+  ['quasar-extras-svg-icons:clarity-icons-v6', 'v1.20'],
+  ['quasar-extras-svg-icons:codicons', 'v1.4'],
+  ['quasar-extras-svg-icons:cool-icons', 'v1.3'],
+  ['quasar-extras-svg-icons:cool-icons-v4', 'v3.0'],
+  ['quasar-extras-svg-icons:coreui-icons', 'v1.11'],
+  ['quasar-extras-svg-icons:coreui-icons-v3', 'v1.28'],
+  ['quasar-extras-svg-icons:country-flag-icons', 'v1.6'],
+  ['quasar-extras-svg-icons:dashicons', 'v1.19'],
+  ['quasar-extras-svg-icons:dev-icons', 'v1.11'],
+  ['quasar-extras-svg-icons:dev-icons-v2', 'v3.0'],
+  ['quasar-extras-svg-icons:drip-icons', 'v1.10'],
+  ['quasar-extras-svg-icons:elusive-icons', 'v1.11'],
+  ['quasar-extras-svg-icons:entypo-icons', 'v1.4'],
+  ['quasar-extras-svg-icons:evil-icons', 'v1.9'],
+  ['quasar-extras-svg-icons:feather-icons', 'v1.9'],
+  ['quasar-extras-svg-icons:flat-color-icons', 'v1.14'],
+  ['quasar-extras-svg-icons:flatui-icons', 'v1.11'],
+  ['quasar-extras-svg-icons:fontisto-icons', 'v1.12'],
+  ['quasar-extras-svg-icons:foundation-icons', 'v1.11'],
+  ['quasar-extras-svg-icons:geom-icons', 'v1.11'],
+  ['quasar-extras-svg-icons:gitlab-icons', 'v1.16'],
+  ['quasar-extras-svg-icons:gitlab-icons-v3', 'v1.23'],
+  ['quasar-extras-svg-icons:glyphs-brands', 'v1.12.1'],
+  ['quasar-extras-svg-icons:glyphs-core-icons', 'v1.12'],
+  ['quasar-extras-svg-icons:grid-icons', 'v1.6'],
+  ['quasar-extras-svg-icons:health-icons-v1', 'v3.0'],
+  ['quasar-extras-svg-icons:health-icons-v2', 'v2.0'],
+  ['quasar-extras-svg-icons:hero-icons-v2', 'v1.24'],
+  ['quasar-extras-svg-icons:icomoon-free-icons', 'v1.3'],
+  ['quasar-extras-svg-icons:iconoir-icons-v6', 'v1.27'],
+  ['quasar-extras-svg-icons:iconoir-icons-v7', 'v1.34'],
+  ['quasar-extras-svg-icons:iconpark-icons', 'v1.12'],
+  ['quasar-extras-svg-icons:ikonate', 'v1.11'],
+  ['quasar-extras-svg-icons:ikons', 'v1.10'],
+  ['quasar-extras-svg-icons:keyrune-icons', 'v1.16'],
+  ['quasar-extras-svg-icons:linear-icons', 'v1.14'],
+  ['quasar-extras-svg-icons:linecons', 'v1.14'],
+  ['quasar-extras-svg-icons:maki-icons', 'v1.11'],
+  ['quasar-extras-svg-icons:maki-icons-v8', 'v1.22'],
+  ['quasar-extras-svg-icons:map-icons', 'v1.14'],
+  ['quasar-extras-svg-icons:material-icon-theme-v5', 'v2.0'],
+  ['quasar-extras-svg-icons:material-line-icons', 'v1.11'],
+  ['quasar-extras-svg-icons:material-line-icons-v1', 'v3.0'],
+  ['quasar-extras-svg-icons:material-theme-icons', 'v1.14'],
+  ['quasar-extras-svg-icons:material-theme-icons-v3', 'v1.32'],
+  ['quasar-extras-svg-icons:modern-icons', 'v1.11'],
+  ['quasar-extras-svg-icons:oct-icons-v18', 'v1.29'],
+  ['quasar-extras-svg-icons:oct-icons-v19', 'v1.30.6'],
+  ['quasar-extras-svg-icons:open-iconic', 'v1.9'],
+  ['quasar-extras-svg-icons:openmoji-icons-v16', 'v3.0'],
+  ['quasar-extras-svg-icons:openmoji-icons-v17', 'v3.0'],
+  ['quasar-extras-svg-icons:phosphor-icons', 'v1.12'],
+  ['quasar-extras-svg-icons:phosphor-icons-v2', 'v2.0'],
+  ['quasar-extras-svg-icons:pixelart-icons-v2', 'v3.0'],
+  ['quasar-extras-svg-icons:polaris-icons-v9', 'v1.37'],
+  ['quasar-extras-svg-icons:prime-icons-v6', 'v1.25'],
+  ['quasar-extras-svg-icons:prime-icons-v7', 'v3.0'],
+  ['quasar-extras-svg-icons:radix-ui-icons', 'v1.5'],
+  ['quasar-extras-svg-icons:remix-icons-v3', 'v1.30'],
+  ['quasar-extras-svg-icons:remix-icons-v4', 'v3.0'],
+  ['quasar-extras-svg-icons:simple-icons-v15', 'v2.2'],
+  ['quasar-extras-svg-icons:simple-icons-v16', 'v3.0'],
+  ['quasar-extras-svg-icons:simple-line-icons', 'v1.9'],
+  ['quasar-extras-svg-icons:stroke7-icons', 'v1.14'],
+  ['quasar-extras-svg-icons:subway-icons', 'v1.11'],
+  ['quasar-extras-svg-icons:system-uicons', 'v1.5'],
+  ['quasar-extras-svg-icons:tabler-icons-v2', 'v1.28'],
+  ['quasar-extras-svg-icons:tabler-icons-v3', 'v3.0'],
+  ['quasar-extras-svg-icons:teeny-icons', 'v1.2'],
+  ['quasar-extras-svg-icons:typ-icons', 'v3.0'],
+  ['quasar-extras-svg-icons:uiw-icons', 'v1.6'],
+  ['quasar-extras-svg-icons:unicons', 'v1.1'],
+  ['quasar-extras-svg-icons:vaadin-icons-v24', 'v1.29'],
+  ['quasar-extras-svg-icons:vaadin-icons-v25', 'v3.0'],
+  ['quasar-extras-svg-icons:weather-icons', 'v1.6'],
+  ['quasar-extras-svg-icons:webfont-medical-icons', 'v1.7'],
+  ['quasar-extras-svg-icons:windows-icons', 'v1.11'],
+])
+
 const wordOverrides = new Map([
   ['akar', 'Akar'],
   ['ant', 'Ant'],
@@ -229,12 +327,19 @@ function getLabel(packageName, value) {
 }
 
 function createIconSet(packageName, value) {
-  return {
+  const iconSet = {
     label: getLabel(packageName, value),
     value,
     packageName,
     icons: true,
   }
+  const status = statusByIconSet.get(`${packageName}:${value}`)
+
+  if (status) {
+    iconSet.status = status
+  }
+
+  return iconSet
 }
 
 function generateIconSets() {
@@ -263,8 +368,11 @@ function formatIconSet(iconSet, indent) {
     `${pad}  value: ${formatString(iconSet.value)},`,
     `${pad}  packageName: ${formatString(iconSet.packageName)},`,
     `${pad}  icons: true,`,
+    iconSet.status ? `${pad}  status: ${formatString(iconSet.status)},` : null,
     `${pad}},`,
-  ].join('\n')
+  ]
+    .filter(Boolean)
+    .join('\n')
 }
 
 function formatIconSetGroup(group, indent) {

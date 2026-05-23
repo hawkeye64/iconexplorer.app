@@ -4,6 +4,8 @@
 
 # iconexplorer.app
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/27256d48-eafe-4fe3-8ffe-1f928ea3472d/deploy-status)](https://app.netlify.com/projects/iconexplorer-app/deploys)
+
 ## Searchable Quasar Framework SVG icons
 
 The [iconexplorer.app](https://iconexplorer.app/) uses SVG icons from [@quasar/extras](https://github.com/quasarframework/quasar/tree/dev/extras) and [quasar-extras-svg-icons](https://github.com/hawkeye64/quasar-extras-svg-icons). It allows you to search and find that perfect SVG you've been hunting for so you can add it to your Quasar app.
