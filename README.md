@@ -50,17 +50,12 @@ A more complex example with attributes, would look like this:
 M3 12H6L9 3L15 21L18 12H21@@stroke-width:1.5;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;
 ```
 
-## Donate
+## Support
 
-If you appreciate the work that went into this project, please consider donating to [Quasar](https://donate.quasar.dev) or [Jeff](https://github.com/sponsors/hawkeye64).
+If iconexplorer.app is useful in your workflow and you want to support ongoing maintenance:
 
-## Stay in Touch
-
-For updates and announcements, follow on X: [@jgalbraith64](https://x.com/jgalbraith64)
-
-## Chat Support
-
-Ask questions at the official community Discord server: [https://chat.quasar.dev](https://chat.quasar.dev)
+GitHub Sponsors: https://github.com/sponsors/hawkeye64
+PayPal: https://paypal.me/hawkeye64
 
 ## License
 

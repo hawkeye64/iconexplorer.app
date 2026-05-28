@@ -2,43 +2,11 @@
 // Run `pnpm generate:icon-sets` after updating icon packages.
 
 export const extrasJson = import.meta.glob([
-  '../../node_modules/@quasar/extras/material-icons/icons.json',
-  '../../node_modules/@quasar/extras/material-icons-outlined/icons.json',
-  '../../node_modules/@quasar/extras/material-icons-round/icons.json',
-  '../../node_modules/@quasar/extras/material-icons-sharp/icons.json',
-  '../../node_modules/@quasar/extras/material-symbols-outlined/icons.json',
-  '../../node_modules/@quasar/extras/material-symbols-rounded/icons.json',
-  '../../node_modules/@quasar/extras/material-symbols-sharp/icons.json',
-  '../../node_modules/@quasar/extras/mdi-v7/icons.json',
-  '../../node_modules/@quasar/extras/mdi-v6/icons.json',
-  '../../node_modules/@quasar/extras/fontawesome-v7/icons.json',
-  '../../node_modules/@quasar/extras/fontawesome-v6/icons.json',
-  '../../node_modules/@quasar/extras/ionicons-v8/icons.json',
-  '../../node_modules/@quasar/extras/ionicons-v7/icons.json',
-  '../../node_modules/@quasar/extras/eva-icons/icons.json',
-  '../../node_modules/@quasar/extras/themify/icons.json',
-  '../../node_modules/@quasar/extras/line-awesome/icons.json',
-  '../../node_modules/@quasar/extras/bootstrap-icons/icons.json',
+
 ])
 
 export const extrasModules = import.meta.glob([
-  '../../node_modules/@quasar/extras/material-icons/index.mjs',
-  '../../node_modules/@quasar/extras/material-icons-outlined/index.mjs',
-  '../../node_modules/@quasar/extras/material-icons-round/index.mjs',
-  '../../node_modules/@quasar/extras/material-icons-sharp/index.mjs',
-  '../../node_modules/@quasar/extras/material-symbols-outlined/index.mjs',
-  '../../node_modules/@quasar/extras/material-symbols-rounded/index.mjs',
-  '../../node_modules/@quasar/extras/material-symbols-sharp/index.mjs',
-  '../../node_modules/@quasar/extras/mdi-v7/index.mjs',
-  '../../node_modules/@quasar/extras/mdi-v6/index.mjs',
-  '../../node_modules/@quasar/extras/fontawesome-v7/index.mjs',
-  '../../node_modules/@quasar/extras/fontawesome-v6/index.mjs',
-  '../../node_modules/@quasar/extras/ionicons-v8/index.mjs',
-  '../../node_modules/@quasar/extras/ionicons-v7/index.mjs',
-  '../../node_modules/@quasar/extras/eva-icons/index.mjs',
-  '../../node_modules/@quasar/extras/themify/index.mjs',
-  '../../node_modules/@quasar/extras/line-awesome/index.mjs',
-  '../../node_modules/@quasar/extras/bootstrap-icons/index.mjs',
+
 ])
 
 export const quasarExtrasSvgIconsJson = import.meta.glob([

@@ -328,7 +328,7 @@ const qExtrasSvgVersion = pkg2.version
 import pkg3 from 'app/package.json'
 const appVersion = pkg3.version
 
-import { fabGithub, fabXTwitter } from '@quasar/extras/fontawesome-v6'
+import { fabGithub, fabXTwitter } from '@quasar/extras/fontawesome-v7'
 
 import {
   mdiMenu,

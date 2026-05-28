@@ -13,12 +13,13 @@
     "generate:icon-sets": "node scripts/generate-icon-sets.mjs",
     "typecheck": "pnpm generate:icon-sets && vue-tsc --noEmit --pretty false",
     "test": "echo \"No test specified\" && exit 0",
+    "deep": "ncu --configFilePath . --packageFile package.json",
     "dev": "pnpm generate:icon-sets && quasar dev",
     "build": "pnpm generate:icon-sets && quasar build",
     "postinstall": "quasar prepare"
   },
   "dependencies": {
-    "@quasar/extras": "^1.18.0",
+    "@quasar/extras": "2.0.0-beta.1",
     "@quasar/quasar-ui-qmarkdown": "3.0.0-beta.0",
     "pinia": "^3.0.4",
     "quasar": "^2.19.3",
@@ -27,20 +28,21 @@
     "vue-router": "^5.0.7"
   },
   "devDependencies": {
-    "@quasar/app-vite": "3.0.0-beta.21",
+    "@quasar/app-vite": "3.0.0-beta.29",
     "@quasar/quasar-app-extension-qmarkdown": "3.0.0-beta.0",
     "@types/node": "^25.9.1",
     "autoprefixer": "^10.5.0",
-    "oxfmt": "^0.51.0",
-    "oxlint": "^1.66.0",
+    "npm-check-updates": "^22.2.1",
+    "oxfmt": "^0.52.0",
+    "oxlint": "^1.67.0",
     "typescript": "~5.9.3",
     "vite-plugin-checker": "^0.13.0",
-    "vue-tsc": "^3.3.1"
+    "vue-tsc": "^3.3.2"
   },
   "engines": {
     "node": ">=22.13",
-    "pnpm": ">=11.1.0"
+    "pnpm": ">=11.3.0"
   },
-  "packageManager": "pnpm@11.1.0",
+  "packageManager": "pnpm@11.3.0",
   "productName": "Icon Explorer for Quasar Framework SVG Icons"
 }
