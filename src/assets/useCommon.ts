@@ -197,7 +197,7 @@ export function useCommon(): {
   }
 
   async function loadExtras(iconSet: IconSet): Promise<any> {
-    const modulePath = `../../node_modules/@quasar/extras/${iconSet.value}/icons.json`
+    const modulePath = `../../node_modules/@quasar/extras/exports/${iconSet.value}/icons.json`
     if (extrasJson[modulePath]) {
       return await extrasJson[modulePath]()
     }

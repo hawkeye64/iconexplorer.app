@@ -392,7 +392,7 @@ watch(
       const now = new Date().getTime()
       iconStore.loading = true
       if (val.packageName === '@quasar/extras') {
-        const modulePath = `../../node_modules/@quasar/extras/${val.value}/index.mjs`
+        const modulePath = `../../node_modules/@quasar/extras/exports/${val.value}/index.js`
         if (common.extrasModules[modulePath]) {
           const svgFile = await common.extrasModules[modulePath]()
           if (svgFile) {

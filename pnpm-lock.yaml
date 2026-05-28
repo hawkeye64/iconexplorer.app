@@ -24,8 +24,8 @@ importers:
         specifier: ^2.19.3
         version: 2.19.3
       quasar-extras-svg-icons:
-        specifier: 3.0.0-beta.1
-        version: 3.0.0-beta.1
+        specifier: 3.0.0-beta.2
+        version: 3.0.0-beta.2
       vue:
         specifier: ^3.5.35
         version: 3.5.35(typescript@6.0.3)
@@ -1534,9 +1534,9 @@ packages:
   quansync@0.2.11:
     resolution: {integrity: sha512-AifT7QEbW9Nri4tAwR5M/uzpBuqfZf+zwaEM/QkzEjj7NBuFD2rBuy0K3dE+8wltbezDV7JMA0WfnCPYRSYbXA==}
 
-  quasar-extras-svg-icons@3.0.0-beta.1:
-    resolution: {integrity: sha512-Fd/jqfn6CcX027fARX41S2ycJ9Lw5uraBZxN74lNm4BFou4/rE3CHF8RcaHgaJeq5l4lgUh4kmKpL6NtYiDAHw==}
-    engines: {node: '>=22.13', pnpm: '>=11.1.0'}
+  quasar-extras-svg-icons@3.0.0-beta.2:
+    resolution: {integrity: sha512-aErW9sfqrOIdFPggkunoj4ijfsdEZQlUqeJWh3C+dro68XRqn+PxuaxaKdvAy1/VfOmPx666bvdXXkA/HwExGQ==}
+    engines: {node: '>=22.13', pnpm: '>=11.4.0'}
 
   quasar@2.19.3:
     resolution: {integrity: sha512-z9uEiZfpkkwUGedgVfARRoF7h30qWSZwUfUTLOo/jXCiGL5KYQt5N39XpKVOW0Y7lGF9kSAZuFHvYoPZoMUpfg==}
@@ -3339,7 +3339,7 @@ snapshots:
 
   quansync@0.2.11: {}
 
-  quasar-extras-svg-icons@3.0.0-beta.1: {}
+  quasar-extras-svg-icons@3.0.0-beta.2: {}
 
   quasar@2.19.3: {}
 
