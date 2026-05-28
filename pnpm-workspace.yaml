@@ -9,7 +9,6 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - '@quasar/app-vite'
   - '@quasar/extras'
-  - '@quasar/app-vite@3.0.0-beta.29'
   - '@oxfmt/binding-android-arm-eabi@0.52.0'
   - '@oxfmt/binding-android-arm64@0.52.0'
   - '@oxfmt/binding-darwin-arm64@0.52.0'
