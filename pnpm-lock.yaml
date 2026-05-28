@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@quasar/extras':
-        specifier: 2.0.0-beta.1
-        version: 2.0.0-beta.1
+        specifier: 2.0.0
+        version: 2.0.0
       '@quasar/quasar-ui-qmarkdown':
         specifier: 3.0.0-beta.0
         version: 3.0.0-beta.0
@@ -563,8 +563,8 @@ packages:
   '@quasar/art@1.0.0':
     resolution: {integrity: sha512-IAV8Qg2QM3U2alywUcCELyOlHCUNbJYmiVDRTLgcgmyBlQwo3Wk33eHAyT9cpnV5CqlmuYXe6UZt0Ybi1m0lMA==}
 
-  '@quasar/extras@2.0.0-beta.1':
-    resolution: {integrity: sha512-+6rGSa3zZlNcnrVuGJeDKveKdiKNI0OEJpv2gM9DVWbYGviYqbaVNXX0Bbwe878yE0y8uGoSBsYJoNod5Q1a2w==}
+  '@quasar/extras@2.0.0':
+    resolution: {integrity: sha512-JiVq65j28Rp5AFLVpHBSv+MUV+NpE4x8cSGyfWquakOZe8FCV1E6qmbCDQhPY/e2fheFhaN8uGl1R3UbC8BxZw==}
 
   '@quasar/quasar-app-extension-qmarkdown@3.0.0-beta.0':
     resolution: {integrity: sha512-mt0q/9yXiU4OsGktGnAnHMcsPA/4XQk1MOIHig72tKCo7GPu3YGnhle7RCCRz1oQpYiVhBQkyJCah0XLVPJHDg==}
@@ -2448,7 +2448,7 @@ snapshots:
 
   '@quasar/art@1.0.0': {}
 
-  '@quasar/extras@2.0.0-beta.1': {}
+  '@quasar/extras@2.0.0': {}
 
   '@quasar/quasar-app-extension-qmarkdown@3.0.0-beta.0(@quasar/app-vite@3.0.0-beta.32(@types/node@25.9.1)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.34(typescript@5.9.3)))(quasar@2.19.3)(sass@1.100.0)(terser@5.48.0)(typescript@5.9.3)(vue-router@5.0.7(@vue/compiler-sfc@3.5.34)(pinia@3.0.4(typescript@5.9.3)(vue@3.5.34(typescript@5.9.3)))(vue@3.5.34(typescript@5.9.3)))(vue@3.5.34(typescript@5.9.3))(yaml@2.9.0))':
     dependencies:

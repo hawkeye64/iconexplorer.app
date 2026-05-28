@@ -22,7 +22,7 @@
     "postinstall": "quasar prepare"
   },
   "dependencies": {
-    "@quasar/extras": "2.0.0-beta.1",
+    "@quasar/extras": "2.0.0",
     "@quasar/quasar-ui-qmarkdown": "3.0.0-beta.0",
     "pinia": "^3.0.4",
     "quasar": "^2.19.3",
@@ -46,6 +46,6 @@
     "node": ">=22.13",
     "pnpm": ">=11.3.0"
   },
-  "packageManager": "pnpm@11.3.0",
+  "packageManager": "pnpm@11.4.0",
   "productName": "Icon Explorer for Quasar Framework SVG Icons"
 }

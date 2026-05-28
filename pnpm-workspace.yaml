@@ -7,6 +7,8 @@ allowBuilds:
   '@parcel/watcher': true
   esbuild: true
 minimumReleaseAgeExclude:
+  - '@quasar/app-vite'
+  - '@quasar/extras'
   - '@quasar/app-vite@3.0.0-beta.29'
   - '@oxfmt/binding-android-arm-eabi@0.52.0'
   - '@oxfmt/binding-android-arm64@0.52.0'
@@ -49,7 +51,5 @@ minimumReleaseAgeExclude:
   - '@quasar/art@1.0.0'
   - oxfmt@0.52.0
   - oxlint@1.67.0
-  - '@quasar/extras@2.0.0-beta.1'
-  - '@quasar/app-vite@3.0.0-beta.32'
   - '@quasar/render-ssr-error@2.2.3'
   - '@quasar/vite-plugin@1.12.0'
