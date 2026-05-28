@@ -191,25 +191,21 @@
           </q-item>
           <q-item
             v-for="icon in selectedIconsFlattened"
-            :key="(icon as unknown as Icon).iconName"
+            :key="icon.iconName"
             dense
             class="full-width q-mx-none q-px-none"
           >
             <q-item-section avatar>
-              <q-icon
-                :name="(icon as unknown as Icon).path"
-                class="cursor-pointer"
-                @click="importToClipboard(icon as unknown as Icon)"
-              >
+              <q-icon :name="icon.path" class="cursor-pointer" @click="importToClipboard(icon)">
                 <q-tooltip style="font-size: 18px">
                   {{
                     'import &#123; ' +
-                    (icon as unknown as Icon).iconName +
+                    icon.iconName +
                     ' &#125; from ' +
                     "'" +
-                    (icon as unknown as Icon).packageName +
+                    icon.packageName +
                     '/' +
-                    (icon as unknown as Icon).iconSet +
+                    icon.iconSet +
                     "'"
                   }}
                 </q-tooltip>
@@ -217,17 +213,17 @@
             </q-item-section>
             <q-item-section>
               <q-item-label>
-                <span class="ellipsis">{{ (icon as unknown as Icon).iconName }}</span>
+                <span class="ellipsis">{{ icon.iconName }}</span>
               </q-item-label>
             </q-item-section>
             <q-item-section avatar>
               <q-icon
                 :name="mdiTrashCanOutline"
                 class="float-right on-left trash-can cursor-pointer"
-                @click="removeIconFromLibrary(icon as unknown as Icon)"
+                @click="removeIconFromLibrary(icon)"
               />
               <q-tooltip style="font-size: 18px">
-                {{ 'Remove ' + (icon as unknown as Icon).iconName + ' from library' }}
+                {{ 'Remove ' + icon.iconName + ' from library' }}
               </q-tooltip>
             </q-item-section>
           </q-item>
@@ -317,9 +313,23 @@ import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { iconSets } from '@/icon-sets'
 import { useIconStore } from '@/stores/icon-store'
-import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
 import { useRouter } from 'vue-router'
 import { useCommon, type Icon } from '@/assets/useCommon'
+import {
+  appBrightnessMoon as mdiBrightness2,
+  appBrightnessSun as mdiBrightness5,
+  appCartHeart as mdiCartHeart,
+  appCartOutline as mdiCartOutline,
+  appCharity as mdiCharity,
+  appCog as mdiCog,
+  appGithub as fabGithub,
+  appHeart as mdiHeart,
+  appMenu as mdiMenu,
+  appPartyPopper as mdiPartyPopper,
+  appSearch as uiwSearch,
+  appTrashCanOutline as mdiTrashCanOutline,
+  appXTwitter as fabXTwitter,
+} from '@/assets/app-icons'
 
 import pkg from '@quasar/extras/package.json'
 const qExtrasVersion = pkg.version
@@ -327,21 +337,6 @@ import pkg2 from 'quasar-extras-svg-icons/package.json'
 const qExtrasSvgVersion = pkg2.version
 import pkg3 from '../../package.json'
 const appVersion = pkg3.version
-
-import { fabGithub, fabXTwitter } from '@quasar/extras/fontawesome-v7'
-
-import {
-  mdiMenu,
-  mdiBrightness2,
-  mdiBrightness5,
-  mdiCartOutline,
-  mdiCartHeart,
-  mdiTrashCanOutline,
-  mdiPartyPopper,
-  mdiCharity,
-  mdiHeart,
-  mdiCog,
-} from '@quasar/extras/mdi-v7'
 
 const year = new Date().getFullYear()
 const router = useRouter()
@@ -571,11 +566,7 @@ function focusOnSearch(evt: KeyboardEvent): void {
   }
 }
 
-function removeIconFromLibrary(icon: {
-  packageName: string
-  iconSet: string
-  iconName: string
-}): void {
+function removeIconFromLibrary(icon: Icon): void {
   iconStore.removeItem(icon.packageName, icon.iconSet, icon.iconName)
 }
 </script>

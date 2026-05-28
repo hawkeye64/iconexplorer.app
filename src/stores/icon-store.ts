@@ -12,7 +12,12 @@ type Cart = {
 type IconNames = Record<string, Record<string, string[]>>
 
 // these keys get saved to LocalStorage
-const savedKeys = ['iconSize', 'iconColumns', 'tooltips']
+const savedKeys = ['iconSize', 'iconColumns', 'tooltips'] as const
+type SavedKey = (typeof savedKeys)[number]
+
+function isSavedKey(key: string): key is SavedKey {
+  return (savedKeys as readonly string[]).includes(key)
+}
 
 export const useIconStore = defineStore('icon-store', {
   state: () => ({
@@ -60,11 +65,7 @@ export const useIconStore = defineStore('icon-store', {
       return false
     },
     removeAll() {
-      const keys = Object.keys(this.cart)
-      for (let index = 0; index < keys.length; ++index) {
-        // @ts-expect-error ignore for now
-        delete this.cart[keys[index]]
-      }
+      this.cart = {}
     },
     findItem(packageName: string, iconSet: string, name: string) {
       if (
@@ -79,7 +80,6 @@ export const useIconStore = defineStore('icon-store', {
     saveStore() {
       if (this.initialized) {
         for (const key of savedKeys) {
-          // @ts-expect-error ignore for now
           LocalStorage.set(key, this[key])
         }
       }
@@ -87,8 +87,23 @@ export const useIconStore = defineStore('icon-store', {
     loadStore() {
       const keys = LocalStorage.getAllKeys()
       for (const key of keys) {
-        // @ts-expect-error ignore for now
-        this[key] = LocalStorage.getItem(key)
+        if (isSavedKey(key) !== true) {
+          continue
+        }
+
+        const value = LocalStorage.getItem(key)
+
+        switch (key) {
+          case 'iconSize':
+            if (typeof value === 'string') this.iconSize = value
+            break
+          case 'iconColumns':
+            if (typeof value === 'string') this.iconColumns = value
+            break
+          case 'tooltips':
+            if (typeof value === 'boolean') this.tooltips = value
+            break
+        }
       }
       this.initialized = true
     },

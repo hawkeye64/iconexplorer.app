@@ -105,7 +105,7 @@ import { computed } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { useIconStore } from '@/stores/icon-store'
 import { createFilterRegex, useCommon } from '@/assets/useCommon'
-import { mdiContentCopy, mdiImport } from '@quasar/extras/mdi-v7'
+import { appContentCopy as mdiContentCopy, appImport as mdiImport } from '@/assets/app-icons'
 
 type IconEntry = {
   name: string

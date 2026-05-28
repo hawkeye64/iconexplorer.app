@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { mdiArrowCollapseLeft } from '@quasar/extras/mdi-v7'
+import { appArrowCollapseLeft as mdiArrowCollapseLeft } from '@/assets/app-icons'
 
 const helpMarkdown = `> Note: These icons have been **flattened** and get reconstituted via the [QIcon](https://quasar.dev/vue-components/icon#svg-icons) component.
 

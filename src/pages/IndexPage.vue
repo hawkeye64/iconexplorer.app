@@ -242,17 +242,17 @@
 import { ref, computed, watch, nextTick, markRaw } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import {
-  mdiHeartBroken,
-  mdiHeart,
-  mdiClose,
-  mdiPlus,
-  mdiChevronUp,
-  mdiAlertCircleOutline,
-  // mdiArrowCollapseLeft,
-  mdiContentCopy,
-} from '@quasar/extras/mdi-v7'
+  appAlertCircleOutline as mdiAlertCircleOutline,
+  appChevronUp as mdiChevronUp,
+  appClose as mdiClose,
+  appContentCopy as mdiContentCopy,
+  appHeart as mdiHeart,
+  appHeartBroken as mdiHeartBroken,
+  appPlus as mdiPlus,
+} from '@/assets/app-icons'
 import { useIconStore } from '@/stores/icon-store'
 import { useCommon } from '@/assets/useCommon'
+import type { IconModule } from '@/assets/icon-modules'
 import SvgIconViewer from '@/components/SvgIconViewer.vue'
 import Welcome from '@/components/WelcomeTab.vue'
 import Help from '@/components/HelpTab.vue'
@@ -260,7 +260,7 @@ import About from '@/components/AboutTab.vue'
 
 const iconStore = useIconStore()
 const common = useCommon()
-const importedIcons = ref<Record<string, any> | null>(null)
+const importedIcons = ref<IconModule | null>(null)
 const selected = ref('')
 const dialogRef = ref(null)
 const currentPath = ref('')
@@ -331,7 +331,7 @@ const isInCart = computed(() => {
 })
 
 const icons = computed(() => {
-  const vals: Record<string, any> = {}
+  const vals: IconModule = {}
   const re = importedIcons.value ? filterRegex.value.regex : null
 
   if (filterRegex.value.error) {
@@ -341,7 +341,10 @@ const icons = computed(() => {
   if (importedIcons.value) {
     Object.keys(importedIcons.value).forEach((name) => {
       if (re === null || re.test(String(name).replace(/^[a-z]+/, ''))) {
-        vals[name] = importedIcons.value![name]
+        const iconPath = importedIcons.value?.[name]
+        if (iconPath !== undefined) {
+          vals[name] = iconPath
+        }
       }
       if (re?.lastIndex) re.lastIndex = 0
     })
@@ -485,7 +488,7 @@ watch(
 function assignSelected(): void {
   for (const key of Object.keys(icons.value)) {
     if (key === common.selected.value) {
-      currentPath.value = icons.value[key]
+      currentPath.value = icons.value[key] ?? ''
     }
   }
 }

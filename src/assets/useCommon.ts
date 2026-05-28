@@ -1,21 +1,16 @@
 import { computed, watch, type WritableComputedRef, type ComputedRef } from 'vue'
 import { useIconStore } from '@/stores/icon-store'
 import { useRouter } from 'vue-router'
-import { flattenedIconSets, iconSets } from '@/icon-sets'
+import { flattenedIconSets, iconSets, type IconSet } from '@/icon-sets'
 import {
   extrasJson,
   extrasModules,
+  type IconJsonModule,
+  type IconModule,
+  type IconNamePayload,
   quasarExtrasSvgIconsJson,
   quasarExtrasSvgIconsModules,
 } from './icon-modules'
-
-export type IconSet = {
-  label: string
-  value: string
-  packageName: string
-  icons?: boolean
-  status?: string
-}
 
 export type Icon = {
   packageName: string
@@ -24,7 +19,6 @@ export type Icon = {
   path: string
 }
 
-type IconNamePayload = string[] | Record<string, unknown> | string
 export type FilterRegex = {
   error: string | null
   pattern: string
@@ -50,15 +44,18 @@ function normalizeIconNames(payload: IconNamePayload): string[] {
   return Object.keys(payload)
 }
 
-function getFilterPattern(value: string | string[] | null): string {
+function getFilterPattern(value: string | (string | null)[] | null | undefined): string {
   if (Array.isArray(value)) {
-    return value[0] || ''
+    return value.find((item): item is string => typeof item === 'string') || ''
   }
 
   return value || ''
 }
 
-export function createFilterRegex(value: string | string[] | null, flags = 'i'): FilterRegex {
+export function createFilterRegex(
+  value: string | (string | null)[] | null | undefined,
+  flags = 'i',
+): FilterRegex {
   const pattern = getFilterPattern(value)
 
   if (pattern.length === 0) {
@@ -93,8 +90,8 @@ export function useCommon(): {
   relatedIconSets: ComputedRef<string[]>
   isCartIcon: (_name: string) => boolean
   loadIconNames: () => Promise<void>
-  extrasModules: Record<string, () => Promise<any>>
-  quasarExtrasSvgIconsModules: Record<string, () => Promise<any>>
+  extrasModules: Record<string, () => Promise<IconModule>>
+  quasarExtrasSvgIconsModules: Record<string, () => Promise<IconModule>>
 } {
   const iconStore = useIconStore()
   const router = useRouter()
@@ -110,7 +107,7 @@ export function useCommon(): {
   const selected = computed({
     get: () => {
       // Ensure that we always return a string.
-      return (router.currentRoute.value.query.selected || '') as unknown as string
+      return getFilterPattern(router.currentRoute.value.query.selected)
     },
     set: (val: string) => {
       router
@@ -196,14 +193,14 @@ export function useCommon(): {
     return false
   }
 
-  async function loadExtras(iconSet: IconSet): Promise<any> {
+  async function loadExtras(iconSet: IconSet): Promise<IconJsonModule | undefined> {
     const modulePath = `../../node_modules/@quasar/extras/exports/${iconSet.value}/icons.json`
     if (extrasJson[modulePath]) {
       return await extrasJson[modulePath]()
     }
   }
 
-  async function loadSvgIcons(iconSet: IconSet): Promise<any> {
+  async function loadSvgIcons(iconSet: IconSet): Promise<IconJsonModule | undefined> {
     const modulePath = `../../node_modules/quasar-extras-svg-icons/${iconSet.value}/icons.json`
     if (quasarExtrasSvgIconsJson[modulePath]) {
       return await quasarExtrasSvgIconsJson[modulePath]()
