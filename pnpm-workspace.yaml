@@ -50,3 +50,6 @@ minimumReleaseAgeExclude:
   - oxfmt@0.52.0
   - oxlint@1.67.0
   - '@quasar/extras@2.0.0-beta.1'
+  - '@quasar/app-vite@3.0.0-beta.32'
+  - '@quasar/render-ssr-error@2.2.3'
+  - '@quasar/vite-plugin@1.12.0'
