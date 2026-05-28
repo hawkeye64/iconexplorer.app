@@ -19,9 +19,7 @@ export type IconSetGroup = {
 export const iconSets: IconSetGroup[] = [
   {
     label: '@quasar/extras',
-    children: [
-
-    ],
+    children: [],
   },
   {
     label: 'quasar-extras-svg-icons',

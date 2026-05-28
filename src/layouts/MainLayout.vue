@@ -278,7 +278,7 @@
         class="markdown-page__footer--icons full-width row justify-center items-center q-gutter-sm"
       >
         <a href="https://github.com/hawkeye64" target="_blank" rel="noopener"
-          ><q-avatar size="28px"><img src="~assets/profile.png" /></q-avatar
+          ><q-avatar size="28px"><img src="@/assets/profile.png" /></q-avatar
         ></a>
         <a href="https://github.com/hawkeye64/iconexplorer.app" target="_blank" rel="noopener"
           ><q-icon :name="fabGithub"
@@ -315,17 +315,17 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
-import { iconSets } from 'src/icon-sets'
-import { useIconStore } from 'stores/icon-store'
+import { iconSets } from '@/icon-sets'
+import { useIconStore } from '@/stores/icon-store'
 import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
 import { useRouter } from 'vue-router'
-import { useCommon, type Icon } from 'assets/useCommon'
+import { useCommon, type Icon } from '@/assets/useCommon'
 
 import pkg from '@quasar/extras/package.json'
 const qExtrasVersion = pkg.version
 import pkg2 from 'quasar-extras-svg-icons/package.json'
 const qExtrasSvgVersion = pkg2.version
-import pkg3 from 'app/package.json'
+import pkg3 from '../../package.json'
 const appVersion = pkg3.version
 
 import { fabGithub, fabXTwitter } from '@quasar/extras/fontawesome-v7'

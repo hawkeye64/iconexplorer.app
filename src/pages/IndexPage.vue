@@ -251,12 +251,12 @@ import {
   // mdiArrowCollapseLeft,
   mdiContentCopy,
 } from '@quasar/extras/mdi-v7'
-import { useIconStore } from 'stores/icon-store'
-import { useCommon } from 'assets/useCommon'
-import SvgIconViewer from 'components/SvgIconViewer.vue'
-import Welcome from 'components/WelcomeTab.vue'
-import Help from 'components/HelpTab.vue'
-import About from 'components/AboutTab.vue'
+import { useIconStore } from '@/stores/icon-store'
+import { useCommon } from '@/assets/useCommon'
+import SvgIconViewer from '@/components/SvgIconViewer.vue'
+import Welcome from '@/components/WelcomeTab.vue'
+import Help from '@/components/HelpTab.vue'
+import About from '@/components/AboutTab.vue'
 
 const iconStore = useIconStore()
 const common = useCommon()

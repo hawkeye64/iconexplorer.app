@@ -1,7 +1,7 @@
 import { computed, watch, type WritableComputedRef, type ComputedRef } from 'vue'
-import { useIconStore } from 'stores/icon-store'
+import { useIconStore } from '@/stores/icon-store'
 import { useRouter } from 'vue-router'
-import { flattenedIconSets, iconSets } from 'src/icon-sets'
+import { flattenedIconSets, iconSets } from '@/icon-sets'
 import {
   extrasJson,
   extrasModules,

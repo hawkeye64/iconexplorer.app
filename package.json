@@ -27,8 +27,8 @@
     "pinia": "^3.0.4",
     "quasar": "^2.19.3",
     "quasar-extras-svg-icons": "3.0.0-beta.1",
-    "vue": "^3.5.34",
-    "vue-router": "^5.0.7"
+    "vue": "^3.5.35",
+    "vue-router": "^5.1.0"
   },
   "devDependencies": {
     "@quasar/app-vite": "3.0.0-beta.32",
@@ -38,8 +38,8 @@
     "npm-check-updates": "^22.2.1",
     "oxfmt": "^0.52.0",
     "oxlint": "^1.67.0",
-    "typescript": "~5.9.3",
-    "vite-plugin-checker": "^0.13.0",
+    "typescript": "~6.0.3",
+    "vite-plugin-checker": "^0.14.1",
     "vue-tsc": "^3.3.2"
   },
   "engines": {
