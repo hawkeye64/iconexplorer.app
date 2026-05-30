@@ -16,6 +16,7 @@
     "deep": "ncu --configFilePath . --packageFile package.json",
     "dev": "pnpm generate:icon-sets && quasar dev",
     "build": "pnpm generate:icon-sets && quasar build",
+    "check:all": "pnpm verify",
     "verify": "pnpm verify:fast && pnpm verify:build",
     "verify:fast": "pnpm format:check && pnpm lint && pnpm test",
     "verify:build": "pnpm build && pnpm typecheck",
