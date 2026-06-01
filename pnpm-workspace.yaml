@@ -56,3 +56,5 @@ minimumReleaseAgeExclude:
   - '@quasar/render-ssr-error@2.2.3'
   - '@quasar/vite-plugin@1.12.0'
   - vue-router@5.1.0
+  - '@quasar/quasar-ui-qmarkdown@3.0.0-beta.3'
+  - '@quasar/quasar-app-extension-qmarkdown@3.0.0-beta.3'
