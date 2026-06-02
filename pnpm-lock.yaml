@@ -15,8 +15,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       '@quasar/quasar-ui-qmarkdown':
-        specifier: 3.0.0-beta.3
-        version: 3.0.0-beta.3
+        specifier: 3.0.0-beta.4
+        version: 3.0.0-beta.4
       pinia:
         specifier: ^3.0.4
         version: 3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3))
@@ -24,8 +24,8 @@ importers:
         specifier: ^2.19.3
         version: 2.19.3
       quasar-extras-svg-icons:
-        specifier: 3.0.0-beta.5
-        version: 3.0.0-beta.5
+        specifier: 3.0.0-beta.6
+        version: 3.0.0-beta.6
       vue:
         specifier: ^3.5.35
         version: 3.5.35(typescript@6.0.3)
@@ -37,8 +37,8 @@ importers:
         specifier: 3.0.0-beta.36
         version: 3.0.0-beta.36(@types/node@25.9.1)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(quasar@2.19.3)(sass@1.100.0)(terser@5.48.0)(typescript@6.0.3)(vue-router@5.1.0(@vue/compiler-sfc@3.5.35)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(vite@8.0.14(@types/node@25.9.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))(yaml@2.9.0)
       '@quasar/quasar-app-extension-qmarkdown':
-        specifier: 3.0.0-beta.3
-        version: 3.0.0-beta.3(@quasar/app-vite@3.0.0-beta.36(@types/node@25.9.1)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(quasar@2.19.3)(sass@1.100.0)(terser@5.48.0)(typescript@6.0.3)(vue-router@5.1.0(@vue/compiler-sfc@3.5.35)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(vite@8.0.14(@types/node@25.9.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))(yaml@2.9.0))
+        specifier: 3.0.0-beta.4
+        version: 3.0.0-beta.4(@quasar/app-vite@3.0.0-beta.36(@types/node@25.9.1)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(quasar@2.19.3)(sass@1.100.0)(terser@5.48.0)(typescript@6.0.3)(vue-router@5.1.0(@vue/compiler-sfc@3.5.35)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(vite@8.0.14(@types/node@25.9.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))(yaml@2.9.0))
       '@types/node':
         specifier: ^25.9.1
         version: 25.9.1
@@ -566,14 +566,14 @@ packages:
   '@quasar/extras@2.0.0':
     resolution: {integrity: sha512-JiVq65j28Rp5AFLVpHBSv+MUV+NpE4x8cSGyfWquakOZe8FCV1E6qmbCDQhPY/e2fheFhaN8uGl1R3UbC8BxZw==}
 
-  '@quasar/quasar-app-extension-qmarkdown@3.0.0-beta.3':
-    resolution: {integrity: sha512-lnhyZExmMohI0Pwssps+if8lsABgi86Uwa8tOP08aF6eeWWGL1FBXiNNXqMybyzjLTN7N2NQVTT7C4ic5X0Lkw==}
+  '@quasar/quasar-app-extension-qmarkdown@3.0.0-beta.4':
+    resolution: {integrity: sha512-RvsUbxNEtJbjjSINRI8oNo3IcylstYTzQ7yGVkceYr32sp7Ub16w7iKdw21EwM8H/FEamAWXBMyNKTtpIKcxDw==}
     engines: {node: '>=22.13', pnpm: '>=11.5.0'}
     peerDependencies:
-      '@quasar/app-vite': '>=3.0.0-beta.33'
+      '@quasar/app-vite': '>=3.0.0-beta.36'
 
-  '@quasar/quasar-ui-qmarkdown@3.0.0-beta.3':
-    resolution: {integrity: sha512-vWQa6Gu42GAN1BvP28tO+qlRUcTO1lNrYo4uawBhP8ahstGUfqwtavLI5FlYisv8ELfHHd69JEe+npLK4lD1AQ==}
+  '@quasar/quasar-ui-qmarkdown@3.0.0-beta.4':
+    resolution: {integrity: sha512-LjM4HGWasz2LEz8ggOYfLdHL8pqwPsK6lWI/Lbq/oATnC2/IJd4BQFEoGOhtC2jBo6dJb6sx6K+XdQ/InPmP+w==}
     engines: {node: '>=22.13', pnpm: '>=11.5.0'}
 
   '@quasar/render-ssr-error@2.2.3':
@@ -1535,8 +1535,8 @@ packages:
   quansync@0.2.11:
     resolution: {integrity: sha512-AifT7QEbW9Nri4tAwR5M/uzpBuqfZf+zwaEM/QkzEjj7NBuFD2rBuy0K3dE+8wltbezDV7JMA0WfnCPYRSYbXA==}
 
-  quasar-extras-svg-icons@3.0.0-beta.5:
-    resolution: {integrity: sha512-hfRO+AjyccaCjY3upRwKhDmHM1r4QtMlt37QOiaNtT/OoZ1tSOFEWaUu6zZAIODSjp0pKTnDnkneKjIhlGkgdQ==}
+  quasar-extras-svg-icons@3.0.0-beta.6:
+    resolution: {integrity: sha512-gdVbvYW7njxLKs8FOFhBUvpTkGIJjiPW66Vh2KVtKW3MvqSVyVZzSVFDTJACbc+X6Ul9MuTWuneUZqTDpOvmfg==}
     engines: {node: '>=22.13', pnpm: '>=11.5.0'}
 
   quasar@2.19.3:
@@ -2459,11 +2459,11 @@ snapshots:
 
   '@quasar/extras@2.0.0': {}
 
-  '@quasar/quasar-app-extension-qmarkdown@3.0.0-beta.3(@quasar/app-vite@3.0.0-beta.36(@types/node@25.9.1)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(quasar@2.19.3)(sass@1.100.0)(terser@5.48.0)(typescript@6.0.3)(vue-router@5.1.0(@vue/compiler-sfc@3.5.35)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(vite@8.0.14(@types/node@25.9.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))(yaml@2.9.0))':
+  '@quasar/quasar-app-extension-qmarkdown@3.0.0-beta.4(@quasar/app-vite@3.0.0-beta.36(@types/node@25.9.1)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(quasar@2.19.3)(sass@1.100.0)(terser@5.48.0)(typescript@6.0.3)(vue-router@5.1.0(@vue/compiler-sfc@3.5.35)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(vite@8.0.14(@types/node@25.9.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))(yaml@2.9.0))':
     dependencies:
       '@clack/prompts': 1.5.0
       '@quasar/app-vite': 3.0.0-beta.36(@types/node@25.9.1)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(quasar@2.19.3)(sass@1.100.0)(terser@5.48.0)(typescript@6.0.3)(vue-router@5.1.0(@vue/compiler-sfc@3.5.35)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(vite@8.0.14(@types/node@25.9.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))(yaml@2.9.0)
-      '@quasar/quasar-ui-qmarkdown': 3.0.0-beta.3
+      '@quasar/quasar-ui-qmarkdown': 3.0.0-beta.4
       front-matter: 4.0.2
       markdown-it-abbr: 2.0.0
       markdown-it-deflist: 3.0.1
@@ -2475,7 +2475,7 @@ snapshots:
       markdown-it-sup: 2.0.0
       markdown-it-task-lists: 2.1.1
 
-  '@quasar/quasar-ui-qmarkdown@3.0.0-beta.3':
+  '@quasar/quasar-ui-qmarkdown@3.0.0-beta.4':
     dependencies:
       markdown-it: 14.2.0
       markdown-it-container: 4.0.0
@@ -3345,7 +3345,7 @@ snapshots:
 
   quansync@0.2.11: {}
 
-  quasar-extras-svg-icons@3.0.0-beta.5: {}
+  quasar-extras-svg-icons@3.0.0-beta.6: {}
 
   quasar@2.19.3: {}
 

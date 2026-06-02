@@ -56,8 +56,6 @@ minimumReleaseAgeExclude:
   - '@quasar/render-ssr-error@2.2.3'
   - '@quasar/vite-plugin@1.12.0'
   - vue-router@5.1.0
-  - '@quasar/quasar-ui-qmarkdown@3.0.0-beta.3'
-  - '@quasar/quasar-app-extension-qmarkdown@3.0.0-beta.3'
   - '@oxfmt/binding-android-arm-eabi@0.53.0'
   - '@oxfmt/binding-android-arm64@0.53.0'
   - '@oxfmt/binding-darwin-arm64@0.53.0'
@@ -98,5 +96,7 @@ minimumReleaseAgeExclude:
   - '@oxlint/binding-win32-x64-msvc@1.68.0'
   - oxfmt@0.53.0
   - oxlint@1.68.0
+  - '@quasar/quasar-app-extension-qmarkdown@3.0.0-beta.4'
+  - '@quasar/quasar-ui-qmarkdown@3.0.0-beta.4'
 
 trustLockfile: true
