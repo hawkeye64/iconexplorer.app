@@ -34,10 +34,6 @@
           <strong>{{ iconSetCount }}</strong>
           <span>icon sets</span>
         </article>
-        <article>
-          <strong>2</strong>
-          <span>source packages</span>
-        </article>
       </div>
     </div>
 
