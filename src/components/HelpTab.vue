@@ -1,63 +1,84 @@
 <template>
-  <div class="column justify-center items-start q-ma-md">
-    <div class="row justify-start full-width">
-      <div class="text-left" style="max-width: 80%">
-        <q-icon :name="mdiArrowCollapseLeft" color="primary" />Select an icon set in the left drawer
-        to browse its icons, or enter a search filter at the top of the drawer.
-      </div>
+  <section class="info-panel help-panel">
+    <div class="info-panel__header">
+      <p class="info-panel__eyebrow">How to use it</p>
+      <h2>Find an icon, preview it, then copy exactly what your app needs.</h2>
+      <p>
+        Select an icon set in the left drawer to browse its icons, or use the filter bar to search
+        across every generated set.
+      </p>
     </div>
 
-    <q-markdown :src="helpMarkdown" />
-  </div>
+    <div class="help-panel__notice">
+      <q-icon :name="mdiAlertCircleOutline" size="28px" />
+      <p>
+        These icons are flattened and reconstituted through Quasar's
+        <a href="https://quasar.dev/vue-components/icon#svg-icons" target="_blank" rel="noopener">
+          QIcon SVG support</a
+        >.
+      </p>
+    </div>
+
+    <div class="info-panel__grid">
+      <article>
+        <q-icon :name="mdiArrowCollapseLeft" size="30px" />
+        <h3>Browse icon sets</h3>
+        <p>
+          Choose a set from the left drawer. Large sets may take a moment to load, especially when
+          they include outline, solid, duotone, weather, medical, flag, or brand variants.
+        </p>
+        <p>
+          The list is generated from installed <strong>@quasar/extras</strong> and
+          <strong>quasar-extras-svg-icons</strong> packages, so newly released sets are picked up as
+          dependencies are updated.
+        </p>
+      </article>
+
+      <article>
+        <q-icon :name="mdiSearch" size="30px" />
+        <h3>Search with regular expressions</h3>
+        <p>
+          Type a word like <code>map</code>, combine terms with <code>map|pin</code>, or use a
+          narrower expression such as <code>(?!pint|ping|maple)(pin|map)</code> to avoid false
+          positives.
+        </p>
+        <p>Clear the search bar to show all icon sets again.</p>
+      </article>
+
+      <article>
+        <q-icon :name="mdiCartHeart" size="30px" />
+        <h3>Select and collect</h3>
+        <p>
+          Open an icon to preview palette colors, invert contrast, export one-off snippets, or add
+          it to your library for a grouped copy workflow.
+        </p>
+      </article>
+    </div>
+
+    <article class="help-panel__library">
+      <div>
+        <q-icon :name="mdiImport" size="32px" />
+        <h3>The library copies grouped imports</h3>
+        <p>
+          Once icons are in your library, open the cart drawer and use <strong>Imports</strong> to
+          copy package-aware import statements. Use <strong>Inline</strong> when you want flattened
+          SVG constants instead.
+        </p>
+      </div>
+
+      <pre><code>import { fabGithub, fabXTwitter } from '@quasar/extras/fontawesome-v7'
+import { mdiHeartBroken, mdiHeart, mdiClose, mdiPlus } from '@quasar/extras/mdi-v7'
+import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'</code></pre>
+    </article>
+  </section>
 </template>
 
 <script setup lang="ts">
-import { appArrowCollapseLeft as mdiArrowCollapseLeft } from '@/assets/app-icons'
-
-const helpMarkdown = `> Note: These icons have been **flattened** and get reconstituted via the [QIcon](https://quasar.dev/vue-components/icon#svg-icons) component.
-
-## Browsing Icon Sets
-
-To browse an icon set, simply click the icon set in the left drawer. Some icon sets are large and may take a bit of time to load.
-
-::: tip
-The icon set list is generated from the installed \`@quasar/extras\` and \`quasar-extras-svg-icons\` packages so new sets, such as Font Awesome v7, are picked up as packages are updated.
-:::
-
-Some icon sets are richer than they first appear. As you browse, you will find outline, solid, duotone, color, flag, weather, medical, and other purpose-built variants.
-
-Take your time to explore and search. We hope we have made this website a good experience.
-
-## Searching
-
-You can search icon sets by adding search criteria in the search bar (top left).
-
-When searching, all icon sets will be searched and only those with a **match** will show up.
-
-::: tip
-The filter bar accepts regular expressions. For instance, in the simplest form, you can search for a single word, such as "**map**". But, you can do a multiple word search by adding a "**|**" between words. Now, we can search for "**map|pin**" at the same time. However, you may get false-positives with words like "shop**pin**g" or "s**pin**ner". With regular expressions, you can filter these out. We can create a search like this "**(?!pint|ping|maple)(pin|map)**". The first part (in parentheses) is using a regular expression look-ahead to filter out what we do not want, before looking for what we do want. Words containing "**pint**", "**ping**" or "**maple**" are skipped before looking for "**pin**" and "**map**".
-:::
-
-::: tip
-To show all icon sets again, just clear the search bar.
-:::
-
-## Selecting an Icon
-
-When you select an icon, a bottom drawer will be displayed. Here you can play with a color palette (even invert it) to see how the icon will look. Plus, there are multiple ways to export it, depending on your needs.
-
-More importantly, this is where you can add an icon to your **library**.
-
-## The Library
-
-Once one or more icons are added to your library, you can open the **Library** panel by clicking the shopping cart on the right of the top header bar. This opens the right-side drawer. From there, you can copy every selected icon at once. The **Imports** button groups icons by package and icon set, then copies ready-to-paste import statements to your clipboard:
-
-\`\`\`js
-import { fabGithub, fabXTwitter } from '@quasar/extras/fontawesome-v7'
-import { mdiHeartBroken, mdiHeart, mdiClose, mdiPlus } from '@quasar/extras/mdi-v7'
-import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'
-\`\`\`
-
-Use the **Inline** button when you want the flattened SVG constants instead of package imports.
-`
+import {
+  appAlertCircleOutline as mdiAlertCircleOutline,
+  appArrowCollapseLeft as mdiArrowCollapseLeft,
+  appCartHeart as mdiCartHeart,
+  appImport as mdiImport,
+  appSearch as mdiSearch,
+} from '@/assets/app-icons'
 </script>

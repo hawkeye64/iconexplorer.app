@@ -96,7 +96,5 @@ minimumReleaseAgeExclude:
   - '@oxlint/binding-win32-x64-msvc@1.68.0'
   - oxfmt@0.53.0
   - oxlint@1.68.0
-  - '@quasar/quasar-app-extension-qmarkdown@3.0.0-beta.4'
-  - '@quasar/quasar-ui-qmarkdown@3.0.0-beta.4'
 
 trustLockfile: true

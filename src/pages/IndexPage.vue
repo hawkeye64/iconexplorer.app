@@ -170,10 +170,7 @@
       </q-card>
     </q-dialog>
 
-    <div
-      v-if="filterRegex.error"
-      class="row justify-center items-center text-h6 q-ma-md text-negative"
-    >
+    <div v-if="filterRegex.error" class="icon-state icon-state--error">
       <q-icon :name="mdiAlertCircleOutline" class="q-mr-sm" />
       Invalid search expression: {{ filterRegex.error }}
     </div>
@@ -196,26 +193,32 @@
     </div>
     <div
       v-else-if="filter && relatedIconSets.length > 0 && iconStore.searching === false"
-      class="row justify-center items-center text-h5 q-ma-md"
+      class="icon-state"
     >
-      <q-icon :name="mdiHeart" class="text-blue-8" />{{ relatedIconSets.length }} icon sets contain
-      "{{ filter }}" (select from left drawer to see them)
+      <q-icon :name="mdiHeart" class="icon-state__icon" />
+      <div>
+        <strong>{{ relatedIconSets.length }} icon sets contain "{{ filter }}"</strong>
+        <span>Select a matching set from the left drawer to browse those icons.</span>
+      </div>
     </div>
     <div
       v-else-if="filter && importedIcons && iconSet && iconSet.label"
-      class="row justify-center items-center text-h5 q-ma-md"
+      class="icon-state icon-state--empty"
     >
-      <q-icon :name="mdiHeartBroken" class="text-red-8" />
-      No icons found for '{{ iconSet.label }}'
+      <q-icon :name="mdiHeartBroken" class="icon-state__icon" />
+      <div>
+        <strong>No icons found for "{{ iconSet.label }}"</strong>
+        <span>Try a broader search term or clear the filter to see the full set.</span>
+      </div>
     </div>
-    <div v-else class="q-gutter-y-md q-ma-md">
-      <q-tabs v-model="tab" align="left">
+    <div v-else class="intro-tabs q-ma-md">
+      <q-tabs v-model="tab" align="left" class="intro-tabs__nav">
         <q-tab name="welcome" label="Welcome" />
         <q-tab name="help" label="Help" />
         <q-tab name="about" label="About" />
       </q-tabs>
 
-      <q-tab-panels v-model="tab" animated class="shadow-2 rounded-borders">
+      <q-tab-panels v-model="tab" animated class="intro-tabs__panels">
         <q-tab-panel name="welcome">
           <welcome />
         </q-tab-panel>

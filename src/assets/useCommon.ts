@@ -25,6 +25,8 @@ export type FilterRegex = {
   regex: RegExp | null
 }
 
+type IconNamesByPackage = Record<string, Record<string, string[]>>
+
 // these keys get saved to LocalStorage
 const savedKeys = ['iconSize', 'iconColumns', 'tooltips']
 
@@ -208,8 +210,8 @@ export function useCommon(): {
   }
 
   async function loadIconNames(): Promise<void> {
-    iconStore.totalIcons = 0
-    iconStore.iconNames = {}
+    let totalIcons = 0
+    const iconNamesByPackage: IconNamesByPackage = {}
 
     for (const iconPackage of iconSets) {
       for (const iconSet of iconPackage.children) {
@@ -218,28 +220,25 @@ export function useCommon(): {
             const module = await loadExtras(iconSet)
             if (module && 'default' in module) {
               const iconNames = normalizeIconNames(module.default as IconNamePayload)
-              if (!iconStore.iconNames[iconPackage.label])
-                iconStore.iconNames[iconPackage.label] = {}
-              if (!iconStore.iconNames[iconPackage.label]![iconSet.value])
-                iconStore.iconNames[iconPackage.label]![iconSet.value] = []
-              iconStore.totalIcons += iconNames.length
-              iconStore.iconNames[iconPackage.label]![iconSet.value]!.push(...iconNames)
+              if (!iconNamesByPackage[iconPackage.label]) iconNamesByPackage[iconPackage.label] = {}
+              iconNamesByPackage[iconPackage.label]![iconSet.value] = iconNames
+              totalIcons += iconNames.length
             }
           } else if (iconPackage.label === 'quasar-extras-svg-icons') {
             const module = await loadSvgIcons(iconSet)
             if (module && 'default' in module) {
               const iconNames = normalizeIconNames(module.default as IconNamePayload)
-              if (!iconStore.iconNames[iconPackage.label])
-                iconStore.iconNames[iconPackage.label] = {}
-              if (!iconStore.iconNames[iconPackage.label]![iconSet.value])
-                iconStore.iconNames[iconPackage.label]![iconSet.value] = []
-              iconStore.totalIcons += iconNames.length
-              iconStore.iconNames[iconPackage.label]![iconSet.value]!.push(...iconNames)
+              if (!iconNamesByPackage[iconPackage.label]) iconNamesByPackage[iconPackage.label] = {}
+              iconNamesByPackage[iconPackage.label]![iconSet.value] = iconNames
+              totalIcons += iconNames.length
             }
           }
         }
       }
     }
+
+    iconStore.iconNames = iconNamesByPackage
+    iconStore.totalIcons = totalIcons
   }
 
   return {

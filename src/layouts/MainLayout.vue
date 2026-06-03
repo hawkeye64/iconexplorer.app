@@ -21,6 +21,7 @@
             >
               <q-img
                 src="/icon-finder-light.png"
+                class="app-logo"
                 :width="$q.screen.lt.sm ? '28px' : '42px'"
                 :height="$q.screen.lt.sm ? '28px' : '42px'"
               />
@@ -269,7 +270,7 @@
       </q-scroll-area>
     </q-drawer>
 
-    <q-footer elevated class="glass q-ma-none">
+    <q-footer reveal elevated class="glass q-ma-none">
       <div
         class="markdown-page__footer--icons full-width row justify-center items-center q-gutter-sm"
       >
