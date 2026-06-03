@@ -212,7 +212,7 @@
       </div>
     </div>
     <div v-else class="intro-tabs q-ma-md">
-      <q-tabs v-model="tab" align="left" class="intro-tabs__nav">
+      <q-tabs v-model="tab" align="left" indicator-color="transparent" class="intro-tabs__nav">
         <q-tab name="welcome" label="Welcome" />
         <q-tab name="help" label="Help" />
         <q-tab name="about" label="About" />
