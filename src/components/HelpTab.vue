@@ -66,9 +66,11 @@
         </p>
       </div>
 
-      <pre><code>import { fabGithub, fabXTwitter } from '@quasar/extras/fontawesome-v7'
+      <div class="help-panel__library-code">
+        <pre><code>import { fabGithub, fabXTwitter } from '@quasar/extras/fontawesome-v7'
 import { mdiHeartBroken, mdiHeart, mdiClose, mdiPlus } from '@quasar/extras/mdi-v7'
 import { uiwSearch } from 'quasar-extras-svg-icons/uiw-icons'</code></pre>
+      </div>
     </article>
   </section>
 </template>

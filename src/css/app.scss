@@ -583,15 +583,20 @@ body {
   padding: 24px;
 }
 
-.help-panel__library pre {
-  overflow: auto;
-  margin: 0;
-  padding: 22px 24px 28px;
-  scrollbar-gutter: stable both-edges;
+.help-panel__library-code {
+  min-width: 0;
+  padding: 18px 20px 20px;
   color: #dff8ff;
   border-radius: 18px;
   background: #07111e;
   box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.18);
+}
+
+.help-panel__library pre {
+  overflow: auto;
+  margin: 0;
+  padding: 4px 4px 8px;
+  scrollbar-gutter: stable both-edges;
 }
 
 .help-panel__library pre code {
