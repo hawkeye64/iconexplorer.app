@@ -15,6 +15,12 @@
   --ie-accent: #16c8f2;
   --ie-accent-2: #8067ff;
   --ie-hot: #ff5a8b;
+  --ie-code-bg: rgba(248, 253, 255, 0.94);
+  --ie-code-text: #0a2238;
+  --ie-code-line: rgba(25, 118, 210, 0.2);
+  --ie-code-shadow: rgba(15, 38, 64, 0.08);
+  --ie-code-scrollbar-track: rgba(25, 118, 210, 0.08);
+  --ie-code-scrollbar-thumb: rgba(22, 200, 242, 0.32);
 
   // scrollbars
   --iconexplorer-scrollbar-width-height: 10px;
@@ -38,6 +44,12 @@ body {
 }
 
 .body--dark {
+  --ie-code-bg: #07111e;
+  --ie-code-text: #dff8ff;
+  --ie-code-line: rgba(125, 211, 252, 0.18);
+  --ie-code-shadow: rgba(0, 0, 0, 0.24);
+  --ie-code-scrollbar-track: rgba(255, 255, 255, 0.08);
+  --ie-code-scrollbar-thumb: rgba(125, 211, 252, 0.42);
   background:
     radial-gradient(circle at 8% 4%, rgba(22, 200, 242, 0.16), transparent 34rem),
     radial-gradient(circle at 96% 8%, rgba(128, 103, 255, 0.18), transparent 32rem),
@@ -586,10 +598,12 @@ body {
 .help-panel__library-code {
   min-width: 0;
   padding: 18px 20px 20px;
-  color: #dff8ff;
+  color: var(--ie-code-text);
   border-radius: 18px;
-  background: #07111e;
-  box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.18);
+  background: var(--ie-code-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--ie-code-line),
+    0 14px 28px var(--ie-code-shadow);
 }
 
 .help-panel__library pre {
@@ -607,6 +621,23 @@ body {
   background: transparent;
   line-height: 1.72;
   white-space: pre;
+}
+
+.help-panel__library pre::-webkit-scrollbar-track {
+  background: var(--ie-code-scrollbar-track);
+  box-shadow: inset 0 0 4px var(--ie-code-scrollbar-track);
+}
+
+.help-panel__library pre::-webkit-scrollbar-corner {
+  background: var(--ie-code-scrollbar-track);
+}
+
+.help-panel__library pre::-webkit-scrollbar-thumb {
+  background: var(--ie-code-scrollbar-thumb);
+}
+
+.help-panel__library pre::-webkit-scrollbar-thumb:hover {
+  background: var(--ie-accent);
 }
 
 .icon-state {
