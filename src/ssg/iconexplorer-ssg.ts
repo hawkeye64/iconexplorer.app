@@ -85,6 +85,8 @@ function upsertCanonical(html: string, canonical: string): string {
 }
 
 function upsertJsonLd(html: string, seo: RouteSeo): string {
+  // JSON-LD is structured data for search engines and link preview crawlers.
+  // It describes the current static route without changing anything users see.
   const jsonLd = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
@@ -94,11 +96,6 @@ function upsertJsonLd(html: string, seo: RouteSeo): string {
     url: seo.canonical,
     description: seo.description,
     image: siteImage,
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
   })
     .replace(/</g, '\\u003C')
     .replace(/>/g, '\\u003E')
