@@ -43,7 +43,7 @@
             </div>
             <q-tooltip anchor="bottom left" :offset="[-100, 0]" class="glass">
               <div class="column items-center text-no-wrap">
-                <span style="font-size: 18px">Serving {{ iconStore.totalIcons }}+ icons</span>
+                <span style="font-size: 18px">{{ iconTotalTooltipText }}</span>
                 <span style="font-size: 12px">
                   Generated from installed icon package metadata
                 </span>
@@ -347,8 +347,18 @@ const common = useCommon()
 const searchHasFocus = ref(false)
 const searchInputRef = ref<HTMLInputElement>()
 const filter = ref(common.filter.value)
+const displayedTotalIcons = ref(0)
+let totalIconsAnimationFrame: number | undefined
 
 const selectedIconsFlattened = computed(() => common.selectedIconsFlattened.value)
+
+const iconTotalTooltipText = computed(() => {
+  if (displayedTotalIcons.value <= 0) {
+    return 'Counting icons...'
+  }
+
+  return `Serving ${displayedTotalIcons.value.toLocaleString()}+ icons`
+})
 
 onMounted(() => {
   if ($q.platform.is.desktop === true) {
@@ -370,7 +380,19 @@ onBeforeUnmount(() => {
   if ($q.platform.is.desktop === true) {
     window.removeEventListener('keypress', focusOnSearch)
   }
+
+  if (totalIconsAnimationFrame !== undefined) {
+    window.cancelAnimationFrame(totalIconsAnimationFrame)
+  }
 })
+
+watch(
+  () => iconStore.totalIcons,
+  (target) => {
+    animateTotalIcons(target)
+  },
+  { immediate: true },
+)
 
 watch(filter, (val) => {
   if (common.filter.value !== val) {
@@ -453,6 +475,45 @@ function toggleRightDrawer(): void {
 
 function toggleSettingsDrawer(): void {
   iconStore.settingsDrawerOpen = !iconStore.settingsDrawerOpen
+}
+
+function animateTotalIcons(target: number): void {
+  if (totalIconsAnimationFrame !== undefined && typeof window !== 'undefined') {
+    window.cancelAnimationFrame(totalIconsAnimationFrame)
+    totalIconsAnimationFrame = undefined
+  }
+
+  if (target <= 0) {
+    displayedTotalIcons.value = 0
+    return
+  }
+
+  if (typeof window === 'undefined') {
+    displayedTotalIcons.value = target
+    return
+  }
+
+  const start = displayedTotalIcons.value
+  const change = target - start
+  const duration = 900
+  const startedAt = window.performance.now()
+
+  const tick = (now: number) => {
+    const progress = Math.min((now - startedAt) / duration, 1)
+    const easedProgress = 1 - Math.pow(1 - progress, 3)
+
+    displayedTotalIcons.value = Math.round(start + change * easedProgress)
+
+    if (progress < 1) {
+      totalIconsAnimationFrame = window.requestAnimationFrame(tick)
+      return
+    }
+
+    displayedTotalIcons.value = target
+    totalIconsAnimationFrame = undefined
+  }
+
+  totalIconsAnimationFrame = window.requestAnimationFrame(tick)
 }
 
 function onCartRemoveAllItems(): void {
