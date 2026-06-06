@@ -7,6 +7,7 @@ allowBuilds:
   '@parcel/watcher': true
   esbuild: true
 minimumReleaseAgeExclude:
+  - '@md-plugins/vite-ssg-plugin'
   - '@quasar/app-vite'
   - '@clack/core'
   - '@clack/prompts'

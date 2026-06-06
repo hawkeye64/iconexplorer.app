@@ -2,7 +2,9 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
 
 import { defineConfig } from '@quasar/app-vite'
+import { viteSsgPlugin } from '@md-plugins/vite-ssg-plugin'
 import { iconSets } from './src/icon-sets'
+import { iconExplorerSsgRoutes, transformIconExplorerSsgHtml } from './src/ssg/iconexplorer-ssg'
 
 export default defineConfig((/* ctx */) => {
   return {
@@ -64,6 +66,14 @@ export default defineConfig((/* ctx */) => {
       // viteVuePluginOptions: {},
 
       vitePlugins: [
+        [
+          viteSsgPlugin,
+          {
+            routes: iconExplorerSsgRoutes,
+            transformHtml: transformIconExplorerSsgHtml,
+            manifestFile: 'iconexplorer-ssg-routes.json',
+          },
+        ],
         [
           'vite-plugin-checker',
           {
