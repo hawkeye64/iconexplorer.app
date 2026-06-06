@@ -103,7 +103,7 @@
             <q-input
               ref="searchInputRef"
               v-model="filter"
-              dark
+              :dark="$q.dark.isActive"
               dense
               square
               borderless
@@ -117,7 +117,11 @@
               @blur="onSearchBlur"
             >
               <template #append>
-                <q-icon v-if="!common.filter" :name="uiwSearch" color="grey-1" />
+                <q-icon
+                  v-if="!common.filter"
+                  :name="uiwSearch"
+                  :color="$q.dark.isActive ? 'grey-1' : 'primary'"
+                />
               </template>
             </q-input>
           </form>
@@ -644,7 +648,21 @@ function removeIconFromLibrary(icon: Icon): void {
 }
 
 .icon-search-input input {
+  color: var(--ie-text);
   line-height: 38px;
+}
+
+.icon-search-input input::placeholder {
+  color: var(--ie-muted);
+  opacity: 1;
+}
+
+.body--dark .icon-search-input input {
+  color: var(--ie-text-dark);
+}
+
+.body--dark .icon-search-input input::placeholder {
+  color: var(--ie-muted-dark);
 }
 
 .icon-search-input .q-field__prepend,
@@ -699,8 +717,21 @@ body.mobile .icon-search-input kbd {
 
 .quasar-link {
   display: inline-block;
-  color: white;
+  color: var(--ie-accent);
+  font-weight: 700;
   text-decoration: underline dotted;
+}
+
+.quasar-link:hover {
+  color: var(--ie-accent-2);
+}
+
+.body--dark .quasar-link {
+  color: #9be8ff;
+}
+
+.body--dark .quasar-link:hover {
+  color: #c7bfff;
 }
 
 .made-with {
