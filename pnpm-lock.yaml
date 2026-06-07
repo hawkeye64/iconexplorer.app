@@ -21,8 +21,8 @@ importers:
         specifier: ^2.19.3
         version: 2.19.3
       quasar-extras-svg-icons:
-        specifier: 3.0.0-beta.6
-        version: 3.0.0-beta.6
+        specifier: 3.0.0-beta.7
+        version: 3.0.0-beta.7
       vue:
         specifier: ^3.5.35
         version: 3.5.35(typescript@6.0.3)
@@ -31,8 +31,8 @@ importers:
         version: 5.1.0(@vue/compiler-sfc@3.5.35)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(vite@8.0.16(@types/node@25.9.2)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3))
     devDependencies:
       '@md-plugins/vite-ssg-plugin':
-        specifier: 0.1.0-beta.23
-        version: 0.1.0-beta.23(@vue/server-renderer@3.5.35(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))
+        specifier: 0.1.0-beta.24
+        version: 0.1.0-beta.24(@vue/server-renderer@3.5.35(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))
       '@quasar/app-vite':
         specifier: 3.0.0-beta.40
         version: 3.0.0-beta.40(@types/node@25.9.2)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(quasar@2.19.3)(sass@1.100.0)(terser@5.48.0)(typescript@6.0.3)(vue-router@5.1.0(@vue/compiler-sfc@3.5.35)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3)))(vite@8.0.16(@types/node@25.9.2)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))(yaml@2.9.0)
@@ -144,8 +144,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@md-plugins/vite-ssg-plugin@0.1.0-beta.23':
-    resolution: {integrity: sha512-hoRswxL3yYnNI3j7fX6HgxHEfNceLrq5bPQyrMhMjRcQ2QgVefzI6v8rYfgXefOXRugmP3g+A6W1witxGaYFnQ==}
+  '@md-plugins/vite-ssg-plugin@0.1.0-beta.24':
+    resolution: {integrity: sha512-eZ3jiUg1KYHJ979Lx+xdtvfbhjvEb5i9kzLCtWVf4A4Bkhs8HwlMSgMK2GDuJvJ+rhC+6POPb06kxFFoE9T8Vg==}
     peerDependencies:
       '@vue/server-renderer': ^3.5.0
       vue: ^3.5.0
@@ -1460,8 +1460,8 @@ packages:
   quansync@0.2.11:
     resolution: {integrity: sha512-AifT7QEbW9Nri4tAwR5M/uzpBuqfZf+zwaEM/QkzEjj7NBuFD2rBuy0K3dE+8wltbezDV7JMA0WfnCPYRSYbXA==}
 
-  quasar-extras-svg-icons@3.0.0-beta.6:
-    resolution: {integrity: sha512-gdVbvYW7njxLKs8FOFhBUvpTkGIJjiPW66Vh2KVtKW3MvqSVyVZzSVFDTJACbc+X6Ul9MuTWuneUZqTDpOvmfg==}
+  quasar-extras-svg-icons@3.0.0-beta.7:
+    resolution: {integrity: sha512-VSJCwvWgdWo3+EgRyKSpEM8C6V7czsawRLqd5D4jvtuEVKY6av5aleoMU+2kwH+7xrDDEzbzdcx1H/v7914Xsg==}
     engines: {node: '>=22.13', pnpm: '>=11.5.0'}
 
   quasar@2.19.3:
@@ -2032,7 +2032,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@md-plugins/vite-ssg-plugin@0.1.0-beta.23(@vue/server-renderer@3.5.35(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))':
+  '@md-plugins/vite-ssg-plugin@0.1.0-beta.24(@vue/server-renderer@3.5.35(vue@3.5.35(typescript@6.0.3)))(vue@3.5.35(typescript@6.0.3))':
     dependencies:
       tinyglobby: 0.2.17
     optionalDependencies:
@@ -3174,7 +3174,7 @@ snapshots:
 
   quansync@0.2.11: {}
 
-  quasar-extras-svg-icons@3.0.0-beta.6: {}
+  quasar-extras-svg-icons@3.0.0-beta.7: {}
 
   quasar@2.19.3: {}
 
