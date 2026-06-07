@@ -1,24 +1,22 @@
-![iconexplorer.app](./public/iconexplorer.app.png)
-
-![image](https://user-images.githubusercontent.com/10262924/136471324-325d0b70-04c3-47b5-bc8b-e66118bdd91d.png)
-
 # iconexplorer.app
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/27256d48-eafe-4fe3-8ffe-1f928ea3472d/deploy-status)](https://app.netlify.com/projects/iconexplorer-app/deploys)
 
-## Searchable Quasar Framework SVG icons
+![Icon Explorer app showing searchable icon sets, selected icon counts, and import workflow](./public/iconexplorer-preview.png)
 
-The [iconexplorer.app](https://iconexplorer.app/) uses SVG icons from [@quasar/extras](https://github.com/quasarframework/quasar/tree/dev/extras) and [quasar-extras-svg-icons](https://github.com/hawkeye64/quasar-extras-svg-icons). It helps you find the right SVG icon quickly so you can add it to your Quasar app.
+## Searchable SVG icons for Quasar apps
 
-The original SVG files have been converted to Quasar's short-hand (flattened) format and are intended for Quasar's `QIcon` and `QBtn` components.
+[iconexplorer.app](https://iconexplorer.app/) helps you browse large Quasar-ready icon catalogs without memorizing package names or import paths. It includes SVG icons from [@quasar/extras](https://github.com/quasarframework/quasar/tree/dev/extras) and [quasar-extras-svg-icons](https://github.com/hawkeye64/quasar-extras-svg-icons), then gives you search, preview, color checks, and copy workflows in one focused app.
+
+The source SVG files are converted to Quasar's short-hand flattened format so they can be used directly with `QIcon`, `QBtn`, and application code that imports SVG constants.
 
 ## Using the Icon Explorer app
 
-From the left drawer, select an icon set. All of the icons from that icon set will appear. You can use the filter bar to search the names of the icons.
+Use the left drawer to choose an icon set, then search within that set or across the catalog. The search bar supports plain text and regular expressions, so you can move quickly from broad words like `calendar` or `github` to tighter filters when a package has thousands of matches.
 
-Once you find an icon you want, click it. A bottom sheet is displayed with a larger version of the icon. You can change the color, invert the foreground and background colors, and copy the icon in several useful formats.
+Once you find an icon, open its preview to inspect it at a larger size, test colors, and copy it in the format you need. The app is designed for real project work: quick one-off copies when you already know what you want, and a library/cart workflow when you are gathering several icons for a feature.
 
-If you are looking for multiple icons, use the `Add to library` button. The cart icon in the upper-right changes to show there are items in your library. Select several icons this way, even from different icon sets. Then click the cart icon to open the right-side drawer with your selected icons. Click the `Imports` button to copy grouped import statements to your clipboard, ready to paste into your code.
+If you are looking for multiple icons, use `Add to library`. You can collect icons from different packages, open the library drawer, and copy grouped package-aware import statements that are ready to paste into your code.
 
 Here is an example of icons that were selected from multiple icon sets:
 
@@ -54,8 +52,8 @@ M3 12H6L9 3L15 21L18 12H21@@stroke-width:1.5;fill:none;stroke:currentColor;strok
 
 If iconexplorer.app is useful in your workflow and you want to support ongoing maintenance:
 
-GitHub Sponsors: https://github.com/sponsors/hawkeye64
-PayPal: https://paypal.me/hawkeye64
+- GitHub Sponsors: https://github.com/sponsors/hawkeye64
+- PayPal: https://paypal.me/hawkeye64
 
 ## License
 

@@ -8,7 +8,7 @@ import { iconSets } from '../icon-sets'
 
 const siteUrl = 'https://iconexplorer.app'
 const siteName = 'Icon Explorer'
-const siteImage = `${siteUrl}/iconexplorer.app.png`
+const siteImage = `${siteUrl}/iconexplorer-preview.png`
 const defaultDescription =
   'Search, compare, preview, and copy Quasar-ready SVG icon imports from @quasar/extras and quasar-extras-svg-icons.'
 
