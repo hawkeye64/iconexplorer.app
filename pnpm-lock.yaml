@@ -145,7 +145,7 @@ packages:
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
   '@md-plugins/vite-ssg-plugin@0.1.0-beta.25':
-    resolution: {integrity: sha512-eZ3jiUg1KYHJ979Lx+xdtvfbhjvEb5i9kzLCtWVf4A4Bkhs8HwlMSgMK2GDuJvJ+rhC+6POPb06kxFFoE9T8Vg==}
+    resolution: {integrity: sha512-e/XMYmvanT53J0geiLVp50U+H6Fkuc79HSHnKEHf76YPwaZavqLDU/KW3UEaAZNpmcXUuErdIrbUfIVZH1yRSQ==}
     peerDependencies:
       '@vue/server-renderer': ^3.5.0
       vue: ^3.5.0
