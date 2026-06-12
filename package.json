@@ -23,7 +23,7 @@
     "postinstall": "quasar prepare"
   },
   "dependencies": {
-    "@quasar/extras": "2.0.0",
+    "@quasar/extras": "2.0.1",
     "pinia": "^3.0.4",
     "quasar": "^2.20.0",
     "quasar-extras-svg-icons": "3.0.0",
