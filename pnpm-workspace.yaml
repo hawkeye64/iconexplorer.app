@@ -70,4 +70,6 @@ minimumReleaseAgeExclude:
   - 'semver@7.8.4'
   - 'vue@3.5.38'
   - 'vue-router@5.1.0'
+  - '@vue/language-core@3.3.5'
+  - vue-tsc@3.3.5
 trustLockfile: true

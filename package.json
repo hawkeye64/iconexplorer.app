@@ -31,7 +31,7 @@
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
-    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.2",
+    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.3",
     "@quasar/app-vite": "3.0.0-rc.2",
     "@types/node": "^25.9.3",
     "autoprefixer": "^10.5.0",
@@ -40,12 +40,12 @@
     "oxlint": "^1.69.0",
     "typescript": "~6.0.3",
     "vite-plugin-checker": "^0.14.1",
-    "vue-tsc": "^3.3.4"
+    "vue-tsc": "^3.3.5"
   },
   "engines": {
     "node": ">=22.13",
     "pnpm": ">=11.5.0"
   },
-  "packageManager": "pnpm@11.5.3",
+  "packageManager": "pnpm@11.6.0",
   "productName": "Icon Explorer for Quasar Framework SVG Icons"
 }
