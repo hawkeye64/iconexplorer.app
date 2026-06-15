@@ -31,8 +31,8 @@
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
-    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.3",
-    "@quasar/app-vite": "3.0.0-rc.2",
+    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.4",
+    "@quasar/app-vite": "3.0.0-rc.3",
     "@types/node": "^25.9.3",
     "autoprefixer": "^10.5.0",
     "npm-check-updates": "^22.2.3",
