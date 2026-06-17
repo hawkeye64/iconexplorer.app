@@ -25,27 +25,27 @@
   "dependencies": {
     "@quasar/extras": "2.0.1",
     "pinia": "^3.0.4",
-    "quasar": "^2.20.0",
+    "quasar": "^2.20.1",
     "quasar-extras-svg-icons": "3.0.0",
     "vue": "^3.5.38",
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
-    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.7",
+    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.8",
     "@quasar/app-vite": "3.0.0-rc.3",
     "@types/node": "^25.9.3",
     "autoprefixer": "^10.5.0",
     "npm-check-updates": "^22.2.3",
-    "oxfmt": "^0.54.0",
-    "oxlint": "^1.69.0",
+    "oxfmt": "^0.55.0",
+    "oxlint": "^1.70.0",
     "typescript": "~6.0.3",
-    "vite-plugin-checker": "^0.14.1",
+    "vite-plugin-checker": "^0.14.4",
     "vue-tsc": "^3.3.5"
   },
   "engines": {
     "node": ">=22.13",
     "pnpm": ">=11.5.0"
   },
-  "packageManager": "pnpm@11.6.0",
+  "packageManager": "pnpm@11.7.0",
   "productName": "Icon Explorer for Quasar Framework SVG Icons"
 }
