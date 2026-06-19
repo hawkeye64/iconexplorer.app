@@ -1,7 +1,7 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
 
-import { defineConfig } from '@quasar/app-vite'
+import { defineConfig } from '#q-app'
 import { viteSsgPlugin } from '@md-plugins/vite-ssg-plugin'
 import { iconSets } from './src/icon-sets'
 import { iconExplorerSsgRoutes, transformIconExplorerSsgHtml } from './src/ssg/iconexplorer-ssg'
