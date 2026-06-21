@@ -58,19 +58,20 @@ minimumReleaseAgeExclude:
   - '@vue/compiler-dom@3.5.38'
   - '@vue/compiler-sfc@3.5.38'
   - '@vue/compiler-ssr@3.5.38'
+  - '@vue/language-core@3.3.5'
   - '@vue/reactivity@3.5.38'
   - '@vue/runtime-core@3.5.38'
   - '@vue/runtime-dom@3.5.38'
   - '@vue/server-renderer@3.5.38'
   - '@vue/shared@3.5.38'
+  - npm-check-updates
   - 'oxfmt@0.53.0'
   - 'oxlint@1.68.0'
   - 'quasar@2.20.0'
-  - 'quasar-extras-svg-icons'
-  - 'semver@7.8.4'
+  - quasar-extras-svg-icons
+  - semver
+  - 'vite-plugin-checker@0.14.4'
   - 'vue@3.5.38'
   - 'vue-router@5.1.0'
-  - '@vue/language-core@3.3.5'
-  - vue-tsc@3.3.5
-  - vite-plugin-checker@0.14.4
+  - 'vue-tsc@3.3.5'
 trustLockfile: true
