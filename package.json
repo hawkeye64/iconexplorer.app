@@ -31,13 +31,13 @@
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
-    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.12",
+    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.13",
     "@quasar/app-vite": "3.0.0-rc.3",
     "@types/node": "^26.0.0",
     "autoprefixer": "^10.5.0",
     "npm-check-updates": "^22.2.7",
-    "oxfmt": "^0.55.0",
-    "oxlint": "^1.70.0",
+    "oxfmt": "^0.56.0",
+    "oxlint": "^1.71.0",
     "typescript": "~6.0.3",
     "vite-plugin-checker": "^0.14.4",
     "vue-tsc": "^3.3.5"
