@@ -469,6 +469,13 @@ export const iconSets: IconSetGroup[] = [
         status: 'v1.14',
       },
       {
+        label: 'Lucide Icons',
+        value: 'lucide-icons',
+        packageName: 'quasar-extras-svg-icons',
+        icons: true,
+        status: 'v3.1',
+      },
+      {
         label: 'Maki Icons v8',
         value: 'maki-icons-v8',
         packageName: 'quasar-extras-svg-icons',

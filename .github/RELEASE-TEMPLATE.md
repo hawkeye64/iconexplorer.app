@@ -38,7 +38,7 @@ Short user-facing summary of what changed for Icon Explorer users.
 - pnpm: `>=11.5.0`
 - Quasar: `^2.20.1`
 - Quasar App Vite target: `@quasar/app-vite@3.0.0-rc.3`
-- Vue: `^3.5.38`
+- Vue: `^3.5.39`
 - Browsers:
 
 ## Installation

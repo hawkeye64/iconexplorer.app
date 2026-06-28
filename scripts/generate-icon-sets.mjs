@@ -117,6 +117,7 @@ const statusByIconSet = new Map([
   ['quasar-extras-svg-icons:keyrune-icons', 'v1.16'],
   ['quasar-extras-svg-icons:linear-icons', 'v1.14'],
   ['quasar-extras-svg-icons:linecons', 'v1.14'],
+  ['quasar-extras-svg-icons:lucide-icons', 'v3.1'],
   ['quasar-extras-svg-icons:maki-icons', 'v1.11'],
   ['quasar-extras-svg-icons:maki-icons-v8', 'v1.22'],
   ['quasar-extras-svg-icons:map-icons', 'v1.14'],
