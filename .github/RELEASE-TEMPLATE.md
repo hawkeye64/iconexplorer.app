@@ -35,11 +35,12 @@ Short user-facing summary of what changed for Icon Explorer users.
 ## Compatibility
 
 - Node.js: `>=22.13`
-- pnpm: `>=11.5.0`
-- Quasar: `^2.21.0`
-- Quasar App Vite target: `@quasar/app-vite@3.0.0-rc.6`
-- Vue: `^3.5.39`
-- Browsers:
+- pnpm: `>=11.5.0` (release prepared with `pnpm@11.18.0`)
+- Quasar: `^2.23.3`
+- Quasar App Vite target: `@quasar/app-vite@3.3.0`
+- Quasar SVG icon catalog: `quasar-extras-svg-icons@3.3.0`
+- Vue: `^3.5.40`
+- Browsers: `es2022`, Firefox `115`, Chrome `115`, Safari `14`
 
 ## Installation
 
