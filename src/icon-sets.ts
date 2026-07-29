@@ -210,7 +210,7 @@ export const iconSets: IconSetGroup[] = [
         value: 'cool-icons-v4',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
-        status: 'v3.0',
+        status: 'v1.31',
       },
       {
         label: 'Cool Icons',
@@ -384,7 +384,7 @@ export const iconSets: IconSetGroup[] = [
         value: 'health-icons-v1',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
-        status: 'v3.0',
+        status: 'v1.37',
       },
       {
         label: 'Hero Icons v2',
@@ -398,6 +398,7 @@ export const iconSets: IconSetGroup[] = [
         value: 'hero-icons',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
+        status: 'v1.8',
       },
       {
         label: 'IcoMoon Free Icons',
@@ -508,14 +509,14 @@ export const iconSets: IconSetGroup[] = [
         value: 'material-line-icons-v1',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
-        status: 'v3.0',
+        status: 'v1.37',
       },
       {
         label: 'Material Line Icons',
         value: 'material-line-icons',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
-        status: 'v1.11',
+        status: 'v1.6',
       },
       {
         label: 'Material Theme Icons v3',
@@ -578,7 +579,7 @@ export const iconSets: IconSetGroup[] = [
         value: 'phosphor-icons-v2',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
-        status: 'v2.0',
+        status: 'v1.33',
       },
       {
         label: 'Phosphor Icons',
@@ -608,18 +609,18 @@ export const iconSets: IconSetGroup[] = [
         status: 'v1.37',
       },
       {
+        label: 'Prime Icons v8',
+        value: 'prime-icons-v8',
+        packageName: 'quasar-extras-svg-icons',
+        icons: true,
+        status: 'v3.3',
+      },
+      {
         label: 'Prime Icons v7',
         value: 'prime-icons-v7',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
-        status: 'v3.0',
-      },
-      {
-        label: 'Prime Icons v6',
-        value: 'prime-icons-v6',
-        packageName: 'quasar-extras-svg-icons',
-        icons: true,
-        status: 'v1.25',
+        status: 'v1.37',
       },
       {
         label: 'Radix UI Icons',
@@ -633,7 +634,7 @@ export const iconSets: IconSetGroup[] = [
         value: 'remix-icons-v4',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
-        status: 'v3.0',
+        status: 'v1.37',
       },
       {
         label: 'Remix Icons v3',
@@ -689,7 +690,7 @@ export const iconSets: IconSetGroup[] = [
         value: 'tabler-icons-v3',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
-        status: 'v3.0',
+        status: 'v1.37',
       },
       {
         label: 'Tabler Icons v2',
@@ -710,7 +711,7 @@ export const iconSets: IconSetGroup[] = [
         value: 'typ-icons',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
-        status: 'v3.0',
+        status: 'v1.11',
       },
       {
         label: 'UIW Icons',
