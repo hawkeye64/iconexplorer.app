@@ -6,6 +6,15 @@ command = "pnpm run build"
 NODE_OPTIONS = "--max_old_space_size=4096"
 NODE_VERSION = "24"
 
+[[headers]]
+for = "/*"
+
+[headers.values]
+Permissions-Policy = "camera=(), geolocation=(), microphone=()"
+Referrer-Policy = "strict-origin-when-cross-origin"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+
 [[redirects]]
 from = "/*"
 to = "/index.html"

@@ -8,19 +8,31 @@
             dense
             round
             :icon="mdiMenu"
-            aria-label="Menu"
+            :aria-label="
+              iconStore.leftDrawerOpen ? 'Hide icon set navigation' : 'Show icon set navigation'
+            "
+            :aria-expanded="iconStore.leftDrawerOpen"
+            aria-controls="icon-set-navigation"
             @click="toggleLeftDrawer"
-          /><q-tooltip class="text-no-wrap">Toggle left-side drawer</q-tooltip>
+          />
         </div>
 
         <q-toolbar-title class="q-pa-none">
-          <q-btn to="/" flat no-caps no-wrap class="ellipsis text-no-wrap">
+          <q-btn
+            to="/"
+            flat
+            no-caps
+            no-wrap
+            class="ellipsis text-no-wrap"
+            aria-label="Icon Explorer home"
+          >
             <div
               class="row justify-left items-center text-no-wrap ellipsis"
               style="max-height: 50px"
             >
               <q-img
                 src="/icon-finder-light.png"
+                alt=""
                 class="app-logo"
                 :width="$q.screen.lt.sm ? '28px' : '42px'"
                 :height="$q.screen.lt.sm ? '28px' : '42px'"
@@ -61,6 +73,7 @@
             flat
             round
             :icon="$q.dark.isActive ? mdiBrightness2 : mdiBrightness5"
+            :aria-label="$q.dark.isActive ? 'Use light theme' : 'Use dark theme'"
             @click="$q.dark.toggle()"
           />
           <q-tooltip>Toggle light/dark</q-tooltip>
@@ -72,6 +85,13 @@
             round
             :icon="Object.keys(iconStore.cart).length === 0 ? mdiCartOutline : mdiCartHeart"
             :color="Object.keys(iconStore.cart).length === 0 ? 'currentColor' : 'pink-4'"
+            :aria-label="
+              iconStore.rightDrawerOpen
+                ? 'Hide selected icon library'
+                : 'Show selected icon library'
+            "
+            :aria-expanded="iconStore.rightDrawerOpen"
+            aria-controls="selected-icon-library"
             @click="toggleRightDrawer"
           />
           <q-tooltip>Your selected library items</q-tooltip>
@@ -83,7 +103,9 @@
             dense
             round
             :icon="mdiCog"
-            aria-label="Settings"
+            :aria-label="iconStore.settingsDrawerOpen ? 'Hide settings' : 'Show settings'"
+            :aria-expanded="iconStore.settingsDrawerOpen"
+            aria-controls="icon-explorer-settings"
             @click="toggleSettingsDrawer"
           />
           <q-tooltip>Settings</q-tooltip>
@@ -92,7 +114,9 @@
     </q-header>
 
     <q-drawer
+      id="icon-set-navigation"
       v-model="iconStore.leftDrawerOpen"
+      aria-label="Icon set navigation"
       :persistent="searchHasFocus"
       show-if-above
       bordered
@@ -110,6 +134,7 @@
               clearable
               debounce="300"
               placeholder="Search all icon sets..."
+              aria-label="Search all icon sets"
               type="search"
               class="full-width icon-search-input"
               @keydown="onSearchKeydown"
@@ -163,7 +188,14 @@
       </q-scroll-area>
     </q-drawer>
 
-    <q-drawer v-model="iconStore.rightDrawerOpen" bordered overlay side="right">
+    <q-drawer
+      id="selected-icon-library"
+      v-model="iconStore.rightDrawerOpen"
+      bordered
+      overlay
+      side="right"
+      aria-label="Selected icon library"
+    >
       <q-scroll-area class="fit">
         <div v-if="Object.keys(iconStore.cart).length === 0" class="row justify-center q-ma-lg">
           The library is empty!
@@ -172,7 +204,13 @@
           <q-item key="onCartRemoveAll">
             <q-item-section> Remove all library items </q-item-section>
             <q-item-section avatar>
-              <q-btn :icon="mdiTrashCanOutline" flat round @click="onCartRemoveAllItems" />
+              <q-btn
+                :icon="mdiTrashCanOutline"
+                flat
+                round
+                aria-label="Remove all icons from library"
+                @click="onCartRemoveAllItems"
+              />
             </q-item-section>
           </q-item>
 
@@ -201,7 +239,13 @@
             class="full-width q-mx-none q-px-none"
           >
             <q-item-section avatar>
-              <q-icon :name="icon.path" class="cursor-pointer" @click="importToClipboard(icon)">
+              <q-btn
+                :icon="icon.path"
+                flat
+                round
+                :aria-label="`Copy import for ${icon.iconName}`"
+                @click="importToClipboard(icon)"
+              >
                 <q-tooltip style="font-size: 18px">
                   {{
                     'import &#123; ' +
@@ -214,7 +258,7 @@
                     "'"
                   }}
                 </q-tooltip>
-              </q-icon>
+              </q-btn>
             </q-item-section>
             <q-item-section>
               <q-item-label>
@@ -222,9 +266,12 @@
               </q-item-label>
             </q-item-section>
             <q-item-section avatar>
-              <q-icon
-                :name="mdiTrashCanOutline"
-                class="float-right on-left trash-can cursor-pointer"
+              <q-btn
+                :icon="mdiTrashCanOutline"
+                flat
+                round
+                class="float-right on-left trash-can"
+                :aria-label="`Remove ${icon.iconName} from library`"
                 @click="removeIconFromLibrary(icon)"
               />
               <q-tooltip style="font-size: 18px">
@@ -236,7 +283,14 @@
       </q-scroll-area>
     </q-drawer>
 
-    <q-drawer v-model="iconStore.settingsDrawerOpen" bordered overlay side="right">
+    <q-drawer
+      id="icon-explorer-settings"
+      v-model="iconStore.settingsDrawerOpen"
+      bordered
+      overlay
+      side="right"
+      aria-label="Icon Explorer settings"
+    >
       <q-scroll-area class="fit">
         <div class="row justify-center text-h5">Settings</div>
 
@@ -278,16 +332,32 @@
       <div
         class="markdown-page__footer--icons full-width row justify-center items-center q-gutter-sm"
       >
-        <a href="https://github.com/hawkeye64" target="_blank" rel="noopener"
-          ><q-avatar size="28px"><img src="@/assets/profile.png" /></q-avatar
+        <a
+          href="https://github.com/hawkeye64"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Jeff Galbraith on GitHub"
+          ><q-avatar size="28px"><img src="@/assets/profile.png" alt="" /></q-avatar
         ></a>
-        <a href="https://github.com/hawkeye64/iconexplorer.app" target="_blank" rel="noopener"
+        <a
+          href="https://github.com/hawkeye64/iconexplorer.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Icon Explorer source code on GitHub"
           ><q-icon :name="fabGithub"
         /></a>
-        <a href="https://x.com/jgalbraith64" target="_blank" rel="noopener"
+        <a
+          href="https://x.com/jgalbraith64"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Jeff Galbraith on X"
           ><q-icon :name="fabXTwitter"
         /></a>
-        <a href="https://github.com/sponsors/hawkeye64" target="_blank" rel="noopener"
+        <a
+          href="https://github.com/sponsors/hawkeye64"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Sponsor Jeff Galbraith on GitHub"
           ><q-icon :name="mdiCharity"
         /></a>
       </div>
@@ -300,7 +370,7 @@
       <div v-if="$q.screen.gt.xs" :class="madeWithClasses">
         <span
           >Made with <q-icon :name="mdiHeart" size="sm" class="text-red-8" /> using
-          <a href="https://quasar.dev" target="_blank" class="quasar-link"
+          <a href="https://quasar.dev" target="_blank" rel="noopener noreferrer" class="quasar-link"
             >Quasar Framework</a
           ></span
         >

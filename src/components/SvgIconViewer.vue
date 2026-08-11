@@ -39,6 +39,7 @@
                   flat
                   padding="0"
                   color="grey-13"
+                  :aria-label="`Copy icon name ${name}`"
                   @click.stop="nameToClipboard(name)"
                 >
                   <q-tooltip
@@ -56,6 +57,7 @@
                   flat
                   padding="0"
                   color="grey-13"
+                  :aria-label="`Copy import for ${name}`"
                   @click.stop="
                     iconSet && importToClipboard(name, iconSet.packageName, iconSet.value)
                   "
@@ -72,17 +74,21 @@
                   </q-tooltip>
                 </q-btn>
               </div>
-              <q-icon
-                :name="path"
-                :size="iconStore.iconSize"
-                class="q-pa-xs row full-width justify-center items-center"
-                @touchstart.stop="onClick({ path, name })"
-              />
+              <button
+                type="button"
+                class="icon-preview-button q-pa-xs row full-width justify-center items-center"
+                :aria-label="`View details for ${name}`"
+                @click.stop="onClick({ path, name })"
+              >
+                <q-icon :name="path" :size="iconStore.iconSize" aria-hidden="true" />
+              </button>
               <div class="row full-width justify-center items-center" style="font-size: 16px">
-                <span
-                  class="overflow-hidden ellipsis"
-                  v-html="common.filter ? getName(name) : name"
-                />
+                <span class="overflow-hidden ellipsis">
+                  <template v-for="(part, partIndex) in getNameParts(name)" :key="partIndex">
+                    <mark v-if="part.highlighted">{{ part.text }}</mark>
+                    <template v-else>{{ part.text }}</template>
+                  </template>
+                </span>
               </div>
               <q-tooltip
                 v-if="iconStore.tooltips"
@@ -110,6 +116,11 @@ import { appContentCopy as mdiContentCopy, appImport as mdiImport } from '@/asse
 type IconEntry = {
   name: string
   path: string
+}
+
+type IconNamePart = {
+  highlighted: boolean
+  text: string
 }
 
 const props = defineProps<{
@@ -210,23 +221,35 @@ const virtualGridKey = computed(() => {
   return `${columnCount.value}:${virtualRowSize.value}:${iconEntries.value.length}`
 })
 
-function getName(name: string): string {
-  if (common.filter.value) {
-    const filterRe = createFilterRegex(common.filter.value, 'ig').regex
+function getNameParts(name: string): IconNamePart[] {
+  const filterRe = createFilterRegex(common.filter.value, 'ig').regex
 
-    if (filterRe === null) {
-      return name
+  if (filterRe === null) {
+    return [{ highlighted: false, text: name }]
+  }
+
+  const parts: IconNamePart[] = []
+  let cursor = 0
+
+  for (const match of name.matchAll(filterRe)) {
+    const index = match.index
+    const text = match[0]
+
+    if (index > cursor) {
+      parts.push({ highlighted: false, text: name.slice(cursor, index) })
     }
 
-    const match = name.match(filterRe)
-    if (match && Array.isArray(match)) {
-      match.forEach((str) => {
-        name = name.replace(str, `<mark>${str}</mark>`)
-      })
+    if (text.length > 0) {
+      parts.push({ highlighted: true, text })
+      cursor = index + text.length
     }
   }
 
-  return name
+  if (cursor < name.length) {
+    parts.push({ highlighted: false, text: name.slice(cursor) })
+  }
+
+  return parts.length > 0 ? parts : [{ highlighted: false, text: name }]
 }
 
 function nameToClipboard(iconName: string): void {
@@ -271,6 +294,13 @@ const isActiveIcon = (name: string): boolean => props.selectedName === name
 
 .svg-item-border {
   border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.icon-preview-button {
+  color: inherit;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
 .q-dark div,

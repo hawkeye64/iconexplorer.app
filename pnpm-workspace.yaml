@@ -1,6 +1,7 @@
 packages:
   - .
 overrides:
+  'nanoid@>=3.0.0 <3.3.17': 3.3.17
   sass-embedded: 1.100.0
 
 allowBuilds:

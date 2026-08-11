@@ -5,6 +5,9 @@
       v-model="iconStore.showIconDialog"
       seamless
       position="bottom"
+      :aria-label="
+        common.selected.value ? `Icon details for ${common.selected.value}` : 'Icon details'
+      "
       style="border-top: 1px solid #e1e1e1"
     >
       <q-card class="q-pa-sm" :style="{ minWidth: '100vw', minHeight: '200px' }">
@@ -13,14 +16,28 @@
             <p class="font-mono ellipsis" style="font-size: 28px">
               {{ common.selected }}
             </p>
-            <q-icon size="xs" :name="mdiContentCopy" color="grey-13" @click="nameToClipboard">
+            <q-btn
+              size="sm"
+              :icon="mdiContentCopy"
+              flat
+              round
+              color="grey-13"
+              :aria-label="`Copy icon name ${common.selected.value}`"
+              @click="nameToClipboard"
+            >
               <q-tooltip class="primary my-tooltip">
                 Copy name "{{ common.selected }}" to clipboard
               </q-tooltip>
-            </q-icon>
+            </q-btn>
           </div>
           <q-space class="q-pr-lg" />
-          <q-btn flat round :icon="mdiClose" @click="iconStore.showIconDialog = false" />
+          <q-btn
+            flat
+            round
+            :icon="mdiClose"
+            aria-label="Close icon details"
+            @click="iconStore.showIconDialog = false"
+          />
         </q-card-section>
 
         <q-card-section class="row no-wrap q-pa-sm">
@@ -49,12 +66,20 @@
                   {{ cartButtonLabel }}
                 </div>
               </q-btn>
-              <div class="col row bordered" style="max-width: 142px">
-                <div
+              <div
+                class="col row bordered"
+                style="max-width: 142px"
+                role="group"
+                aria-label="Icon color"
+              >
+                <button
                   v-for="color in colors"
                   :key="color"
-                  :class="colorClass(color)"
+                  type="button"
+                  :class="[colorClass(color), 'color-swatch']"
                   style="width: 20px; height: 20px"
+                  :aria-label="`Use ${color} icon color`"
+                  :aria-pressed="textColor === color"
                   @click.stop="changeColor(color)"
                 />
               </div>
@@ -170,7 +195,7 @@
       </q-card>
     </q-dialog>
 
-    <div v-if="filterRegex.error" class="icon-state icon-state--error">
+    <div v-if="filterRegex.error" class="icon-state icon-state--error" role="alert">
       <q-icon :name="mdiAlertCircleOutline" class="q-mr-sm" />
       Invalid search expression: {{ filterRegex.error }}
     </div>
@@ -194,6 +219,7 @@
     <div
       v-else-if="filter && relatedIconSets.length > 0 && iconStore.searching === false"
       class="icon-state"
+      role="status"
     >
       <q-icon :name="mdiHeart" class="icon-state__icon" />
       <div>
@@ -204,6 +230,7 @@
     <div
       v-else-if="filter && importedIcons && iconSet && iconSet.label"
       class="icon-state icon-state--empty"
+      role="status"
     >
       <q-icon :name="mdiHeartBroken" class="icon-state__icon" />
       <div>
@@ -236,7 +263,7 @@
     <div class="icons-footer" />
 
     <q-page-scroller expand position="bottom-right" :scroll-offset="150" :offset="[8, 8]">
-      <q-btn fab :icon="mdiChevronUp" class="glass" />
+      <q-btn fab :icon="mdiChevronUp" class="glass" aria-label="Back to top" />
     </q-page-scroller>
   </q-page>
 </template>
@@ -661,6 +688,16 @@ function qbtnToClipboard(): void {
 
 <style lang="scss">
 .active-color {
+  border: 1px dashed white;
+}
+
+.color-swatch {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.color-swatch.active-color {
   border: 1px dashed white;
 }
 

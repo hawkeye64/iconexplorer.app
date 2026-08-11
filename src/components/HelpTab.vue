@@ -13,7 +13,11 @@
       <q-icon :name="mdiAlertCircleOutline" size="28px" />
       <p>
         These icons are flattened and reconstituted through Quasar's
-        <a href="https://quasar.dev/vue-components/icon#svg-icons" target="_blank" rel="noopener">
+        <a
+          href="https://quasar.dev/vue-components/icon#svg-icons"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           QIcon SVG support</a
         >.
       </p>

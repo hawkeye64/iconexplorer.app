@@ -15,7 +15,9 @@
         <h3>Powered by Quasar</h3>
         <p>
           Huge thanks to
-          <a href="https://quasar.dev" target="_blank" rel="noopener">Quasar Framework</a>
+          <a href="https://quasar.dev" target="_blank" rel="noopener noreferrer">
+            Quasar Framework
+          </a>
           for the Vue tooling and components that make this project practical.
         </p>
       </article>
@@ -34,10 +36,15 @@
         <h3>Hosted by Netlify</h3>
         <p>
           Thanks to
-          <a href="https://www.netlify.com" target="_blank" rel="noopener">Netlify</a>
+          <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer"> Netlify </a>
           for hosting the site and keeping the public icon finder easy to reach.
         </p>
-        <a href="https://www.netlify.com" target="_blank" rel="noopener" class="about-panel__badge">
+        <a
+          href="https://www.netlify.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="about-panel__badge"
+        >
           <img
             src="https://www.netlify.com/assets/badges/netlify-badge-color-accent.svg"
             alt="Deploys by Netlify"
