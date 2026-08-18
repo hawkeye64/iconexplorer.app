@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@quasar/extras':
-        specifier: 2.0.3
-        version: 2.0.3
+        specifier: 2.0.4
+        version: 2.0.4
       pinia:
         specifier: ^4.0.3
         version: 4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.41(typescript@6.0.3))
@@ -22,8 +22,8 @@ importers:
         specifier: ^2.25.0
         version: 2.25.0
       quasar-extras-svg-icons:
-        specifier: 3.3.3
-        version: 3.3.3
+        specifier: 3.3.4
+        version: 3.3.4
       vue:
         specifier: ^3.5.41
         version: 3.5.41(typescript@6.0.3)
@@ -560,8 +560,8 @@ packages:
   '@quasar/art@1.0.0':
     resolution: {integrity: sha512-IAV8Qg2QM3U2alywUcCELyOlHCUNbJYmiVDRTLgcgmyBlQwo3Wk33eHAyT9cpnV5CqlmuYXe6UZt0Ybi1m0lMA==}
 
-  '@quasar/extras@2.0.3':
-    resolution: {integrity: sha512-tTw+5+2ZOugCpkagP20e/LJf7BgQyAQPlwyRwMYe2UpN1F4zYCZhvoAPio1hG2hr5FOlEiJVxSINJHhpdx5NZA==}
+  '@quasar/extras@2.0.4':
+    resolution: {integrity: sha512-JWls5J+xkgEn6u86NSBLRUXf92RSTlImmYNcF77JtbOwuZgQfQTg7RpLskqRTmzpU3Kkpd3TLDcVT0xwWwiphA==}
 
   '@quasar/render-ssr-error@2.2.6':
     resolution: {integrity: sha512-v8Q/uxmPwlBbN6lC/fObFk564A7CGFTVnObmdchhDMj817t17P6RsIyFVA8BUwuW0MdG2AWrrjpbhnXIgzuzvA==}
@@ -1316,8 +1316,8 @@ packages:
   quansync@0.2.11:
     resolution: {integrity: sha512-AifT7QEbW9Nri4tAwR5M/uzpBuqfZf+zwaEM/QkzEjj7NBuFD2rBuy0K3dE+8wltbezDV7JMA0WfnCPYRSYbXA==}
 
-  quasar-extras-svg-icons@3.3.3:
-    resolution: {integrity: sha512-cSY7AiOLunS8oSlbwj2l+p8yZvpx8odyqd1aUXkQx4NbiU8kQs4+1+N14zB/AerectsFyGWKdO/0KvZpJPRAmQ==}
+  quasar-extras-svg-icons@3.3.4:
+    resolution: {integrity: sha512-KNhmk0GXPpb12RvK/7z47Lg3Gd/Dy+DmWhrZgMRin2duc0bafP/i7uca6gu0te4UHetqvDMmxzKwyeXFFIOGjw==}
     engines: {node: '>=22.13', pnpm: '>=11.5.0'}
 
   quasar@2.25.0:
@@ -2216,7 +2216,7 @@ snapshots:
 
   '@quasar/art@1.0.0': {}
 
-  '@quasar/extras@2.0.3': {}
+  '@quasar/extras@2.0.4': {}
 
   '@quasar/render-ssr-error@2.2.6':
     dependencies:
@@ -2903,7 +2903,7 @@ snapshots:
 
   quansync@0.2.11: {}
 
-  quasar-extras-svg-icons@3.3.3: {}
+  quasar-extras-svg-icons@3.3.4: {}
 
   quasar@2.25.0: {}
 
