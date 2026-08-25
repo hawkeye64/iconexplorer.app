@@ -25,22 +25,22 @@
   "dependencies": {
     "@quasar/extras": "2.0.4",
     "pinia": "^4.0.3",
-    "quasar": "^2.25.0",
+    "quasar": "^2.26.0",
     "quasar-extras-svg-icons": "3.3.4",
     "vue": "^3.5.41",
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
     "@md-plugins/vite-ssg-plugin": "2.2.0",
-    "@quasar/app-vite": "3.6.0",
+    "@quasar/app-vite": "3.8.0",
     "@types/node": "^26.2.0",
     "autoprefixer": "^10.5.4",
     "npm-check-updates": "^23.0.2",
-    "oxfmt": "^0.63.0",
-    "oxlint": "^1.78.0",
+    "oxfmt": "^0.64.0",
+    "oxlint": "^1.79.0",
     "typescript": "~6.0.3",
     "vite-plugin-checker": "^0.14.5",
-    "vue-tsc": "^3.3.10"
+    "vue-tsc": "^3.3.11"
   },
   "engines": {
     "node": ">=22.13",
