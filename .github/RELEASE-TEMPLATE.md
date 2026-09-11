@@ -39,7 +39,7 @@ Short user-facing summary of what changed for Icon Explorer users.
 - Quasar: `^2.32.1`
 - Quasar Extras: `@quasar/extras@2.0.4`
 - Quasar App Vite target: `@quasar/app-vite@3.8.3`
-- Quasar SVG icon catalog: `quasar-extras-svg-icons@3.3.5`
+- Quasar SVG icon catalog: `quasar-extras-svg-icons@3.3.6`
 - Vue: `^3.5.42`
 - Browsers: `es2022`, Firefox `115`, Chrome `115`, Safari `14`
 
