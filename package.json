@@ -33,7 +33,7 @@
   "devDependencies": {
     "@md-plugins/vite-ssg-plugin": "2.2.0",
     "@quasar/app-vite": "3.8.4",
-    "@types/node": "^26.5.1",
+    "@types/node": "^26.6.1",
     "autoprefixer": "^10.6.1",
     "npm-check-updates": "^23.1.0",
     "oxfmt": "^0.68.0",

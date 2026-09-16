@@ -187,17 +187,17 @@ importers:
         version: 3.5.42(typescript@6.0.3)
       vue-router:
         specifier: ^5.3.1
-        version: 5.3.1(@vue/compiler-sfc@3.5.42)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(rolldown@1.2.4)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
+        version: 5.3.1(@vue/compiler-sfc@3.5.42)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(rolldown@1.2.4)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
     devDependencies:
       '@md-plugins/vite-ssg-plugin':
         specifier: 2.2.0
         version: 2.2.0(@vue/server-renderer@3.5.42)(vue@3.5.42(typescript@6.0.3))
       '@quasar/app-vite':
         specifier: 3.8.4
-        version: 3.8.4(@types/node@26.5.1)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(quasar@2.32.3)(sass@1.102.0)(supports-color@8.1.1)(terser@5.49.1)(typescript@6.0.3)(vue-router@5.3.1(@vue/compiler-sfc@3.5.42)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(rolldown@1.2.4)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3)))(vue@3.5.42(typescript@6.0.3))(yaml@2.9.0)
+        version: 3.8.4(@types/node@26.6.1)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(quasar@2.32.3)(sass@1.102.0)(supports-color@8.1.1)(terser@5.49.1)(typescript@6.0.3)(vue-router@5.3.1(@vue/compiler-sfc@3.5.42)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(rolldown@1.2.4)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3)))(vue@3.5.42(typescript@6.0.3))(yaml@2.9.0)
       '@types/node':
-        specifier: ^26.5.1
-        version: 26.5.1
+        specifier: ^26.6.1
+        version: 26.6.1
       autoprefixer:
         specifier: ^10.6.1
         version: 10.6.1(postcss@8.5.28)
@@ -215,7 +215,7 @@ importers:
         version: 6.0.3
       vite-plugin-checker:
         specifier: ^0.14.5
-        version: 0.14.5(oxlint@1.83.0)(typescript@6.0.3)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue-tsc@3.3.11(typescript@6.0.3))
+        version: 0.14.5(oxlint@1.83.0)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue-tsc@3.3.11(typescript@6.0.3))
       vue-tsc:
         specifier: ^3.3.11
         version: 3.3.11(typescript@6.0.3)
@@ -924,8 +924,8 @@ packages:
   '@types/har-format@1.2.16':
     resolution: {integrity: sha512-fluxdy7ryD3MV6h8pTfTYpy/xQzCFC7m89nOH9y94cNqJ1mDIDPut7MnRHI3F6qRmh/cT2fUjG1MLdCNb4hE9A==}
 
-  '@types/node@26.5.1':
-    resolution: {integrity: sha512-CzNm2FezW4VR/LjG6yUdiEgLE/rAQ9Slj5gCu/C2VrdcW7I0ahNZ8DRbHT7zOZ6r3ONgd/bsQIeSaoDGrd1C6g==}
+  '@types/node@26.6.1':
+    resolution: {integrity: sha512-VqGJBMCtdhqkBUCcBLvywI0NJ+KLuVzgNnlBUNFOQjqVxzo2lxLUNg1DSey8+u2u6ktswSAxg+s68QLzWHNOuA==}
 
   '@vitejs/plugin-vue@6.0.8':
     resolution: {integrity: sha512-0ZjgOg7oO6farnNGup7yvoM/YXZV84OZxHAwtflItNa/6zzQyVb5LNxyea3FEKEX2XlagIKzrlH7wwxkKgtiew==}
@@ -2395,16 +2395,16 @@ snapshots:
       tslib: 2.8.1
       tsyringe: 4.10.0
 
-  '@quasar/app-vite@3.8.4(@types/node@26.5.1)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(quasar@2.32.3)(sass@1.102.0)(supports-color@8.1.1)(terser@5.49.1)(typescript@6.0.3)(vue-router@5.3.1(@vue/compiler-sfc@3.5.42)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(rolldown@1.2.4)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3)))(vue@3.5.42(typescript@6.0.3))(yaml@2.9.0)':
+  '@quasar/app-vite@3.8.4(@types/node@26.6.1)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(quasar@2.32.3)(sass@1.102.0)(supports-color@8.1.1)(terser@5.49.1)(typescript@6.0.3)(vue-router@5.3.1(@vue/compiler-sfc@3.5.42)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(rolldown@1.2.4)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3)))(vue@3.5.42(typescript@6.0.3))(yaml@2.9.0)':
     dependencies:
       '@clack/prompts': 1.8.1
       '@quasar/art': 1.0.0
       '@quasar/render-ssr-error': 2.2.6
       '@quasar/ssl-certificate': 2.1.0
-      '@quasar/vite-plugin': 2.0.2(@vitejs/plugin-vue@6.0.8(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3)))(quasar@2.32.3)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
+      '@quasar/vite-plugin': 2.0.2(@vitejs/plugin-vue@6.0.8(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3)))(quasar@2.32.3)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
       '@types/chrome': 0.2.9
       '@types/cordova': 11.0.3
-      '@vitejs/plugin-vue': 6.0.8(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
+      '@vitejs/plugin-vue': 6.0.8(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
       chokidar: 5.0.0
       ci-info: 4.4.0
       confbox: 0.3.1
@@ -2428,9 +2428,9 @@ snapshots:
       serve-static: 2.2.1(supports-color@8.1.1)
       tinyglobby: 0.2.17
       ts-essentials: 10.2.1(typescript@6.0.3)
-      vite: 8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
       vue: 3.5.42(typescript@6.0.3)
-      vue-router: 5.3.1(@vue/compiler-sfc@3.5.42)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(rolldown@1.2.4)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
+      vue-router: 5.3.1(@vue/compiler-sfc@3.5.42)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(rolldown@1.2.4)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
       webpack-merge: 6.0.1
     optionalDependencies:
       pinia: 4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3))
@@ -2461,11 +2461,11 @@ snapshots:
       fs-extra: 11.4.0
       selfsigned: 5.5.0
 
-  '@quasar/vite-plugin@2.0.2(@vitejs/plugin-vue@6.0.8(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3)))(quasar@2.32.3)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))':
+  '@quasar/vite-plugin@2.0.2(@vitejs/plugin-vue@6.0.8(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3)))(quasar@2.32.3)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))':
     dependencies:
-      '@vitejs/plugin-vue': 6.0.8(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
+      '@vitejs/plugin-vue': 6.0.8(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
       quasar: 2.32.3
-      vite: 8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
       vue: 3.5.42(typescript@6.0.3)
 
   '@rolldown/binding-android-arm-eabi@1.2.8':
@@ -2572,14 +2572,14 @@ snapshots:
 
   '@types/har-format@1.2.16': {}
 
-  '@types/node@26.5.1':
+  '@types/node@26.6.1':
     dependencies:
       undici-types: 8.9.0
 
-  '@vitejs/plugin-vue@6.0.8(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))':
+  '@vitejs/plugin-vue@6.0.8(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
       vue: 3.5.42(typescript@6.0.3)
 
   '@volar/language-core@2.4.28':
@@ -3492,14 +3492,14 @@ snapshots:
       pathe: 2.0.3
       picomatch: 4.0.5
 
-  unplugin@3.3.0(rolldown@1.2.4)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)):
+  unplugin@3.3.0(rolldown@1.2.4)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.5
       webpack-virtual-modules: 0.6.2
     optionalDependencies:
       rolldown: 1.2.4
-      vite: 8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
 
   update-browserslist-db@1.3.3(browserslist@4.28.9):
     dependencies:
@@ -3509,7 +3509,7 @@ snapshots:
 
   varint@6.0.0: {}
 
-  vite-plugin-checker@0.14.5(oxlint@1.83.0)(typescript@6.0.3)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue-tsc@3.3.11(typescript@6.0.3)):
+  vite-plugin-checker@0.14.5(oxlint@1.83.0)(typescript@6.0.3)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue-tsc@3.3.11(typescript@6.0.3)):
     dependencies:
       '@babel/code-frame': 7.29.7
       chokidar: 5.0.0
@@ -3518,13 +3518,13 @@ snapshots:
       picomatch: 4.0.5
       proper-lockfile: 4.1.2
       tiny-invariant: 1.3.3
-      vite: 8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
     optionalDependencies:
       oxlint: 1.83.0
       typescript: 6.0.3
       vue-tsc: 3.3.11(typescript@6.0.3)
 
-  vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0):
+  vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -3532,7 +3532,7 @@ snapshots:
       rolldown: 1.2.8
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 26.5.1
+      '@types/node': 26.6.1
       fsevents: 2.3.3
       jiti: 2.7.0
       sass: 1.102.0
@@ -3542,7 +3542,7 @@ snapshots:
 
   vscode-uri@3.1.0: {}
 
-  vue-router@5.3.1(@vue/compiler-sfc@3.5.42)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(rolldown@1.2.4)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3)):
+  vue-router@5.3.1(@vue/compiler-sfc@3.5.42)(pinia@4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3)))(rolldown@1.2.4)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3)):
     dependencies:
       '@vue-macros/common': 3.1.4(vue@3.5.42(typescript@6.0.3))
       '@vue/devtools-api': 8.1.5
@@ -3558,13 +3558,13 @@ snapshots:
       picomatch: 4.0.5
       scule: 1.3.0
       tinyglobby: 0.2.17
-      unplugin: 3.3.0(rolldown@1.2.4)(vite@8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))
+      unplugin: 3.3.0(rolldown@1.2.4)(vite@8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0))
       unplugin-utils: 0.3.2
       vue: 3.5.42(typescript@6.0.3)
     optionalDependencies:
       '@vue/compiler-sfc': 3.5.42
       pinia: 4.0.3(@vue/devtools-api@8.1.5)(typescript@6.0.3)(vue@3.5.42(typescript@6.0.3))
-      vite: 8.3.0(@types/node@26.5.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@26.6.1)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.102.0)(terser@5.49.1)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@rspack/core'
