@@ -1,6 +1,6 @@
 {
   "name": "iconexplorer.app",
-  "version": "3.3.14",
+  "version": "3.3.15",
   "private": true,
   "description": "Icon Explorer application for Quasar Framework SVG icons. 160k+ searchable icons and growing.",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
@@ -25,19 +25,19 @@
   "dependencies": {
     "@quasar/extras": "2.1.0",
     "pinia": "^4.0.3",
-    "quasar": "^2.32.3",
-    "quasar-extras-svg-icons": "3.3.7",
-    "vue": "^3.5.42",
+    "quasar": "^2.34.0",
+    "quasar-extras-svg-icons": "3.4.0",
+    "vue": "^3.5.43",
     "vue-router": "^5.3.1"
   },
   "devDependencies": {
     "@md-plugins/vite-ssg-plugin": "2.2.0",
-    "@quasar/app-vite": "3.8.4",
-    "@types/node": "^26.6.1",
+    "@quasar/app-vite": "3.10.1",
+    "@types/node": "^26.6.3",
     "autoprefixer": "^10.6.1",
     "npm-check-updates": "^23.1.0",
-    "oxfmt": "^0.68.0",
-    "oxlint": "^1.83.0",
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.86.0",
     "typescript": "~6.0.3",
     "vite-plugin-checker": "^0.14.5",
     "vue-tsc": "^3.3.11"
@@ -46,6 +46,6 @@
     "node": ">=22.13",
     "pnpm": ">=11.5.0"
   },
-  "packageManager": "pnpm@12.4.2",
+  "packageManager": "pnpm@12.8.1",
   "productName": "Icon Explorer for Quasar Framework SVG Icons"
 }
