@@ -206,18 +206,18 @@ export const iconSets: IconSetGroup[] = [
         status: 'v1.4',
       },
       {
+        label: 'Cool Icons v5',
+        value: 'cool-icons-v5',
+        packageName: 'quasar-extras-svg-icons',
+        icons: true,
+        status: 'v3.4.2',
+      },
+      {
         label: 'Cool Icons v4',
         value: 'cool-icons-v4',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
         status: 'v1.31',
-      },
-      {
-        label: 'Cool Icons',
-        value: 'cool-icons',
-        packageName: 'quasar-extras-svg-icons',
-        icons: true,
-        status: 'v1.3',
       },
       {
         label: 'CoreUI Icons v3',
@@ -373,18 +373,18 @@ export const iconSets: IconSetGroup[] = [
         status: 'v1.6',
       },
       {
+        label: 'Health Icons v3',
+        value: 'health-icons-v3',
+        packageName: 'quasar-extras-svg-icons',
+        icons: true,
+        status: 'v3.4.2',
+      },
+      {
         label: 'Health Icons v2',
         value: 'health-icons-v2',
         packageName: 'quasar-extras-svg-icons',
         icons: true,
         status: 'v2.0',
-      },
-      {
-        label: 'Health Icons v1',
-        value: 'health-icons-v1',
-        packageName: 'quasar-extras-svg-icons',
-        icons: true,
-        status: 'v1.37',
       },
       {
         label: 'Hero Icons v2',
