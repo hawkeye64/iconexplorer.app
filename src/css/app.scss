@@ -252,7 +252,7 @@ body {
 }
 
 .intro-tabs {
-  width: min(1180px, calc(100vw - 32px));
+  width: min(1180px, calc(100% - 32px));
   margin-inline: auto;
 }
 
